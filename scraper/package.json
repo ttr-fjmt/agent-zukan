@@ -1,0 +1,18 @@
+{
+  "name": "agent-zukan-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "転職エージェント図鑑: jesra.or.jp 認定事業者一覧のスクレイパーと、Claude Haiku 4.5 による agents.json 構造化スクリプト",
+  "main": "scrape.js",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "structure": "node structure.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "cheerio": "^1.0.0"
+  }
+}

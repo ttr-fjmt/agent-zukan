@@ -1,0 +1,54 @@
+name: Scrape agents and update agents.json
+
+on:
+  schedule:
+    # 毎日 18:30 UTC = 日本時間(JST) 3:30 に実行（深夜帯・低負荷な時間帯を狙う）
+    - cron: "30 18 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-agents
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: scraper/package-lock.json
+
+      - name: Install scraper dependencies
+        working-directory: scraper
+        run: npm ci
+
+      - name: Scrape jesra.or.jp (polite, robots.txt-aware crawl)
+        working-directory: scraper
+        run: node scrape.js
+
+      - name: Structure raw data into agents.json via Claude Haiku 4.5
+        working-directory: scraper
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node structure.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add agents.json data/raw-agents.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update agents.json from daily scrape ($(date -u +%Y-%m-%d))"
+            git push
+          fi

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>転職エージェント図鑑 — エージェント比較</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Google AdSense: 実際に配信する際は client=ca-pub-XXXXXXXXXXXXXXXX をご自身のパブリッシャーIDに置き換えてください -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#181A22;
+    --ink-soft:#6B6E78;
+    --ink-faint:#9A9CA5;
+    --line:#EEEDE9;
+    --surface:#F7F6F3;
+    --accent:#1F6F63;
+    --accent-soft:#DCEAE7;
+    --star:#E0A400;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 100px;}
+
+  /* header */
+  header{padding:64px 24px 32px;}
+  header .inner{max-width:860px;margin:0 auto;}
+  h1{
+    font-family:'Shippori Mincho', serif;
+    font-weight:600;
+    font-size:clamp(26px,3.6vw,34px);
+    line-height:1.4;
+    margin:0 0 10px;
+    letter-spacing:.01em;
+  }
+  header p.tagline{
+    font-size:13.5px;
+    color:var(--accent);
+    font-weight:600;
+    letter-spacing:.04em;
+    margin:0 0 18px;
+  }
+  header p.lead{
+    max-width:50ch;
+    font-size:14.5px;
+    line-height:1.8;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* segmented mode toggle */
+  .segment{max-width:860px;margin:28px auto 0;padding:0 24px;}
+  .segment .track{display:flex;background:var(--surface);border-radius:10px;padding:4px;gap:4px;}
+  .mode-btn{
+    flex:1;padding:11px 16px;background:none;border:none;border-radius:7px;
+    font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink-soft);
+    cursor:pointer;transition:background .15s, color .15s;
+  }
+  .mode-btn.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08);}
+
+  /* filter bar */
+  .filter-bar{margin-top:32px;}
+  .filter-bar input[type="text"]{
+    width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--bg);
+    font-family:inherit;font-size:14px;color:var(--ink);border-radius:8px;margin-bottom:14px;
+  }
+  .filter-bar input[type="text"]:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:500;
+    background:var(--bg);color:var(--ink-soft);cursor:pointer;white-space:nowrap;transition:all .12s;
+  }
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .result-count{font-size:12px;color:var(--ink-faint);margin-top:14px;}
+
+  /* list */
+  .ledger{margin-top:8px;}
+  .row-item{border-bottom:1px solid var(--line);padding:22px 4px;cursor:pointer;transition:background .12s;}
+  .row-item:first-child{border-top:1px solid var(--line);}
+  .row-item:hover{background:var(--surface);}
+  .row-item .head{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .name-col{display:flex;align-items:center;gap:10px;min-width:0;}
+  .checkbox-col{display:none;}
+  body.mode-company .checkbox-col{display:flex;align-items:center;}
+  .checkbox-col input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;}
+
+  .category-pill{
+    display:inline-block;font-size:11.5px;font-weight:500;color:var(--accent);
+    background:var(--accent-soft);padding:4px 10px;border-radius:6px;white-space:nowrap;
+  }
+  .row-item h3{font-size:18px;font-weight:700;margin:0;letter-spacing:.01em;}
+  .rating-badge{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--ink);flex-shrink:0;}
+  .rating-badge .star{color:var(--star);font-size:14px;}
+  .rating-badge .count{font-weight:400;color:var(--ink-faint);font-size:12px;}
+  .no-review{font-size:12px;color:var(--ink-faint);}
+
+  .eyecatch{
+    width:100%;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .eyecatch.thumb{height:104px;margin-bottom:16px;}
+  .eyecatch.hero{height:200px;margin-bottom:28px;}
+  .eyecatch svg{width:38px;height:38px;opacity:.95;}
+  .eyecatch.hero svg{width:76px;height:76px;}
+  .eyecatch .cap{
+    position:absolute;bottom:12px;left:16px;font-size:11.5px;color:#fff;
+    font-weight:600;letter-spacing:.02em;opacity:.92;
+  }
+
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;}
+  .stats-grid.company{grid-template-columns:repeat(3,1fr);}
+  .stat .k{font-size:12px;color:var(--ink-faint);margin-bottom:5px;}
+  .stat .v{font-size:14.5px;font-weight:500;color:var(--ink);line-height:1.5;}
+  .row-hint{font-size:12px;color:var(--accent);margin-top:14px;font-weight:500;}
+
+  /* bulk request bar */
+  .bulk-bar{
+    position:sticky;bottom:16px;left:0;right:0;display:none;background:var(--ink);color:#fff;
+    padding:14px 20px;align-items:center;justify-content:space-between;margin-top:20px;
+    border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.18);
+  }
+  .bulk-bar.show{display:flex;}
+  .bulk-bar span{font-size:13.5px;}
+  .bulk-bar button{
+    background:var(--accent);color:#fff;border:none;padding:10px 18px;font-size:13px;font-weight:700;
+    border-radius:7px;cursor:pointer;font-family:inherit;
+  }
+
+  .toast{
+    position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;
+    padding:12px 22px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;
+    transition:opacity .2s, transform .2s;z-index:20;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-8px);}
+
+  .ad-slot{
+    position:relative;
+    border:1px dashed var(--line);
+    border-radius:8px;
+    background:var(--surface);
+    min-height:100px;
+    display:flex;align-items:center;justify-content:center;
+    margin:24px 0;
+    overflow:hidden;
+  }
+  .ad-slot .ad-label{
+    position:absolute;top:8px;left:10px;
+    font-size:10px;color:var(--ink-faint);letter-spacing:.04em;
+  }
+  .ad-slot .ad-placeholder{
+    font-size:12px;color:var(--ink-faint);
+  }
+  .ad-slot.banner{min-height:90px;}
+  .ad-slot.in-feed{min-height:110px;}
+  .ad-slot.footer-ad{min-height:90px;margin:32px 0 8px;}
+
+  footer{max-width:860px;margin:48px auto 0;padding:20px 24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+
+  /* --- detail page --- */
+  #detailView{display:none;padding-top:36px;}
+  #detailView.show{display:block;}
+  #listView.hide{display:none;}
+  .back-btn{
+    background:none;border:none;cursor:pointer;color:var(--ink-soft);font-size:13px;font-weight:500;
+    font-family:inherit;padding:0;margin-bottom:24px;display:inline-flex;align-items:center;gap:6px;
+  }
+  .back-btn:hover{color:var(--ink);}
+  .detail-head{margin-bottom:8px;}
+  .detail-head .category-pill{margin-bottom:12px;}
+  .detail-head h2{font-size:clamp(24px,3.4vw,30px);margin:0 0 10px;font-weight:700;letter-spacing:.01em;}
+  .one-liner{font-size:15.5px;color:var(--accent);font-weight:500;line-height:1.7;margin:0 0 32px;}
+
+  .d-section{margin-bottom:32px;}
+  .d-section h4{font-size:13px;color:var(--ink-faint);font-weight:700;margin:0 0 12px;letter-spacing:.02em;}
+  .d-section p.body-text{font-size:14.5px;line-height:1.9;color:var(--ink);margin:0 0 14px;}
+  .feature-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .feature-list li{
+    font-size:14px;line-height:1.7;color:var(--ink);padding-left:20px;position:relative;
+  }
+  .feature-list li::before{
+    content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
+
+  .review-card{background:var(--surface);border-radius:10px;padding:16px 18px;margin-bottom:10px;}
+  .review-card .rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .review-card .reviewer{font-size:12px;color:var(--ink-faint);}
+  .review-card .comment{font-size:14px;color:var(--ink);line-height:1.75;margin:0;}
+  .no-review-block{font-size:13.5px;color:var(--ink-faint);}
+
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;background:var(--surface);border-radius:10px;padding:20px;}
+  .info-grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  .info-grid .k{font-size:12px;color:var(--ink-faint);margin-bottom:6px;}
+  .info-grid .v{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.5;}
+
+  .fee-highlight{
+    display:inline-block;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:10px;
+  }
+
+  .cta-block{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);}
+  .cta-btn{
+    display:inline-block;width:100%;text-align:center;background:var(--accent);color:#fff;border:none;
+    padding:16px 20px;font-size:15px;font-weight:700;border-radius:10px;cursor:pointer;font-family:inherit;
+  }
+  .cta-btn:hover{opacity:.92;}
+  .cta-sub{font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center;}
+
+  @media (max-width:600px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid.company{grid-template-columns:repeat(1,1fr);}
+    .row-item h3{font-size:16.5px;}
+    .category-pill{display:none;}
+    .info-grid{grid-template-columns:1fr;}
+    .info-grid.cols-2{grid-template-columns:1fr;}
+    .eyecatch.hero{height:140px;}
+    .eyecatch.hero svg{width:56px;height:56px;}
+  }
+</style>
+</head>
+<body class="mode-candidate">
+
+<header>
+  <div class="inner">
+    <h1>転職エージェント図鑑</h1>
+    <p class="tagline">迷わず選べる、エージェントの図鑑。</p>
+    <p class="lead" id="leadText"></p>
+  </div>
+</header>
+
+<div class="segment">
+  <div class="track">
+    <button class="mode-btn active" data-mode="candidate" onclick="setMode('candidate')">求職者として見る</button>
+    <button class="mode-btn" data-mode="company" onclick="setMode('company')">採用企業として見る</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="ad-slot banner">
+    <span class="ad-label">広告</span>
+    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
+    <!--
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+
+  <div id="listView">
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="エージェント名・職種で検索" oninput="render()">
+      <div class="chip-row" id="chipRow"></div>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+
+    <div class="ledger" id="ledger"></div>
+
+    <div class="bulk-bar" id="bulkBar">
+      <span id="bulkText">0社を選択中</span>
+      <button onclick="sendBulk()">選択したエージェントに一括問い合わせ</button>
+    </div>
+  </div>
+
+  <div id="detailView"></div>
+
+</div>
+
+<div class="wrap">
+  <div class="ad-slot footer-ad">
+    <span class="ad-label">広告</span>
+    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
+    <!--
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+</div>
+
+<footer>
+  掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）に掲載された公開情報をもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは現時点では未収集のため表示していません。CTAボタンからの遷移・問い合わせ送信はいずれもデモ表示です。
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let AGENTS = [];
+
+const CATEGORY_STYLE = {
+  "IT・Web":{ from:"#1F6F63", to:"#123F38",
+    icon:`<rect x="14" y="14" width="36" height="24" rx="2" stroke="#fff" stroke-width="2.5"/><line x1="24" y1="46" x2="40" y2="46" stroke="#fff" stroke-width="2.5"/><line x1="32" y1="38" x2="32" y2="46" stroke="#fff" stroke-width="2.5"/><path d="M22 22 L18 26 L22 30" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 22 L46 26 L42 30" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>` },
+  "管理部門・コンサル":{ from:"#2B3A55", to:"#171E2C",
+    icon:`<rect x="14" y="24" width="36" height="24" rx="3" stroke="#fff" stroke-width="2.5"/><path d="M24 24 V18 a3 3 0 0 1 3-3 h10 a3 3 0 0 1 3 3 v6" stroke="#fff" stroke-width="2.5" fill="none"/><line x1="14" y1="34" x2="50" y2="34" stroke="#fff" stroke-width="2"/>` },
+  "施工管理・建設":{ from:"#B5651D", to:"#7A4310",
+    icon:`<line x1="18" y1="50" x2="18" y2="14" stroke="#fff" stroke-width="2.5"/><line x1="18" y1="14" x2="46" y2="14" stroke="#fff" stroke-width="2.5"/><line x1="38" y1="14" x2="38" y2="24" stroke="#fff" stroke-width="2.5"/><line x1="18" y1="22" x2="30" y2="14" stroke="#fff" stroke-width="2"/><rect x="12" y="50" width="16" height="4" fill="#fff"/>` },
+  "営業・マーケティング":{ from:"#B23A4E", to:"#742534",
+    icon:`<line x1="16" y1="48" x2="48" y2="48" stroke="#fff" stroke-width="2"/><rect x="20" y="36" width="6" height="12" fill="#fff" opacity=".9"/><rect x="30" y="28" width="6" height="20" fill="#fff" opacity=".9"/><rect x="40" y="20" width="6" height="28" fill="#fff" opacity=".9"/><path d="M18 26 L28 18 L34 22 L46 12" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>` },
+  "外資・グローバル":{ from:"#2E5FA3", to:"#1B3A66",
+    icon:`<circle cx="32" cy="32" r="18" stroke="#fff" stroke-width="2.5" fill="none"/><ellipse cx="32" cy="32" rx="8" ry="18" stroke="#fff" stroke-width="2" fill="none"/><line x1="14" y1="32" x2="50" y2="32" stroke="#fff" stroke-width="2"/><line x1="17" y1="22" x2="47" y2="22" stroke="#fff" stroke-width="1.5"/><line x1="17" y1="42" x2="47" y2="42" stroke="#fff" stroke-width="1.5"/>` },
+  "スタートアップ・ベンチャー":{ from:"#6E4AA3", to:"#452C6D",
+    icon:`<path d="M32 14 C40 22 40 34 34 42 L30 42 C24 34 24 22 32 14 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="32" cy="26" r="3" stroke="#fff" stroke-width="2" fill="none"/><path d="M26 40 L20 48" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M38 40 L44 48" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>` },
+  "地方転職・UIターン":{ from:"#4C7A3D", to:"#2E4E24",
+    icon:`<path d="M14 44 L26 26 L34 36 L40 28 L50 44 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="40" cy="18" r="4" stroke="#fff" stroke-width="2" fill="none"/>` },
+  "第二新卒・ポテンシャル層":{ from:"#C99A2E", to:"#8A6A1D",
+    icon:`<path d="M32 48 V28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M32 30 C24 30 20 24 20 18 C28 18 32 22 32 30 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M32 26 C40 26 44 20 44 16 C36 16 32 20 32 26 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/>` }
+};
+
+function eyecatchHTML(agent, variant){
+  const style = CATEGORY_STYLE[agent.category] || CATEGORY_STYLE["IT・Web"];
+  const label = agent.real ? `${agent.category}・実データ` : agent.category;
+  const cap = variant==="hero" ? `<span class="cap">${label}</span>` : "";
+  return `<div class="eyecatch ${variant}" style="background:linear-gradient(135deg, ${style.from}, ${style.to});">
+      <svg viewBox="0 0 64 64" fill="none">${style.icon}</svg>
+      ${cap}
+    </div>`;
+}
+
+let mode = "candidate";
+let activeChip = "all";
+let selected = new Set();
+let currentView = "list";
+
+const CHIP_LABELS = ["all","IT・Web","管理部門・コンサル","施工管理・建設","営業・マーケティング","外資・グローバル","スタートアップ・ベンチャー","地方転職・UIターン","第二新卒・ポテンシャル層"];
+
+const LEAD_TEXT = {
+  candidate: `日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。`,
+  company: `エージェントを使った採用で、採用単価を最も下げるために必要な比較サイトです。`
+};
+
+function updateLead(){
+  document.getElementById("leadText").textContent = LEAD_TEXT[mode];
+}
+
+function setMode(m){
+  mode = m;
+  document.body.classList.toggle("mode-company", m==="company");
+  document.body.classList.toggle("mode-candidate", m==="candidate");
+  document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active", b.dataset.mode===m));
+  updateLead();
+  showList();
+  render();
+  updateBulkBar();
+}
+
+function buildChips(){
+  const row = document.getElementById("chipRow");
+  row.innerHTML = "";
+  CHIP_LABELS.forEach(label=>{
+    const el = document.createElement("div");
+    el.className = "chip" + (activeChip===label ? " active" : "");
+    el.textContent = label==="all" ? "すべて" : label;
+    el.onclick = ()=>{ activeChip = label; buildChips(); render(); };
+    row.appendChild(el);
+  });
+}
+
+function matches(agent, query){
+  const passCategory = activeChip==="all" || agent.category===activeChip;
+  const q = query.trim().toLowerCase();
+  const passQuery = !q || agent.name.toLowerCase().includes(q) || agent.category.toLowerCase().includes(q);
+  return passCategory && passQuery;
+}
+
+function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5-Math.round(rating)); }
+
+function ratingBadge(review, estimated){
+  if(!review) return `<span class="no-review">口コミなし</span>`;
+  const tag = estimated ? `<span class="count">（推定）</span>` : `<span class="count">（${review.count}件）</span>`;
+  return `<span class="rating-badge"><span class="star">★</span>${review.rating.toFixed(1)}${tag}</span>`;
+}
+
+function toggleSelect(e, name){
+  e.stopPropagation();
+  if(selected.has(name)) selected.delete(name); else selected.add(name);
+  updateBulkBar();
+}
+
+function updateBulkBar(){
+  const bar = document.getElementById("bulkBar");
+  const text = document.getElementById("bulkText");
+  if(mode==="company" && selected.size>0 && currentView==="list"){
+    bar.classList.add("show");
+    text.textContent = selected.size + "社を選択中";
+  } else {
+    bar.classList.remove("show");
+  }
+}
+
+function sendBulk(){
+  showToast("（デモ）" + selected.size + "社へ問い合わせを送信しました");
+  selected.clear();
+  render();
+  updateBulkBar();
+}
+
+function showToast(msg){
+  const toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 2400);
+}
+
+function adSlotHTML(variant, slotId){
+  return `<div class="ad-slot ${variant}">
+      <span class="ad-label">広告</span>
+      <span class="ad-placeholder">広告スペース（Google AdSense）</span>
+      <!--
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+      -->
+    </div>`;
+}
+
+function render(){
+  const query = document.getElementById("searchInput").value;
+  const list = AGENTS.filter(a=>matches(a, query));
+  document.getElementById("resultCount").textContent = list.length + "件表示中（全" + AGENTS.length + "件）";
+
+  const ledger = document.getElementById("ledger");
+  ledger.innerHTML = "";
+
+  list.forEach((a, idx)=>{
+    const row = document.createElement("div");
+    row.className = "row-item";
+    row.onclick = ()=>openDetail(a);
+
+    const checked = selected.has(a.name) ? "checked" : "";
+
+    const candidateStats = `
+        <div class="stat"><div class="k">対象年代</div><div class="v">${a.targetAge}</div></div>
+        <div class="stat"><div class="k">対応エリア</div><div class="v">${a.region}</div></div>
+        <div class="stat"><div class="k">求人数（目安）</div><div class="v">${a.jobCount}</div></div>
+        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.review || (a.reviews[0]||null), a.real)}</div></div>
+    `;
+    const companyStats = `
+        <div class="stat"><div class="k">成功報酬フィー</div><div class="v">${a.feeRate}</div></div>
+        <div class="stat"><div class="k">候補者（タレント）のレンジ</div><div class="v">${a.talentRange}</div></div>
+        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real)}</div></div>
+    `;
+
+    row.innerHTML = `
+      ${eyecatchHTML(a, "thumb")}
+      <div class="head">
+        <div class="name-col">
+          <span class="category-pill">${a.category}</span>
+          <h3>${a.name}</h3>
+        </div>
+        <div class="checkbox-col">
+          <input type="checkbox" ${checked} onclick="toggleSelect(event,'${a.name}')">
+        </div>
+      </div>
+      <div class="stats-grid ${mode==="company" ? "company" : ""}">
+        ${mode==="company" ? companyStats : candidateStats}
+      </div>
+      <div class="row-hint">${mode==="company" ? "個別ページを見る →" : "詳しく見る →"}</div>
+    `;
+    ledger.appendChild(row);
+
+    if((idx+1) % 4 === 0 && idx < list.length-1){
+      const adWrap = document.createElement("div");
+      adWrap.innerHTML = adSlotHTML("in-feed", "2222222222");
+      ledger.appendChild(adWrap.firstElementChild);
+    }
+  });
+}
+
+function showList(){
+  currentView = "list";
+  document.getElementById("listView").classList.remove("hide");
+  document.getElementById("detailView").classList.remove("show");
+  window.scrollTo({top:0, behavior:"smooth"});
+  updateBulkBar();
+}
+
+function openDetail(a){
+  currentView = "detail";
+  document.getElementById("listView").classList.add("hide");
+  const dv = document.getElementById("detailView");
+  dv.classList.add("show");
+  updateBulkBar();
+
+  if(mode === "candidate"){
+    const reviewsHtml = a.reviews.length
+      ? a.reviews.map(r=>`
+          <div class="review-card">
+            <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
+            <p class="comment">「${r.comment}」</p>
+          </div>`).join("")
+      : (a.reviewNote ? `<p class="body-text">${a.reviewNote}</p>` : `<div class="no-review-block">口コミはまだありません</div>`);
+
+    dv.innerHTML = `
+      <button class="back-btn" onclick="showList()">← 一覧に戻る</button>
+      ${eyecatchHTML(a, "hero")}
+      <div class="detail-head">
+        <span class="category-pill">${a.category}</span>
+        <h2>${a.name}</h2>
+        <p class="one-liner">${a.oneLiner}</p>
+      </div>
+
+      <div class="d-section">
+        <h4>このエージェントの特徴</h4>
+        <p class="body-text">${a.appeal}</p>
+        <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
+      </div>
+
+      ${adSlotHTML("in-feed", "3333333333")}
+
+      <div class="d-section">
+        <h4>口コミ</h4>
+        ${reviewsHtml}
+      </div>
+
+      <div class="d-section">
+        <h4>基本情報</h4>
+        <div class="info-grid">
+          <div><div class="k">対応エリア</div><div class="v">${a.region}</div></div>
+          <div><div class="k">対象年代</div><div class="v">${a.targetAge}</div></div>
+          <div><div class="k">何に特化しているか</div><div class="v">${a.category}</div></div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <button class="cta-btn" onclick="visitSite('${a.name}','${a.website}')">このエージェントの詳細を見る</button>
+        <div class="cta-sub">${a.website}（デモ用リンク）</div>
+        <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
+      </div>
+    `;
+  } else {
+    const companyReviewsHtml = a.companyReviews.length
+      ? a.companyReviews.map(r=>`
+          <div class="review-card">
+            <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
+            <p class="comment">「${r.comment}」</p>
+          </div>`).join("")
+      : (a.companyReviewNote ? `<p class="body-text">${a.companyReviewNote}</p>` : `<div class="no-review-block">企業からの口コミはまだありません</div>`);
+
+    dv.innerHTML = `
+      <button class="back-btn" onclick="showList()">← 一覧に戻る</button>
+      ${eyecatchHTML(a, "hero")}
+      <div class="detail-head">
+        <span class="category-pill">${a.category}</span>
+        <h2>${a.name}</h2>
+        <p class="one-liner">${a.companyOneLiner}</p>
+      </div>
+
+      <div class="d-section">
+        <h4>成功報酬について</h4>
+        <div class="fee-highlight">${a.feeRate}</div>
+        <p class="body-text">${a.feeExplanation}</p>
+      </div>
+
+      <div class="d-section">
+        <h4>どこまでコミットしてくれるか</h4>
+        <p class="body-text">${a.commitmentExplanation}</p>
+      </div>
+
+      ${adSlotHTML("in-feed", "4444444444")}
+
+      <div class="d-section">
+        <h4>実績・許可情報</h4>
+        <div class="info-grid cols-2">
+          <div><div class="k">許可番号</div><div class="v">${a.companyDetail.permitNumber}</div></div>
+          <div><div class="k">決定率（内定承諾率）</div><div class="v">${a.companyDetail.placementRate}</div></div>
+          <div><div class="k">入社後の定着支援</div><div class="v">${a.companyDetail.onboardingSupport}</div></div>
+        </div>
+      </div>
+
+      <div class="d-section">
+        <h4>候補者（タレント）の傾向</h4>
+        <div class="info-grid">
+          <div><div class="k">候補者のレンジ</div><div class="v">${a.talentRange}</div></div>
+          <div><div class="k">対応領域</div><div class="v">${a.category}</div></div>
+          <div><div class="k">企業からの評価</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real)}</div></div>
+        </div>
+      </div>
+
+      <div class="d-section">
+        <h4>企業からの口コミ</h4>
+        ${companyReviewsHtml}
+      </div>
+
+      <div class="cta-block">
+        <button class="cta-btn" onclick="visitInquiry('${a.name}')">企業に問い合わせを行う</button>
+        <div class="cta-sub">${a.website}/inquiry（デモ用リンク）</div>
+        <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
+      </div>
+    `;
+  }
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function visitSite(name, site){
+  showToast("（デモ）" + name + "の公式サイト（" + site + "）へ遷移します");
+}
+function visitInquiry(name){
+  showToast("（デモ）" + name + "への問い合わせページへ遷移します");
+}
+
+async function loadAgents(){
+  buildChips();
+  updateLead();
+  try{
+    const res = await fetch('./agents.json', {cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    AGENTS = await res.json();
+    render();
+  }catch(err){
+    console.error("agents.json の読み込みに失敗しました", err);
+    document.getElementById("ledger").innerHTML = "";
+    document.getElementById("resultCount").textContent = "データの読み込みに失敗しました。時間をおいて再度お試しください。";
+  }
+}
+
+loadAgents();
+</script>
+</body>
+</html>
