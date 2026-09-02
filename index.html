@@ -110,6 +110,11 @@
   .eyecatch.hero{height:200px;margin-bottom:28px;}
   .eyecatch svg{width:38px;height:38px;opacity:.95;}
   .eyecatch.hero svg{width:76px;height:76px;}
+  .eyecatch .favicon{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:40px;height:40px;border-radius:10px;background:#fff;padding:6px;
+    box-shadow:0 2px 8px rgba(0,0,0,.22);object-fit:contain;
+  }
   .eyecatch .cap{
     position:absolute;bottom:12px;left:16px;font-size:11.5px;color:#fff;
     font-weight:600;letter-spacing:.02em;opacity:.92;
@@ -315,8 +320,12 @@ function eyecatchHTML(agent, variant){
   const style = CATEGORY_STYLE[agent.category] || CATEGORY_STYLE["IT・Web"];
   const label = agent.real ? `${agent.category}・実データ` : agent.category;
   const cap = variant==="hero" ? `<span class="cap">${label}</span>` : "";
+  const favicon = agent.faviconUrl
+    ? `<img class="favicon" src="${agent.faviconUrl}" alt="" onerror="this.remove()">`
+    : "";
   return `<div class="eyecatch ${variant}" style="background:linear-gradient(135deg, ${style.from}, ${style.to});">
       <svg viewBox="0 0 64 64" fill="none">${style.icon}</svg>
+      ${favicon}
       ${cap}
     </div>`;
 }

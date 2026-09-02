@@ -51,6 +51,19 @@ function stripProtocol(url) {
   return url.replace(/^https?:\/\//, '').replace(/\/+$/, '').replace(/#$/, '');
 }
 
+/** serviceUrl のドメインから Google の favicon 取得サービスの URL を組み立てる。 */
+function buildFaviconUrl(serviceUrl) {
+  if (!serviceUrl) return null;
+  let domain;
+  try {
+    domain = new URL(serviceUrl).hostname;
+  } catch {
+    return null;
+  }
+  if (!domain) return null;
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
+}
+
 function formatRegion(regionRaw) {
   if (!regionRaw) return NOT_DISCLOSED;
   const list = regionRaw.split('｜').map(s => s.trim()).filter(Boolean);
@@ -244,6 +257,7 @@ function assembleEntry(raw, ai, rawHash) {
     feeExplanation: ai.feeExplanation,
     commitmentExplanation: ai.commitmentExplanation,
     website: stripProtocol(raw.serviceUrl) || stripProtocol(raw.detailUrl),
+    faviconUrl: buildFaviconUrl(raw.serviceUrl),
     real: true,
     sourceNote: buildSourceNote(raw),
     companyDetail: {
@@ -283,7 +297,9 @@ async function main() {
     const prev = prevByUrl.get(raw.detailUrl);
 
     if (prev && prev._rawHash && prev._rawHash === rawHash) {
-      results.push(prev);
+      // faviconUrl は raw.serviceUrl から機械的に導出できるため、AI再構造化を
+      // 発生させずに毎回リフレッシュする（スキーマ追加時の後方互換のため）。
+      results.push({ ...prev, faviconUrl: buildFaviconUrl(raw.serviceUrl) });
       reused += 1;
       continue;
     }
@@ -319,4 +335,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { computeRawHash, buildOffline, assembleEntry, formatRegion, stripProtocol };
+module.exports = { computeRawHash, buildOffline, assembleEntry, formatRegion, stripProtocol, buildFaviconUrl };
