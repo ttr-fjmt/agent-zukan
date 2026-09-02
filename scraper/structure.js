@@ -155,7 +155,14 @@ async function buildWithAI(raw, anthropic) {
         category: { type: 'string', enum: CATEGORIES, description: '対応業界・職種から最も近い1カテゴリを選ぶ' },
         targetAge: { type: 'string', description: '対象年代。根拠となる事実が無ければ「' + NOT_DISCLOSED + '」' },
         jobCount: { type: 'string', description: '求人数の目安。根拠が無ければ「' + NOT_DISCLOSED + '」' },
-        feeRate: { type: 'string', description: '成功報酬フィー（料率）。手数料公表サイトの抜粋に具体的な料率があればそれを使い、無ければ「' + NOT_DISCLOSED + '」' },
+        feeRate: {
+          type: 'string',
+          description:
+            '成功報酬フィー（料率）。手数料公表サイトの抜粋に「業界の実勢相場」として読める具体的な料率（例:35%等の一律料率）があればそれをそのまま使う。' +
+            '一方、抜粋にあるのが職業安定法の届出制手数料表としての「上限額」（例: 就職後1年間の賃金の150%等）のみで、実際の請求料率が読み取れない場合は、' +
+            '「理論年収の30〜35%程度（業界相場からの推定値。公式の届出上限は賃金の◯%）」のように、業界相場の推定値を主として提示しつつ、届出上限の数値も括弧内に併記する。' +
+            'いずれの情報も無ければ「' + NOT_DISCLOSED + '」とする。',
+        },
         talentRange: { type: 'string', description: '候補者の年齢・年収レンジ。根拠が無ければ「' + NOT_DISCLOSED + '」' },
         oneLiner: { type: 'string', description: '求職者向けの一言キャッチコピー（30字前後、誇張・断定は避ける）' },
         companyOneLiner: { type: 'string', description: '採用企業向けの一言キャッチコピー（30字前後）' },
@@ -169,7 +176,12 @@ async function buildWithAI(raw, anthropic) {
             placementRate: { type: 'string' },
             avgDays: { type: 'string' },
             trackRecord: { type: 'string' },
-            refundPolicy: { type: 'string' },
+            refundPolicy: {
+              type: 'string',
+              description:
+                '返戻金制度（返金保証）について。手数料公表サイトの抜粋に「返戻金」「返金」「早期離職」等の記載があれば、' +
+                '返金の条件（期間・料率など）を要約して記載する。記載が無ければ「' + NOT_DISCLOSED + '」とする。',
+            },
             upfrontFee: { type: 'string' },
             minContract: { type: 'string' },
             exclusivity: { type: 'string' },
@@ -226,7 +238,12 @@ async function buildWithAI(raw, anthropic) {
           '- 数値（料率・年収・日数・件数など）は、根拠となる記載が無い限り絶対に創作しないこと。無ければ「' + NOT_DISCLOSED + '」と出力する。\n' +
           '- 「事業者コメント（原文）」を長文のままコピーしないこと。要約・言い換えた事実のみ使用する。\n' +
           '- 口コミ・評判は一切創作しないこと（このツールの入力に口コミ関連の項目は無い）。\n' +
-          '- 誇張的な断定表現（業界No.1、必ず等）は使わないこと。\n\n' +
+          '- 誇張的な断定表現（業界No.1、必ず等）は使わないこと。\n' +
+          '- 「手数料公表サイトのテキスト抜粋」を読む際は、それが「職業安定法の届出制手数料表における上限額」なのか' +
+          '「実際に請求している標準的な料率（相場）」なのかを文脈から慎重に判断すること。' +
+          '「手数料の額（上限）」「届出上限」「就職後1年間の賃金の◯％」のような表現は、多くの場合、法定の届出上限であり実際の請求額とは異なる。' +
+          '上限額の記載しかない場合でも、それをそのまま実際の料率として出力しないこと（feeRateの項目説明に従うこと）。\n' +
+          '- 抜粋内に返戻金・返金保証に関する記載があれば、必ず companyDetail.refundPolicy に反映すること。\n\n' +
           factsBlock,
       },
     ],

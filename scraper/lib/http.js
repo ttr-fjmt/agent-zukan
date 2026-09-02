@@ -35,4 +35,26 @@ async function fetchText(url, { timeoutMs = 20000 } = {}) {
   }
 }
 
-module.exports = { USER_AGENT, politeDelay, sleep, fetchText };
+/** PDF等バイナリも壊さず取得するための、Buffer + Content-Type 版フェッチ。 */
+async function fetchBuffer(url, { timeoutMs = 20000 } = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'ja,en;q=0.5' },
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      const err = new Error(`HTTP ${res.status} for ${url}`);
+      err.status = res.status;
+      throw err;
+    }
+    const contentType = res.headers.get('content-type') || '';
+    const buffer = Buffer.from(await res.arrayBuffer());
+    return { buffer, contentType };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+module.exports = { USER_AGENT, politeDelay, sleep, fetchText, fetchBuffer };

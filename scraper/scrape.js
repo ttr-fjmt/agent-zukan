@@ -15,8 +15,11 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
-const { politeDelay, fetchText, USER_AGENT } = require('./lib/http');
+const { politeDelay, fetchText, fetchBuffer, USER_AGENT } = require('./lib/http');
 const { isUrlAllowed } = require('./lib/robots');
+const pdfParse = require('pdf-parse');
+
+const FEE_EXCERPT_MAX_CHARS = 4000;
 
 const BASE = 'https://www.jesra.or.jp';
 const LIST_URL = `${BASE}/yuryoshokai/certification/`;
@@ -137,6 +140,20 @@ function htmlToPlainText(html) {
     .trim();
 }
 
+/** PDF から可視テキストのみを取り出す。壊れたPDF等は失敗時に null を返す。 */
+async function pdfToPlainText(buffer) {
+  const data = await pdfParse(buffer);
+  return (data.text || '')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+}
+
+/**
+ * 手数料公表サイト（HTML または PDF）からテキストを抜粋する。
+ * Content-Type ヘッダーと拡張子の両方で PDF 判定し、失敗時は null を返して
+ * 既存の「非公開」表示を維持できるようにする。
+ */
 async function fetchFeeExcerpt(feeUrl) {
   if (!feeUrl || !/^https?:\/\//.test(feeUrl)) return null;
   try {
@@ -144,9 +161,15 @@ async function fetchFeeExcerpt(feeUrl) {
       console.warn(`robots.txt disallows fee page ${feeUrl} — skipping.`);
       return null;
     }
-    const html = await fetchText(feeUrl, { timeoutMs: 15000 });
-    const text = htmlToPlainText(html);
-    return text.slice(0, 4000); // 抜粋のみ保持。後段の構造化で事実抽出に使う。
+    const { buffer, contentType } = await fetchBuffer(feeUrl, { timeoutMs: 20000 });
+    const isPdf = /application\/pdf/i.test(contentType) || /\.pdf(?:[?#]|$)/i.test(feeUrl);
+
+    const text = isPdf
+      ? await pdfToPlainText(buffer)
+      : htmlToPlainText(buffer.toString('utf8'));
+
+    if (!text) return null;
+    return text.slice(0, FEE_EXCERPT_MAX_CHARS);
   } catch (err) {
     console.warn(`fee page fetch failed for ${feeUrl}: ${err.message}`);
     return null;
