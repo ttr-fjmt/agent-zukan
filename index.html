@@ -289,7 +289,7 @@
 </div>
 
 <footer>
-  掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）に掲載された公開情報をもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは現時点では未収集のため表示していません。CTAボタンからの遷移・問い合わせ送信はいずれもデモ表示です。
+  掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）に掲載された公開情報をもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは現時点では未収集のため表示していません。個別エージェントのCTAボタンからは各社の公式サイトへ遷移します。一括問い合わせボタンからの送信はデモ表示です。
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -536,8 +536,7 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('${a.name}','${a.website}')">このエージェントの詳細を見る</button>
-        <div class="cta-sub">${a.website}（デモ用リンク）</div>
+        <button class="cta-btn" onclick="visitSite('${a.website}')">このエージェントの詳細を見る</button>
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -596,8 +595,8 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitInquiry('${a.name}')">企業に問い合わせを行う</button>
-        <div class="cta-sub">${a.website}/inquiry（デモ用リンク）</div>
+        <button class="cta-btn" onclick="visitInquiry('${a.website}')">企業に問い合わせを行う</button>
+        <div class="cta-sub">${a.name}の公式サイトへ移動します</div>
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -605,11 +604,16 @@ function openDetail(a){
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
-function visitSite(name, site){
-  showToast("（デモ）" + name + "の公式サイト（" + site + "）へ遷移します");
+function openWebsite(website){
+  if(!website) return;
+  const url = /^https?:\/\//i.test(website) ? website : "https://" + website;
+  window.open(url, "_blank", "noopener,noreferrer");
 }
-function visitInquiry(name){
-  showToast("（デモ）" + name + "への問い合わせページへ遷移します");
+function visitSite(website){
+  openWebsite(website);
+}
+function visitInquiry(website){
+  openWebsite(website);
 }
 
 async function loadAgents(){
