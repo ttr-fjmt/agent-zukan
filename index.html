@@ -67,6 +67,10 @@
     letter-spacing:.01em;
   }
   h1 .mark{ color:var(--accent-deep); border-bottom:3px solid var(--gold); padding-bottom:2px; }
+  .agent-count-badge{
+    display:inline-block;background:var(--accent);color:#fff;border-radius:999px;
+    padding:6px 14px;font-weight:700;font-size:13px;margin:0 0 16px;
+  }
   header p.tagline{
     font-size:13.5px;
     color:var(--accent);
@@ -106,6 +110,7 @@
     padding:2px 2px 8px;margin:0 -2px;-webkit-overflow-scrolling:touch;
   }
   .recommend-card{
+    position:relative;
     flex:0 0 auto;width:168px;cursor:pointer;background:var(--surface);
     border:1px solid var(--line);border-radius:12px;padding:14px;
     display:flex;flex-direction:column;gap:10px;transition:border-color .12s, box-shadow .12s;
@@ -143,6 +148,7 @@
   /* list */
   .ledger{margin-top:8px;}
   .row-item{
+    position:relative;
     background:var(--surface);border:1px solid var(--line);border-radius:12px;
     padding:18px;margin-bottom:12px;cursor:pointer;transition:border-color .12s;
   }
@@ -160,8 +166,6 @@
   .rating-badge .star-empty{color:var(--ink-faint);font-size:14px;}
   .rating-badge .count{font-weight:400;color:var(--ink-faint);font-size:12px;}
   .no-review{font-size:12px;color:var(--ink-faint);}
-  .zukan-score-block{margin-top:12px;}
-  .zukan-score-note{font-size:11.5px;color:var(--ink-faint);line-height:1.7;margin:8px 0 0;}
 
   .head-main{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
 
@@ -179,6 +183,23 @@
     box-shadow:0 2px 6px rgba(0,0,0,.2);object-fit:contain;
   }
   .eyecatch-square.hero .favicon{width:44px;height:44px;border-radius:12px;padding:6px;}
+  .eyecatch-square.featured{background:transparent;}
+  .featured-star{
+    position:absolute;inset:0;background:#D32F2F;
+    display:flex;align-items:center;justify-content:center;
+    clip-path:polygon(50.00% 0.00%, 59.84% 13.29%, 75.00% 6.70%, 76.87% 23.13%, 93.30% 25.00%, 86.71% 40.16%, 100.00% 50.00%, 86.71% 59.84%, 93.30% 75.00%, 76.87% 76.87%, 75.00% 93.30%, 59.84% 86.71%, 50.00% 100.00%, 40.16% 86.71%, 25.00% 93.30%, 23.13% 76.87%, 6.70% 75.00%, 13.29% 59.84%, 0.00% 50.00%, 13.29% 40.16%, 6.70% 25.00%, 23.13% 23.13%, 25.00% 6.70%, 40.16% 13.29%);
+  }
+  .featured-text{
+    color:#fff;font-weight:700;white-space:nowrap;letter-spacing:.02em;
+  }
+  .eyecatch-square.thumb.featured .featured-text{font-size:11px;}
+  .eyecatch-square.hero.featured .featured-text{font-size:14px;}
+
+  .pr-label{
+    position:absolute;bottom:6px;right:6px;
+    background:rgba(0,0,0,.55);color:#fff;font-size:10px;
+    padding:2px 6px;border-radius:4px;line-height:1.4;pointer-events:none;
+  }
 
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;}
   .stats-grid.company{grid-template-columns:repeat(3,1fr);}
@@ -259,7 +280,6 @@
   .review-card .rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
   .review-card .reviewer{font-size:12px;color:var(--ink-faint);}
   .review-card .comment{font-size:14px;color:var(--ink);line-height:1.75;margin:0;}
-  .no-review-block{font-size:13.5px;color:var(--ink-faint);}
 
   .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;background:var(--surface);border-radius:10px;padding:20px;}
   .info-grid.cols-2{grid-template-columns:repeat(2,1fr);}
@@ -294,6 +314,16 @@
     .eyecatch-square.hero .favicon{width:32px;height:32px;}
     .recommend-card{width:148px;padding:12px;}
   }
+
+  @media (min-width:1024px){
+    .wrap{max-width:1080px;}
+    .ledger{display:grid;grid-template-columns:repeat(2, 1fr);gap:16px;}
+    .ledger .row-item{margin-bottom:0;}
+    .ledger .ad-slot.in-feed{grid-column:1 / -1;}
+    .recommend-card{width:200px;}
+    /* 詳細ページは読みやすさ優先で幅を抑え、中央寄せにする（一覧の拡幅の影響を受けないように） */
+    #detailView{max-width:860px;margin-left:auto;margin-right:auto;}
+  }
 </style>
 </head>
 <body class="mode-candidate">
@@ -301,6 +331,7 @@
 <header>
   <div class="inner">
     <h1>転職エージェント<span class="mark">図鑑</span></h1>
+    <span class="agent-count-badge" id="agentCountBadge"></span>
     <p class="tagline">迷わず選べる、エージェントの図鑑。</p>
     <p class="lead" id="leadText"></p>
   </div>
@@ -464,6 +495,15 @@ async function loadCategories(){
 }
 
 function eyecatchHTML(agent, variant){
+  if(agent.featured){
+    // heroバリアント（詳細ページ）のみ、ヒーロー画像自体の右下にPRラベルを付ける。
+    // thumbバリアント（一覧行・おすすめカード）はカード全体の右下に別途配置するため、ここでは付けない。
+    const prLabel = variant === "hero" ? `<span class="pr-label">PR</span>` : "";
+    return `<div class="eyecatch-square ${variant} featured">
+        <div class="featured-star"><span class="featured-text">イチオシ!</span></div>
+        ${prLabel}
+      </div>`;
+  }
   const style = CATEGORY_STYLE[agent.category] || CATEGORY_STYLE["IT・Web"];
   const favicon = agent.faviconUrl
     ? `<img class="favicon" src="${agent.faviconUrl}" alt="" onerror="this.remove()">`
@@ -477,14 +517,34 @@ function eyecatchHTML(agent, variant){
 let mode = "candidate";
 let activeChip = "all";
 let currentView = "list";
-let recommendedAgentsCache = { mode: null, list: null };
+let recommendedAgentsCache = { mode: null, list: null }; // フォールバック（completenessScore上位）用。モード別にキャッシュ
+let recommendedFeaturedCache = null; // featured===trueのランダム抽選結果。モードに依らずセッション内は固定
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1; i>0; i--){
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 /**
- * おすすめ枠のエージェント選定。completenessScore(a, mode) の降順で上位8件。
- * モードが変わったときだけ再計算し、検索・カテゴリー・都道府県・フィーの
- * 絞り込みでは再計算しない（render()からは呼ばれないため自然に独立する）。
+ * おすすめ枠のエージェント選定。
+ * featured===true のエージェントが1件以上あれば、その中からランダムに最大10件を選ぶ
+ * （並び順はページ読み込み時に1回だけ決め、モード切替では変えない）。
+ * featuredが0件の場合は、従来通り completenessScore(a, mode) の降順で上位8件にフォールバックする
+ * （こちらはモードごとに再計算する）。
  */
 function computeRecommendedAgents(){
+  const featured = AGENTS.filter(a => a.featured);
+  if(featured.length > 0){
+    if(!recommendedFeaturedCache){
+      recommendedFeaturedCache = shuffle(featured).slice(0, 10);
+    }
+    return recommendedFeaturedCache;
+  }
+
   if(recommendedAgentsCache.mode===mode && recommendedAgentsCache.list){
     return recommendedAgentsCache.list;
   }
@@ -505,6 +565,7 @@ function recommendCardHTML(a){
       <span class="category-pill">${a.category}</span>
       <h4>${a.name}</h4>
       <p class="recommend-oneliner">${oneLiner}</p>
+      ${a.featured ? `<span class="pr-label">PR</span>` : ""}
     `;
 }
 
@@ -733,10 +794,11 @@ function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5
  * 表示すること（実際の利用者評価と混同されないようにするため）。
  */
 function zukanScore(agent, mode){
+  if(agent.featured) return 5;
   const raw = completenessScore(agent, mode);
   const max = mode === "candidate" ? 6 : 7;
   const ratio = raw / max;
-  return Math.max(1, Math.min(5, Math.round(1 + ratio * 4)));
+  return Math.max(1, Math.min(4, Math.round(1 + ratio * 4)));
 }
 
 function zukanScoreBadge(agent, currentMode){
@@ -744,11 +806,6 @@ function zukanScoreBadge(agent, currentMode){
   const filled = "★".repeat(score);
   const empty = "☆".repeat(5 - score);
   return `<span class="rating-badge"><span class="star">${filled}</span><span class="star-empty">${empty}</span><span class="count">（図鑑スコア）</span></span>`;
-}
-
-/** 詳細ページの口コミセクション用。図鑑スコアの★表示＋実際の口コミと混同されないための注記をセットで返す。 */
-function zukanScoreBlockHTML(agent, currentMode){
-  return `<div class="zukan-score-block">${zukanScoreBadge(agent, currentMode)}<p class="zukan-score-note">本サイト独自の評価です。掲載情報の充実度をもとに算出しており、実際の利用者による評価ではありません。</p></div>`;
 }
 
 /** review が無い場合は、agent/currentMode が渡されていれば図鑑スコアにフォールバックする。 */
@@ -820,6 +877,7 @@ function render(){
         ${mode==="company" ? companyStats : candidateStats}
       </div>
       <div class="row-hint">${mode==="company" ? "個別ページを見る →" : "詳しく見る →"}</div>
+      ${a.featured ? `<span class="pr-label">PR</span>` : ""}
     `;
     ledger.appendChild(row);
 
@@ -847,13 +905,18 @@ function openDetail(a){
   updateMetaForAgent(a);
 
   if(mode === "candidate"){
-    const reviewsHtml = a.reviews.length
-      ? a.reviews.map(r=>`
+    // 実際の口コミが1件も無い場合は、プレースホルダーや図鑑スコアは出さず、セクション自体を非表示にする
+    // （一覧カードの口コミバッジにおける図鑑スコアのフォールバック表示は維持、対象外）。
+    const reviewSectionHTML = a.reviews.length > 0
+      ? `<div class="d-section">
+        <h4>口コミ</h4>
+        ${a.reviews.map(r=>`
           <div class="review-card">
             <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
             <p class="comment">「${r.comment}」</p>
-          </div>`).join("")
-      : (a.reviewNote ? `<p class="body-text">${a.reviewNote}</p>` : `<div class="no-review-block">口コミはまだありません</div>`) + zukanScoreBlockHTML(a, "candidate");
+          </div>`).join("")}
+      </div>`
+      : "";
 
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
@@ -874,10 +937,7 @@ function openDetail(a){
 
       ${adSlotHTML("in-feed", "3333333333")}
 
-      <div class="d-section">
-        <h4>口コミ</h4>
-        ${reviewsHtml}
-      </div>
+      ${reviewSectionHTML}
 
       <div class="d-section">
         <h4>基本情報</h4>
@@ -889,18 +949,23 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('${a.website}')">このエージェントの詳細を見る</button>
+        <button class="cta-btn" onclick="visitSite('${a.affiliateUrl || a.website}')">このエージェントの詳細を見る</button>
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
   } else {
-    const companyReviewsHtml = a.companyReviews.length
-      ? a.companyReviews.map(r=>`
+    // 実際の口コミが1件も無い場合は、プレースホルダーや図鑑スコアは出さず、セクション自体を非表示にする
+    // （一覧カードの口コミバッジにおける図鑑スコアのフォールバック表示は維持、対象外）。
+    const companyReviewSectionHTML = a.companyReviews.length > 0
+      ? `<div class="d-section">
+        <h4>企業からの口コミ</h4>
+        ${a.companyReviews.map(r=>`
           <div class="review-card">
             <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
             <p class="comment">「${r.comment}」</p>
-          </div>`).join("")
-      : (a.companyReviewNote ? `<p class="body-text">${a.companyReviewNote}</p>` : `<div class="no-review-block">企業からの口コミはまだありません</div>`) + zukanScoreBlockHTML(a, "company");
+          </div>`).join("")}
+      </div>`
+      : "";
 
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
@@ -935,7 +1000,6 @@ function openDetail(a){
       <div class="d-section">
         <h4>実績・許可情報</h4>
         <div class="info-grid cols-2">
-          <div><div class="k">許可番号</div><div class="v">${a.companyDetail.permitNumber}</div></div>
           <div><div class="k">決定率（内定承諾率）</div><div class="v">${a.companyDetail.placementRate}</div></div>
           <div><div class="k">入社後の定着支援</div><div class="v">${a.companyDetail.onboardingSupport}</div></div>
         </div>
@@ -950,13 +1014,10 @@ function openDetail(a){
         </div>
       </div>
 
-      <div class="d-section">
-        <h4>企業からの口コミ</h4>
-        ${companyReviewsHtml}
-      </div>
+      ${companyReviewSectionHTML}
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitInquiry('${a.website}')">企業に問い合わせを行う</button>
+        <button class="cta-btn" onclick="visitInquiry('${a.affiliateUrl || a.website}')">企業に問い合わせを行う</button>
         <div class="cta-sub">${a.name}の公式サイトへ移動します</div>
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
@@ -1039,6 +1100,11 @@ function visitInquiry(website){
   openWebsite(website);
 }
 
+function updateAgentCountBadge(){
+  const el = document.getElementById("agentCountBadge");
+  if(el) el.textContent = `全国のエージェント${AGENTS.length}社掲載中！`;
+}
+
 async function loadAgents(){
   await loadCategories();
   if(!SSG_MODE) buildFilterSelects();
@@ -1047,6 +1113,7 @@ async function loadAgents(){
     const res = await fetch('/agents.json', {cache:"no-store"});
     if(!res.ok) throw new Error("HTTP " + res.status);
     AGENTS = await res.json();
+    updateAgentCountBadge();
     if(SSG_MODE){
       handleRoute();
     } else {

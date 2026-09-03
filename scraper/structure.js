@@ -478,7 +478,12 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
   return result;
 }
 
-function assembleEntry(raw, ai, rawHash, source) {
+/**
+ * existing は同一事業者の直近の agents.json エントリ（あれば）。affiliateUrl / featured は
+ * AIやスクレイピングでは導出できない、手動でキュレーションするフィールドのため、
+ * 再構造化のたびに消えてしまわないよう existing から引き継ぐ。
+ */
+function assembleEntry(raw, ai, rawHash, source, existing) {
   const name =
     source === 'mhlw'
       ? raw.businessOwnerName || raw.establishmentName || NOT_DISCLOSED
@@ -508,6 +513,8 @@ function assembleEntry(raw, ai, rawHash, source) {
     commitmentExplanation: ai.commitmentExplanation,
     website: stripProtocol(raw.serviceUrl) || stripProtocol(raw.detailUrl),
     faviconUrl: buildFaviconUrl(raw.serviceUrl),
+    affiliateUrl: (existing && existing.affiliateUrl) || null,
+    featured: !!(existing && existing.featured),
     real: true,
     sourceNote: buildSourceNote(raw, source),
     companyDetail: {
@@ -571,15 +578,15 @@ async function main() {
         try {
           console.log(`[ai:${source}] structuring ${raw.companyName || raw.businessOwnerName || raw.detailUrl}`);
           const ai = await buildWithAI(raw, anthropic, source, existingHints);
-          results.push(assembleEntry(raw, ai, rawHash, source));
+          results.push(assembleEntry(raw, ai, rawHash, source, prev));
           aiCalls += 1;
         } catch (err) {
           console.warn(`AI structuring failed for ${raw.detailUrl}: ${err.message}. Falling back to offline builder.`);
-          results.push(assembleEntry(raw, buildOffline(raw, source), null, source));
+          results.push(assembleEntry(raw, buildOffline(raw, source), null, source, prev));
           offlineBuilds += 1;
         }
       } else {
-        results.push(assembleEntry(raw, buildOffline(raw, source), null, source));
+        results.push(assembleEntry(raw, buildOffline(raw, source), null, source, prev));
         offlineBuilds += 1;
       }
     }
