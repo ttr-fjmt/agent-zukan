@@ -65,6 +65,9 @@ function startStaticServer() {
   });
 }
 
+// テスト用: 設定すると先頭 N 件のみ処理する（CI上での小規模動作確認向け）。未設定なら全件処理する。
+const LIMIT = process.env.PRERENDER_LIMIT ? parseInt(process.env.PRERENDER_LIMIT, 10) : null;
+
 async function main() {
   const agents = readJson(AGENTS_PATH, []);
   if (agents.length === 0) {
@@ -88,13 +91,29 @@ async function main() {
 
   const puppeteer = require('puppeteer');
   const server = await startStaticServer();
-  const browser = await puppeteer.launch({ headless: true });
+
+  let browser;
+  try {
+    // GitHub Actionsのrunnerはrootで実行されるため、Chromeのデフォルトサンドボックスは
+    // 権限不足で起動直後にネイティブクラッシュする。--no-sandbox 系フラグで回避する。
+    // --disable-dev-shm-usage は /dev/shm の容量不足によるクラッシュ対策。
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+  } catch (err) {
+    await new Promise(resolve => server.close(resolve));
+    throw new Error(`puppeteer.launch() failed (browser could not start): ${err.message}`);
+  }
 
   let generated = 0;
   let skipped = 0;
 
+  const targets = LIMIT ? agents.slice(0, LIMIT) : agents;
+  if (LIMIT) console.log(`PRERENDER_LIMIT=${LIMIT} set — processing only the first ${targets.length} agent(s).`);
+
   try {
-    for (const agent of agents) {
+    for (const agent of targets) {
       const id = String(agent.id);
       const hash = computeAgentHash(agent);
       if (manifest[id] === hash) {
@@ -138,7 +157,8 @@ async function main() {
 
   writeJson(MANIFEST_PATH, manifest);
   console.log(
-    `Prerender finished: generated=${generated}, skipped(unchanged)=${skipped}, pruned=${pruned}, total=${agents.length}`
+    `Prerender finished: generated=${generated}, skipped(unchanged)=${skipped}, pruned=${pruned}, ` +
+      `processed=${targets.length}, totalAgents=${agents.length}`
   );
 }
 

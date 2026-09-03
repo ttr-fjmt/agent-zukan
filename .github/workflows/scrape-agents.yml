@@ -4,7 +4,12 @@ on:
   schedule:
     # 毎日 18:30 UTC = 日本時間(JST) 3:30 に実行（深夜帯・低負荷な時間帯を狙う）
     - cron: "30 18 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      prerender_limit:
+        description: "プリレンダリング対象を先頭N件に制限する（CI上での動作確認用。空なら全件処理）"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -55,8 +60,19 @@ jobs:
         working-directory: scraper
         run: node promote-categories.js
 
+      - name: Install Chrome runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ca-certificates fonts-liberation libasound2t64 libatk-bridge2.0-0 libatk1.0-0 \
+            libcups2 libdbus-1-3 libdrm2 libgbm1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 \
+            libpango-1.0-0 libpangocairo-1.0-0 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+            libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils
+
       - name: Prerender agent detail pages (static SSG via Puppeteer)
         working-directory: scraper
+        env:
+          PRERENDER_LIMIT: ${{ github.event.inputs.prerender_limit }}
         run: node prerender.js
 
       - name: Regenerate sitemap.xml
