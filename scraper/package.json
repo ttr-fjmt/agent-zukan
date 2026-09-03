@@ -6,7 +6,10 @@
   "main": "scrape.js",
   "scripts": {
     "scrape": "node scrape.js",
-    "structure": "node structure.js"
+    "structure": "node structure.js",
+    "promote-categories": "node promote-categories.js",
+    "prerender": "node prerender.js",
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "engines": {
     "node": ">=20"
@@ -15,5 +18,11 @@
     "@anthropic-ai/sdk": "^0.32.1",
     "cheerio": "^1.0.0",
     "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.9.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.9.0": true
   }
 }

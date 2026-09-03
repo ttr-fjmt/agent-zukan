@@ -27,6 +27,12 @@ jobs:
           cache: "npm"
           cache-dependency-path: scraper/package-lock.json
 
+      - name: Cache Puppeteer's bundled Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-chromium-${{ runner.os }}-${{ hashFiles('scraper/package-lock.json') }}
+
       - name: Install scraper dependencies
         working-directory: scraper
         run: npm ci
@@ -45,14 +51,30 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node structure.js
 
+      - name: Promote frequent "その他" category hints into official categories
+        working-directory: scraper
+        run: node promote-categories.js
+
+      - name: Prerender agent detail pages (static SSG via Puppeteer)
+        working-directory: scraper
+        run: node prerender.js
+
+      - name: Regenerate sitemap.xml
+        working-directory: scraper
+        run: node generate-sitemap.js
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add agents.json data/raw-agents.json
-          # MHLW側の出力ファイルは初回実行前は存在しない可能性があるため存在確認してから追加する
+          git add agents.json categories.json data/raw-agents.json sitemap.xml
+          # 50,000URL超過時にsitemapが分割された場合のみ生成される
+          git add sitemap-*.xml 2>/dev/null || true
+          # 生成物・中間ファイルは初回実行前は存在しない可能性があるため存在確認してから追加する
           [ -f data/mhlw-agents.json ] && git add data/mhlw-agents.json
           [ -f data/mhlw-cursor.json ] && git add data/mhlw-cursor.json
+          [ -f data/ssg-manifest.json ] && git add data/ssg-manifest.json
+          [ -d agent ] && git add agent
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
