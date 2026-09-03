@@ -35,6 +35,10 @@ jobs:
         working-directory: scraper
         run: node scrape.js
 
+      - name: Ingest MHLW "人材サービス総合サイト" (段階的取り込み, skips during maintenance window)
+        working-directory: scraper
+        run: node scrape-mhlw.js
+
       - name: Structure raw data into agents.json via Claude Haiku 4.5
         working-directory: scraper
         env:
@@ -46,6 +50,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add agents.json data/raw-agents.json
+          # MHLW側の出力ファイルは初回実行前は存在しない可能性があるため存在確認してから追加する
+          [ -f data/mhlw-agents.json ] && git add data/mhlw-agents.json
+          [ -f data/mhlw-cursor.json ] && git add data/mhlw-cursor.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0

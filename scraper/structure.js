@@ -19,6 +19,7 @@ const crypto = require('crypto');
 const { CATEGORIES, NOT_DISCLOSED } = require('./lib/schema');
 
 const RAW_PATH = path.join(__dirname, '..', 'data', 'raw-agents.json');
+const MHLW_RAW_PATH = path.join(__dirname, '..', 'data', 'mhlw-agents.json');
 const OUT_PATH = path.join(__dirname, '..', 'agents.json');
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
@@ -27,7 +28,7 @@ function stableStringify(obj) {
   return JSON.stringify(obj, Object.keys(obj).sort());
 }
 
-function computeRawHash(raw) {
+function computeJesraRawHash(raw) {
   const relevant = {
     companyName: raw.companyName,
     certificationNumber: raw.certificationNumber,
@@ -46,6 +47,28 @@ function computeRawHash(raw) {
   return crypto.createHash('sha256').update(stableStringify(relevant)).digest('hex');
 }
 
+function computeMhlwRawHash(raw) {
+  const relevant = {
+    permitNumber: raw.permitNumber,
+    permitDate: raw.permitDate,
+    businessOwnerName: raw.businessOwnerName,
+    establishmentName: raw.establishmentName,
+    address: raw.address,
+    phone: raw.phone,
+    handledOccupations: raw.handledOccupations,
+    handledRegion: raw.handledRegion,
+    handledOther: raw.handledOther,
+    // yearlyStats はネスト配列なので、stableStringify のトップレベル鍵フィルタで
+    // 中身が消えないよう、先に文字列化してから渡す。
+    yearlyStatsJson: JSON.stringify(raw.yearlyStats || []),
+  };
+  return crypto.createHash('sha256').update(stableStringify(relevant)).digest('hex');
+}
+
+function computeRawHash(raw, source) {
+  return source === 'mhlw' ? computeMhlwRawHash(raw) : computeJesraRawHash(raw);
+}
+
 function stripProtocol(url) {
   if (!url) return null;
   return url.replace(/^https?:\/\//, '').replace(/\/+$/, '').replace(/#$/, '');
@@ -56,6 +79,22 @@ function extractAgentId(detailUrl) {
   if (!detailUrl) return null;
   const m = detailUrl.match(/\/certification\/(\d+)\/?(?:[?#].*)?$/);
   return m ? m[1] : null;
+}
+
+/** 許可番号中の業態カナをURL-safeなローマ字に変換する（ユ→yu 等）。jesraの数値IDとは衝突しない。 */
+const PERMIT_KANA_TO_ROMAJI = { ユ: 'yu', ム: 'mu', 特: 'toku', 地: 'chi' };
+
+/** MHLW由来エージェントのIDを、許可番号から組み立てる（例: "01-ユ-300184" → "01-yu-300184"）。 */
+function extractAgentIdFromPermitNumber(permitNumber) {
+  if (!permitNumber) return null;
+  const parts = permitNumber.split('-');
+  if (parts.length !== 3) return permitNumber.replace(/[^\w-]/g, '');
+  const [prefix, kana, suffix] = parts;
+  return `${prefix}-${PERMIT_KANA_TO_ROMAJI[kana] || kana}-${suffix}`;
+}
+
+function computeId(raw, source) {
+  return source === 'mhlw' ? extractAgentIdFromPermitNumber(raw.permitNumber) : extractAgentId(raw.detailUrl);
 }
 
 /** serviceUrl のドメインから Google の favicon 取得サービスの URL を組み立てる。 */
@@ -84,11 +123,34 @@ function formatPipeList(text) {
   return text.split('｜').map(s => s.trim()).filter(Boolean).join('、');
 }
 
+/** MHLWの都道府県チェックボックス名（短縮名）を正式名称に変換する（例: "鳥取" → "鳥取県"）。 */
+function prefectureFullName(short) {
+  if (!short) return NOT_DISCLOSED;
+  if (short === '北海道') return '北海道';
+  if (short === '東京') return '東京都';
+  if (short === '大阪') return '大阪府';
+  if (short === '京都') return '京都府';
+  return `${short}県`;
+}
+
+function computeRegion(raw, source) {
+  return source === 'mhlw' ? prefectureFullName(raw.prefecture) : formatRegion(raw.region);
+}
+
+/** 年度別の就職者数・離職者数をAIプロンプト用に短い文へ要約する。 */
+function summarizeYearlyStats(stats) {
+  if (!stats || !stats.length) return '(不明)';
+  const parts = stats
+    .filter(s => s.placements4moPlusFixedTerm !== null || s.turnoverCount !== null)
+    .map(s => `${s.fiscalYear}: 就職者${s.placements4moPlusFixedTerm ?? 0}名/離職者${s.turnoverCount ?? 0}名`);
+  return parts.length ? parts.join('、') : '(不明)';
+}
+
 function todayJst() {
   return new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
 }
 
-function buildSourceNote(raw) {
+function buildJesraSourceNote(raw) {
   return (
     `厚生労働省委託「職業紹介優良事業者認定制度」掲載情報（${raw.detailUrl}）` +
     `${raw.feeDisclosureUrl ? 'および手数料公表サイト' : ''}をもとに作成。` +
@@ -96,11 +158,23 @@ function buildSourceNote(raw) {
   );
 }
 
+function buildMhlwSourceNote(raw) {
+  return (
+    `厚生労働省『人材サービス総合サイト』掲載情報（${raw.detailUrl}）をもとに作成。` +
+    `取得日: ${todayJst()}。手数料情報は今後のアップデートで追加予定です。` +
+    `取得できなかった項目は「${NOT_DISCLOSED}」と表示しています。`
+  );
+}
+
+function buildSourceNote(raw, source) {
+  return source === 'mhlw' ? buildMhlwSourceNote(raw) : buildJesraSourceNote(raw);
+}
+
 const REVIEW_NOTE = '口コミデータは未収集です（今後のアップデートで追加予定）。';
 const COMPANY_REVIEW_NOTE = '企業からの口コミデータは未収集です（今後のアップデートで追加予定）。';
 
-/** ANTHROPIC_API_KEY が無い場合の非AIフォールバック。事実の範囲を出ない組み立てのみ行う。 */
-function buildOffline(raw) {
+/** ANTHROPIC_API_KEY が無い場合の非AIフォールバック（jesra由来）。事実の範囲を出ない組み立てのみ行う。 */
+function buildOfflineJesra(raw) {
   const industriesJa = formatPipeList(raw.industries);
   const jobTypesJa = formatPipeList(raw.jobTypes);
 
@@ -152,14 +226,75 @@ function guessCategoryOffline(raw) {
   return '管理部門・コンサル';
 }
 
-async function buildWithAI(raw, anthropic) {
+/** ANTHROPIC_API_KEY が無い場合の非AIフォールバック（MHLW由来）。 */
+function buildOfflineMhlw(raw) {
+  const occ = raw.handledOccupations || null;
+  const region = raw.handledRegion || null;
+
+  const features = [];
+  if (occ) features.push(`取扱職種: ${occ}`);
+  if (region) features.push(`取扱地域: ${region}`);
+  if (raw.prefecture) features.push(`拠点: ${prefectureFullName(raw.prefecture)}`);
+  while (features.length < 1) features.push(NOT_DISCLOSED);
+
+  return {
+    category: guessCategoryOfflineMhlw(raw),
+    targetAge: NOT_DISCLOSED,
+    jobCount: NOT_DISCLOSED,
+    feeRate: NOT_DISCLOSED,
+    talentRange: NOT_DISCLOSED,
+    oneLiner: raw.businessOwnerName ? `${raw.businessOwnerName}が提供する職業紹介サービス。` : NOT_DISCLOSED,
+    companyOneLiner: raw.businessOwnerName ? `${raw.businessOwnerName}による人材紹介サービス。` : NOT_DISCLOSED,
+    appeal: [occ && `取扱職種: ${occ}`, region && `取扱地域: ${region}`].filter(Boolean).join('。') || NOT_DISCLOSED,
+    features,
+    feeExplanation: NOT_DISCLOSED,
+    commitmentExplanation: NOT_DISCLOSED,
+    companyDetail: {
+      placementRate: NOT_DISCLOSED,
+      avgDays: NOT_DISCLOSED,
+      trackRecord: NOT_DISCLOSED,
+      refundPolicy: NOT_DISCLOSED,
+      upfrontFee: NOT_DISCLOSED,
+      minContract: NOT_DISCLOSED,
+      exclusivity: NOT_DISCLOSED,
+      capacity: NOT_DISCLOSED,
+      sourcingMethod: NOT_DISCLOSED,
+      reportingFreq: NOT_DISCLOSED,
+      handoverPolicy: NOT_DISCLOSED,
+      onboardingSupport: NOT_DISCLOSED,
+      confidentiality: NOT_DISCLOSED,
+    },
+  };
+}
+
+function guessCategoryOfflineMhlw(raw) {
+  const hay = `${raw.handledOccupations || ''} ${raw.handledOther || ''}`;
+  if (/情報処理|システム|ソフトウェア|IT/i.test(hay)) return 'IT・Web';
+  if (/建設|土木|建築/.test(hay)) return '施工管理・建設';
+  if (/営業|販売/.test(hay)) return '営業・マーケティング';
+  if (/介護|保育|看護|医療|福祉/.test(hay)) return '管理部門・コンサル';
+  return 'その他';
+}
+
+function buildOffline(raw, source) {
+  return source === 'mhlw' ? buildOfflineMhlw(raw) : buildOfflineJesra(raw);
+}
+
+async function buildWithAI(raw, anthropic, source) {
   const tool = {
     name: 'structure_agent',
     description: '転職エージェント図鑑サイトのスキーマに沿って、与えられた事実情報のみから項目を構造化する。',
     input_schema: {
       type: 'object',
       properties: {
-        category: { type: 'string', enum: CATEGORIES, description: '対応業界・職種から最も近い1カテゴリを選ぶ' },
+        category: {
+          type: 'string',
+          enum: CATEGORIES,
+          description:
+            `次の${CATEGORIES.length}個の文字列のいずれか一つを一字一句そのまま使うこと（新しいカテゴリ名を作らない）: ` +
+            CATEGORIES.join('、') +
+            '。対応業界・職種から最も近いものを選び、どれにも当てはまらない場合は「その他」を使う。',
+        },
         targetAge: { type: 'string', description: '対象年代。根拠となる事実が無ければ「' + NOT_DISCLOSED + '」' },
         jobCount: { type: 'string', description: '求人数の目安。根拠が無ければ「' + NOT_DISCLOSED + '」' },
         feeRate: {
@@ -216,19 +351,50 @@ async function buildWithAI(raw, anthropic) {
     },
   };
 
-  const factsBlock = [
-    `企業名: ${raw.companyName || '(不明)'}`,
-    `サービス名: ${raw.serviceName || '(不明)'}`,
-    `サービスURL: ${raw.serviceUrl || '(不明)'}`,
-    `対応エリア: ${raw.region || '(不明)'}`,
-    `対応業界: ${raw.industries || '(不明)'}`,
-    `対応職種: ${raw.jobTypes || '(不明)'}`,
-    `許可番号: ${raw.permitNumber || '(不明)'}`,
-    `手数料公表サイトURL: ${raw.feeDisclosureUrl || '(不明)'}`,
-    `手数料変動事例（原文）: ${raw.feeVariationNote || '(不明)'}`,
-    `事業者コメント（原文）: ${raw.operatorComment || '(不明)'}`,
-    raw.feePageExcerpt ? `手数料公表サイトのテキスト抜粋:\n${raw.feePageExcerpt}` : '手数料公表サイトのテキスト抜粋: (取得できず)',
-  ].join('\n');
+  const factsBlock =
+    source === 'mhlw'
+      ? [
+          `企業名（事業主名称）: ${raw.businessOwnerName || '(不明)'}`,
+          `事業所名称: ${raw.establishmentName || '(不明)'}`,
+          `所在地: ${raw.address || '(不明)'}`,
+          `対応都道府県: ${prefectureFullName(raw.prefecture)}`,
+          `取扱職種: ${raw.handledOccupations || '(不明)'}`,
+          `取扱地域: ${raw.handledRegion || '(不明)'}`,
+          `その他の備考: ${raw.handledOther || '(不明)'}`,
+          `許可番号: ${raw.permitNumber || '(不明)'}`,
+          `年度別 就職者数・離職者数の推移: ${summarizeYearlyStats(raw.yearlyStats)}`,
+          '手数料公表サイトの情報: 今回は取得していません（別途アップデートで対応予定）。',
+        ].join('\n')
+      : [
+          `企業名: ${raw.companyName || '(不明)'}`,
+          `サービス名: ${raw.serviceName || '(不明)'}`,
+          `サービスURL: ${raw.serviceUrl || '(不明)'}`,
+          `対応エリア: ${raw.region || '(不明)'}`,
+          `対応業界: ${raw.industries || '(不明)'}`,
+          `対応職種: ${raw.jobTypes || '(不明)'}`,
+          `許可番号: ${raw.permitNumber || '(不明)'}`,
+          `手数料公表サイトURL: ${raw.feeDisclosureUrl || '(不明)'}`,
+          `手数料変動事例（原文）: ${raw.feeVariationNote || '(不明)'}`,
+          `事業者コメント（原文）: ${raw.operatorComment || '(不明)'}`,
+          raw.feePageExcerpt ? `手数料公表サイトのテキスト抜粋:\n${raw.feePageExcerpt}` : '手数料公表サイトのテキスト抜粋: (取得できず)',
+        ].join('\n');
+
+  const introLine =
+    source === 'mhlw'
+      ? '以下は、厚生労働省「人材サービス総合サイト」に掲載された、ある職業紹介事業者の公開情報（事実）です。'
+      : '以下は、厚生労働省委託「職業紹介優良事業者認定制度」に掲載された、ある人材紹介事業者の公開情報（事実）です。';
+
+  const sourceSpecificRules =
+    source === 'mhlw'
+      ? '- このデータには手数料公表サイトの情報が一切含まれていません。feeRate と companyDetail.refundPolicy / companyDetail.upfrontFee は必ず「' +
+        NOT_DISCLOSED +
+        '」としてください（絶対に推測しないこと）。\n' +
+        '- companyDetail.trackRecord には、「年度別 就職者数・離職者数の推移」の事実を簡潔に要約してよい（数値の創作は禁止、与えられた数値のみ使用）。\n'
+      : '- 「手数料公表サイトのテキスト抜粋」を読む際は、それが「職業安定法の届出制手数料表における上限額」なのか' +
+        '「実際に請求している標準的な料率（相場）」なのかを文脈から慎重に判断すること。' +
+        '「手数料の額（上限）」「届出上限」「就職後1年間の賃金の◯％」のような表現は、多くの場合、法定の届出上限であり実際の請求額とは異なる。' +
+        '上限額の記載しかない場合でも、それをそのまま実際の料率として出力しないこと（feeRateの項目説明に従うこと）。\n' +
+        '- 抜粋内に返戻金・返金保証に関する記載があれば、必ず companyDetail.refundPolicy に反映すること。\n';
 
   const msg = await anthropic.messages.create({
     model: MODEL,
@@ -239,18 +405,17 @@ async function buildWithAI(raw, anthropic) {
       {
         role: 'user',
         content:
-          '以下は、厚生労働省委託「職業紹介優良事業者認定制度」に掲載された、ある人材紹介事業者の公開情報（事実）です。' +
+          introLine +
           'これらの事実情報のみに基づいて structure_agent ツールを呼び出し、転職エージェント比較サイト用のデータを構造化してください。\n\n' +
           '厳守事項:\n' +
           '- 数値（料率・年収・日数・件数など）は、根拠となる記載が無い限り絶対に創作しないこと。無ければ「' + NOT_DISCLOSED + '」と出力する。\n' +
           '- 「事業者コメント（原文）」を長文のままコピーしないこと。要約・言い換えた事実のみ使用する。\n' +
           '- 口コミ・評判は一切創作しないこと（このツールの入力に口コミ関連の項目は無い）。\n' +
           '- 誇張的な断定表現（業界No.1、必ず等）は使わないこと。\n' +
-          '- 「手数料公表サイトのテキスト抜粋」を読む際は、それが「職業安定法の届出制手数料表における上限額」なのか' +
-          '「実際に請求している標準的な料率（相場）」なのかを文脈から慎重に判断すること。' +
-          '「手数料の額（上限）」「届出上限」「就職後1年間の賃金の◯％」のような表現は、多くの場合、法定の届出上限であり実際の請求額とは異なる。' +
-          '上限額の記載しかない場合でも、それをそのまま実際の料率として出力しないこと（feeRateの項目説明に従うこと）。\n' +
-          '- 抜粋内に返戻金・返金保証に関する記載があれば、必ず companyDetail.refundPolicy に反映すること。\n\n' +
+          '- categoryは structure_agent ツール定義に列挙された' + CATEGORIES.length + '個の文字列以外を絶対に使わないこと' +
+          '（新しいカテゴリ名を作らない。該当が無ければ「その他」を使う）。\n' +
+          sourceSpecificRules +
+          '\n' +
           factsBlock,
       },
     ],
@@ -258,16 +423,29 @@ async function buildWithAI(raw, anthropic) {
 
   const toolUse = msg.content.find(b => b.type === 'tool_use');
   if (!toolUse) throw new Error('AI response did not include a tool_use block');
-  return toolUse.input;
+
+  const result = toolUse.input;
+  // Anthropicのtool useはJSON Schemaのenumをサーバー側で厳密には強制しないため、
+  // 万一未知のカテゴリ文字列が返ってきた場合はここで「その他」に丸める。
+  if (!CATEGORIES.includes(result.category)) {
+    console.warn(`Unexpected category "${result.category}" from AI, clamping to "その他".`);
+    result.category = 'その他';
+  }
+  return result;
 }
 
-function assembleEntry(raw, ai, rawHash) {
+function assembleEntry(raw, ai, rawHash, source) {
+  const name =
+    source === 'mhlw'
+      ? raw.businessOwnerName || raw.establishmentName || NOT_DISCLOSED
+      : raw.companyName || raw.serviceName || NOT_DISCLOSED;
+
   return {
-    id: extractAgentId(raw.detailUrl),
-    name: raw.companyName || raw.serviceName || NOT_DISCLOSED,
+    id: computeId(raw, source),
+    name,
     category: ai.category,
     targetAge: ai.targetAge,
-    region: formatRegion(raw.region),
+    region: computeRegion(raw, source),
     jobCount: ai.jobCount,
     feeRate: ai.feeRate,
     talentRange: ai.talentRange,
@@ -284,7 +462,7 @@ function assembleEntry(raw, ai, rawHash) {
     website: stripProtocol(raw.serviceUrl) || stripProtocol(raw.detailUrl),
     faviconUrl: buildFaviconUrl(raw.serviceUrl),
     real: true,
-    sourceNote: buildSourceNote(raw),
+    sourceNote: buildSourceNote(raw, source),
     companyDetail: {
       permitNumber: raw.permitNumber || NOT_DISCLOSED,
       ...ai.companyDetail,
@@ -295,11 +473,13 @@ function assembleEntry(raw, ai, rawHash) {
 }
 
 async function main() {
-  if (!fs.existsSync(RAW_PATH)) {
-    console.error(`Raw data not found at ${RAW_PATH}. Run scrape.js first.`);
+  const rawData = fs.existsSync(RAW_PATH) ? JSON.parse(fs.readFileSync(RAW_PATH, 'utf8')) : null;
+  const mhlwRaw = fs.existsSync(MHLW_RAW_PATH) ? JSON.parse(fs.readFileSync(MHLW_RAW_PATH, 'utf8')) : [];
+  if (!rawData && mhlwRaw.length === 0) {
+    console.error(`No raw data found. Run scrape.js (${RAW_PATH}) and/or scrape-mhlw.js (${MHLW_RAW_PATH}) first.`);
     process.exit(1);
   }
-  const rawData = JSON.parse(fs.readFileSync(RAW_PATH, 'utf8'));
+
   const existing = fs.existsSync(OUT_PATH) ? JSON.parse(fs.readFileSync(OUT_PATH, 'utf8')) : [];
   const prevByUrl = new Map(existing.filter(a => a._sourceUrl).map(a => [a._sourceUrl, a]));
 
@@ -317,36 +497,42 @@ async function main() {
   let aiCalls = 0;
   let offlineBuilds = 0;
 
-  for (const raw of rawData.agents) {
-    const rawHash = computeRawHash(raw);
-    const prev = prevByUrl.get(raw.detailUrl);
+  const batches = [];
+  if (rawData) batches.push({ source: 'jesra', items: rawData.agents });
+  if (mhlwRaw.length) batches.push({ source: 'mhlw', items: mhlwRaw });
 
-    if (prev && prev._rawHash && prev._rawHash === rawHash) {
-      // faviconUrl / id は raw から機械的に導出できるため、AI再構造化を発生させずに
-      // 毎回リフレッシュする（スキーマ追加時の後方互換のため）。
-      results.push({
-        ...prev,
-        id: extractAgentId(raw.detailUrl),
-        faviconUrl: buildFaviconUrl(raw.serviceUrl),
-      });
-      reused += 1;
-      continue;
-    }
+  for (const { source, items } of batches) {
+    for (const raw of items) {
+      const rawHash = computeRawHash(raw, source);
+      const prev = prevByUrl.get(raw.detailUrl);
 
-    if (anthropic) {
-      try {
-        console.log(`[ai] structuring ${raw.companyName || raw.detailUrl}`);
-        const ai = await buildWithAI(raw, anthropic);
-        results.push(assembleEntry(raw, ai, rawHash));
-        aiCalls += 1;
-      } catch (err) {
-        console.warn(`AI structuring failed for ${raw.detailUrl}: ${err.message}. Falling back to offline builder.`);
-        results.push(assembleEntry(raw, buildOffline(raw), null));
+      if (prev && prev._rawHash && prev._rawHash === rawHash) {
+        // faviconUrl / id は raw から機械的に導出できるため、AI再構造化を発生させずに
+        // 毎回リフレッシュする（スキーマ追加時の後方互換のため）。
+        results.push({
+          ...prev,
+          id: computeId(raw, source),
+          faviconUrl: buildFaviconUrl(raw.serviceUrl),
+        });
+        reused += 1;
+        continue;
+      }
+
+      if (anthropic) {
+        try {
+          console.log(`[ai:${source}] structuring ${raw.companyName || raw.businessOwnerName || raw.detailUrl}`);
+          const ai = await buildWithAI(raw, anthropic, source);
+          results.push(assembleEntry(raw, ai, rawHash, source));
+          aiCalls += 1;
+        } catch (err) {
+          console.warn(`AI structuring failed for ${raw.detailUrl}: ${err.message}. Falling back to offline builder.`);
+          results.push(assembleEntry(raw, buildOffline(raw, source), null, source));
+          offlineBuilds += 1;
+        }
+      } else {
+        results.push(assembleEntry(raw, buildOffline(raw, source), null, source));
         offlineBuilds += 1;
       }
-    } else {
-      results.push(assembleEntry(raw, buildOffline(raw), null));
-      offlineBuilds += 1;
     }
   }
 
@@ -364,4 +550,17 @@ if (require.main === module) {
   });
 }
 
-module.exports = { computeRawHash, buildOffline, assembleEntry, formatRegion, stripProtocol, buildFaviconUrl, extractAgentId };
+module.exports = {
+  computeRawHash,
+  buildOffline,
+  assembleEntry,
+  formatRegion,
+  stripProtocol,
+  buildFaviconUrl,
+  extractAgentId,
+  extractAgentIdFromPermitNumber,
+  prefectureFullName,
+  computeId,
+  computeRegion,
+  summarizeYearlyStats,
+};

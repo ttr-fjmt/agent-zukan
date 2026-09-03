@@ -358,7 +358,9 @@ const CATEGORY_STYLE = {
   "地方転職・UIターン":{ from:"#4C7A3D", to:"#2E4E24",
     icon:`<path d="M14 44 L26 26 L34 36 L40 28 L50 44 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="40" cy="18" r="4" stroke="#fff" stroke-width="2" fill="none"/>` },
   "第二新卒・ポテンシャル層":{ from:"#C99A2E", to:"#8A6A1D",
-    icon:`<path d="M32 48 V28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M32 30 C24 30 20 24 20 18 C28 18 32 22 32 30 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M32 26 C40 26 44 20 44 16 C36 16 32 20 32 26 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/>` }
+    icon:`<path d="M32 48 V28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M32 30 C24 30 20 24 20 18 C28 18 32 22 32 30 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M32 26 C40 26 44 20 44 16 C36 16 32 20 32 26 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/>` },
+  "その他":{ from:"#5C6570", to:"#38414A",
+    icon:`<path d="M14 22 h12 l4 6 h20 v22 a2 2 0 0 1-2 2 h-32 a2 2 0 0 1-2-2 v-26 a2 2 0 0 1 2-2 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/>` }
 };
 
 function eyecatchHTML(agent, variant){
@@ -377,7 +379,7 @@ let activeChip = "all";
 let selected = new Set();
 let currentView = "list";
 
-const CHIP_LABELS = ["all","IT・Web","管理部門・コンサル","施工管理・建設","営業・マーケティング","外資・グローバル","スタートアップ・ベンチャー","地方転職・UIターン","第二新卒・ポテンシャル層"];
+const CHIP_LABELS = ["all","IT・Web","管理部門・コンサル","施工管理・建設","営業・マーケティング","外資・グローバル","スタートアップ・ベンチャー","地方転職・UIターン","第二新卒・ポテンシャル層","その他"];
 
 const LEAD_TEXT = {
   candidate: `日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。`,
