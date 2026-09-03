@@ -18,32 +18,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FFFFFF;
-    --ink:#181A22;
-    --ink-soft:#6B6E78;
-    --ink-faint:#9A9CA5;
-    --line:#EEEDE9;
-    --surface:#F7F6F3;
+    --ink:#17211D;
+    --paper:#F8F5EE;
+    --surface:#FFFFFF;
+    --line:#E4DFD1;
     --accent:#1F6F63;
+    --accent-deep:#123F38;
     --accent-soft:#DCEAE7;
+    --gold:#B8863B;
+    --gold-soft:#F1E4CC;
+    --ink-soft:#5B6660;
+    --ink-faint:#8B9490;
     --star:#E0A400;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:var(--bg);
+    background:var(--paper);
     color:var(--ink);
     font-family:'Zen Kaku Gothic New', sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
+  .wrap{max-width:680px;margin:0 auto;padding:56px 16px 100px;}
 
   .back-btn{
-    background:none;border:none;cursor:pointer;color:var(--ink-soft);font-size:13px;font-weight:500;
-    font-family:inherit;padding:0;margin-bottom:32px;display:inline-flex;align-items:center;gap:6px;
-    text-decoration:none;
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    cursor:pointer;color:var(--ink-soft);font-size:13px;font-weight:500;
+    font-family:inherit;padding:9px 16px 9px 12px;margin-bottom:32px;
+    display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+    transition:border-color .12s, color .12s;
   }
-  .back-btn:hover{color:var(--ink);}
+  .back-btn:hover{border-color:var(--accent);color:var(--ink);}
+  .back-btn svg{width:16px;height:16px;flex-shrink:0;}
 
   h1{
     font-family:'Shippori Mincho', serif;
@@ -57,7 +63,7 @@
 
   h2{
     font-size:16px;font-weight:700;color:var(--ink);margin:36px 0 12px;
-    padding-bottom:8px;border-bottom:1px solid var(--line);letter-spacing:.01em;
+    padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.01em;
   }
   h2:first-of-type{margin-top:8px;}
 
@@ -68,7 +74,7 @@
 <body>
 
 <div class="wrap">
-  <a class="back-btn" href="index.html">← トップに戻る</a>
+  <a class="back-btn" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>トップに戻る</a>
 
   <h1>プライバシーポリシー</h1>
   <p class="meta">制定日：2026年9月3日</p>
