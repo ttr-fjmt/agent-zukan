@@ -1002,6 +1002,13 @@ function openDetail(a){
       </div>`
       : "";
 
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "このエージェントの詳細を見る";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
+      : "";
+
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
       <div class="detail-head-row">
@@ -1033,7 +1040,8 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('${a.affiliateUrl || a.website}')">このエージェントの詳細を見る</button>
+        <button class="cta-btn" onclick="visitSite('${ctaTarget}')">${ctaLabel}</button>
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1049,6 +1057,13 @@ function openDetail(a){
             <p class="comment">「${r.comment}」</p>
           </div>`).join("")}
       </div>`
+      : "";
+
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "企業に問い合わせを行う";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
       : "";
 
     dv.innerHTML = `
@@ -1101,8 +1116,9 @@ function openDetail(a){
       ${companyReviewSectionHTML}
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitInquiry('${a.affiliateUrl || a.website}')">企業に問い合わせを行う</button>
-        <div class="cta-sub">${a.name}の公式サイトへ移動します</div>
+        <button class="cta-btn" onclick="visitInquiry('${ctaTarget}')">${ctaLabel}</button>
+        ${useSearchCta ? "" : `<div class="cta-sub">${a.name}の公式サイトへ移動します</div>`}
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1170,6 +1186,20 @@ function handleRoute(){
 }
 
 window.addEventListener("popstate", handleRoute);
+
+/** mhlw「人材サービス総合サイト」の詳細ページのホスト名。website がこのホストを含む場合、
+ * 自社サイトを持たず、生死チェック（scraper/verify-links.js）でも no_company_website として
+ * verifyLink() の対象外にしている（=このURL自体は事業者の公式サイトではない）。 */
+const MHLW_PORTAL_HOST = "jinzai.hellowork.mhlw.go.jp";
+
+function isNoCompanyWebsite(a){
+  return typeof a.website === "string" && a.website.includes(MHLW_PORTAL_HOST);
+}
+
+/** 自社サイトを持たないエージェント向けの代替導線として、社名＋所在地（都道府県）でのGoogle検索結果へ誘導する。 */
+function googleSearchUrl(a){
+  return `https://www.google.com/search?q=${encodeURIComponent(a.name)}+${encodeURIComponent(a.region || "")}`;
+}
 
 function openWebsite(website){
   if(!website) return;
