@@ -72,6 +72,7 @@
     letter-spacing:.01em;
   }
   h1 .mark{ color:var(--accent-deep); border-bottom:3px solid var(--gold); padding-bottom:2px; }
+  h1.home-link{cursor:pointer;width:fit-content;}
   .agent-count-badge{
     display:inline-block;background:var(--accent);color:#fff;border-radius:999px;
     padding:6px 14px;font-weight:700;font-size:13px;margin:0 0 16px;
@@ -340,7 +341,7 @@
 
 <header>
   <div class="inner">
-    <h1>転職エージェント<span class="mark">図鑑</span></h1>
+    <h1 class="home-link" onclick="goHome()">転職エージェント<span class="mark">図鑑</span></h1>
     <span class="agent-count-badge" id="agentCountBadge"></span>
     <p class="tagline">迷わず選べる、エージェントの図鑑。</p>
     <p class="lead" id="leadText"></p>
@@ -799,18 +800,23 @@ function buildRowItem(a){
   return row;
 }
 
-/** 検索・フィルターの状態に応じて、ホーム上部リンク／絞り込みバナーの表示を切り替える。 */
+/** 検索・フィルターの状態に応じて、ホーム上部リンク／絞り込みバナーの表示を切り替える。
+ * ホーム表示でない間は、どの絞り込み経由（注目／高評価／カテゴリー／検索等）でも
+ * 必ず「ホームに戻る」導線を表示する（セクションから移動した後に戻れなくならないように）。 */
 function updateHomeChrome(){
   document.getElementById("homeTopLink").classList.toggle("show", homeMode);
 
   const banner = document.getElementById("filterBanner");
-  if(!homeMode && (featuredOnly || highScoreOnly)){
-    const label = featuredOnly ? "注目のエージェントのみ表示中" : "高評価エージェントのみ表示中";
-    banner.innerHTML = `${label}<a href="javascript:void(0)" onclick="clearFilterAndReturnHome()">絞り込みを解除してホームに戻る</a>`;
-    banner.classList.add("show");
-  } else {
+  if(homeMode){
     banner.innerHTML = "";
     banner.classList.remove("show");
+  } else {
+    let label = "";
+    if(featuredOnly) label = "注目のエージェントのみ表示中　";
+    else if(highScoreOnly) label = "高評価エージェントのみ表示中　";
+    else if(activeChip !== "all") label = `${activeChip}のエージェントのみ表示中　`;
+    banner.innerHTML = `${label}<a href="javascript:void(0)" onclick="goHome()">← ホームに戻る</a>`;
+    banner.classList.add("show");
   }
 }
 
@@ -945,10 +951,25 @@ function showAllAgents(){
   homeMode = false;
   render();
 }
-function clearFilterAndReturnHome(){
+/** 検索・フィルターを全てリセットし、ホーム表示に戻る（詳細ページを見ている最中でも一覧トップへ）。 */
+function goHome(){
   featuredOnly = false;
   highScoreOnly = false;
+  activeChip = "all";
+  activePrefecture = "all";
+  activeFee = "all";
+
+  const searchInput = document.getElementById("searchInput");
+  if(searchInput) searchInput.value = "";
+  const categorySelect = document.getElementById("categorySelect");
+  if(categorySelect) categorySelect.value = "all";
+  const prefectureSelect = document.getElementById("prefectureSelect");
+  if(prefectureSelect) prefectureSelect.value = "all";
+  const feeSelect = document.getElementById("feeSelect");
+  if(feeSelect) feeSelect.value = "all";
+
   homeMode = true;
+  navigateToList();
   render();
 }
 
