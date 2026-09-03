@@ -94,7 +94,13 @@
 
   /* recommend carousel */
   .recommend-section{margin-top:32px;}
-  .recommend-label{font-size:12px;color:var(--ink-faint);font-weight:500;margin-bottom:12px;}
+  .recommend-label{
+    font-size:14px;font-weight:700;color:var(--accent-deep);margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .recommend-label::before{
+    content:"";width:5px;height:14px;background:var(--accent-deep);border-radius:2px;flex-shrink:0;
+  }
   .recommend-scroll{
     display:flex;gap:12px;overflow-x:auto;
     padding:2px 2px 8px;margin:0 -2px;-webkit-overflow-scrolling:touch;
@@ -151,8 +157,11 @@
   .row-item h3{font-size:18px;font-weight:700;margin:0;letter-spacing:.01em;}
   .rating-badge{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--ink);flex-shrink:0;}
   .rating-badge .star{color:var(--star);font-size:14px;}
+  .rating-badge .star-empty{color:var(--ink-faint);font-size:14px;}
   .rating-badge .count{font-weight:400;color:var(--ink-faint);font-size:12px;}
   .no-review{font-size:12px;color:var(--ink-faint);}
+  .zukan-score-block{margin-top:12px;}
+  .zukan-score-note{font-size:11.5px;color:var(--ink-faint);line-height:1.7;margin:8px 0 0;}
 
   .head-main{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
 
@@ -274,7 +283,7 @@
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stats-grid.company{grid-template-columns:repeat(1,1fr);}
     .row-item h3{font-size:16.5px;}
-    .category-pill{display:none;}
+    .row-item .category-pill{display:none;}
     .info-grid{grid-template-columns:1fr;}
     .info-grid.cols-2{grid-template-columns:1fr;}
     .eyecatch-square.thumb{width:52px;height:52px;}
@@ -499,29 +508,49 @@ function recommendCardHTML(a){
     `;
 }
 
+/** 継ぎ目のないループスクロール用に、カード列を2セット連続で描画する。
+ * 2セット目はスクリーンリーダー・キーボード操作からは隠す（内容が重複するため）。 */
 function renderRecommend(){
   const scroll = document.getElementById("recommendScroll");
   if(!scroll) return;
   const list = computeRecommendedAgents();
   scroll.innerHTML = "";
-  list.forEach(a=>{
-    const card = document.createElement("div");
-    card.className = "recommend-card";
-    card.onclick = ()=>navigateToDetail(a);
-    card.innerHTML = recommendCardHTML(a);
-    scroll.appendChild(card);
+  const sets = list.length > 0 ? [list, list] : [list];
+  sets.forEach((set, setIndex)=>{
+    set.forEach(a=>{
+      const card = document.createElement("div");
+      card.className = "recommend-card";
+      card.onclick = ()=>navigateToDetail(a);
+      if(setIndex > 0){
+        card.setAttribute("aria-hidden", "true");
+        card.tabIndex = -1;
+      }
+      card.innerHTML = recommendCardHTML(a);
+      scroll.appendChild(card);
+    });
   });
+  // カード内容（＝スクロール幅）が変わったので、自動スクロールの内部位置も0に合わせ直す
+  recommendAutoScroll.position = 0;
+  scroll.scrollLeft = 0;
 }
 
-const recommendAutoScroll = { rafId: null, direction: 1, paused: false, resumeTimer: null };
+const recommendAutoScroll = { rafId: null, position: 0, paused: false, resumeTimer: null };
 
-/** おすすめ枠をゆっくり自動で往復スクロールさせる。ユーザーが触っている間は一時停止する。 */
+/**
+ * おすすめ枠をゆっくり自動で循環（ループ）スクロールさせる。ユーザーが触っている間は一時停止する。
+ *
+ * 【バグ修正】以前の実装は毎フレーム scroll.scrollLeft を読み戻して次のスクロール位置を計算していたが、
+ * scrollLeft は多くのブラウザで整数pxに丸められる。22px/秒 × 60fpsでは1フレームあたり約0.37pxしか
+ * 進まないため、この端数が常に0へ丸められて位置が永久に進まない（実質フリーズする）バグがあった。
+ * 修正として、実際のスクロール位置とは別に recommendAutoScroll.position を浮動小数点のまま
+ * 自前で積算し、DOMへの反映（丸めの影響を受ける側）とは切り離した。
+ */
 function startRecommendAutoScroll(){
   const scroll = document.getElementById("recommendScroll");
   if(!scroll || recommendAutoScroll.rafId) return;
   if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const SPEED_PX_PER_SEC = 22;
+  const SPEED_PX_PER_SEC = 33;
   let lastTime = null;
 
   function step(timestamp){
@@ -530,11 +559,12 @@ function startRecommendAutoScroll(){
     lastTime = timestamp;
 
     if(!recommendAutoScroll.paused){
-      const maxScroll = scroll.scrollWidth - scroll.clientWidth;
-      if(maxScroll > 0){
-        let next = scroll.scrollLeft + recommendAutoScroll.direction * SPEED_PX_PER_SEC * dt;
-        if(next >= maxScroll){ next = maxScroll; recommendAutoScroll.direction = -1; }
-        else if(next <= 0){ next = 0; recommendAutoScroll.direction = 1; }
+      // 2セット描画しているため、1セット分の幅がちょうどループの周期になる
+      const oneSetWidth = scroll.scrollWidth / 2;
+      if(oneSetWidth > scroll.clientWidth){
+        let next = recommendAutoScroll.position + SPEED_PX_PER_SEC * dt;
+        if(next >= oneSetWidth) next -= oneSetWidth; // 継ぎ目なく先頭へ（2セット目→1セット目相当の位置へ）
+        recommendAutoScroll.position = next;
         scroll.scrollLeft = next;
       }
     }
@@ -548,7 +578,11 @@ function startRecommendAutoScroll(){
   }
   function scheduleResume(){
     if(recommendAutoScroll.resumeTimer) clearTimeout(recommendAutoScroll.resumeTimer);
-    recommendAutoScroll.resumeTimer = setTimeout(()=>{ recommendAutoScroll.paused = false; }, 1800);
+    recommendAutoScroll.resumeTimer = setTimeout(()=>{
+      // 一時停止中にユーザーが手動でスクロールしていた場合に備え、実際の位置に同期してから再開する
+      recommendAutoScroll.position = scroll.scrollLeft;
+      recommendAutoScroll.paused = false;
+    }, 1800);
   }
 
   scroll.addEventListener("mouseenter", pause);
@@ -559,9 +593,11 @@ function startRecommendAutoScroll(){
   // タブの表示/非表示はユーザー操作の一時停止とは切り離し、即座に同期する
   // （タブ切替のタイミング次第でイベントが1回しか来ない場合でも復帰できるように）。
   recommendAutoScroll.paused = document.hidden;
+  if(!recommendAutoScroll.paused) recommendAutoScroll.position = scroll.scrollLeft;
   document.addEventListener("visibilitychange", ()=>{
     if(recommendAutoScroll.resumeTimer) clearTimeout(recommendAutoScroll.resumeTimer);
     recommendAutoScroll.paused = document.hidden;
+    if(!recommendAutoScroll.paused) recommendAutoScroll.position = scroll.scrollLeft;
   });
 }
 
@@ -691,8 +727,36 @@ function completenessScore(agent, currentMode){
 
 function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5-Math.round(rating)); }
 
-function ratingBadge(review, estimated){
-  if(!review) return `<span class="no-review">口コミなし</span>`;
+/**
+ * 実際の口コミに依存しない、サイト独自の★1〜5評価。completenessScore（掲載情報の充実度）を
+ * 1〜5のスケールにマッピングする。実際の口コミの代替として使う場合は、必ず注記とセットで
+ * 表示すること（実際の利用者評価と混同されないようにするため）。
+ */
+function zukanScore(agent, mode){
+  const raw = completenessScore(agent, mode);
+  const max = mode === "candidate" ? 6 : 7;
+  const ratio = raw / max;
+  return Math.max(1, Math.min(5, Math.round(1 + ratio * 4)));
+}
+
+function zukanScoreBadge(agent, currentMode){
+  const score = zukanScore(agent, currentMode);
+  const filled = "★".repeat(score);
+  const empty = "☆".repeat(5 - score);
+  return `<span class="rating-badge"><span class="star">${filled}</span><span class="star-empty">${empty}</span><span class="count">（図鑑スコア）</span></span>`;
+}
+
+/** 詳細ページの口コミセクション用。図鑑スコアの★表示＋実際の口コミと混同されないための注記をセットで返す。 */
+function zukanScoreBlockHTML(agent, currentMode){
+  return `<div class="zukan-score-block">${zukanScoreBadge(agent, currentMode)}<p class="zukan-score-note">本サイト独自の評価です。掲載情報の充実度をもとに算出しており、実際の利用者による評価ではありません。</p></div>`;
+}
+
+/** review が無い場合は、agent/currentMode が渡されていれば図鑑スコアにフォールバックする。 */
+function ratingBadge(review, estimated, agent, currentMode){
+  if(!review){
+    if(agent) return zukanScoreBadge(agent, currentMode);
+    return `<span class="no-review">口コミなし</span>`;
+  }
   const tag = estimated ? `<span class="count">（推定）</span>` : `<span class="count">（${review.count}件）</span>`;
   return `<span class="rating-badge"><span class="star">★</span>${review.rating.toFixed(1)}${tag}</span>`;
 }
@@ -734,12 +798,12 @@ function render(){
         <div class="stat"><div class="k">対象年代</div><div class="v">${a.targetAge}</div></div>
         <div class="stat"><div class="k">対応エリア</div><div class="v">${a.region}</div></div>
         <div class="stat"><div class="k">求人数（目安）</div><div class="v">${a.jobCount}</div></div>
-        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.review || (a.reviews[0]||null), a.real)}</div></div>
+        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.review || (a.reviews[0]||null), a.real, a, "candidate")}</div></div>
     `;
     const companyStats = `
         <div class="stat"><div class="k">成功報酬フィー</div><div class="v">${a.feeRate}</div></div>
         <div class="stat"><div class="k">候補者（タレント）のレンジ</div><div class="v">${a.talentRange}</div></div>
-        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real)}</div></div>
+        <div class="stat"><div class="k">口コミ</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real, a, "company")}</div></div>
     `;
 
     row.innerHTML = `
@@ -789,7 +853,7 @@ function openDetail(a){
             <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
             <p class="comment">「${r.comment}」</p>
           </div>`).join("")
-      : (a.reviewNote ? `<p class="body-text">${a.reviewNote}</p>` : `<div class="no-review-block">口コミはまだありません</div>`);
+      : (a.reviewNote ? `<p class="body-text">${a.reviewNote}</p>` : `<div class="no-review-block">口コミはまだありません</div>`) + zukanScoreBlockHTML(a, "candidate");
 
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
@@ -836,7 +900,7 @@ function openDetail(a){
             <div class="rc-top"><span class="reviewer">${r.reviewer}</span>${ratingBadge(r, a.real)}</div>
             <p class="comment">「${r.comment}」</p>
           </div>`).join("")
-      : (a.companyReviewNote ? `<p class="body-text">${a.companyReviewNote}</p>` : `<div class="no-review-block">企業からの口コミはまだありません</div>`);
+      : (a.companyReviewNote ? `<p class="body-text">${a.companyReviewNote}</p>` : `<div class="no-review-block">企業からの口コミはまだありません</div>`) + zukanScoreBlockHTML(a, "company");
 
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
@@ -847,6 +911,12 @@ function openDetail(a){
           <h2>${a.name}</h2>
           <p class="one-liner">${a.companyOneLiner}</p>
         </div>
+      </div>
+
+      <div class="d-section">
+        <h4>このエージェントの特徴</h4>
+        <p class="body-text">${a.companyAppeal || a.commitmentExplanation}</p>
+        <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
       </div>
 
       <div class="d-section">
@@ -876,7 +946,7 @@ function openDetail(a){
         <div class="info-grid">
           <div><div class="k">候補者のレンジ</div><div class="v">${a.talentRange}</div></div>
           <div><div class="k">対応領域</div><div class="v">${a.category}</div></div>
-          <div><div class="k">企業からの評価</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real)}</div></div>
+          <div><div class="k">企業からの評価</div><div class="v">${ratingBadge(a.companyReviews[0]||null, a.real, a, "company")}</div></div>
         </div>
       </div>
 

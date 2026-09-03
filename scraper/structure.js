@@ -198,6 +198,7 @@ function buildOfflineJesra(raw) {
     features,
     feeExplanation: raw.feeVariationNote || NOT_DISCLOSED,
     commitmentExplanation: NOT_DISCLOSED,
+    companyAppeal: null,
     companyDetail: {
       placementRate: NOT_DISCLOSED,
       avgDays: NOT_DISCLOSED,
@@ -249,6 +250,7 @@ function buildOfflineMhlw(raw) {
     features,
     feeExplanation: NOT_DISCLOSED,
     commitmentExplanation: NOT_DISCLOSED,
+    companyAppeal: null,
     companyDetail: {
       placementRate: NOT_DISCLOSED,
       avgDays: NOT_DISCLOSED,
@@ -332,7 +334,14 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
         talentRange: { type: 'string', description: '候補者の年齢・年収レンジ。根拠が無ければ「' + NOT_DISCLOSED + '」' },
         oneLiner: { type: 'string', description: '求職者向けの一言キャッチコピー（30字前後、誇張・断定は避ける）' },
         companyOneLiner: { type: 'string', description: '採用企業向けの一言キャッチコピー（30字前後）' },
-        appeal: { type: 'string', description: '2〜3文程度の特徴説明。事実情報のみに基づき、事業者コメントの丸写しは禁止（要約・言い換えのみ可）' },
+        appeal: { type: 'string', description: '2〜3文程度の特徴説明。求職者（候補者）にとっての魅力という視点で書く。事実情報のみに基づき、事業者コメントの丸写しは禁止（要約・言い換えのみ可）' },
+        companyAppeal: {
+          type: 'string',
+          description:
+            '1〜2文程度の特徴説明。appealとは視点を変え、採用企業がこのエージェントを使う意味・強み' +
+            '（対応業界・職種の専門性、対応エリア、実績など）という視点で書く。' +
+            '事実情報のみに基づき、事業者コメントの丸写しは禁止（要約・言い換えのみ可）。根拠となる事実が無ければappealの内容を採用企業視点に言い換えてよい。',
+        },
         features: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3, description: '箇条書き特徴3点' },
         feeExplanation: { type: 'string', description: '成功報酬に関する説明文。数値の根拠が無ければその旨を明記' },
         commitmentExplanation: { type: 'string', description: 'どこまで対応してくれるかの説明文' },
@@ -368,7 +377,7 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
       },
       required: [
         'category', 'targetAge', 'jobCount', 'feeRate', 'talentRange', 'oneLiner',
-        'companyOneLiner', 'appeal', 'features', 'feeExplanation', 'commitmentExplanation',
+        'companyOneLiner', 'appeal', 'companyAppeal', 'features', 'feeExplanation', 'commitmentExplanation',
         'companyDetail',
       ],
       additionalProperties: false,
@@ -489,6 +498,7 @@ function assembleEntry(raw, ai, rawHash, source) {
     oneLiner: ai.oneLiner,
     companyOneLiner: ai.companyOneLiner,
     appeal: ai.appeal,
+    companyAppeal: ai.companyAppeal || null,
     features: ai.features,
     reviews: [],
     reviewNote: REVIEW_NOTE,
@@ -592,6 +602,7 @@ if (require.main === module) {
 module.exports = {
   computeRawHash,
   buildOffline,
+  buildWithAI,
   assembleEntry,
   formatRegion,
   stripProtocol,
