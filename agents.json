@@ -43,7 +43,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/49/",
     "_rawHash": "87132720b6454b211141f8740a1edb11c1a4304cf588da7acc79b38316086419",
-    "id": "49"
+    "id": "49",
+    "source": "jesra"
   },
   {
     "name": "アイムファクトリー株式会社",
@@ -89,7 +90,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/47/",
     "_rawHash": "5c63499d6e1057e59caab4f6c341cbee74b9e2b106e6e9e04abfc74d00f8722c",
-    "id": "47"
+    "id": "47",
+    "source": "jesra"
   },
   {
     "name": "アスコープ株式会社",
@@ -135,7 +137,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/13/",
     "_rawHash": "73a9e0fc82286220f65667380f94d57d7c9ac8adbb1311c6c80218b25c044803",
-    "id": "13"
+    "id": "13",
+    "source": "jesra"
   },
   {
     "id": "63",
@@ -181,7 +184,8 @@
       "confidentiality": "法令遵守と適切な情報管理を徹底"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/63/",
-    "_rawHash": "392f036fb60e904340fa5e37067165585e7616fc518c69bbd3a1cc8c27de9c81"
+    "_rawHash": "392f036fb60e904340fa5e37067165585e7616fc518c69bbd3a1cc8c27de9c81",
+    "source": "jesra"
   },
   {
     "id": "60",
@@ -227,7 +231,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/60/",
-    "_rawHash": "c87aff2d948e6d289ebb48299e0b230b7dfcce808a1f68f5108378a3f870befd"
+    "_rawHash": "c87aff2d948e6d289ebb48299e0b230b7dfcce808a1f68f5108378a3f870befd",
+    "source": "jesra"
   },
   {
     "id": "44",
@@ -273,7 +278,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/44/",
-    "_rawHash": "2be4842be3d9e0574ef8b372a5c39eb38a9d09f080d93d4470e36f8c4c6c6cab"
+    "_rawHash": "2be4842be3d9e0574ef8b372a5c39eb38a9d09f080d93d4470e36f8c4c6c6cab",
+    "source": "jesra"
   },
   {
     "id": "14",
@@ -319,7 +325,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/14/",
-    "_rawHash": "818761fa5b6df9509c39b3701bb8eb15cbd6f6441693bb1a4709d0f3bdeaa243"
+    "_rawHash": "818761fa5b6df9509c39b3701bb8eb15cbd6f6441693bb1a4709d0f3bdeaa243",
+    "source": "jesra"
   },
   {
     "id": "61",
@@ -365,7 +372,8 @@
       "confidentiality": "求職者・求人者の情報は職業紹介事業に限定して使用。個人情報は法定目的に基づき適切に管理"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/61/",
-    "_rawHash": "64ca838541f003bf89f3a3ddcb8f4f41aba3bdba7c0ba836e7e34b43214b09f5"
+    "_rawHash": "64ca838541f003bf89f3a3ddcb8f4f41aba3bdba7c0ba836e7e34b43214b09f5",
+    "source": "jesra"
   },
   {
     "name": "株式会社エリートネットワーク",
@@ -411,7 +419,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/16/",
     "_rawHash": "1998f9c91ca102f054b396d709fa61b131647f9fc54d885c8e4b54b4f9bdcef5",
-    "id": "16"
+    "id": "16",
+    "source": "jesra"
   },
   {
     "id": "5",
@@ -457,7 +466,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/5/",
-    "_rawHash": "dceec48fef215e3a952b0e630a6f8b34ccb557a3fa608a46324887304bd0d3e8"
+    "_rawHash": "dceec48fef215e3a952b0e630a6f8b34ccb557a3fa608a46324887304bd0d3e8",
+    "source": "jesra"
   },
   {
     "id": "15",
@@ -503,7 +513,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/15/",
-    "_rawHash": "6793ca283dc0b9ed8fe01c66b8957a7f81d9851cd0d5f76c1949ef93541ad572"
+    "_rawHash": "6793ca283dc0b9ed8fe01c66b8957a7f81d9851cd0d5f76c1949ef93541ad572",
+    "source": "jesra"
   },
   {
     "id": "46",
@@ -549,7 +560,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/46/",
-    "_rawHash": "3b214a086788a03c387a49ac0e26d8f1c05bacaee57b2b394783315159fdb4af"
+    "_rawHash": "3b214a086788a03c387a49ac0e26d8f1c05bacaee57b2b394783315159fdb4af",
+    "source": "jesra"
   },
   {
     "id": "59",
@@ -595,7 +607,8 @@
       "confidentiality": "個人情報適正管理規程に基づき適正に取り扱い。個人情報取扱責任者は職業紹介責任者。年1回以上の職員教育を実施"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/59/",
-    "_rawHash": "a985dccf2d1bcaf74858536e8a77d5af0eb73a4d0f421af864c95cbc33f6734f"
+    "_rawHash": "a985dccf2d1bcaf74858536e8a77d5af0eb73a4d0f421af864c95cbc33f6734f",
+    "source": "jesra"
   },
   {
     "name": "株式会社キッカケクリエイション",
@@ -641,7 +654,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/65/",
     "_rawHash": "95cf6bc7599f298108be7e1462766be6cac77b2306cfdd7e2c0833b0129dc859",
-    "id": "65"
+    "id": "65",
+    "source": "jesra"
   },
   {
     "name": "キャリアバンク株式会社",
@@ -687,7 +701,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/42/",
     "_rawHash": "bde9ea4264809d6e7e52d4fcd2a1b1351da57c4a5f5b5dbdcb78feea470f8da6",
-    "id": "42"
+    "id": "42",
+    "source": "jesra"
   },
   {
     "name": "株式会社キャリアプラス",
@@ -733,7 +748,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/6/",
     "_rawHash": "328313dcc25877316f4a75008aca7d28b7c50b1dcaf6111eda71c87d5b127421",
-    "id": "6"
+    "id": "6",
+    "source": "jesra"
   },
   {
     "id": "18",
@@ -779,7 +795,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/18/",
-    "_rawHash": "8aae2e269ee675f9c646077dd61d52730b0e0ba05456fe1195100eed572c4bb4"
+    "_rawHash": "8aae2e269ee675f9c646077dd61d52730b0e0ba05456fe1195100eed572c4bb4",
+    "source": "jesra"
   },
   {
     "name": "KIRINZI株式会社",
@@ -825,7 +842,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/66/",
     "_rawHash": "5d4a57baaccc482e75b4af5425df4436079ec33ffca2deeaaf2c6453d744c18f",
-    "id": "66"
+    "id": "66",
+    "source": "jesra"
   },
   {
     "id": "17",
@@ -871,7 +889,8 @@
       "confidentiality": "個人情報は職業紹介責任者が取扱い。求職者本人からの開示請求に対して、客観的事実に基づく情報開示と訂正対応を実施"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/17/",
-    "_rawHash": "b2896d6d20d12a208eccab656559cc67892585e9e544dd5ecff3ae0bbfb96005"
+    "_rawHash": "b2896d6d20d12a208eccab656559cc67892585e9e544dd5ecff3ae0bbfb96005",
+    "source": "jesra"
   },
   {
     "id": "53",
@@ -917,7 +936,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/53/",
-    "_rawHash": "67943ce19da139b5f06c2534ce8ad2196b3dd3462a22ad8a54636ae2de502546"
+    "_rawHash": "67943ce19da139b5f06c2534ce8ad2196b3dd3462a22ad8a54636ae2de502546",
+    "source": "jesra"
   },
   {
     "id": "26",
@@ -963,7 +983,8 @@
       "confidentiality": "個人情報保護管理責任者を配置し、個人情報を適切かつ安全に管理"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/26/",
-    "_rawHash": "4ecfa6868cbe62aad9947c49c1a321e81862762f9876291f897095fd7475d7a9"
+    "_rawHash": "4ecfa6868cbe62aad9947c49c1a321e81862762f9876291f897095fd7475d7a9",
+    "source": "jesra"
   },
   {
     "id": "67",
@@ -1009,7 +1030,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/67/",
-    "_rawHash": "0487ed50ac4371c084dc42e07daf46eff45bf38eb33c099f2d1054bfa7ade961"
+    "_rawHash": "0487ed50ac4371c084dc42e07daf46eff45bf38eb33c099f2d1054bfa7ade961",
+    "source": "jesra"
   },
   {
     "name": "株式会社ジェイウェイブ",
@@ -1055,7 +1077,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/27/",
     "_rawHash": "ef5542fbdb0f2526f28060bffd9db17ec433273b5415a9690200e191b93f377e",
-    "id": "27"
+    "id": "27",
+    "source": "jesra"
   },
   {
     "name": "株式会社 ジェイエイシーリクルートメント",
@@ -1101,7 +1124,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/43/",
     "_rawHash": "b02b70e62f80272ce936f17f551ba4c0a91d3d4fc7b45d3d1f5e07c13a128df4",
-    "id": "43"
+    "id": "43",
+    "source": "jesra"
   },
   {
     "id": "28",
@@ -1147,7 +1171,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/28/",
-    "_rawHash": "e6dc0fa385b8f53b46efe7460b20860bb25edf9e17180a707340243e91a70885"
+    "_rawHash": "e6dc0fa385b8f53b46efe7460b20860bb25edf9e17180a707340243e91a70885",
+    "source": "jesra"
   },
   {
     "name": "ジャスネットコミュニケーションズ株式会社",
@@ -1193,7 +1218,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/29/",
     "_rawHash": "cbe479c286f59427a14d143f1805490d3fd0882ca6889b5fd3ee901836086243",
-    "id": "29"
+    "id": "29",
+    "source": "jesra"
   },
   {
     "name": "株式会社ジョブズコンストラクション",
@@ -1239,7 +1265,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/20/",
     "_rawHash": "c5877541d84f2706d0b1f0006bf1a08f94e9555a4cb3f42d9f080da94f28f236",
-    "id": "20"
+    "id": "20",
+    "source": "jesra"
   },
   {
     "name": "株式会社スタッフサービス",
@@ -1285,7 +1312,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/62/",
     "_rawHash": "acb3ae7768c3653b13ada720ced40dd93ba58f4c4a5074974060bbaea1674fa7",
-    "id": "62"
+    "id": "62",
+    "source": "jesra"
   },
   {
     "id": "30",
@@ -1331,7 +1359,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/30/",
-    "_rawHash": "4219f89159e94205050f5dd4095c39705c2bcef85b0ffd195001646a24bfe012"
+    "_rawHash": "4219f89159e94205050f5dd4095c39705c2bcef85b0ffd195001646a24bfe012",
+    "source": "jesra"
   },
   {
     "id": "31",
@@ -1377,7 +1406,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/31/",
-    "_rawHash": "7df514d452b2b92f3e5645f0ecbafbf89889c963803ef43f891a424c8be134fa"
+    "_rawHash": "7df514d452b2b92f3e5645f0ecbafbf89889c963803ef43f891a424c8be134fa",
+    "source": "jesra"
   },
   {
     "id": "50",
@@ -1423,7 +1453,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/50/",
-    "_rawHash": "61a1785e65afbc07115e6cf7289cd915d9624b6b62eefa92d0771fc56da0b58a"
+    "_rawHash": "61a1785e65afbc07115e6cf7289cd915d9624b6b62eefa92d0771fc56da0b58a",
+    "source": "jesra"
   },
   {
     "name": "株式会社TACプロフェッションバンク",
@@ -1469,7 +1500,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/21/",
     "_rawHash": "e05a63469aed800fc1087f34a8eb124d3093b27cc6a8efef23cc7bdd81ccde17",
-    "id": "21"
+    "id": "21",
+    "source": "jesra"
   },
   {
     "name": "ちばぎんキャリアサービス株式会社",
@@ -1515,7 +1547,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/58/",
     "_rawHash": "6c90c173c05d9ad5ef1b63bef6aae2bb82f23333288769bd1068483e61eee17a",
-    "id": "58"
+    "id": "58",
+    "source": "jesra"
   },
   {
     "id": "10",
@@ -1561,7 +1594,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/10/",
-    "_rawHash": "453e92c19ecaf173c52d0431bd3b5b0bebf3cb57258a1b570562e3aaee6000ab"
+    "_rawHash": "453e92c19ecaf173c52d0431bd3b5b0bebf3cb57258a1b570562e3aaee6000ab",
+    "source": "jesra"
   },
   {
     "id": "40",
@@ -1607,7 +1641,8 @@
       "confidentiality": "職業紹介事業に係る求人者情報のみ取扱。個人情報は職業紹介責任者が取扱。本人請求時に客観的事実に基づく情報を開示。"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/40/",
-    "_rawHash": "2869dd3341bb5834f10f28c6481ec4c3476006f8d15ecdf8f1771f08c0457a76"
+    "_rawHash": "2869dd3341bb5834f10f28c6481ec4c3476006f8d15ecdf8f1771f08c0457a76",
+    "source": "jesra"
   },
   {
     "name": "株式会社DxGcareer",
@@ -1653,7 +1688,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/7/",
     "_rawHash": "abf7056207c072624bb469a8ae8a4505654e884e9191ed9f054564e54022a362",
-    "id": "7"
+    "id": "7",
+    "source": "jesra"
   },
   {
     "id": "51",
@@ -1699,7 +1735,8 @@
       "confidentiality": "個人情報適正管理規程に基づき適正に取り扱い"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/51/",
-    "_rawHash": "f0754bd3075b56b343454123167db8da6290f0489a490e7b7939a536b575b53d"
+    "_rawHash": "f0754bd3075b56b343454123167db8da6290f0489a490e7b7939a536b575b53d",
+    "source": "jesra"
   },
   {
     "id": "22",
@@ -1745,7 +1782,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/22/",
-    "_rawHash": "69346ccc88c8767c418aaa2b8a8c19007ed4bb012296ae11244c5a7f7bedb7af"
+    "_rawHash": "69346ccc88c8767c418aaa2b8a8c19007ed4bb012296ae11244c5a7f7bedb7af",
+    "source": "jesra"
   },
   {
     "name": "株式会社ドットコム・マーケティング",
@@ -1791,7 +1829,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/48/",
     "_rawHash": "dab17857a59abf59e2ebb622032408dba99259306dafb3e0f9f8cc357682e72b",
-    "id": "48"
+    "id": "48",
+    "source": "jesra"
   },
   {
     "id": "56",
@@ -1837,7 +1876,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/56/",
-    "_rawHash": "8f3adcd6a8290afec0019b35aa43d9033152d3ec446ed463b2d8d6e453ca45d9"
+    "_rawHash": "8f3adcd6a8290afec0019b35aa43d9033152d3ec446ed463b2d8d6e453ca45d9",
+    "source": "jesra"
   },
   {
     "id": "23",
@@ -1883,7 +1923,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/23/",
-    "_rawHash": "4fcea7b0e3fe1e92543d17d9aa01c7cc7376cf554cfb286de3959b1f5ab7baab"
+    "_rawHash": "4fcea7b0e3fe1e92543d17d9aa01c7cc7376cf554cfb286de3959b1f5ab7baab",
+    "source": "jesra"
   },
   {
     "name": "八十二スタッフサービス株式会社",
@@ -1929,7 +1970,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/24/",
     "_rawHash": "e425f42276946a4073a6947208b9d1ab00dd1c845d2eaf340abf477885739bbc",
-    "id": "24"
+    "id": "24",
+    "source": "jesra"
   },
   {
     "name": "株式会社パソナ",
@@ -1975,7 +2017,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/54/",
     "_rawHash": "ae25e4ab966ccd3757bda7618d40f9290d116cd5616b1d54540016853d49a2db",
-    "id": "54"
+    "id": "54",
+    "source": "jesra"
   },
   {
     "name": "パーソルキャリア株式会社",
@@ -2021,7 +2064,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/38/",
     "_rawHash": "bcd0e83f3715075d5e41cf9d20f8f5bef208cc6b60a1a4fd17c9570009956034",
-    "id": "38"
+    "id": "38",
+    "source": "jesra"
   },
   {
     "name": "株式会社ブレイブ",
@@ -2067,7 +2111,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/32/",
     "_rawHash": "f62dbe3371b1f9d91333f84d626349a76284e1466764b8a7211a23f61e2aefd5",
-    "id": "32"
+    "id": "32",
+    "source": "jesra"
   },
   {
     "name": "株式会社ベネッセi-キャリア",
@@ -2113,7 +2158,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/39/",
     "_rawHash": "382a9f449741e811ef8a9a3d45fa761ed6ddd31ca3b4e4de85884bb8accfb837",
-    "id": "39"
+    "id": "39",
+    "source": "jesra"
   },
   {
     "id": "33",
@@ -2159,7 +2205,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/33/",
-    "_rawHash": "d502c181b86bc9cdaa09df70d4cfdfadca47d2e01eb2c2f09978d27cb45be558"
+    "_rawHash": "d502c181b86bc9cdaa09df70d4cfdfadca47d2e01eb2c2f09978d27cb45be558",
+    "source": "jesra"
   },
   {
     "name": "株式会社マイナビグローバル",
@@ -2205,7 +2252,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/52/",
     "_rawHash": "f9b1db97df7d384cad445c12db19f8e80b6859bafde3fd4784d6d3dd966e9d78",
-    "id": "52"
+    "id": "52",
+    "source": "jesra"
   },
   {
     "name": "みずほビジネスパートナー株式会社",
@@ -2251,7 +2299,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/64/",
     "_rawHash": "7e8a3a0f6b33bf760247c7c9220c3246c580a5e25fa9afc09cb61884ee7623f6",
-    "id": "64"
+    "id": "64",
+    "source": "jesra"
   },
   {
     "id": "34",
@@ -2297,7 +2346,8 @@
       "confidentiality": "個人情報保護管理規定に基づき、求職者および求人者の個人情報を適正に管理"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/34/",
-    "_rawHash": "3f287fd98cd82b263604f4a0c93c5c75b215000f1c0197719d89e38d0b1cb228"
+    "_rawHash": "3f287fd98cd82b263604f4a0c93c5c75b215000f1c0197719d89e38d0b1cb228",
+    "source": "jesra"
   },
   {
     "name": "株式会社メディカル・プラネット",
@@ -2343,7 +2393,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/35/",
     "_rawHash": "1e2c240b4b40036f0cb9b42d995a0c8672fb703b50066d90b0777240d5338182",
-    "id": "35"
+    "id": "35",
+    "source": "jesra"
   },
   {
     "name": "株式会社メディカルリソース",
@@ -2389,7 +2440,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/25/",
     "_rawHash": "1f765a81a54d0719ef1ebbdbceac814017aa07d70020dd3049bfe57d84dcf2be",
-    "id": "25"
+    "id": "25",
+    "source": "jesra"
   },
   {
     "id": "12",
@@ -2435,7 +2487,8 @@
       "confidentiality": "職業紹介個人情報管理規程に基づき、事務所内の職業紹介従事社員のみが個人情報を取り扱い。個人情報取扱責任者は各支社の職業紹介責任者。年1回の教育・指導を実施"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/12/",
-    "_rawHash": "e5b6ea8c62ea03537e25c1aeaf9a6f67548f01a3addb64a59a015c782b67a671"
+    "_rawHash": "e5b6ea8c62ea03537e25c1aeaf9a6f67548f01a3addb64a59a015c782b67a671",
+    "source": "jesra"
   },
   {
     "name": "株式会社レックスアドバイザーズ",
@@ -2481,7 +2534,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/57/",
     "_rawHash": "dc6b1f85568f277a62477e8453a297b1a7f71dbe8b1141412e6a764b8471675c",
-    "id": "57"
+    "id": "57",
+    "source": "jesra"
   },
   {
     "id": "45",
@@ -2527,7 +2581,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/45/",
-    "_rawHash": "af1f74ff6e624ad39f4e6b207748d827dc6a054715ce0f83e041836c4aa2bba7"
+    "_rawHash": "af1f74ff6e624ad39f4e6b207748d827dc6a054715ce0f83e041836c4aa2bba7",
+    "source": "jesra"
   },
   {
     "name": "株式会社ワークステーション",
@@ -2573,7 +2628,8 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/36/",
     "_rawHash": "b411bc66b0e8f2592e30b88c4e5c92c15035ae097e5070dce25c8e517da2fbf7",
-    "id": "36"
+    "id": "36",
+    "source": "jesra"
   },
   {
     "name": "株式会社ワークポート",
@@ -2619,10 +2675,12 @@
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/41/",
     "_rawHash": "7f91e48f9ccd23df423a35310c8341b3c62d009e7a6d8c17a40d4bcb436618d2",
-    "id": "41"
+    "id": "41",
+    "source": "jesra"
   },
   {
     "id": "01-mu-010002",
+    "source": "mhlw",
     "name": "一般社団法人 札幌市医師会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2669,6 +2727,7 @@
   },
   {
     "id": "01-mu-090002",
+    "source": "mhlw",
     "name": "職業訓練法人 釧路地方職業能力開発協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2715,6 +2774,7 @@
   },
   {
     "id": "01-mu-300029",
+    "source": "mhlw",
     "name": "一般社団法人美唄地域人材開発センター運営協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2761,6 +2821,7 @@
   },
   {
     "id": "01-mu-300033",
+    "source": "mhlw",
     "name": "キャリアバンク株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2807,6 +2868,7 @@
   },
   {
     "id": "01-mu-300035",
+    "source": "mhlw",
     "name": "公益社団法人 上川北部地域人材開発センター運営協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2853,6 +2915,7 @@
   },
   {
     "id": "01-mu-300042",
+    "source": "mhlw",
     "name": "初山別村商工会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2899,6 +2962,7 @@
   },
   {
     "id": "01-mu-300052",
+    "source": "mhlw",
     "name": "日本信達 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2945,6 +3009,7 @@
   },
   {
     "id": "01-mu-300053",
+    "source": "mhlw",
     "name": "社会福祉法人 上川町社会福祉協議会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2991,6 +3056,7 @@
   },
   {
     "id": "01-mu-300060",
+    "source": "mhlw",
     "name": "株式会社 ＨＡＪマネジメント",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3037,6 +3103,7 @@
   },
   {
     "id": "01-mu-300066",
+    "source": "mhlw",
     "name": "株式会社 Ｋａｍ Ｉｎｔｅｒｎａｔｉｏｎａｌ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3083,6 +3150,7 @@
   },
   {
     "id": "01-yu-010019",
+    "source": "mhlw",
     "name": "株式会社 札幌昭栄",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3129,6 +3197,7 @@
   },
   {
     "id": "01-yu-010082",
+    "source": "mhlw",
     "name": "株式会社 エイチビーケーサポートワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3175,6 +3244,7 @@
   },
   {
     "id": "01-yu-050002",
+    "source": "mhlw",
     "name": "有限会社 北見マーケットコミュニケーションズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3221,6 +3291,7 @@
   },
   {
     "id": "01-yu-300012",
+    "source": "mhlw",
     "name": "株式会社 ロックウェル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3267,6 +3338,7 @@
   },
   {
     "id": "01-yu-300020",
+    "source": "mhlw",
     "name": "株式会社 道新アクセス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3313,6 +3385,7 @@
   },
   {
     "id": "01-yu-300021",
+    "source": "mhlw",
     "name": "株式会社 札幌ロジステックス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3359,6 +3432,7 @@
   },
   {
     "id": "01-yu-300031",
+    "source": "mhlw",
     "name": "株式会社 アネックス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3405,6 +3479,7 @@
   },
   {
     "id": "01-yu-300039",
+    "source": "mhlw",
     "name": "株式会社 ファーストステップ",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3451,6 +3526,7 @@
   },
   {
     "id": "01-yu-300046",
+    "source": "mhlw",
     "name": "メイツセレクト 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3497,6 +3573,7 @@
   },
   {
     "id": "01-yu-300059",
+    "source": "mhlw",
     "name": "共通エクスプレス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3543,6 +3620,7 @@
   },
   {
     "id": "01-yu-300064",
+    "source": "mhlw",
     "name": "有限会社 ガーディアン美警",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3589,6 +3667,7 @@
   },
   {
     "id": "01-yu-300089",
+    "source": "mhlw",
     "name": "モス物流プランニング 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3635,6 +3714,7 @@
   },
   {
     "id": "01-yu-300090",
+    "source": "mhlw",
     "name": "株式会社 アメリカンビジネスサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3681,6 +3761,7 @@
   },
   {
     "id": "01-yu-300094",
+    "source": "mhlw",
     "name": "株式会社 クリーンコーポレーション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3727,6 +3808,7 @@
   },
   {
     "id": "01-yu-300102",
+    "source": "mhlw",
     "name": "株式会社 エルフィンウエブ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3773,6 +3855,7 @@
   },
   {
     "id": "01-yu-300106",
+    "source": "mhlw",
     "name": "株式会社 ネオコーポレーション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3819,6 +3902,7 @@
   },
   {
     "id": "01-yu-300143",
+    "source": "mhlw",
     "name": "株式会社 ＢＥＣＫ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3865,6 +3949,7 @@
   },
   {
     "id": "01-yu-300172",
+    "source": "mhlw",
     "name": "株式会社 千歳マネキン紹介所",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3911,6 +3996,7 @@
   },
   {
     "id": "01-yu-300184",
+    "source": "mhlw",
     "name": "株式会社 アシストワン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -3957,6 +4043,7 @@
   },
   {
     "id": "01-yu-300185",
+    "source": "mhlw",
     "name": "リンケージサービス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4003,6 +4090,7 @@
   },
   {
     "id": "01-yu-300246",
+    "source": "mhlw",
     "name": "株式会社 ヤマダイグループ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4049,6 +4137,7 @@
   },
   {
     "id": "01-yu-300259",
+    "source": "mhlw",
     "name": "株式会社 プロサポート物流",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4095,6 +4184,7 @@
   },
   {
     "id": "01-yu-300273",
+    "source": "mhlw",
     "name": "株式会社 札総",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4141,6 +4231,7 @@
   },
   {
     "id": "01-yu-300319",
+    "source": "mhlw",
     "name": "合同会社 エム・アイ・エス札幌",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4187,6 +4278,7 @@
   },
   {
     "id": "01-yu-300333",
+    "source": "mhlw",
     "name": "株式会社 ＧＳＩ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4233,6 +4325,7 @@
   },
   {
     "id": "01-yu-300356",
+    "source": "mhlw",
     "name": "株式会社エス・エム・エスサポートサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4279,6 +4372,7 @@
   },
   {
     "id": "01-yu-300357",
+    "source": "mhlw",
     "name": "株式会社 ノースグリーン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4325,6 +4419,7 @@
   },
   {
     "id": "01-yu-300362",
+    "source": "mhlw",
     "name": "株式会社グラン・メディコ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4371,6 +4466,7 @@
   },
   {
     "id": "01-yu-300363",
+    "source": "mhlw",
     "name": "三鉱建設株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4417,6 +4513,7 @@
   },
   {
     "id": "01-yu-300364",
+    "source": "mhlw",
     "name": "株式会社大原キャリアスタッフ北海道",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4463,6 +4560,7 @@
   },
   {
     "id": "01-yu-300390",
+    "source": "mhlw",
     "name": "株式会社 エーピーアール",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4509,6 +4607,7 @@
   },
   {
     "id": "01-yu-300395",
+    "source": "mhlw",
     "name": "楡創研 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4555,6 +4654,7 @@
   },
   {
     "id": "01-yu-300398",
+    "source": "mhlw",
     "name": "株式会社 ソフトガーデン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4601,6 +4701,7 @@
   },
   {
     "id": "01-yu-300402",
+    "source": "mhlw",
     "name": "株式会社エムジー・コーポレーション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4647,6 +4748,7 @@
   },
   {
     "id": "01-yu-300404",
+    "source": "mhlw",
     "name": "伊達環境管理株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4693,6 +4795,7 @@
   },
   {
     "id": "01-yu-300412",
+    "source": "mhlw",
     "name": "株式会社 ＮＴＴネクシア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4739,6 +4842,7 @@
   },
   {
     "id": "01-yu-300415",
+    "source": "mhlw",
     "name": "株式会社 Ｍａｍｍｙ Ｐｒｏ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4785,6 +4889,7 @@
   },
   {
     "id": "01-yu-300430",
+    "source": "mhlw",
     "name": "小石川 志津加",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4831,6 +4936,7 @@
   },
   {
     "id": "01-yu-300436",
+    "source": "mhlw",
     "name": "株式会社 ＨＫＳ ＪＡＰＡＮ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4877,6 +4983,7 @@
   },
   {
     "id": "01-yu-300443",
+    "source": "mhlw",
     "name": "社会医療法人社団 三草会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4923,6 +5030,7 @@
   },
   {
     "id": "01-yu-300446",
+    "source": "mhlw",
     "name": "株式会社 サンコー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -4969,6 +5077,7 @@
   },
   {
     "id": "01-yu-300447",
+    "source": "mhlw",
     "name": "株式会社 ＳＰＩ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5015,6 +5124,7 @@
   },
   {
     "id": "01-yu-300461",
+    "source": "mhlw",
     "name": "株式会社 ビツグベン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5061,6 +5171,7 @@
   },
   {
     "id": "01-yu-300472",
+    "source": "mhlw",
     "name": "株式会社 ノーステクノロジー",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5107,6 +5218,7 @@
   },
   {
     "id": "01-yu-300476",
+    "source": "mhlw",
     "name": "合通プラス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5153,6 +5265,7 @@
   },
   {
     "id": "01-yu-300483",
+    "source": "mhlw",
     "name": "株式会社 サクライサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5199,6 +5312,7 @@
   },
   {
     "id": "01-yu-300491",
+    "source": "mhlw",
     "name": "ＤＣエージェンシー 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5245,6 +5359,7 @@
   },
   {
     "id": "01-yu-300502",
+    "source": "mhlw",
     "name": "株式会社 ドリームサポート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5291,6 +5406,7 @@
   },
   {
     "id": "01-yu-300505",
+    "source": "mhlw",
     "name": "株式会社 ＯＴｉｓ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5337,6 +5453,7 @@
   },
   {
     "id": "01-yu-300520",
+    "source": "mhlw",
     "name": "有限会社 コミュニティ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5383,6 +5500,7 @@
   },
   {
     "id": "01-yu-300530",
+    "source": "mhlw",
     "name": "株式会社 １３１",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5429,6 +5547,7 @@
   },
   {
     "id": "01-yu-300532",
+    "source": "mhlw",
     "name": "エイトカラーファームズ 株式会社",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5475,6 +5594,7 @@
   },
   {
     "id": "01-yu-300533",
+    "source": "mhlw",
     "name": "副社長バンク 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5521,6 +5641,7 @@
   },
   {
     "id": "01-yu-300543",
+    "source": "mhlw",
     "name": "千歳相互観光バス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5567,6 +5688,7 @@
   },
   {
     "id": "01-yu-300547",
+    "source": "mhlw",
     "name": "特定非営利活動法人 北海道ＮＰＯサポートセンター",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5613,6 +5735,7 @@
   },
   {
     "id": "01-yu-300554",
+    "source": "mhlw",
     "name": "株式会社ＭＩＫ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5659,6 +5782,7 @@
   },
   {
     "id": "01-yu-300555",
+    "source": "mhlw",
     "name": "株式会社 ガロード",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5705,6 +5829,7 @@
   },
   {
     "id": "01-yu-300564",
+    "source": "mhlw",
     "name": "株式会社 ドリーム",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5751,6 +5876,7 @@
   },
   {
     "id": "01-yu-300569",
+    "source": "mhlw",
     "name": "北日本産業 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5797,6 +5923,7 @@
   },
   {
     "id": "01-yu-300570",
+    "source": "mhlw",
     "name": "フロンティアパートナーＦＡＳ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5843,6 +5970,7 @@
   },
   {
     "id": "01-yu-300590",
+    "source": "mhlw",
     "name": "株式会社 トーホーエンジニアリング",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5889,6 +6017,7 @@
   },
   {
     "id": "01-yu-300591",
+    "source": "mhlw",
     "name": "株式会社 ｋａｎｐｒｏ‐ｗｏｒｋ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5935,6 +6064,7 @@
   },
   {
     "id": "01-yu-300602",
+    "source": "mhlw",
     "name": "株式会社 かんだ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -5981,6 +6111,7 @@
   },
   {
     "id": "01-yu-300605",
+    "source": "mhlw",
     "name": "坂口 眞一",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6027,6 +6158,7 @@
   },
   {
     "id": "01-yu-300607",
+    "source": "mhlw",
     "name": "株式会社 エス・イー・ジャパン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6073,6 +6205,7 @@
   },
   {
     "id": "01-yu-300621",
+    "source": "mhlw",
     "name": "株式会社 ギヤサポート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6119,6 +6252,7 @@
   },
   {
     "id": "01-yu-300639",
+    "source": "mhlw",
     "name": "株式会社 ミュートネット",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6165,6 +6299,7 @@
   },
   {
     "id": "01-yu-300641",
+    "source": "mhlw",
     "name": "株式会社 一寸房",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6211,6 +6346,7 @@
   },
   {
     "id": "01-yu-300642",
+    "source": "mhlw",
     "name": "株式会社 Ｓ．Ｉ．Ｃ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6257,6 +6393,7 @@
   },
   {
     "id": "01-yu-300655",
+    "source": "mhlw",
     "name": "荒井 輝夫",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6303,6 +6440,7 @@
   },
   {
     "id": "01-yu-300665",
+    "source": "mhlw",
     "name": "株式会社 キャリアパートナー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6349,6 +6487,7 @@
   },
   {
     "id": "01-yu-300669",
+    "source": "mhlw",
     "name": "株式会社 コミュニティーワークス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6395,6 +6534,7 @@
   },
   {
     "id": "01-yu-300674",
+    "source": "mhlw",
     "name": "株式会社 ＬＥＡＦ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6441,6 +6581,7 @@
   },
   {
     "id": "01-yu-300677",
+    "source": "mhlw",
     "name": "株式会社 ノースモバイル",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6487,6 +6628,7 @@
   },
   {
     "id": "01-yu-300680",
+    "source": "mhlw",
     "name": "株式会社 オガワヤ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6533,6 +6675,7 @@
   },
   {
     "id": "01-yu-300690",
+    "source": "mhlw",
     "name": "Ｎ＆ｓｔａｒ 合同会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6579,6 +6722,7 @@
   },
   {
     "id": "01-yu-300705",
+    "source": "mhlw",
     "name": "株式会社 ＹＮＳトラスト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6625,6 +6769,7 @@
   },
   {
     "id": "01-yu-300712",
+    "source": "mhlw",
     "name": "株式会社 クリーンコーポレーション北海道",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6671,6 +6816,7 @@
   },
   {
     "id": "01-yu-300716",
+    "source": "mhlw",
     "name": "株式会社 eek",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6717,6 +6863,7 @@
   },
   {
     "id": "01-yu-300740",
+    "source": "mhlw",
     "name": "名美興業 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6763,6 +6910,7 @@
   },
   {
     "id": "01-yu-300741",
+    "source": "mhlw",
     "name": "鈴蘭ビルサービス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6809,6 +6957,7 @@
   },
   {
     "id": "01-yu-300747",
+    "source": "mhlw",
     "name": "北海道農業協同組合中央会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6855,6 +7004,7 @@
   },
   {
     "id": "01-yu-300752",
+    "source": "mhlw",
     "name": "株式会社 Ｎｏｒｔｈ Ｌｕｃｅ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6901,6 +7051,7 @@
   },
   {
     "id": "01-yu-300753",
+    "source": "mhlw",
     "name": "学校法人 北工学園",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6947,6 +7098,7 @@
   },
   {
     "id": "01-yu-300755",
+    "source": "mhlw",
     "name": "株式会社 竹久",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -6993,6 +7145,7 @@
   },
   {
     "id": "01-yu-300756",
+    "source": "mhlw",
     "name": "株式会社 札幌情報ソリューションズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7039,6 +7192,7 @@
   },
   {
     "id": "01-yu-300758",
+    "source": "mhlw",
     "name": "株式会社 セキュアスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7085,6 +7239,7 @@
   },
   {
     "id": "01-yu-300767",
+    "source": "mhlw",
     "name": "株式会社 ＦＥＲＮＡ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7131,6 +7286,7 @@
   },
   {
     "id": "01-yu-300771",
+    "source": "mhlw",
     "name": "一般社団法人 国際人材育成支援協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7177,6 +7333,7 @@
   },
   {
     "id": "01-yu-300775",
+    "source": "mhlw",
     "name": "リレーワークス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7223,6 +7380,7 @@
   },
   {
     "id": "01-yu-300778",
+    "source": "mhlw",
     "name": "北海道倶楽部 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7269,6 +7427,7 @@
   },
   {
     "id": "01-yu-300780",
+    "source": "mhlw",
     "name": "Ｉｄｅａ Ｆｅｅｌ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7315,6 +7474,7 @@
   },
   {
     "id": "01-yu-300784",
+    "source": "mhlw",
     "name": "Ｆｏｒｃｅ Ｌｉｎｋ Ｎｅｘｔ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7361,6 +7521,7 @@
   },
   {
     "id": "01-yu-300786",
+    "source": "mhlw",
     "name": "株式会社 Ａｕｂｕ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7407,6 +7568,7 @@
   },
   {
     "id": "01-yu-300789",
+    "source": "mhlw",
     "name": "株式会社 インフィニティ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7453,6 +7615,7 @@
   },
   {
     "id": "01-yu-300797",
+    "source": "mhlw",
     "name": "株式会社 ＦＡＢ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7499,6 +7662,7 @@
   },
   {
     "id": "01-yu-300821",
+    "source": "mhlw",
     "name": "株式会社 ヒューマンイノベーションラボ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7545,6 +7709,7 @@
   },
   {
     "id": "01-yu-300831",
+    "source": "mhlw",
     "name": "Ｒトラスト 合同会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7591,6 +7756,7 @@
   },
   {
     "id": "01-yu-300832",
+    "source": "mhlw",
     "name": "十勝人材 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7637,6 +7803,7 @@
   },
   {
     "id": "01-yu-300847",
+    "source": "mhlw",
     "name": "アミューズメント北海道 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7683,6 +7850,7 @@
   },
   {
     "id": "01-yu-300851",
+    "source": "mhlw",
     "name": "株式会社 ＪＡＰＡＮ ＱＵＡＬＩＴＹ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7729,6 +7897,7 @@
   },
   {
     "id": "01-yu-300863",
+    "source": "mhlw",
     "name": "株式会社 ケイズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7775,6 +7944,7 @@
   },
   {
     "id": "01-yu-300874",
+    "source": "mhlw",
     "name": "株式会社 チセイ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7821,6 +7991,7 @@
   },
   {
     "id": "01-yu-300876",
+    "source": "mhlw",
     "name": "ＮｅＸ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7867,6 +8038,7 @@
   },
   {
     "id": "01-yu-300887",
+    "source": "mhlw",
     "name": "札幌駅総合開発 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7913,6 +8085,7 @@
   },
   {
     "id": "01-yu-300893",
+    "source": "mhlw",
     "name": "クリニックコンサルティングサービス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -7959,6 +8132,7 @@
   },
   {
     "id": "01-yu-300894",
+    "source": "mhlw",
     "name": "株式会社 北海特車サービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8005,6 +8179,7 @@
   },
   {
     "id": "01-yu-300899",
+    "source": "mhlw",
     "name": "ＫＳコンサル 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8051,6 +8226,7 @@
   },
   {
     "id": "01-yu-300909",
+    "source": "mhlw",
     "name": "ＷＡＧＡＯ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8097,6 +8273,7 @@
   },
   {
     "id": "01-yu-300913",
+    "source": "mhlw",
     "name": "片山 一幸",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8143,6 +8320,7 @@
   },
   {
     "id": "01-yu-300916",
+    "source": "mhlw",
     "name": "株式会社 ＳＨＡＲＥ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8189,6 +8367,7 @@
   },
   {
     "id": "01-yu-300919",
+    "source": "mhlw",
     "name": "株式会社 ＭＯＫＡ．",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8235,6 +8414,7 @@
   },
   {
     "id": "01-yu-300921",
+    "source": "mhlw",
     "name": "浜益特定地域づくり事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8281,6 +8461,7 @@
   },
   {
     "id": "01-yu-300924",
+    "source": "mhlw",
     "name": "アサヒ管財 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8327,6 +8508,7 @@
   },
   {
     "id": "01-yu-300929",
+    "source": "mhlw",
     "name": "ミャンマーフロンティア 株式会社",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8373,6 +8555,7 @@
   },
   {
     "id": "01-yu-300930",
+    "source": "mhlw",
     "name": "株式会社 ＨＯＴサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8419,6 +8602,7 @@
   },
   {
     "id": "01-yu-300934",
+    "source": "mhlw",
     "name": "有限会社 プログレスＡＩ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8465,6 +8649,7 @@
   },
   {
     "id": "01-yu-300935",
+    "source": "mhlw",
     "name": "合同会社 ドリームヒルズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8511,6 +8696,7 @@
   },
   {
     "id": "01-yu-900001",
+    "source": "mhlw",
     "name": "公益社団法人北海道シルバー人材センター連合会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8557,6 +8743,7 @@
   },
   {
     "id": "01-toku-000008",
+    "source": "mhlw",
     "name": "芽室町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8603,6 +8790,7 @@
   },
   {
     "id": "01-toku-000010",
+    "source": "mhlw",
     "name": "新函館農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8649,6 +8837,7 @@
   },
   {
     "id": "01-toku-000013",
+    "source": "mhlw",
     "name": "当麻農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8695,6 +8884,7 @@
   },
   {
     "id": "01-toku-000016",
+    "source": "mhlw",
     "name": "豊頃町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8741,6 +8931,7 @@
   },
   {
     "id": "01-toku-000026",
+    "source": "mhlw",
     "name": "オホーツク国際事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8787,6 +8978,7 @@
   },
   {
     "id": "01-toku-000034",
+    "source": "mhlw",
     "name": "びらとり農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8833,6 +9025,7 @@
   },
   {
     "id": "01-toku-000048",
+    "source": "mhlw",
     "name": "津別町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8879,6 +9072,7 @@
   },
   {
     "id": "01-toku-000052",
+    "source": "mhlw",
     "name": "とまこまい広域農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8925,6 +9119,7 @@
   },
   {
     "id": "01-toku-000059",
+    "source": "mhlw",
     "name": "東日本国際交流事業協同組合",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -8971,6 +9166,7 @@
   },
   {
     "id": "01-toku-000065",
+    "source": "mhlw",
     "name": "佐呂間町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9017,6 +9213,7 @@
   },
   {
     "id": "01-toku-000072",
+    "source": "mhlw",
     "name": "道北なよろ農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9063,6 +9260,7 @@
   },
   {
     "id": "01-toku-000080",
+    "source": "mhlw",
     "name": "とうや湖農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9109,6 +9307,7 @@
   },
   {
     "id": "01-toku-000086",
+    "source": "mhlw",
     "name": "根室商工会議所",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9155,6 +9354,7 @@
   },
   {
     "id": "01-toku-000098",
+    "source": "mhlw",
     "name": "たいせつ農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9201,6 +9401,7 @@
   },
   {
     "id": "01-toku-000109",
+    "source": "mhlw",
     "name": "ホクレン農業協同組合連合会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9247,6 +9448,7 @@
   },
   {
     "id": "01-toku-000111",
+    "source": "mhlw",
     "name": "きたそらち農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9293,6 +9495,7 @@
   },
   {
     "id": "01-toku-000112",
+    "source": "mhlw",
     "name": "札幌商工会議所",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9339,6 +9542,7 @@
   },
   {
     "id": "01-toku-000114",
+    "source": "mhlw",
     "name": "東川町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9385,6 +9589,7 @@
   },
   {
     "id": "01-toku-000121",
+    "source": "mhlw",
     "name": "帯広大正農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9431,6 +9636,7 @@
   },
   {
     "id": "01-toku-000127",
+    "source": "mhlw",
     "name": "ながぬま農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9477,6 +9683,7 @@
   },
   {
     "id": "01-toku-000130",
+    "source": "mhlw",
     "name": "札内農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9523,6 +9730,7 @@
   },
   {
     "id": "01-toku-000132",
+    "source": "mhlw",
     "name": "月形町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9569,6 +9777,7 @@
   },
   {
     "id": "01-toku-000133",
+    "source": "mhlw",
     "name": "十勝清水町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9615,6 +9824,7 @@
   },
   {
     "id": "01-toku-000135",
+    "source": "mhlw",
     "name": "広尾町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9661,6 +9871,7 @@
   },
   {
     "id": "01-toku-000139",
+    "source": "mhlw",
     "name": "浦幌町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9707,6 +9918,7 @@
   },
   {
     "id": "01-toku-000140",
+    "source": "mhlw",
     "name": "大樹町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9753,6 +9965,7 @@
   },
   {
     "id": "01-toku-000141",
+    "source": "mhlw",
     "name": "士幌町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9799,6 +10012,7 @@
   },
   {
     "id": "01-toku-000143",
+    "source": "mhlw",
     "name": "根室生産農業協同組合連合会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9845,6 +10059,7 @@
   },
   {
     "id": "01-toku-000145",
+    "source": "mhlw",
     "name": "宗谷南農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9891,6 +10106,7 @@
   },
   {
     "id": "01-toku-000149",
+    "source": "mhlw",
     "name": "森商工会議所",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9937,6 +10153,7 @@
   },
   {
     "id": "01-toku-000153",
+    "source": "mhlw",
     "name": "アシストワンパートナーズ協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -9983,6 +10200,7 @@
   },
   {
     "id": "01-toku-000159",
+    "source": "mhlw",
     "name": "道東酪農協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10029,6 +10247,7 @@
   },
   {
     "id": "13-yu-301584",
+    "source": "mhlw",
     "name": "株式会社アイマックス",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10075,6 +10294,7 @@
   },
   {
     "id": "14-yu-302254",
+    "source": "mhlw",
     "name": "株式会社アウトソーシングトータルサポート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10121,6 +10341,7 @@
   },
   {
     "id": "23-yu-303242",
+    "source": "mhlw",
     "name": "株式会社Ｌｉｖ．Ｄｅｓｉｇｎ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10167,6 +10388,7 @@
   },
   {
     "id": "27-yu-302643",
+    "source": "mhlw",
     "name": "株式会社グローブハート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10213,6 +10435,7 @@
   },
   {
     "id": "27-yu-303083",
+    "source": "mhlw",
     "name": "エクスエージェント株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10259,6 +10482,7 @@
   },
   {
     "id": "01-mu-300030",
+    "source": "mhlw",
     "name": "一般社団法人北海道薬剤師会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10305,6 +10529,7 @@
   },
   {
     "id": "01-yu-300052",
+    "source": "mhlw",
     "name": "エクセル 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10351,6 +10576,7 @@
   },
   {
     "id": "01-yu-300120",
+    "source": "mhlw",
     "name": "株式会社 ネイヴルソリューションスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10397,6 +10623,7 @@
   },
   {
     "id": "01-yu-300188",
+    "source": "mhlw",
     "name": "株式会社 夢カンパニー",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10443,6 +10670,7 @@
   },
   {
     "id": "01-yu-300256",
+    "source": "mhlw",
     "name": "株式会社リンクアソシエーション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10489,6 +10717,7 @@
   },
   {
     "id": "01-yu-300516",
+    "source": "mhlw",
     "name": "株式会社 ジョブサポート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10535,6 +10764,7 @@
   },
   {
     "id": "01-yu-300527",
+    "source": "mhlw",
     "name": "株式会社 グローバルセトル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10581,6 +10811,7 @@
   },
   {
     "id": "01-yu-300574",
+    "source": "mhlw",
     "name": "小池 さや香",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10627,6 +10858,7 @@
   },
   {
     "id": "01-yu-300622",
+    "source": "mhlw",
     "name": "株式会社 伊達観光物産公社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10673,6 +10905,7 @@
   },
   {
     "id": "01-yu-300883",
+    "source": "mhlw",
     "name": "株式会社 ストラボ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10719,6 +10952,7 @@
   },
   {
     "id": "01-toku-000070",
+    "source": "mhlw",
     "name": "渡島噴火湾水産協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10765,6 +10999,7 @@
   },
   {
     "id": "01-toku-000087",
+    "source": "mhlw",
     "name": "北オホーツク農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10811,6 +11046,7 @@
   },
   {
     "id": "01-toku-000106",
+    "source": "mhlw",
     "name": "あさひかわ農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10857,6 +11093,7 @@
   },
   {
     "id": "01-toku-000148",
+    "source": "mhlw",
     "name": "計根別農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10903,6 +11140,7 @@
   },
   {
     "id": "13-yu-080251",
+    "source": "mhlw",
     "name": "テスコ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10949,6 +11187,7 @@
   },
   {
     "id": "14-yu-300103",
+    "source": "mhlw",
     "name": "株式会社ミヨシ・ロジスティックス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -10995,6 +11234,7 @@
   },
   {
     "id": "37-yu-010042",
+    "source": "mhlw",
     "name": "株式会社 ティーネットジャパン",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11041,6 +11281,7 @@
   },
   {
     "id": "01-mu-080001",
+    "source": "mhlw",
     "name": "一般社団法人 中空知地域職業訓練センター協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11087,6 +11328,7 @@
   },
   {
     "id": "01-mu-300044",
+    "source": "mhlw",
     "name": "社会福祉法人 小樽市社会福祉協議会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11133,6 +11375,7 @@
   },
   {
     "id": "01-mu-300051",
+    "source": "mhlw",
     "name": "ニセコ町商工会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11179,6 +11422,7 @@
   },
   {
     "id": "01-yu-010046",
+    "source": "mhlw",
     "name": "株式会社 ブライトサッポロ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11225,6 +11469,7 @@
   },
   {
     "id": "01-yu-300109",
+    "source": "mhlw",
     "name": "株式会社 セイショウ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11271,6 +11516,7 @@
   },
   {
     "id": "01-yu-300238",
+    "source": "mhlw",
     "name": "株式会社スピード北海道",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11317,6 +11563,7 @@
   },
   {
     "id": "01-yu-300409",
+    "source": "mhlw",
     "name": "東洋 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11363,6 +11610,7 @@
   },
   {
     "id": "01-yu-300601",
+    "source": "mhlw",
     "name": "北海道観光人材支援事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11409,6 +11657,7 @@
   },
   {
     "id": "01-yu-300688",
+    "source": "mhlw",
     "name": "株式会社 ケアファミリー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11455,6 +11704,7 @@
   },
   {
     "id": "01-yu-300817",
+    "source": "mhlw",
     "name": "株式会社 カミナリ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11501,6 +11751,7 @@
   },
   {
     "id": "01-yu-300841",
+    "source": "mhlw",
     "name": "Ｓｙａｉｎｓ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11547,6 +11798,7 @@
   },
   {
     "id": "01-toku-000028",
+    "source": "mhlw",
     "name": "札幌南国際事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11593,6 +11845,7 @@
   },
   {
     "id": "01-toku-000039",
+    "source": "mhlw",
     "name": "協同組合アジアンネットワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11639,6 +11892,7 @@
   },
   {
     "id": "13-yu-080433",
+    "source": "mhlw",
     "name": "株式会社池下設計",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11685,6 +11939,7 @@
   },
   {
     "id": "13-yu-305555",
+    "source": "mhlw",
     "name": "株式会社ラブキャリア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11731,6 +11986,7 @@
   },
   {
     "id": "42-yu-300117",
+    "source": "mhlw",
     "name": "ＫＭＴ株式会社",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11777,6 +12033,7 @@
   },
   {
     "id": "01-yu-300112",
+    "source": "mhlw",
     "name": "株式会社 北海道ジェイ・アール・サービスネット",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11823,6 +12080,7 @@
   },
   {
     "id": "01-yu-300219",
+    "source": "mhlw",
     "name": "株式会社 アネックスメディカル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11869,6 +12127,7 @@
   },
   {
     "id": "01-yu-300292",
+    "source": "mhlw",
     "name": "一般社団法人 北海道中小企業家同友会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11915,6 +12174,7 @@
   },
   {
     "id": "01-yu-300397",
+    "source": "mhlw",
     "name": "株式会社 サンシャイン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -11961,6 +12221,7 @@
   },
   {
     "id": "01-yu-300541",
+    "source": "mhlw",
     "name": "株式会社 ホットスタッフ苫小牧",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12007,6 +12268,7 @@
   },
   {
     "id": "01-yu-300733",
+    "source": "mhlw",
     "name": "信誠敬愛協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12053,6 +12315,7 @@
   },
   {
     "id": "01-yu-300737",
+    "source": "mhlw",
     "name": "帯広信用金庫",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12099,6 +12362,7 @@
   },
   {
     "id": "01-yu-300749",
+    "source": "mhlw",
     "name": "株式会社 Ａｒｕｋａｓ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12145,6 +12409,7 @@
   },
   {
     "id": "01-yu-300751",
+    "source": "mhlw",
     "name": "株式会社 ワークアベニュー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12191,6 +12456,7 @@
   },
   {
     "id": "01-yu-300878",
+    "source": "mhlw",
     "name": "株式会社 Ｇ－ｓｕｐｐｏｒｔ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12237,6 +12503,7 @@
   },
   {
     "id": "14-mu-300028",
+    "source": "mhlw",
     "name": "独立行政法人海技教育機構",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12283,6 +12550,7 @@
   },
   {
     "id": "22-yu-030023",
+    "source": "mhlw",
     "name": "株式会社イカイ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12329,6 +12597,7 @@
   },
   {
     "id": "22-yu-300064",
+    "source": "mhlw",
     "name": "アルムメディカルサポート株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12375,6 +12644,7 @@
   },
   {
     "id": "47-yu-300228",
+    "source": "mhlw",
     "name": "株式会社ジョブコラボ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12421,6 +12691,7 @@
   },
   {
     "id": "01-yu-300420",
+    "source": "mhlw",
     "name": "株式会社 ベストアーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12467,6 +12738,7 @@
   },
   {
     "id": "01-yu-300442",
+    "source": "mhlw",
     "name": "株式会社 アベールジャパン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12513,6 +12785,7 @@
   },
   {
     "id": "01-yu-300485",
+    "source": "mhlw",
     "name": "国際教育交流センター 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12559,6 +12832,7 @@
   },
   {
     "id": "01-yu-300558",
+    "source": "mhlw",
     "name": "グローバルフレッシュ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12605,6 +12879,7 @@
   },
   {
     "id": "01-yu-300648",
+    "source": "mhlw",
     "name": "道新インタラクティブ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12651,6 +12926,7 @@
   },
   {
     "id": "01-yu-300656",
+    "source": "mhlw",
     "name": "株式会社 フィーリンクス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12697,6 +12973,7 @@
   },
   {
     "id": "01-yu-300757",
+    "source": "mhlw",
     "name": "合同会社 Luana Lab",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12743,6 +13020,7 @@
   },
   {
     "id": "01-yu-300779",
+    "source": "mhlw",
     "name": "Ｇ.ＷＯＲＫＳ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12789,6 +13067,7 @@
   },
   {
     "id": "01-yu-300904",
+    "source": "mhlw",
     "name": "総合技研 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12835,6 +13114,7 @@
   },
   {
     "id": "01-toku-000006",
+    "source": "mhlw",
     "name": "標津町農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12881,6 +13161,7 @@
   },
   {
     "id": "23-yu-301250",
+    "source": "mhlw",
     "name": "株式会社グリーンテック",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12927,6 +13208,7 @@
   },
   {
     "id": "01-mu-300034",
+    "source": "mhlw",
     "name": "一般社団法人 北海道医師会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -12973,6 +13255,7 @@
   },
   {
     "id": "01-mu-300039",
+    "source": "mhlw",
     "name": "特定非営利活動法人 コミュニティワーク研究実践センター",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13019,6 +13302,7 @@
   },
   {
     "id": "01-mu-300054",
+    "source": "mhlw",
     "name": "特定非営利活動法人 進学支援の会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13065,6 +13349,7 @@
   },
   {
     "id": "01-mu-300057",
+    "source": "mhlw",
     "name": "社会福祉法人 石狩市社会福祉協議会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13111,6 +13396,7 @@
   },
   {
     "id": "01-yu-300083",
+    "source": "mhlw",
     "name": "有限会社 ｅ-ｗｏｒｋｓ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13157,6 +13443,7 @@
   },
   {
     "id": "01-yu-300542",
+    "source": "mhlw",
     "name": "株式会社 ホットスタッフ札幌",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13203,6 +13490,7 @@
   },
   {
     "id": "01-yu-300790",
+    "source": "mhlw",
     "name": "株式会社 アモメディ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13249,6 +13537,7 @@
   },
   {
     "id": "01-yu-300844",
+    "source": "mhlw",
     "name": "株式会社 ＴＷＯーＨＡＬＦ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13295,6 +13584,7 @@
   },
   {
     "id": "01-yu-300882",
+    "source": "mhlw",
     "name": "株式会社 ビネガー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13341,6 +13631,7 @@
   },
   {
     "id": "13-yu-303589",
+    "source": "mhlw",
     "name": "株式会社セーフティ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13387,6 +13678,7 @@
   },
   {
     "id": "01-mu-300038",
+    "source": "mhlw",
     "name": "一般社団法人 釧路社会的企業創造協議会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13433,6 +13725,7 @@
   },
   {
     "id": "01-yu-300182",
+    "source": "mhlw",
     "name": "株式会社 アスクゲートトラスト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13479,6 +13772,7 @@
   },
   {
     "id": "01-yu-300440",
+    "source": "mhlw",
     "name": "セントフィールド株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13525,6 +13819,7 @@
   },
   {
     "id": "01-yu-300818",
+    "source": "mhlw",
     "name": "キョウリョク 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13571,6 +13866,7 @@
   },
   {
     "id": "01-yu-300877",
+    "source": "mhlw",
     "name": "株式会社 Ｎｅｘｔ Ｉｎｎｏｖａｔｉｏｎ ＩＮＹ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13617,6 +13913,7 @@
   },
   {
     "id": "13-yu-090123",
+    "source": "mhlw",
     "name": "株式会社Ｊ＆Ｊヒューマンソリューションズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13663,6 +13960,7 @@
   },
   {
     "id": "13-yu-301450",
+    "source": "mhlw",
     "name": "トライアロー株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13709,6 +14007,7 @@
   },
   {
     "id": "13-yu-302055",
+    "source": "mhlw",
     "name": "日本総合サービス株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13755,6 +14054,7 @@
   },
   {
     "id": "13-yu-312516",
+    "source": "mhlw",
     "name": "株式会社ドライブトライブ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13801,6 +14101,7 @@
   },
   {
     "id": "01-yu-240019",
+    "source": "mhlw",
     "name": "株式会社 キャリア・フォース",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13847,6 +14148,7 @@
   },
   {
     "id": "01-yu-300140",
+    "source": "mhlw",
     "name": "株式会社 八神エモーション",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13893,6 +14195,7 @@
   },
   {
     "id": "01-yu-300146",
+    "source": "mhlw",
     "name": "株式会社 アクロスジャパン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13939,6 +14242,7 @@
   },
   {
     "id": "01-yu-300901",
+    "source": "mhlw",
     "name": "合同会社 Ｐａｒｉｖａａｒ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -13985,6 +14289,7 @@
   },
   {
     "id": "01-toku-000097",
+    "source": "mhlw",
     "name": "東旭川農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14031,6 +14336,7 @@
   },
   {
     "id": "27-yu-302331",
+    "source": "mhlw",
     "name": "株式会社ファインテクノ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14077,6 +14383,7 @@
   },
   {
     "id": "01-mu-040001",
+    "source": "mhlw",
     "name": "社会福祉法人 帯広市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14123,6 +14430,7 @@
   },
   {
     "id": "01-mu-300026",
+    "source": "mhlw",
     "name": "公益社団法人 北海道栄養士会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14169,6 +14477,7 @@
   },
   {
     "id": "01-yu-300327",
+    "source": "mhlw",
     "name": "株式会社ひとらんど",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14215,6 +14524,7 @@
   },
   {
     "id": "01-yu-300492",
+    "source": "mhlw",
     "name": "株式会社 キャリアソリューション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14261,6 +14571,7 @@
   },
   {
     "id": "01-yu-300743",
+    "source": "mhlw",
     "name": "株式会社 ＡＰＩＣ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14307,6 +14618,7 @@
   },
   {
     "id": "01-mu-010005",
+    "source": "mhlw",
     "name": "公益財団法人 北海道地域医療振興財団",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14353,6 +14665,7 @@
   },
   {
     "id": "01-mu-300002",
+    "source": "mhlw",
     "name": "社会福祉法人 北見睦会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14399,6 +14712,7 @@
   },
   {
     "id": "01-yu-300321",
+    "source": "mhlw",
     "name": "株式会社 アイエンジニアリングスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14445,6 +14759,7 @@
   },
   {
     "id": "01-yu-300408",
+    "source": "mhlw",
     "name": "株式会社 アスクゲートノース",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14491,6 +14806,7 @@
   },
   {
     "id": "01-yu-300522",
+    "source": "mhlw",
     "name": "株式会社 コネクトスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14537,6 +14853,7 @@
   },
   {
     "id": "01-yu-300584",
+    "source": "mhlw",
     "name": "株式会社 エース",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14583,6 +14900,7 @@
   },
   {
     "id": "01-yu-300856",
+    "source": "mhlw",
     "name": "株式会社 エージェント北海道",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14629,6 +14947,7 @@
   },
   {
     "id": "13-yu-316290",
+    "source": "mhlw",
     "name": "株式会社レイバーワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14675,6 +14994,7 @@
   },
   {
     "id": "01-yu-300326",
+    "source": "mhlw",
     "name": "株式会社 セクター",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14721,6 +15041,7 @@
   },
   {
     "id": "01-yu-300418",
+    "source": "mhlw",
     "name": "株式会社 リンクパートナーズ",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14767,6 +15088,7 @@
   },
   {
     "id": "13-yu-305134",
+    "source": "mhlw",
     "name": "ヒトトヒトキャリアライズ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14813,6 +15135,7 @@
   },
   {
     "id": "01-mu-190002",
+    "source": "mhlw",
     "name": "一般社団法人 苫小牧地域職業訓練センター運営協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14859,6 +15182,7 @@
   },
   {
     "id": "01-yu-300754",
+    "source": "mhlw",
     "name": "株式会社 ウラノホールディングス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14905,6 +15229,7 @@
   },
   {
     "id": "01-yu-300033",
+    "source": "mhlw",
     "name": "株式会社 コンポス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14951,6 +15276,7 @@
   },
   {
     "id": "01-yu-300914",
+    "source": "mhlw",
     "name": "株式会社 エープラン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -14997,6 +15323,7 @@
   },
   {
     "id": "01-mu-190001",
+    "source": "mhlw",
     "name": "社会福祉法人 苫小牧市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15043,6 +15370,7 @@
   },
   {
     "id": "01-yu-300511",
+    "source": "mhlw",
     "name": "株式会社 くくるワークス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15089,6 +15417,7 @@
   },
   {
     "id": "01-yu-300715",
+    "source": "mhlw",
     "name": "有限会社 オカダスタッド",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15135,6 +15464,7 @@
   },
   {
     "id": "13-yu-308960",
+    "source": "mhlw",
     "name": "株式会社ジックスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15181,6 +15511,7 @@
   },
   {
     "id": "01-mu-300063",
+    "source": "mhlw",
     "name": "一般財団法人 しもかわ地域振興機構",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15227,6 +15558,7 @@
   },
   {
     "id": "13-yu-070328",
+    "source": "mhlw",
     "name": "ワークスアイディ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15273,6 +15605,7 @@
   },
   {
     "id": "13-yu-070506",
+    "source": "mhlw",
     "name": "トランス・コスモス株式会社",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15319,6 +15652,7 @@
   },
   {
     "id": "01-mu-010012",
+    "source": "mhlw",
     "name": "公益社団法人 札幌市母子寡婦福祉連合会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15365,6 +15699,7 @@
   },
   {
     "id": "01-mu-300049",
+    "source": "mhlw",
     "name": "一般社団法人 北海道全新聞販売従業員福利協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15411,6 +15746,7 @@
   },
   {
     "id": "01-yu-070003",
+    "source": "mhlw",
     "name": "株式会社 ホープ・ワン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15457,6 +15793,7 @@
   },
   {
     "id": "01-yu-300317",
+    "source": "mhlw",
     "name": "株式会社 トライバルユニット",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15503,6 +15840,7 @@
   },
   {
     "id": "01-yu-300323",
+    "source": "mhlw",
     "name": "株式会社浜名マネキン紹介所",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15549,6 +15887,7 @@
   },
   {
     "id": "01-yu-300514",
+    "source": "mhlw",
     "name": "株式会社 アスクゲートイースト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15595,6 +15934,7 @@
   },
   {
     "id": "01-toku-000036",
+    "source": "mhlw",
     "name": "オホーツク国際人材交流協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15641,6 +15981,7 @@
   },
   {
     "id": "04-yu-300155",
+    "source": "mhlw",
     "name": "株式会社ミックコーポレーション東日本",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15687,6 +16028,7 @@
   },
   {
     "id": "13-yu-301333",
+    "source": "mhlw",
     "name": "ギグワークスアドバリュー株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15733,6 +16075,7 @@
   },
   {
     "id": "27-yu-304703",
+    "source": "mhlw",
     "name": "株式会社近鉄ＨＲパートナーズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15779,6 +16122,7 @@
   },
   {
     "id": "27-yu-301379",
+    "source": "mhlw",
     "name": "キャル株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15825,6 +16169,7 @@
   },
   {
     "id": "01-mu-300001",
+    "source": "mhlw",
     "name": "社会福祉法人 函館市民生事業協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15871,6 +16216,7 @@
   },
   {
     "id": "01-mu-300048",
+    "source": "mhlw",
     "name": "株式会社 生涯活躍のまちかみしほろ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15917,6 +16263,7 @@
   },
   {
     "id": "01-mu-300058",
+    "source": "mhlw",
     "name": "イエローウィング 協同組合",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -15963,6 +16310,7 @@
   },
   {
     "id": "01-yu-300396",
+    "source": "mhlw",
     "name": "株式会社オフィスメディカルケア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16009,6 +16357,7 @@
   },
   {
     "id": "01-yu-300730",
+    "source": "mhlw",
     "name": "株式会社 Ｊｗｉｎｄ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16055,6 +16404,7 @@
   },
   {
     "id": "01-toku-000104",
+    "source": "mhlw",
     "name": "Ｊ・クラウド事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16101,6 +16451,7 @@
   },
   {
     "id": "01-toku-000110",
+    "source": "mhlw",
     "name": "北石狩農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16147,6 +16498,7 @@
   },
   {
     "id": "01-yu-300207",
+    "source": "mhlw",
     "name": "株式会社 アシタバ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16193,6 +16545,7 @@
   },
   {
     "id": "01-yu-300918",
+    "source": "mhlw",
     "name": "株式会社 ノースエイム",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16239,6 +16592,7 @@
   },
   {
     "id": "13-yu-303737",
+    "source": "mhlw",
     "name": "株式会社リージェンシー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16285,6 +16639,7 @@
   },
   {
     "id": "27-yu-300275",
+    "source": "mhlw",
     "name": "株式会社阪急トラベルサポート",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16331,6 +16686,7 @@
   },
   {
     "id": "01-mu-300020",
+    "source": "mhlw",
     "name": "社会福祉法人北海道母子寡婦福祉連合会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16377,6 +16733,7 @@
   },
   {
     "id": "13-yu-040565",
+    "source": "mhlw",
     "name": "ＢＩＣＯ・ＧＨＩ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16423,6 +16780,7 @@
   },
   {
     "id": "13-yu-080225",
+    "source": "mhlw",
     "name": "株式会社ヒューマントラスト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16469,6 +16827,7 @@
   },
   {
     "id": "01-yu-300781",
+    "source": "mhlw",
     "name": "合同会社 Ｄｉａｌｏｇｇｅｒ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16515,6 +16874,7 @@
   },
   {
     "id": "01-yu-300600",
+    "source": "mhlw",
     "name": "株式会社 札幌シッターサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16561,6 +16921,7 @@
   },
   {
     "id": "13-yu-306362",
+    "source": "mhlw",
     "name": "株式会社ベルシステム２４",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16607,6 +16968,7 @@
   },
   {
     "id": "27-yu-300288",
+    "source": "mhlw",
     "name": "株式会社 アドミック",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16653,6 +17015,7 @@
   },
   {
     "id": "01-yu-300428",
+    "source": "mhlw",
     "name": "キャリアスタッフ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16699,6 +17062,7 @@
   },
   {
     "id": "01-yu-300647",
+    "source": "mhlw",
     "name": "株式会社 フジアウトソーシング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16745,6 +17109,7 @@
   },
   {
     "id": "14-yu-300069",
+    "source": "mhlw",
     "name": "エヌエス・テック株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16791,6 +17156,7 @@
   },
   {
     "id": "01-yu-300598",
+    "source": "mhlw",
     "name": "旭川信用金庫",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16837,6 +17203,7 @@
   },
   {
     "id": "01-yu-300667",
+    "source": "mhlw",
     "name": "株式会社 ノースウェーブ・ジョブ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16883,6 +17250,7 @@
   },
   {
     "id": "01-toku-000142",
+    "source": "mhlw",
     "name": "ティアイティ事業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16929,6 +17297,7 @@
   },
   {
     "id": "01-yu-300805",
+    "source": "mhlw",
     "name": "株式会社 ソレイズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -16975,6 +17344,7 @@
   },
   {
     "id": "13-yu-300408",
+    "source": "mhlw",
     "name": "ビーウィズ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17021,6 +17391,7 @@
   },
   {
     "id": "13-yu-302595",
+    "source": "mhlw",
     "name": "日本郵政コーポレートサービス株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17067,6 +17438,7 @@
   },
   {
     "id": "01-yu-300827",
+    "source": "mhlw",
     "name": "株式会社 ＥＮＲＥＬＡＴＩＯＮ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17113,6 +17485,7 @@
   },
   {
     "id": "01-mu-300004",
+    "source": "mhlw",
     "name": "社会福祉法人 釧路市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17159,6 +17532,7 @@
   },
   {
     "id": "13-yu-301660",
+    "source": "mhlw",
     "name": "ファッション人材リンク株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17205,6 +17579,7 @@
   },
   {
     "id": "27-yu-302289",
+    "source": "mhlw",
     "name": "株式会社ドリームキャッチャー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17251,6 +17626,7 @@
   },
   {
     "id": "01-yu-300720",
+    "source": "mhlw",
     "name": "株式会社 リスポーン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17297,6 +17673,7 @@
   },
   {
     "id": "13-yu-305343",
+    "source": "mhlw",
     "name": "株式会社ヒューマン・ライジン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17343,6 +17720,7 @@
   },
   {
     "id": "01-yu-300646",
+    "source": "mhlw",
     "name": "株式会社 縁日",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17389,6 +17767,7 @@
   },
   {
     "id": "01-yu-010093",
+    "source": "mhlw",
     "name": "キャリアフィットグループ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17435,6 +17814,7 @@
   },
   {
     "id": "01-yu-300544",
+    "source": "mhlw",
     "name": "エスプリリンク 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17481,6 +17861,7 @@
   },
   {
     "id": "13-yu-302020",
+    "source": "mhlw",
     "name": "株式会社アスペイワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17527,6 +17908,7 @@
   },
   {
     "id": "13-yu-309136",
+    "source": "mhlw",
     "name": "株式会社ＭＡＹＡ ＳＴＡＦＦＩＮＧ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17573,6 +17955,7 @@
   },
   {
     "id": "01-yu-300762",
+    "source": "mhlw",
     "name": "合同会社 ＷＯＲＫｉｄ Ｎｅｘｔ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17619,6 +18002,7 @@
   },
   {
     "id": "13-yu-306180",
+    "source": "mhlw",
     "name": "株式会社朝日エンジニアリング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17665,6 +18049,7 @@
   },
   {
     "id": "01-yu-300283",
+    "source": "mhlw",
     "name": "北海サポート 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17711,6 +18096,7 @@
   },
   {
     "id": "22-toku-000019",
+    "source": "mhlw",
     "name": "東洋ビジネス協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17757,6 +18143,7 @@
   },
   {
     "id": "13-yu-040616",
+    "source": "mhlw",
     "name": "キャリアリンク株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17803,6 +18190,7 @@
   },
   {
     "id": "01-yu-300007",
+    "source": "mhlw",
     "name": "有限会社 ウィルワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17849,6 +18237,7 @@
   },
   {
     "id": "03-yu-300021",
+    "source": "mhlw",
     "name": "株式会社ヒロキャリアスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17895,6 +18284,7 @@
   },
   {
     "id": "01-yu-300860",
+    "source": "mhlw",
     "name": "株式会社 Ａｍｏｕｒ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17941,6 +18331,7 @@
   },
   {
     "id": "13-yu-302622",
+    "source": "mhlw",
     "name": "株式会社ジャパン・ビジネス・サービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -17987,6 +18378,7 @@
   },
   {
     "id": "01-yu-300673",
+    "source": "mhlw",
     "name": "株式会社 ファイブエージェント",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18033,6 +18425,7 @@
   },
   {
     "id": "01-yu-300881",
+    "source": "mhlw",
     "name": "ホクビシティホーム株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18079,6 +18472,7 @@
   },
   {
     "id": "01-yu-300811",
+    "source": "mhlw",
     "name": "株式会社 ＨＩＴＯＳＯＲＡ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18125,6 +18519,7 @@
   },
   {
     "id": "13-yu-308356",
+    "source": "mhlw",
     "name": "株式会社ミライル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18171,6 +18566,7 @@
   },
   {
     "id": "01-yu-010024",
+    "source": "mhlw",
     "name": "有限会社 ケアアシスト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18217,6 +18613,7 @@
   },
   {
     "id": "01-yu-300479",
+    "source": "mhlw",
     "name": "株式会社 エヌエスジー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18263,6 +18660,7 @@
   },
   {
     "id": "01-yu-300810",
+    "source": "mhlw",
     "name": "アッド 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18309,6 +18707,7 @@
   },
   {
     "id": "01-mu-010008",
+    "source": "mhlw",
     "name": "社会福祉法人 北海道社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18355,6 +18754,7 @@
   },
   {
     "id": "27-yu-300558",
+    "source": "mhlw",
     "name": "パーソルファクトリーパートナーズ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18401,6 +18801,7 @@
   },
   {
     "id": "14-yu-301556",
+    "source": "mhlw",
     "name": "株式会社グルージョブ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18447,6 +18848,7 @@
   },
   {
     "id": "04-yu-010049",
+    "source": "mhlw",
     "name": "東洋ワーク株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18493,6 +18895,7 @@
   },
   {
     "id": "13-yu-301936",
+    "source": "mhlw",
     "name": "株式会社オープンループパートナーズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18539,6 +18942,7 @@
   },
   {
     "id": "01-yu-300416",
+    "source": "mhlw",
     "name": "山崎産業交易株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18585,6 +18989,7 @@
   },
   {
     "id": "27-yu-300414",
+    "source": "mhlw",
     "name": "株式会社ジャパンクリエイト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18631,6 +19036,7 @@
   },
   {
     "id": "13-yu-070303",
+    "source": "mhlw",
     "name": "株式会社ナイチンゲール",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18677,6 +19083,7 @@
   },
   {
     "id": "13-yu-300078",
+    "source": "mhlw",
     "name": "アルティウスリンク株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18723,6 +19130,7 @@
   },
   {
     "id": "13-yu-303562",
+    "source": "mhlw",
     "name": "株式会社ウィルエージェンシー",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18769,6 +19177,7 @@
   },
   {
     "id": "01-yu-300820",
+    "source": "mhlw",
     "name": "株式会社 ジンザイネシア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18815,6 +19224,7 @@
   },
   {
     "id": "13-yu-304408",
+    "source": "mhlw",
     "name": "株式会社エスプールヒューマンソリューションズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18861,6 +19271,7 @@
   },
   {
     "id": "13-yu-300724",
+    "source": "mhlw",
     "name": "ヤマト・スタッフ・サプライ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18907,6 +19318,7 @@
   },
   {
     "id": "01-yu-190001",
+    "source": "mhlw",
     "name": "有限会社 ケア・サービス苫小牧",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18953,6 +19365,7 @@
   },
   {
     "id": "13-yu-309562",
+    "source": "mhlw",
     "name": "株式会社平山",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -18999,6 +19412,7 @@
   },
   {
     "id": "01-yu-300711",
+    "source": "mhlw",
     "name": "ＨＲＢ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19045,6 +19459,7 @@
   },
   {
     "id": "01-yu-300467",
+    "source": "mhlw",
     "name": "株式会社 北海道共創パートナーズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19091,6 +19506,7 @@
   },
   {
     "id": "13-yu-311463",
+    "source": "mhlw",
     "name": "コディカル株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19137,6 +19553,7 @@
   },
   {
     "id": "01-yu-230001",
+    "source": "mhlw",
     "name": "株式会社 北海サービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19183,6 +19600,7 @@
   },
   {
     "id": "01-yu-300282",
+    "source": "mhlw",
     "name": "タリスマン 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19229,6 +19647,7 @@
   },
   {
     "id": "13-yu-302329",
+    "source": "mhlw",
     "name": "株式会社レソリューション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19275,6 +19694,7 @@
   },
   {
     "id": "01-yu-300561",
+    "source": "mhlw",
     "name": "株式会社 スラート・トレーディング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19321,6 +19741,7 @@
   },
   {
     "id": "13-yu-300437",
+    "source": "mhlw",
     "name": "株式会社ルフト・メディカルケア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19367,6 +19788,7 @@
   },
   {
     "id": "01-yu-010045",
+    "source": "mhlw",
     "name": "株式会社 サツキャリ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19413,6 +19835,7 @@
   },
   {
     "id": "13-yu-303680",
+    "source": "mhlw",
     "name": "株式会社Ｔｒｕｓｔ Ｇｒｏｗｔｈ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19459,6 +19882,7 @@
   },
   {
     "id": "13-yu-306360",
+    "source": "mhlw",
     "name": "ヒューマンアカデミー株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19505,6 +19929,7 @@
   },
   {
     "id": "13-yu-300907",
+    "source": "mhlw",
     "name": "株式会社エイジェック",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19551,6 +19976,7 @@
   },
   {
     "id": "13-yu-050011",
+    "source": "mhlw",
     "name": "有限会社テン・エイティワン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19597,6 +20023,7 @@
   },
   {
     "id": "13-yu-300445",
+    "source": "mhlw",
     "name": "株式会社長谷工ジョブクリエイト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19643,6 +20070,7 @@
   },
   {
     "id": "01-yu-300635",
+    "source": "mhlw",
     "name": "株式会社 ｗａｌｋ－ｏｎ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19689,6 +20117,7 @@
   },
   {
     "id": "13-yu-302577",
+    "source": "mhlw",
     "name": "株式会社マックスコム",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19735,6 +20164,7 @@
   },
   {
     "id": "13-yu-304566",
+    "source": "mhlw",
     "name": "株式会社シグマスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19781,6 +20211,7 @@
   },
   {
     "id": "13-yu-305615",
+    "source": "mhlw",
     "name": "株式会社アズスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19827,6 +20258,7 @@
   },
   {
     "id": "01-yu-300692",
+    "source": "mhlw",
     "name": "一般社団法人 ほくジョブ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19873,6 +20305,7 @@
   },
   {
     "id": "01-yu-030007",
+    "source": "mhlw",
     "name": "旭川大丸ケアサービス 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19919,6 +20352,7 @@
   },
   {
     "id": "13-yu-315141",
+    "source": "mhlw",
     "name": "パーソルクロステクノロジー株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -19965,6 +20399,7 @@
   },
   {
     "id": "40-yu-010064",
+    "source": "mhlw",
     "name": "総合メディカル 株式会社",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20011,6 +20446,7 @@
   },
   {
     "id": "01-yu-010043",
+    "source": "mhlw",
     "name": "パーソナル札幌 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20057,6 +20493,7 @@
   },
   {
     "id": "01-yu-040001",
+    "source": "mhlw",
     "name": "有限会社 帯広看護婦家政婦紹介所",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20103,6 +20540,7 @@
   },
   {
     "id": "01-yu-300612",
+    "source": "mhlw",
     "name": "株式会社 吉澤ステーブル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20149,6 +20587,7 @@
   },
   {
     "id": "01-mu-230001",
+    "source": "mhlw",
     "name": "公益社団法人 北海道看護協会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20195,6 +20634,7 @@
   },
   {
     "id": "36-yu-300013",
+    "source": "mhlw",
     "name": "株式会社ワークスタッフ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20241,6 +20681,7 @@
   },
   {
     "id": "27-yu-030192",
+    "source": "mhlw",
     "name": "株式会社日本パーソナルビジネス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20287,6 +20728,7 @@
   },
   {
     "id": "01-yu-300279",
+    "source": "mhlw",
     "name": "株式会社北海道アルバイト情報社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20333,6 +20775,7 @@
   },
   {
     "id": "13-yu-313764",
+    "source": "mhlw",
     "name": "株式会社ウィルオブ・コンストラクション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20379,6 +20822,7 @@
   },
   {
     "id": "01-yu-300168",
+    "source": "mhlw",
     "name": "リージョンズ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20425,6 +20869,7 @@
   },
   {
     "id": "23-yu-300401",
+    "source": "mhlw",
     "name": "ポールトゥウィン株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20471,6 +20916,7 @@
   },
   {
     "id": "01-yu-300696",
+    "source": "mhlw",
     "name": "株式会社 ＮＥＸＴ ＩＮＮＯＶＡＴＩＯＮ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20517,6 +20963,7 @@
   },
   {
     "id": "13-yu-040585",
+    "source": "mhlw",
     "name": "株式会社マーキュリースタッフィング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20563,6 +21010,7 @@
   },
   {
     "id": "13-yu-303987",
+    "source": "mhlw",
     "name": "株式会社サウンズグッド",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20609,6 +21057,7 @@
   },
   {
     "id": "01-yu-300458",
+    "source": "mhlw",
     "name": "株式会社 アールプラス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20655,6 +21104,7 @@
   },
   {
     "id": "13-yu-070478",
+    "source": "mhlw",
     "name": "株式会社フェローズ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20701,6 +21151,7 @@
   },
   {
     "id": "13-yu-311301",
+    "source": "mhlw",
     "name": "株式会社オープンアップコンストラクション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20747,6 +21198,7 @@
   },
   {
     "id": "13-yu-300783",
+    "source": "mhlw",
     "name": "株式会社ＢＲＥＸＡ Ｅｎｇｉｎｅｅｒｉｎｇ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20793,6 +21245,7 @@
   },
   {
     "id": "13-yu-311806",
+    "source": "mhlw",
     "name": "ＰＥＲＳＯＬ Ｇｌｏｂａｌ Ｗｏｒｋｆｏｒｃｅ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20839,6 +21292,7 @@
   },
   {
     "id": "27-yu-303304",
+    "source": "mhlw",
     "name": "ＦＩＤＩＡ ＳＯＬＵＴＩＯＮＳ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20885,6 +21339,7 @@
   },
   {
     "id": "40-yu-300636",
+    "source": "mhlw",
     "name": "株式会社ワールドインテック",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20931,6 +21386,7 @@
   },
   {
     "id": "01-toku-000154",
+    "source": "mhlw",
     "name": "札幌市農業協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -20977,6 +21433,7 @@
   },
   {
     "id": "33-yu-300208",
+    "source": "mhlw",
     "name": "株式会社ＫＧ情報",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21023,6 +21480,7 @@
   },
   {
     "id": "13-yu-305783",
+    "source": "mhlw",
     "name": "株式会社ＢＲＥＸＡ Ｎｅｘｔ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21069,6 +21527,7 @@
   },
   {
     "id": "13-yu-010325",
+    "source": "mhlw",
     "name": "株式会社フルキャスト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21115,6 +21574,7 @@
   },
   {
     "id": "13-yu-302632",
+    "source": "mhlw",
     "name": "株式会社ヒューマニック",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21161,6 +21621,7 @@
   },
   {
     "id": "13-yu-301531",
+    "source": "mhlw",
     "name": "ＵＴエイム株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21207,6 +21668,7 @@
   },
   {
     "id": "01-yu-300714",
+    "source": "mhlw",
     "name": "株式会社 ＮＩＮＡＩＴＥ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21253,6 +21715,7 @@
   },
   {
     "id": "13-yu-010547",
+    "source": "mhlw",
     "name": "株式会社スーパーナース",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21299,6 +21762,7 @@
   },
   {
     "id": "13-yu-315758",
+    "source": "mhlw",
     "name": "株式会社アセアン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21345,6 +21809,7 @@
   },
   {
     "id": "13-yu-060049",
+    "source": "mhlw",
     "name": "日研トータルソーシング株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21391,6 +21856,7 @@
   },
   {
     "id": "13-yu-310227",
+    "source": "mhlw",
     "name": "シェアフル株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21437,6 +21903,7 @@
   },
   {
     "id": "14-yu-150026",
+    "source": "mhlw",
     "name": "日総工産株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21483,6 +21950,7 @@
   },
   {
     "id": "27-yu-030096",
+    "source": "mhlw",
     "name": "株式会社ディンプル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21529,6 +21997,7 @@
   },
   {
     "id": "13-yu-304348",
+    "source": "mhlw",
     "name": "株式会社キャリア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21575,6 +22044,7 @@
   },
   {
     "id": "13-yu-300474",
+    "source": "mhlw",
     "name": "株式会社ベネッセキャリオス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21621,6 +22091,7 @@
   },
   {
     "id": "13-yu-080515",
+    "source": "mhlw",
     "name": "株式会社東京リーガルマインド",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21667,6 +22138,7 @@
   },
   {
     "id": "13-yu-305209",
+    "source": "mhlw",
     "name": "ＷＤＢ株式会社",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21713,6 +22185,7 @@
   },
   {
     "id": "13-yu-309972",
+    "source": "mhlw",
     "name": "株式会社ジャストファイン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21759,6 +22232,7 @@
   },
   {
     "id": "27-yu-300349",
+    "source": "mhlw",
     "name": "株式会社トライトエンジニアリング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21805,6 +22279,7 @@
   },
   {
     "id": "13-yu-040294",
+    "source": "mhlw",
     "name": "株式会社クリーク・アンド・リバー社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21851,6 +22326,7 @@
   },
   {
     "id": "04-yu-010088",
+    "source": "mhlw",
     "name": "ヒューレックス株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21897,6 +22373,7 @@
   },
   {
     "id": "27-yu-010074",
+    "source": "mhlw",
     "name": "パーソルエクセルＨＲパートナーズ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21943,6 +22420,7 @@
   },
   {
     "id": "13-yu-309574",
+    "source": "mhlw",
     "name": "株式会社アグリメディア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -21989,6 +22467,7 @@
   },
   {
     "id": "13-yu-300549",
+    "source": "mhlw",
     "name": "株式会社ＢＲＥＸＡ Ｔｅｃｈｎｏｌｏｇｙ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22035,6 +22514,7 @@
   },
   {
     "id": "13-yu-307940",
+    "source": "mhlw",
     "name": "株式会社ＪＳＨ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22081,6 +22561,7 @@
   },
   {
     "id": "13-yu-306448",
+    "source": "mhlw",
     "name": "株式会社スポーツフィールド",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22127,6 +22608,7 @@
   },
   {
     "id": "01-yu-010052",
+    "source": "mhlw",
     "name": "株式会社 メディウェル",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22173,6 +22655,7 @@
   },
   {
     "id": "13-yu-080167",
+    "source": "mhlw",
     "name": "ヒューマンリソシア株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22219,6 +22702,7 @@
   },
   {
     "id": "13-yu-070292",
+    "source": "mhlw",
     "name": "株式会社メディカル・コンシェルジュ",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22265,6 +22749,7 @@
   },
   {
     "id": "13-yu-309036",
+    "source": "mhlw",
     "name": "株式会社ＴＹＬ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22311,6 +22796,7 @@
   },
   {
     "id": "13-yu-300011",
+    "source": "mhlw",
     "name": "株式会社テクノ・サービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22357,6 +22843,7 @@
   },
   {
     "id": "13-yu-310980",
+    "source": "mhlw",
     "name": "ＵＴエージェント株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22403,6 +22890,7 @@
   },
   {
     "id": "13-yu-010302",
+    "source": "mhlw",
     "name": "クラシス株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22449,6 +22937,7 @@
   },
   {
     "id": "13-yu-306443",
+    "source": "mhlw",
     "name": "パーソルビジネスプロセスデザイン株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22495,6 +22984,7 @@
   },
   {
     "id": "01-yu-300369",
+    "source": "mhlw",
     "name": "株式会社 ファーストコネクト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22541,6 +23031,7 @@
   },
   {
     "id": "13-yu-080535",
+    "source": "mhlw",
     "name": "パーソルマーケティング株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22587,6 +23078,7 @@
   },
   {
     "id": "13-yu-312454",
+    "source": "mhlw",
     "name": "アポプラスキャリア株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22633,6 +23125,7 @@
   },
   {
     "id": "13-yu-080558",
+    "source": "mhlw",
     "name": "株式会社日本教育クリエイト",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22679,6 +23172,7 @@
   },
   {
     "id": "13-yu-070412",
+    "source": "mhlw",
     "name": "株式会社綜合キャリアオプション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22725,6 +23219,7 @@
   },
   {
     "id": "13-yu-010554",
+    "source": "mhlw",
     "name": "ランスタッド株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22771,6 +23266,7 @@
   },
   {
     "id": "13-yu-010928",
+    "source": "mhlw",
     "name": "株式会社エムステージ",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22817,6 +23313,7 @@
   },
   {
     "id": "13-yu-308506",
+    "source": "mhlw",
     "name": "株式会社クオレガ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22863,6 +23360,7 @@
   },
   {
     "id": "10-yu-300003",
+    "source": "mhlw",
     "name": "株式会社アスカ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22909,6 +23407,7 @@
   },
   {
     "id": "13-yu-306160",
+    "source": "mhlw",
     "name": "株式会社ネクストビート",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -22955,6 +23454,7 @@
   },
   {
     "id": "13-yu-300230",
+    "source": "mhlw",
     "name": "株式会社リクルートキャリアコンサルティング",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23001,6 +23501,7 @@
   },
   {
     "id": "13-yu-304089",
+    "source": "mhlw",
     "name": "株式会社ＤＹＭ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23047,6 +23548,7 @@
   },
   {
     "id": "13-yu-080459",
+    "source": "mhlw",
     "name": "株式会社ウィルオブ・ワーク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23093,6 +23595,7 @@
   },
   {
     "id": "13-yu-070309",
+    "source": "mhlw",
     "name": "株式会社ネオキャリア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23139,6 +23642,7 @@
   },
   {
     "id": "13-yu-313561",
+    "source": "mhlw",
     "name": "マンパワーグループ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23185,6 +23689,7 @@
   },
   {
     "id": "13-yu-312402",
+    "source": "mhlw",
     "name": "株式会社ＨＲ ＣＡＲＥＥＲ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23231,6 +23736,7 @@
   },
   {
     "id": "13-yu-308164",
+    "source": "mhlw",
     "name": "株式会社マイナビワークス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23277,6 +23783,7 @@
   },
   {
     "id": "13-yu-010249",
+    "source": "mhlw",
     "name": "株式会社リクルートスタッフィング",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23323,6 +23830,7 @@
   },
   {
     "id": "27-yu-303961",
+    "source": "mhlw",
     "name": "株式会社ＴＳＡＣＥ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23369,6 +23877,7 @@
   },
   {
     "id": "13-yu-040295",
+    "source": "mhlw",
     "name": "株式会社メディカル・プリンシプル社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23415,6 +23924,7 @@
   },
   {
     "id": "13-yu-010486",
+    "source": "mhlw",
     "name": "パーソルテンプスタッフ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23461,6 +23971,7 @@
   },
   {
     "id": "13-yu-308734",
+    "source": "mhlw",
     "name": "レバテック株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23507,6 +24018,7 @@
   },
   {
     "id": "13-yu-010386",
+    "source": "mhlw",
     "name": "アデコ株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23553,6 +24065,7 @@
   },
   {
     "id": "13-mu-030002",
+    "source": "mhlw",
     "name": "公益財団法人 産業雇用安定センター",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23599,6 +24112,7 @@
   },
   {
     "id": "13-yu-309623",
+    "source": "mhlw",
     "name": "レバウェル株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23645,6 +24159,7 @@
   },
   {
     "id": "13-yu-190019",
+    "source": "mhlw",
     "name": "株式会社エス・エム・エス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23691,6 +24206,7 @@
   },
   {
     "id": "01-mu-010013",
+    "source": "mhlw",
     "name": "学校法人 桑園学園",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23737,6 +24253,7 @@
   },
   {
     "id": "01-mu-020002",
+    "source": "mhlw",
     "name": "社会福祉法人 函館市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23783,6 +24300,7 @@
   },
   {
     "id": "01-mu-030001",
+    "source": "mhlw",
     "name": "社会福祉法人 旭川市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23829,6 +24347,7 @@
   },
   {
     "id": "01-mu-050002",
+    "source": "mhlw",
     "name": "一般社団法人 北見地域職業訓練センター運営協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23875,6 +24394,7 @@
   },
   {
     "id": "01-mu-300005",
+    "source": "mhlw",
     "name": "社会福祉法人 北見市社会福祉協議会",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23921,6 +24441,7 @@
   },
   {
     "id": "01-mu-300008",
+    "source": "mhlw",
     "name": "職業訓練法人 網走職業訓練協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -23967,6 +24488,7 @@
   },
   {
     "id": "01-mu-300009",
+    "source": "mhlw",
     "name": "一般社団法人 十勝歯科医師会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24013,6 +24535,7 @@
   },
   {
     "id": "01-mu-300011",
+    "source": "mhlw",
     "name": "社会福祉法人 釧路まりも学園",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24059,6 +24582,7 @@
   },
   {
     "id": "01-mu-300013",
+    "source": "mhlw",
     "name": "公益財団法人 北海道農業公社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24105,6 +24629,7 @@
   },
   {
     "id": "01-mu-300021",
+    "source": "mhlw",
     "name": "サロマ水産加工協同組合",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24151,6 +24676,7 @@
   },
   {
     "id": "01-mu-300032",
+    "source": "mhlw",
     "name": "株式会社 ソリューションセンター",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24197,6 +24723,7 @@
   },
   {
     "id": "01-mu-300036",
+    "source": "mhlw",
     "name": "公益社団法人 日高地域人材開発センター運営協会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24243,6 +24770,7 @@
   },
   {
     "id": "01-mu-300040",
+    "source": "mhlw",
     "name": "社会福祉法人 江別市社会福祉協議会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24289,6 +24817,7 @@
   },
   {
     "id": "01-mu-300041",
+    "source": "mhlw",
     "name": "合同会社 七彩",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24335,6 +24864,7 @@
   },
   {
     "id": "01-mu-300043",
+    "source": "mhlw",
     "name": "喜茂別町商工会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24381,6 +24911,7 @@
   },
   {
     "id": "01-mu-300045",
+    "source": "mhlw",
     "name": "特定非営利活動法人 自立支援事業所 ベトサダ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24427,6 +24958,7 @@
   },
   {
     "id": "01-mu-300046",
+    "source": "mhlw",
     "name": "社会福祉法人 えぽっく",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24473,6 +25005,7 @@
   },
   {
     "id": "01-mu-300055",
+    "source": "mhlw",
     "name": "特定非営利活動法人 ちとせの介護医療連携の会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24519,6 +25052,7 @@
   },
   {
     "id": "01-mu-300056",
+    "source": "mhlw",
     "name": "蘭越町商工会",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24565,6 +25099,7 @@
   },
   {
     "id": "01-mu-300061",
+    "source": "mhlw",
     "name": "株式会社 アイアジア",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24611,6 +25146,7 @@
   },
   {
     "id": "01-mu-300062",
+    "source": "mhlw",
     "name": "株式会社 グリーンピース・インターナショナル",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24657,6 +25193,7 @@
   },
   {
     "id": "01-mu-300064",
+    "source": "mhlw",
     "name": "株式会社 ガルダ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24703,6 +25240,7 @@
   },
   {
     "id": "01-mu-300065",
+    "source": "mhlw",
     "name": "株式会社 アイラ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24749,6 +25287,7 @@
   },
   {
     "id": "01-yu-010029",
+    "source": "mhlw",
     "name": "株式会社 エム・シイ・テイ",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24795,6 +25334,7 @@
   },
   {
     "id": "01-yu-010068",
+    "source": "mhlw",
     "name": "大橋 二三子",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24841,6 +25381,7 @@
   },
   {
     "id": "01-yu-010107",
+    "source": "mhlw",
     "name": "北海道東急ビルマネジメント株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24887,6 +25428,7 @@
   },
   {
     "id": "01-yu-030008",
+    "source": "mhlw",
     "name": "株式会社 緑ケアライフサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24933,6 +25475,7 @@
   },
   {
     "id": "01-yu-040007",
+    "source": "mhlw",
     "name": "株式会社 ほっかいどう",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -24979,6 +25522,7 @@
   },
   {
     "id": "01-yu-090002",
+    "source": "mhlw",
     "name": "株式会社 釧路マネキン紹介所",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25025,6 +25569,7 @@
   },
   {
     "id": "01-yu-090005",
+    "source": "mhlw",
     "name": "有限会社 ゲイプロダクション",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25071,6 +25616,7 @@
   },
   {
     "id": "01-yu-090006",
+    "source": "mhlw",
     "name": "釧路ワークアクト 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25117,6 +25663,7 @@
   },
   {
     "id": "01-yu-300022",
+    "source": "mhlw",
     "name": "ビジネットグループ 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25163,6 +25710,7 @@
   },
   {
     "id": "01-yu-300058",
+    "source": "mhlw",
     "name": "株式会社 日本旅行北海道",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25209,6 +25757,7 @@
   },
   {
     "id": "01-yu-300069",
+    "source": "mhlw",
     "name": "株式会社 ＴＹＭＳ",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25255,6 +25804,7 @@
   },
   {
     "id": "01-yu-300088",
+    "source": "mhlw",
     "name": "ロックメディカル 株式会社",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25301,6 +25851,7 @@
   },
   {
     "id": "01-yu-300100",
+    "source": "mhlw",
     "name": "日本ワークサポート 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25347,6 +25898,7 @@
   },
   {
     "id": "01-yu-300107",
+    "source": "mhlw",
     "name": "株式会社 ヒューマンインプリンク",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25393,6 +25945,7 @@
   },
   {
     "id": "01-yu-300116",
+    "source": "mhlw",
     "name": "水上 敬朗",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25439,6 +25992,7 @@
   },
   {
     "id": "01-yu-300138",
+    "source": "mhlw",
     "name": "株式会社 さくらコミュニティサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25485,6 +26039,7 @@
   },
   {
     "id": "01-yu-300150",
+    "source": "mhlw",
     "name": "株式会社 札幌ダイカンサービス",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25531,6 +26086,7 @@
   },
   {
     "id": "01-yu-300179",
+    "source": "mhlw",
     "name": "佐藤 律子",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25577,6 +26133,7 @@
   },
   {
     "id": "01-yu-300183",
+    "source": "mhlw",
     "name": "株式会社 プライマリー・サポート・システム",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25623,6 +26180,7 @@
   },
   {
     "id": "01-yu-300202",
+    "source": "mhlw",
     "name": "アドバンスクリエイト 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25669,6 +26227,7 @@
   },
   {
     "id": "01-yu-300211",
+    "source": "mhlw",
     "name": "株式会社 ヒューマンジャパン",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25715,6 +26274,7 @@
   },
   {
     "id": "01-yu-300226",
+    "source": "mhlw",
     "name": "トップワーク 株式会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25761,6 +26321,7 @@
   },
   {
     "id": "01-yu-300228",
+    "source": "mhlw",
     "name": "サンビーム興産 有限会社",
     "category": "その他",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -25807,6 +26368,7 @@
   },
   {
     "id": "01-yu-300230",
+    "source": "mhlw",
     "name": "株式会社 イー・サポート",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",

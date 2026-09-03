@@ -442,6 +442,7 @@ function assembleEntry(raw, ai, rawHash, source) {
 
   return {
     id: computeId(raw, source),
+    source,
     name,
     category: ai.category,
     targetAge: ai.targetAge,
@@ -507,11 +508,12 @@ async function main() {
       const prev = prevByUrl.get(raw.detailUrl);
 
       if (prev && prev._rawHash && prev._rawHash === rawHash) {
-        // faviconUrl / id は raw から機械的に導出できるため、AI再構造化を発生させずに
-        // 毎回リフレッシュする（スキーマ追加時の後方互換のため）。
+        // faviconUrl / id / source は raw から機械的に導出できるため、AI再構造化を
+        // 発生させずに毎回リフレッシュする（スキーマ追加時の後方互換のため）。
         results.push({
           ...prev,
           id: computeId(raw, source),
+          source,
           faviconUrl: buildFaviconUrl(raw.serviceUrl),
         });
         reused += 1;
