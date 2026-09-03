@@ -123,13 +123,15 @@
   }
   .filter-bar input[type="text"]:focus{outline:2px solid var(--accent);outline-offset:1px;}
   .select-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .select-field{flex:1;min-width:140px;display:flex;flex-direction:column;gap:4px;}
+  .select-label{font-size:12px;color:var(--ink-soft);font-weight:700;}
   .select-row select{
-    flex:1;min-width:140px;padding:10px 12px;border:1px solid var(--line);background:var(--surface);
+    width:100%;padding:10px 12px;border:1px solid var(--line);background:var(--surface);
     font-family:inherit;font-size:13px;color:var(--ink);border-radius:8px;cursor:pointer;
   }
   .select-row select:focus{outline:2px solid var(--accent);outline-offset:1px;}
-  .fee-select{display:none;}
-  body.mode-company .fee-select{display:block;}
+  .select-field.fee-select{display:none;}
+  body.mode-company .select-field.fee-select{display:flex;}
   .result-count{font-size:12px;color:var(--ink-faint);margin-top:14px;}
 
   /* list */
@@ -322,9 +324,18 @@
     <div class="filter-bar">
       <input type="text" id="searchInput" placeholder="エージェント名・職種で検索" oninput="render()">
       <div class="select-row">
-        <select id="categorySelect" onchange="onCategoryChange()"></select>
-        <select id="prefectureSelect" onchange="onPrefectureChange()"></select>
-        <select id="feeSelect" class="fee-select" onchange="onFeeChange()"></select>
+        <div class="select-field">
+          <label class="select-label" for="categorySelect">特化職種</label>
+          <select id="categorySelect" onchange="onCategoryChange()"></select>
+        </div>
+        <div class="select-field">
+          <label class="select-label" for="prefectureSelect">対応都道府県</label>
+          <select id="prefectureSelect" onchange="onPrefectureChange()"></select>
+        </div>
+        <div class="select-field fee-select">
+          <label class="select-label" for="feeSelect">フィー</label>
+          <select id="feeSelect" onchange="onFeeChange()"></select>
+        </div>
       </div>
       <div class="result-count" id="resultCount"></div>
     </div>
