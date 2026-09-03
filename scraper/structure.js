@@ -17,6 +17,8 @@ const path = require('path');
 const crypto = require('crypto');
 
 const { CATEGORIES, NOT_DISCLOSED } = require('./lib/schema');
+const { politeDelay } = require('./lib/http');
+const { verifyLink } = require('./lib/link-check');
 
 const RAW_PATH = path.join(__dirname, '..', 'data', 'raw-agents.json');
 const MHLW_RAW_PATH = path.join(__dirname, '..', 'data', 'mhlw-agents.json');
@@ -526,6 +528,41 @@ function assembleEntry(raw, ai, rawHash, source, existing) {
   };
 }
 
+/**
+ * 既存 agents.json に未掲載の、新規追加候補エージェントのみが対象。website の生死を確認し、
+ * 明確に「存在しない」と言えるケース（404 / DNS解決失敗）のみ false を返して掲載をスキップする
+ * （raw dataの取得自体は既に完了しているが、構造化結果は agents.json に含めない）。
+ *
+ * それ以外（403=ボットブロックの可能性、TLS/タイムアウト等の一時的な接続エラー、
+ * その他のHTTPエラー、URL不正）は、確定的な「存在しない」シグナルではないため掲載を許可する。
+ * これらは verify-links.js の一括チェック（2段階確認つき）に委ねる。
+ *
+ * 既存エージェントの日次再構造化はこの関数を通らない（呼び出し側で prev の有無により分岐）ため、
+ * 日次実行の処理時間には影響しない。
+ */
+const NEW_AGENT_SKIP_CATEGORIES = new Set(['http_404', 'dns_failure']);
+
+// mhlw「人材サービス総合サイト」は事業者の外部公式サイトを持たないことが多く、その場合
+// website はMHLW自身の詳細ページURLにフォールバックされる（assembleEntry参照）。
+// MHLW自身のURLをチェックしても常に生存するだけで無意味なため、リクエストごと省略する
+// （verify-links.js の no_company_website 分類と揃える）。
+const MHLW_PORTAL_HOST = 'jinzai.hellowork.mhlw.go.jp';
+
+async function isNewAgentLinkAlive(entry) {
+  if (typeof entry.website === 'string' && entry.website.includes(MHLW_PORTAL_HOST)) {
+    return true;
+  }
+  const result = await verifyLink(entry.website);
+  if (NEW_AGENT_SKIP_CATEGORIES.has(result.category)) {
+    console.warn(
+      `[link-check] skipping new agent (${result.category}): ${entry.name} <${entry.website}> ` +
+        (result.error ? `error=${result.error}` : `status=${result.status ?? 'none'}`)
+    );
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   const rawData = fs.existsSync(RAW_PATH) ? JSON.parse(fs.readFileSync(RAW_PATH, 'utf8')) : null;
   const mhlwRaw = fs.existsSync(MHLW_RAW_PATH) ? JSON.parse(fs.readFileSync(MHLW_RAW_PATH, 'utf8')) : [];
@@ -551,6 +588,26 @@ async function main() {
   let reused = 0;
   let aiCalls = 0;
   let offlineBuilds = 0;
+  let skippedUnreachable = 0;
+
+  /**
+   * prev（既存マッチ）がある場合は常に掲載する（既存分は日次のリンク生死チェック対象外）。
+   * prev が無い、すなわち今回新規に追加されようとしているエージェントの場合のみ、
+   * website の生死を確認してから掲載するかどうかを決める。
+   */
+  async function pushIfEligible(entry, prev) {
+    if (prev) {
+      results.push(entry);
+      return;
+    }
+    const alive = await isNewAgentLinkAlive(entry);
+    if (alive) {
+      results.push(entry);
+    } else {
+      skippedUnreachable += 1;
+    }
+    await politeDelay();
+  }
 
   const batches = [];
   if (rawData) batches.push({ source: 'jesra', items: rawData.agents });
@@ -578,15 +635,15 @@ async function main() {
         try {
           console.log(`[ai:${source}] structuring ${raw.companyName || raw.businessOwnerName || raw.detailUrl}`);
           const ai = await buildWithAI(raw, anthropic, source, existingHints);
-          results.push(assembleEntry(raw, ai, rawHash, source, prev));
+          await pushIfEligible(assembleEntry(raw, ai, rawHash, source, prev), prev);
           aiCalls += 1;
         } catch (err) {
           console.warn(`AI structuring failed for ${raw.detailUrl}: ${err.message}. Falling back to offline builder.`);
-          results.push(assembleEntry(raw, buildOffline(raw, source), null, source, prev));
+          await pushIfEligible(assembleEntry(raw, buildOffline(raw, source), null, source, prev), prev);
           offlineBuilds += 1;
         }
       } else {
-        results.push(assembleEntry(raw, buildOffline(raw, source), null, source, prev));
+        await pushIfEligible(assembleEntry(raw, buildOffline(raw, source), null, source, prev), prev);
         offlineBuilds += 1;
       }
     }
@@ -595,7 +652,7 @@ async function main() {
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2) + '\n', 'utf8');
   console.log(
     `Wrote ${results.length} agents to ${OUT_PATH} ` +
-      `(reused=${reused}, ai=${aiCalls}, offline=${offlineBuilds})`
+      `(reused=${reused}, ai=${aiCalls}, offline=${offlineBuilds}, skipped-unreachable=${skippedUnreachable})`
   );
 }
 
