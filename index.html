@@ -122,12 +122,14 @@
     font-family:inherit;font-size:14px;color:var(--ink);border-radius:8px;margin-bottom:14px;
   }
   .filter-bar input[type="text"]:focus{outline:2px solid var(--accent);outline-offset:1px;}
-  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{
-    padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:500;
-    background:var(--surface);color:var(--ink-soft);cursor:pointer;white-space:nowrap;transition:all .12s;
+  .select-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .select-row select{
+    flex:1;min-width:140px;padding:10px 12px;border:1px solid var(--line);background:var(--surface);
+    font-family:inherit;font-size:13px;color:var(--ink);border-radius:8px;cursor:pointer;
   }
-  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .select-row select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .fee-select{display:none;}
+  body.mode-company .fee-select{display:block;}
   .result-count{font-size:12px;color:var(--ink-faint);margin-top:14px;}
 
   /* list */
@@ -266,6 +268,7 @@
   .cta-sub{font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center;}
 
   @media (max-width:600px){
+    .select-row{flex-direction:column;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stats-grid.company{grid-template-columns:repeat(1,1fr);}
     .row-item h3{font-size:16.5px;}
@@ -318,7 +321,11 @@
 
     <div class="filter-bar">
       <input type="text" id="searchInput" placeholder="エージェント名・職種で検索" oninput="render()">
-      <div class="chip-row" id="chipRow"></div>
+      <div class="select-row">
+        <select id="categorySelect" onchange="onCategoryChange()"></select>
+        <select id="prefectureSelect" onchange="onPrefectureChange()"></select>
+        <select id="feeSelect" class="fee-select" onchange="onFeeChange()"></select>
+      </div>
       <div class="result-count" id="resultCount"></div>
     </div>
 
@@ -342,7 +349,7 @@
 </div>
 
 <footer>
-  掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）に掲載された公開情報をもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは現時点では未収集のため表示していません。個別エージェントのCTAボタンからは各社の公式サイトへ遷移します。一括問い合わせボタンからの送信はデモ表示です。
+  掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）および厚生労働省「人材サービス総合サイト」の公開データをもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは、一部の主要エージェントについて複数の口コミメディアの傾向から要約した推定値を参考情報として掲載しており、実際の集計値・投稿内容そのものではありません。それ以外のエージェントについては口コミデータを収集していないため「口コミなし」と表示しています。個別エージェントのCTAボタンからは各社の公式サイトへ遷移します。
   <div class="footer-links"><a href="privacy.html">プライバシーポリシー</a></div>
 </footer>
 
@@ -420,31 +427,25 @@ function eyecatchHTML(agent, variant){
 let mode = "candidate";
 let activeChip = "all";
 let currentView = "list";
-let recommendedAgents = null;
+let recommendedAgentsCache = { mode: null, list: null };
 
-/** おすすめ枠のエージェント選定。一度計算したら固定し、検索・フィルタでは再計算しない。 */
+/**
+ * おすすめ枠のエージェント選定。completenessScore(a, mode) の降順で上位8件。
+ * モードが変わったときだけ再計算し、検索・カテゴリー・都道府県・フィーの
+ * 絞り込みでは再計算しない（render()からは呼ばれないため自然に独立する）。
+ */
 function computeRecommendedAgents(){
-  if(recommendedAgents) return recommendedAgents;
-
-  const TARGET = 8;
-  const picked = [];
-  const usedIds = new Set();
-
-  function addFrom(pool){
-    for(const a of pool){
-      if(picked.length >= TARGET) break;
-      if(usedIds.has(a.id)) continue;
-      picked.push(a);
-      usedIds.add(a.id);
-    }
+  if(recommendedAgentsCache.mode===mode && recommendedAgentsCache.list){
+    return recommendedAgentsCache.list;
   }
+  const TARGET = 8;
+  const list = AGENTS
+    .slice()
+    .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
+    .slice(0, TARGET);
 
-  addFrom(AGENTS.filter(a=>a.real===true));
-  if(picked.length < TARGET) addFrom(AGENTS.filter(a=>a.faviconUrl));
-  if(picked.length < TARGET) addFrom(AGENTS);
-
-  recommendedAgents = picked;
-  return recommendedAgents;
+  recommendedAgentsCache = { mode, list };
+  return list;
 }
 
 function recommendCardHTML(a){
@@ -525,6 +526,18 @@ function startRecommendAutoScroll(){
 
 const CHIP_LABELS = ["all","IT・Web","管理部門・コンサル","施工管理・建設","営業・マーケティング","外資・グローバル","スタートアップ・ベンチャー","地方転職・UIターン","第二新卒・ポテンシャル層","その他"];
 
+const PREFECTURES = [
+  "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県",
+  "東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県",
+  "滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県",
+  "香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県",
+];
+const PREFECTURE_OPTIONS = ["all", ...PREFECTURES, "全国"];
+const FEE_OPTIONS = ["all","〜25%","25〜30%","30〜35%","35%〜","非公開"];
+
+let activePrefecture = "all";
+let activeFee = "all";
+
 const LEAD_TEXT = {
   candidate: `日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。`,
   company: `エージェントを使った採用で、採用単価を最も下げるために必要な比較サイトです。`
@@ -534,34 +547,107 @@ function updateLead(){
   document.getElementById("leadText").textContent = LEAD_TEXT[mode];
 }
 
-function setMode(m){
+/** モードの内部状態・UI表示のみを更新する（URL・一覧再描画は行わない）。ルーティングから使う。 */
+function applyMode(m){
   mode = m;
   document.body.classList.toggle("mode-company", m==="company");
   document.body.classList.toggle("mode-candidate", m==="candidate");
   document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active", b.dataset.mode===m));
   updateLead();
+}
+
+function setMode(m){
+  applyMode(m);
   navigateToList();
   render();
   renderRecommend();
 }
 
-function buildChips(){
-  const row = document.getElementById("chipRow");
-  row.innerHTML = "";
-  CHIP_LABELS.forEach(label=>{
-    const el = document.createElement("div");
-    el.className = "chip" + (activeChip===label ? " active" : "");
-    el.textContent = label==="all" ? "すべて" : label;
-    el.onclick = ()=>{ activeChip = label; buildChips(); render(); };
-    row.appendChild(el);
-  });
+function optionsHTML(values, current){
+  return values.map(v=>{
+    const label = v==="all" ? "すべて" : v;
+    return `<option value="${v}"${v===current ? " selected" : ""}>${label}</option>`;
+  }).join("");
+}
+
+function buildFilterSelects(){
+  document.getElementById("categorySelect").innerHTML = optionsHTML(CHIP_LABELS, activeChip);
+  document.getElementById("prefectureSelect").innerHTML = optionsHTML(PREFECTURE_OPTIONS, activePrefecture);
+  document.getElementById("feeSelect").innerHTML = optionsHTML(FEE_OPTIONS, activeFee);
+}
+
+function onCategoryChange(){
+  activeChip = document.getElementById("categorySelect").value;
+  render();
+}
+function onPrefectureChange(){
+  activePrefecture = document.getElementById("prefectureSelect").value;
+  render();
+}
+function onFeeChange(){
+  activeFee = document.getElementById("feeSelect").value;
+  render();
+}
+
+/** 都道府県フィルター。「全国」対応のエージェントはどの都道府県を選んでもマッチする。 */
+function matchesPrefecture(agent, pref){
+  if(pref==="all") return true;
+  const region = agent.region || "";
+  if(pref==="全国") return region.includes("全国");
+  return region.includes(pref) || region.includes("全国");
+}
+
+/** feeRate文字列から「%の直前の数字」をすべて抽出し、最小値で料率バケットを判定する。 */
+function feeBucketFor(feeRateStr){
+  if(!feeRateStr) return "非公開";
+  const nums = String(feeRateStr).match(/\d+(?:\.\d+)?(?=%)/g);
+  if(!nums || nums.length===0) return "非公開";
+  const min = Math.min(...nums.map(Number));
+  if(min < 25) return "〜25%";
+  if(min < 30) return "25〜30%";
+  if(min < 35) return "30〜35%";
+  return "35%〜";
+}
+
+function matchesFee(agent, feeBucket){
+  if(feeBucket==="all") return true;
+  return feeBucketFor(agent.feeRate)===feeBucket;
 }
 
 function matches(agent, query){
   const passCategory = activeChip==="all" || agent.category===activeChip;
+  const passPrefecture = matchesPrefecture(agent, activePrefecture);
+  const passFee = mode==="company" ? matchesFee(agent, activeFee) : true;
   const q = query.trim().toLowerCase();
   const passQuery = !q || agent.name.toLowerCase().includes(q) || agent.category.toLowerCase().includes(q);
-  return passCategory && passQuery;
+  return passCategory && passPrefecture && passFee && passQuery;
+}
+
+/** 値が「非公開」で始まらず、空でもなければ「開示されている」とみなす。 */
+function isDisclosed(value){
+  if(!value) return false;
+  return !String(value).startsWith("非公開");
+}
+
+function completenessScore(agent, currentMode){
+  let score = 0;
+  if(currentMode==="candidate"){
+    if(isDisclosed(agent.targetAge)) score++;
+    if(isDisclosed(agent.region)) score++;
+    if(isDisclosed(agent.jobCount)) score++;
+    if((agent.reviews && agent.reviews.length > 0) || agent.reviewNote) score++;
+    if(agent.features && agent.features.length > 0) score++;
+    if(agent.appeal && agent.appeal.length > 0) score++;
+  } else {
+    if(isDisclosed(agent.feeRate)) score++;
+    if(isDisclosed(agent.talentRange)) score++;
+    if((agent.companyReviews && agent.companyReviews.length > 0) || agent.companyReviewNote) score++;
+    if(agent.companyDetail && isDisclosed(agent.companyDetail.placementRate)) score++;
+    if(agent.companyDetail && isDisclosed(agent.companyDetail.onboardingSupport)) score++;
+    if(agent.feeExplanation && agent.feeExplanation.length > 0) score++;
+    if(agent.commitmentExplanation && agent.commitmentExplanation.length > 0) score++;
+  }
+  return score;
 }
 
 function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5-Math.round(rating)); }
@@ -594,6 +680,7 @@ function adSlotHTML(variant, slotId){
 function render(){
   const query = document.getElementById("searchInput").value;
   const list = AGENTS.filter(a=>matches(a, query));
+  list.sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode));
   document.getElementById("resultCount").textContent = list.length + "件表示中（全" + AGENTS.length + "件）";
 
   const ledger = document.getElementById("ledger");
@@ -770,13 +857,14 @@ function openDetail(a){
 }
 
 function agentUrlHash(a){
-  return "#/agent/" + encodeURIComponent(a.id);
+  const suffix = mode==="company" ? "?mode=company" : "";
+  return "#/agent/" + encodeURIComponent(a.id) + suffix;
 }
 
 function navigateToDetail(a){
   const hash = agentUrlHash(a);
   if(location.hash !== hash){
-    history.pushState({agentId: a.id}, "", hash);
+    history.pushState({agentId: a.id, mode}, "", hash);
   }
   openDetail(a);
 }
@@ -789,11 +877,18 @@ function navigateToList(){
 }
 
 function handleRoute(){
-  const m = location.hash.match(/^#\/agent\/(.+)$/);
+  const m = location.hash.match(/^#\/agent\/([^?]+)(?:\?(.*))?$/);
   if(m){
     const id = decodeURIComponent(m[1]);
+    const params = new URLSearchParams(m[2] || "");
+    const urlMode = params.get("mode")==="company" ? "company" : "candidate";
     const agent = AGENTS.find(a => String(a.id) === id);
     if(agent){
+      if(mode !== urlMode){
+        applyMode(urlMode);
+        render();
+        renderRecommend();
+      }
       openDetail(agent);
       return;
     }
@@ -816,7 +911,7 @@ function visitInquiry(website){
 }
 
 async function loadAgents(){
-  buildChips();
+  buildFilterSelects();
   updateLead();
   try{
     const res = await fetch('./agents.json', {cache:"no-store"});
