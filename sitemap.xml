@@ -9,12 +9,12 @@
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ttr-fjmt.github.io/agent-zukan/</loc>
+    <loc>https://agent-zukan.net/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ttr-fjmt.github.io/agent-zukan/privacy.html</loc>
+    <loc>https://agent-zukan.net/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

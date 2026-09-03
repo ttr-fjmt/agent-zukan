@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ttr-fjmt.github.io/agent-zukan/sitemap.xml
+Sitemap: https://agent-zukan.net/sitemap.xml
