@@ -277,10 +277,25 @@ function guessCategoryOfflineMhlw(raw) {
 }
 
 function buildOffline(raw, source) {
-  return source === 'mhlw' ? buildOfflineMhlw(raw) : buildOfflineJesra(raw);
+  const built = source === 'mhlw' ? buildOfflineMhlw(raw) : buildOfflineJesra(raw);
+  return { ...built, categoryHint: null };
 }
 
-async function buildWithAI(raw, anthropic, source) {
+/**
+ * 既存の agents.json から、category が「その他」のエントリに付与された categoryHint の
+ * 頻出上位を集計する。AIプロンプトに「候補語彙」として渡し、表記揺れ（医療/医療系/医療・福祉等）を防ぐ。
+ */
+function topCategoryHints(existingAgents, limit = 10) {
+  const counts = new Map();
+  for (const a of existingAgents) {
+    if (a.category === 'その他' && a.categoryHint) {
+      counts.set(a.categoryHint, (counts.get(a.categoryHint) || 0) + 1);
+    }
+  }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, limit).map(([hint]) => hint);
+}
+
+async function buildWithAI(raw, anthropic, source, existingHints = []) {
   const tool = {
     name: 'structure_agent',
     description: '転職エージェント図鑑サイトのスキーマに沿って、与えられた事実情報のみから項目を構造化する。',
@@ -294,6 +309,15 @@ async function buildWithAI(raw, anthropic, source) {
             `次の${CATEGORIES.length}個の文字列のいずれか一つを一字一句そのまま使うこと（新しいカテゴリ名を作らない）: ` +
             CATEGORIES.join('、') +
             '。対応業界・職種から最も近いものを選び、どれにも当てはまらない場合は「その他」を使う。',
+        },
+        categoryHint: {
+          type: 'string',
+          description:
+            'category が「その他」の場合のみ、日本語2〜6文字程度の簡潔なサブカテゴリー推定値' +
+            '（例: "医療・介護", "製造業", "運輸・物流", "教育・保育", "飲食・サービス"）を指定する。' +
+            'category が「その他」以外の場合は省略する（このフィールドを呼び出しに含めない）。' +
+            '既に使われている表記があれば、新しい言い回しを作らず、可能な限りそのまま再利用すること' +
+            '（例:「医療」「医療系」「医療・福祉」のような表記揺れを生まないこと）。',
         },
         targetAge: { type: 'string', description: '対象年代。根拠となる事実が無ければ「' + NOT_DISCLOSED + '」' },
         jobCount: { type: 'string', description: '求人数の目安。根拠が無ければ「' + NOT_DISCLOSED + '」' },
@@ -396,6 +420,12 @@ async function buildWithAI(raw, anthropic, source) {
         '上限額の記載しかない場合でも、それをそのまま実際の料率として出力しないこと（feeRateの項目説明に従うこと）。\n' +
         '- 抜粋内に返戻金・返金保証に関する記載があれば、必ず companyDetail.refundPolicy に反映すること。\n';
 
+  const hintVocabLine =
+    existingHints.length > 0
+      ? '既存のカテゴリーヒント候補（categoryHint を出力する際は、可能な限りこの中の表記をそのまま使うこと）: ' +
+        existingHints.join('、') + '\n'
+      : '';
+
   const msg = await anthropic.messages.create({
     model: MODEL,
     max_tokens: 1500,
@@ -414,6 +444,9 @@ async function buildWithAI(raw, anthropic, source) {
           '- 誇張的な断定表現（業界No.1、必ず等）は使わないこと。\n' +
           '- categoryは structure_agent ツール定義に列挙された' + CATEGORIES.length + '個の文字列以外を絶対に使わないこと' +
           '（新しいカテゴリ名を作らない。該当が無ければ「その他」を使う）。\n' +
+          '- categoryが「その他」の場合は、必ず categoryHint も出力すること（省略しない）。' +
+          'category がその他以外の場合は categoryHint を出力しないこと。\n' +
+          hintVocabLine +
           sourceSpecificRules +
           '\n' +
           factsBlock,
@@ -431,6 +464,8 @@ async function buildWithAI(raw, anthropic, source) {
     console.warn(`Unexpected category "${result.category}" from AI, clamping to "その他".`);
     result.category = 'その他';
   }
+  // categoryHint は category が「その他」の場合のみ意味を持つ。それ以外では常に null に強制する。
+  result.categoryHint = result.category === 'その他' ? (result.categoryHint || null) : null;
   return result;
 }
 
@@ -445,6 +480,7 @@ function assembleEntry(raw, ai, rawHash, source) {
     source,
     name,
     category: ai.category,
+    categoryHint: ai.category === 'その他' ? (ai.categoryHint || null) : null,
     targetAge: ai.targetAge,
     region: computeRegion(raw, source),
     jobCount: ai.jobCount,
@@ -483,6 +519,7 @@ async function main() {
 
   const existing = fs.existsSync(OUT_PATH) ? JSON.parse(fs.readFileSync(OUT_PATH, 'utf8')) : [];
   const prevByUrl = new Map(existing.filter(a => a._sourceUrl).map(a => [a._sourceUrl, a]));
+  const existingHints = topCategoryHints(existing);
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   let anthropic = null;
@@ -523,7 +560,7 @@ async function main() {
       if (anthropic) {
         try {
           console.log(`[ai:${source}] structuring ${raw.companyName || raw.businessOwnerName || raw.detailUrl}`);
-          const ai = await buildWithAI(raw, anthropic, source);
+          const ai = await buildWithAI(raw, anthropic, source, existingHints);
           results.push(assembleEntry(raw, ai, rawHash, source));
           aiCalls += 1;
         } catch (err) {
@@ -565,4 +602,5 @@ module.exports = {
   computeId,
   computeRegion,
   summarizeYearlyStats,
+  topCategoryHints,
 };
