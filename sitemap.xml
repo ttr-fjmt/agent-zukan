@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  エージェント個別ページ（index.html#/agent/{id}）は現状クライアントサイドの
+  JavaScriptでDOMを切り替えているだけで、静的なHTMLとしては存在しない。
+  検索エンジンに個別ページとして確実にインデックスさせるには、将来的に
+  各エージェントページを静的事前生成（SSG）するか、サーバーサイド/エッジで
+  レンダリングする対応が必要。現時点ではスコープ外とし、トップページのみを
+  sitemapに含めている。
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ttr-fjmt.github.io/agent-zukan/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -42,7 +42,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/49/",
-    "_rawHash": "87132720b6454b211141f8740a1edb11c1a4304cf588da7acc79b38316086419"
+    "_rawHash": "87132720b6454b211141f8740a1edb11c1a4304cf588da7acc79b38316086419",
+    "id": "49"
   },
   {
     "name": "アイムファクトリー株式会社",
@@ -87,7 +88,8 @@
       "confidentiality": "個人情報適正管理規定に基づき適正に取扱い。個人情報取扱責任者：管理本部所属部長"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/47/",
-    "_rawHash": "5c63499d6e1057e59caab4f6c341cbee74b9e2b106e6e9e04abfc74d00f8722c"
+    "_rawHash": "5c63499d6e1057e59caab4f6c341cbee74b9e2b106e6e9e04abfc74d00f8722c",
+    "id": "47"
   },
   {
     "name": "アスコープ株式会社",
@@ -132,9 +134,11 @@
       "confidentiality": "プライバシーマーク取得、職業紹介優良事業者認定を取得"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/13/",
-    "_rawHash": "73a9e0fc82286220f65667380f94d57d7c9ac8adbb1311c6c80218b25c044803"
+    "_rawHash": "73a9e0fc82286220f65667380f94d57d7c9ac8adbb1311c6c80218b25c044803",
+    "id": "13"
   },
   {
+    "id": "63",
     "name": "株式会社アスノヴァス",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -180,6 +184,7 @@
     "_rawHash": null
   },
   {
+    "id": "60",
     "name": "株式会社RDグローバルリンク",
     "category": "外資・グローバル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -225,6 +230,7 @@
     "_rawHash": null
   },
   {
+    "id": "44",
     "name": "株式会社インディードリクルートパートナーズ",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -270,6 +276,7 @@
     "_rawHash": null
   },
   {
+    "id": "14",
     "name": "株式会社ウイングメディカル九州",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -356,7 +363,8 @@
       "confidentiality": "求職者・求人者の個人情報は職業紹介事業に係るものに限定して取扱。要配慮個人情報は本人同意なく取得しない"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/61/",
-    "_rawHash": "8d7466b5acc836e1d128185459bfd90875cb8508bab67368d64ae56aa0eef781"
+    "_rawHash": "8d7466b5acc836e1d128185459bfd90875cb8508bab67368d64ae56aa0eef781",
+    "id": "61"
   },
   {
     "name": "株式会社エリートネットワーク",
@@ -401,9 +409,11 @@
       "confidentiality": "「人事コンサルティング契約書」の締結により、業務遂行時の認識齟齬の解消に努める"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/16/",
-    "_rawHash": "1998f9c91ca102f054b396d709fa61b131647f9fc54d885c8e4b54b4f9bdcef5"
+    "_rawHash": "1998f9c91ca102f054b396d709fa61b131647f9fc54d885c8e4b54b4f9bdcef5",
+    "id": "16"
   },
   {
+    "id": "5",
     "name": "エン株式会社",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -449,6 +459,7 @@
     "_rawHash": null
   },
   {
+    "id": "15",
     "name": "株式会社エー・オー・シー",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -493,6 +504,7 @@
     "_rawHash": null
   },
   {
+    "id": "46",
     "name": "株式会社ACR",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -537,6 +549,7 @@
     "_rawHash": null
   },
   {
+    "id": "59",
     "name": "株式会社ONODERA USER RUN",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -624,7 +637,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/65/",
-    "_rawHash": "95cf6bc7599f298108be7e1462766be6cac77b2306cfdd7e2c0833b0129dc859"
+    "_rawHash": "95cf6bc7599f298108be7e1462766be6cac77b2306cfdd7e2c0833b0129dc859",
+    "id": "65"
   },
   {
     "name": "キャリアバンク株式会社",
@@ -669,7 +683,8 @@
       "confidentiality": "プライバシーマーク、ISMS認証、えるぼしマーク取得。北海道働き方改革推進企業認定（シルバー）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/42/",
-    "_rawHash": "bde9ea4264809d6e7e52d4fcd2a1b1351da57c4a5f5b5dbdcb78feea470f8da6"
+    "_rawHash": "bde9ea4264809d6e7e52d4fcd2a1b1351da57c4a5f5b5dbdcb78feea470f8da6",
+    "id": "42"
   },
   {
     "name": "株式会社キャリアプラス",
@@ -714,9 +729,11 @@
       "confidentiality": "プライバシーマーク認定（認定番号：20000460（09））取得"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/6/",
-    "_rawHash": "328313dcc25877316f4a75008aca7d28b7c50b1dcaf6111eda71c87d5b127421"
+    "_rawHash": "328313dcc25877316f4a75008aca7d28b7c50b1dcaf6111eda71c87d5b127421",
+    "id": "6"
   },
   {
+    "id": "18",
     "name": "株式会社キャリアプランニング",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -803,9 +820,11 @@
       "confidentiality": "プライバシーマーク取得。個人情報保護方針を明記している"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/66/",
-    "_rawHash": "5d4a57baaccc482e75b4af5425df4436079ec33ffca2deeaaf2c6453d744c18f"
+    "_rawHash": "5d4a57baaccc482e75b4af5425df4436079ec33ffca2deeaaf2c6453d744c18f",
+    "id": "66"
   },
   {
+    "id": "17",
     "name": "株式会社キープキャリエール",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -850,6 +869,7 @@
     "_rawHash": null
   },
   {
+    "id": "53",
     "name": "株式会社ギークリー",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -937,9 +957,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/26/",
-    "_rawHash": "4f972f9247b255e82d78a08740e280398523e4ca1b295bfba5162db6e99b29d1"
+    "_rawHash": "4f972f9247b255e82d78a08740e280398523e4ca1b295bfba5162db6e99b29d1",
+    "id": "26"
   },
   {
+    "id": "67",
     "name": "株式会社三幸コーポレーション",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1027,7 +1049,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/27/",
-    "_rawHash": "ef5542fbdb0f2526f28060bffd9db17ec433273b5415a9690200e191b93f377e"
+    "_rawHash": "ef5542fbdb0f2526f28060bffd9db17ec433273b5415a9690200e191b93f377e",
+    "id": "27"
   },
   {
     "name": "株式会社 ジェイエイシーリクルートメント",
@@ -1072,9 +1095,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/43/",
-    "_rawHash": "b02b70e62f80272ce936f17f551ba4c0a91d3d4fc7b45d3d1f5e07c13a128df4"
+    "_rawHash": "b02b70e62f80272ce936f17f551ba4c0a91d3d4fc7b45d3d1f5e07c13a128df4",
+    "id": "43"
   },
   {
+    "id": "28",
     "name": "株式会社ジェイック",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1162,7 +1187,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/29/",
-    "_rawHash": "cbe479c286f59427a14d143f1805490d3fd0882ca6889b5fd3ee901836086243"
+    "_rawHash": "cbe479c286f59427a14d143f1805490d3fd0882ca6889b5fd3ee901836086243",
+    "id": "29"
   },
   {
     "name": "株式会社ジョブズコンストラクション",
@@ -1207,7 +1233,8 @@
       "confidentiality": "求職者または求人者から知り得た個人情報は個人情報適正管理規程に基づき適正に管理。情報開示請求に対して客観的事実に基づく速やかな開示と訂正に対応。個人情報取扱責任者を設置"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/20/",
-    "_rawHash": "c5877541d84f2706d0b1f0006bf1a08f94e9555a4cb3f42d9f080da94f28f236"
+    "_rawHash": "c5877541d84f2706d0b1f0006bf1a08f94e9555a4cb3f42d9f080da94f28f236",
+    "id": "20"
   },
   {
     "name": "株式会社スタッフサービス",
@@ -1252,9 +1279,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/62/",
-    "_rawHash": "acb3ae7768c3653b13ada720ced40dd93ba58f4c4a5074974060bbaea1674fa7"
+    "_rawHash": "acb3ae7768c3653b13ada720ced40dd93ba58f4c4a5074974060bbaea1674fa7",
+    "id": "62"
   },
   {
+    "id": "30",
     "name": "セントスタッフ株式会社",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1300,6 +1329,7 @@
     "_rawHash": null
   },
   {
+    "id": "31",
     "name": "株式会社セントラルサービス",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1345,6 +1375,7 @@
     "_rawHash": null
   },
   {
+    "id": "50",
     "name": "ＳＯＭＰＯキャリアビューロー株式会社",
     "category": "営業・マーケティング",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1432,7 +1463,8 @@
       "confidentiality": "プライバシーマーク取得、個人情報保護方針および内規である個人情報保護マニュアルに準拠"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/21/",
-    "_rawHash": "e05a63469aed800fc1087f34a8eb124d3093b27cc6a8efef23cc7bdd81ccde17"
+    "_rawHash": "e05a63469aed800fc1087f34a8eb124d3093b27cc6a8efef23cc7bdd81ccde17",
+    "id": "21"
   },
   {
     "name": "ちばぎんキャリアサービス株式会社",
@@ -1477,9 +1509,11 @@
       "confidentiality": "個人情報は職業紹介事業に係る範囲で取扱い。本人からの情報開示請求に対し客観的事実に基づく情報を遅滞なく開示。訂正請求も対応。"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/58/",
-    "_rawHash": "6c90c173c05d9ad5ef1b63bef6aae2bb82f23333288769bd1068483e61eee17a"
+    "_rawHash": "6c90c173c05d9ad5ef1b63bef6aae2bb82f23333288769bd1068483e61eee17a",
+    "id": "58"
   },
   {
+    "id": "10",
     "name": "株式会社ツクイスタッフ",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1524,6 +1558,7 @@
     "_rawHash": null
   },
   {
+    "id": "40",
     "name": "株式会社TEM",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1611,9 +1646,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/7/",
-    "_rawHash": "abf7056207c072624bb469a8ae8a4505654e884e9191ed9f054564e54022a362"
+    "_rawHash": "abf7056207c072624bb469a8ae8a4505654e884e9191ed9f054564e54022a362",
+    "id": "7"
   },
   {
+    "id": "51",
     "name": "東栄株式会社",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1659,6 +1696,7 @@
     "_rawHash": null
   },
   {
+    "id": "22",
     "name": "株式会社東京海上日動キャリアサービス",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1745,9 +1783,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/48/",
-    "_rawHash": "dab17857a59abf59e2ebb622032408dba99259306dafb3e0f9f8cc357682e72b"
+    "_rawHash": "dab17857a59abf59e2ebb622032408dba99259306dafb3e0f9f8cc357682e72b",
+    "id": "48"
   },
   {
+    "id": "56",
     "name": "株式会社ナースパワー人材センター",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1792,6 +1832,7 @@
     "_rawHash": null
   },
   {
+    "id": "23",
     "name": "株式会社ニッソーネット",
     "category": "管理部門・コンサル",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -1879,7 +1920,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/24/",
-    "_rawHash": "e425f42276946a4073a6947208b9d1ab00dd1c845d2eaf340abf477885739bbc"
+    "_rawHash": "e425f42276946a4073a6947208b9d1ab00dd1c845d2eaf340abf477885739bbc",
+    "id": "24"
   },
   {
     "name": "株式会社パソナ",
@@ -1924,7 +1966,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/54/",
-    "_rawHash": "ae25e4ab966ccd3757bda7618d40f9290d116cd5616b1d54540016853d49a2db"
+    "_rawHash": "ae25e4ab966ccd3757bda7618d40f9290d116cd5616b1d54540016853d49a2db",
+    "id": "54"
   },
   {
     "name": "パーソルキャリア株式会社",
@@ -1969,7 +2012,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/38/",
-    "_rawHash": "bcd0e83f3715075d5e41cf9d20f8f5bef208cc6b60a1a4fd17c9570009956034"
+    "_rawHash": "bcd0e83f3715075d5e41cf9d20f8f5bef208cc6b60a1a4fd17c9570009956034",
+    "id": "38"
   },
   {
     "name": "株式会社ブレイブ",
@@ -2014,7 +2058,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/32/",
-    "_rawHash": "f62dbe3371b1f9d91333f84d626349a76284e1466764b8a7211a23f61e2aefd5"
+    "_rawHash": "f62dbe3371b1f9d91333f84d626349a76284e1466764b8a7211a23f61e2aefd5",
+    "id": "32"
   },
   {
     "name": "株式会社ベネッセi-キャリア",
@@ -2059,9 +2104,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/39/",
-    "_rawHash": "382a9f449741e811ef8a9a3d45fa761ed6ddd31ca3b4e4de85884bb8accfb837"
+    "_rawHash": "382a9f449741e811ef8a9a3d45fa761ed6ddd31ca3b4e4de85884bb8accfb837",
+    "id": "39"
   },
   {
+    "id": "33",
     "name": "株式会社マイナビ",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2149,7 +2196,8 @@
       "confidentiality": "職業紹介事業に携わる社員のみが個人情報を取扱い。個人情報取扱責任者は職業紹介責任者（小松栄一）。年1回の社員教育、5年に1回の責任者講習会受講を実施。個人情報の開示請求には遅滞なく対応"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/52/",
-    "_rawHash": "f9b1db97df7d384cad445c12db19f8e80b6859bafde3fd4784d6d3dd966e9d78"
+    "_rawHash": "f9b1db97df7d384cad445c12db19f8e80b6859bafde3fd4784d6d3dd966e9d78",
+    "id": "52"
   },
   {
     "name": "みずほビジネスパートナー株式会社",
@@ -2194,9 +2242,11 @@
       "confidentiality": "職業紹介責任者が求人者情報と個人情報を管理。個人情報開示請求時は遅滞なく対応"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/64/",
-    "_rawHash": "7e8a3a0f6b33bf760247c7c9220c3246c580a5e25fa9afc09cb61884ee7623f6"
+    "_rawHash": "7e8a3a0f6b33bf760247c7c9220c3246c580a5e25fa9afc09cb61884ee7623f6",
+    "id": "64"
   },
   {
+    "id": "34",
     "name": "株式会社メイツ中国",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2284,7 +2334,8 @@
       "confidentiality": "プライバシーマーク取得、お客様情報の保護に取り組み"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/35/",
-    "_rawHash": "1e2c240b4b40036f0cb9b42d995a0c8672fb703b50066d90b0777240d5338182"
+    "_rawHash": "1e2c240b4b40036f0cb9b42d995a0c8672fb703b50066d90b0777240d5338182",
+    "id": "35"
   },
   {
     "name": "株式会社メディカルリソース",
@@ -2329,9 +2380,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/25/",
-    "_rawHash": "1f765a81a54d0719ef1ebbdbceac814017aa07d70020dd3049bfe57d84dcf2be"
+    "_rawHash": "1f765a81a54d0719ef1ebbdbceac814017aa07d70020dd3049bfe57d84dcf2be",
+    "id": "25"
   },
   {
+    "id": "12",
     "name": "ライクスタッフィング株式会社",
     "category": "施工管理・建設",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2419,9 +2472,11 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/57/",
-    "_rawHash": "dc6b1f85568f277a62477e8453a297b1a7f71dbe8b1141412e6a764b8471675c"
+    "_rawHash": "dc6b1f85568f277a62477e8453a297b1a7f71dbe8b1141412e6a764b8471675c",
+    "id": "57"
   },
   {
+    "id": "45",
     "name": "株式会社YMFGグロースパートナーズ",
     "category": "IT・Web",
     "targetAge": "非公開（お問い合わせで確認）",
@@ -2508,7 +2563,8 @@
       "confidentiality": "非公開（お問い合わせで確認）"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/36/",
-    "_rawHash": "b411bc66b0e8f2592e30b88c4e5c92c15035ae097e5070dce25c8e517da2fbf7"
+    "_rawHash": "b411bc66b0e8f2592e30b88c4e5c92c15035ae097e5070dce25c8e517da2fbf7",
+    "id": "36"
   },
   {
     "name": "株式会社ワークポート",
@@ -2553,6 +2609,7 @@
       "confidentiality": "プライバシーポリシー・利用規約・業務運営規程に基づいて対応"
     },
     "_sourceUrl": "https://www.jesra.or.jp/yuryoshokai/certification/41/",
-    "_rawHash": "7f91e48f9ccd23df423a35310c8341b3c62d009e7a6d8c17a40d4bcb436618d2"
+    "_rawHash": "7f91e48f9ccd23df423a35310c8341b3c62d009e7a6d8c17a40d4bcb436618d2",
+    "id": "41"
   }
 ]
