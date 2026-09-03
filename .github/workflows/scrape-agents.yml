@@ -48,7 +48,18 @@ jobs:
           git add agents.json data/raw-agents.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
-          else
-            git commit -m "chore: update agents.json from daily scrape ($(date -u +%Y-%m-%d))"
-            git push
+            exit 0
           fi
+          git commit -m "chore: update agents.json from daily scrape ($(date -u +%Y-%m-%d))"
+
+          max_retries=2
+          attempt=0
+          until git push; do
+            attempt=$((attempt + 1))
+            if [ "$attempt" -gt "$max_retries" ]; then
+              echo "::error::push failed after $max_retries retries"
+              exit 1
+            fi
+            echo "push failed (attempt $attempt/$max_retries) — pulling --rebase and retrying..."
+            git pull --rebase origin main
+          done
