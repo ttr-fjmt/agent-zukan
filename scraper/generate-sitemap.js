@@ -13,6 +13,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const AGENTS_PATH = path.join(ROOT, 'agents.json');
+const CATEGORIES_PATH = path.join(ROOT, 'categories.json');
 const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 
 const BASE_URL = 'https://agent-zukan.net';
@@ -57,17 +58,34 @@ function sitemapIndexXml(sitemapFilenames) {
   );
 }
 
-function buildEntries(agents) {
+function buildEntries(agents, categories = []) {
   const entries = [
     { loc: `${BASE_URL}/`, changefreq: 'daily', priority: '1.0' },
     { loc: `${BASE_URL}/privacy.html`, changefreq: 'yearly', priority: '0.3' },
   ];
+  // faq.html は存在する場合のみ含める（PART 3で新規作成。ローカル動作確認等でまだ無い環境でも
+  // sitemap生成自体は落ちないようにする）。
+  if (fs.existsSync(path.join(ROOT, 'faq.html'))) {
+    entries.push({ loc: `${BASE_URL}/faq.html`, changefreq: 'monthly', priority: '0.4' });
+  }
   for (const a of agents) {
     if (!a.id) continue;
     entries.push({
       loc: `${BASE_URL}/agent/${encodeURIComponent(a.id)}/`,
       changefreq: 'weekly',
       priority: '0.6',
+    });
+  }
+  // 該当エージェントが1件も無いカテゴリーは generate-category-pages.js がページ自体を
+  // 生成しない（薄いページを作らないため）ので、ここでも同じ条件でスキップする。
+  for (const c of categories) {
+    if (!c.slug) continue;
+    const hasAgents = agents.some(a => a.category === c.name);
+    if (!hasAgents) continue;
+    entries.push({
+      loc: `${BASE_URL}/category/${c.slug}/`,
+      changefreq: 'daily',
+      priority: '0.5',
     });
   }
   return entries;
@@ -81,7 +99,8 @@ function chunk(arr, size) {
 
 function main() {
   const agents = readJson(AGENTS_PATH, []);
-  const entries = buildEntries(agents);
+  const categories = readJson(CATEGORIES_PATH, []);
+  const entries = buildEntries(agents, categories);
 
   if (entries.length <= MAX_URLS_PER_SITEMAP) {
     fs.writeFileSync(SITEMAP_PATH, urlsetXml(entries), 'utf8');

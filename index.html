@@ -9,6 +9,8 @@
 <meta property="og:description" id="og-description" content="転職エージェント図鑑は、全国の人材紹介エージェントを対応エリア・業界・手数料などの条件で一覧・比較できるサイトです。求職者はキャリアに合った1社を、採用企業は費用対効果の高いエージェントを、それぞれ迷わず見つけられます。">
 <meta property="og:type" content="website">
 <meta property="og:url" id="og-url" content="https://agent-zukan.net/">
+<link rel="canonical" href="https://agent-zukan.net/" id="canonical-link">
+<script type="application/ld+json" id="ld-json">{"@context":"https://schema.org","@type":"WebSite","name":"転職エージェント図鑑","url":"https://agent-zukan.net/"}</script>
 <meta property="og:image" content="/ogp-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -192,6 +194,7 @@
     cursor:pointer;background:var(--surface);
     border:1px solid var(--line);border-radius:12px;padding:14px;
     display:flex;flex-direction:column;gap:10px;transition:border-color .12s, box-shadow .12s;
+    text-decoration:none;color:inherit;
   }
   .home-card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(0,0,0,.06);}
   .home-card .category-pill{font-size:10.5px;padding:3px 8px;align-self:flex-start;}
@@ -463,7 +466,7 @@
 
 <footer>
   掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）および厚生労働省「人材サービス総合サイト」の公開データをもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは、一部の主要エージェントについて複数の口コミメディアの傾向から要約した推定値を参考情報として掲載しており、実際の集計値・投稿内容そのものではありません。それ以外のエージェントについては口コミデータを収集していないため「口コミなし」と表示しています。個別エージェントのCTAボタンからは各社の公式サイトへ遷移します。
-  <div class="footer-links"><a href="privacy.html">プライバシーポリシー</a></div>
+  <div class="footer-links"><a href="faq.html">よくある質問</a> / <a href="privacy.html">プライバシーポリシー</a></div>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -489,12 +492,64 @@ function setMetaContent(id, content){
   if(el) el.setAttribute("content", content);
 }
 
+const SITE_ORIGIN = "https://agent-zukan.net";
+
+function updateCanonical(href){
+  const el = document.getElementById("canonical-link");
+  if(el) el.setAttribute("href", href);
+}
+
+/** JSON-LD（<script type="application/ld+json" id="ld-json">）の中身を丸ごと差し替える。 */
+function setJsonLd(data){
+  const el = document.getElementById("ld-json");
+  if(el) el.textContent = JSON.stringify(data);
+}
+
+/** website/affiliateUrlの保存形式（プロトコル省略あり）から、JSON-LD用の完全なURLを組み立てる。
+ * 値が無ければ undefined を返す（呼び出し側で "url" キー自体を省略するため）。 */
+function buildAgentSchemaUrl(a){
+  const raw = a.affiliateUrl || a.website;
+  if(!raw) return undefined;
+  const stripped = raw.replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+  return stripped ? "https://" + stripped : undefined;
+}
+
+/** 一覧表示時のJSON-LD。サイト全体を表すWebSite型に戻す
+ * （口コミ・評価は独自算出値であり実際の口コミではないため、AggregateRating等の評価系
+ * プロパティは絶対に含めない）。 */
+function updateJsonLdForList(){
+  setJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "転職エージェント図鑑",
+    "url": SITE_ORIGIN + "/",
+  });
+}
+
+/** エージェント詳細表示時のJSON-LD（EmploymentAgency型）。
+ * 図鑑スコア等は実際の口コミ評価ではなく独自算出値のため、AggregateRating等の評価系
+ * プロパティは絶対に含めない（Googleのスキーママークアップポリシー違反のリスクがあるため）。 */
+function updateJsonLdForAgent(a){
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "EmploymentAgency",
+    "name": a.name,
+    "description": a.appeal,
+    "areaServed": a.region,
+  };
+  const url = buildAgentSchemaUrl(a);
+  if(url) data.url = url;
+  setJsonLd(data);
+}
+
 function updateMetaForList(){
   document.title = DEFAULT_TITLE;
   setMetaContent("meta-description", DEFAULT_DESCRIPTION);
   setMetaContent("og-title", DEFAULT_TITLE);
   setMetaContent("og-description", DEFAULT_DESCRIPTION);
   setMetaContent("og-url", location.href.split("#")[0]);
+  updateCanonical(SITE_ORIGIN + "/");
+  updateJsonLdForList();
 }
 
 function updateMetaForAgent(a){
@@ -508,6 +563,10 @@ function updateMetaForAgent(a){
   setMetaContent("og-title", title);
   setMetaContent("og-description", description);
   setMetaContent("og-url", location.href);
+  // 企業モードはハッシュ遷移のURLのため、canonicalはトップページのままにする
+  // （求職者モードの実パス /agent/{id}/ のみ、そのURLをcanonicalにする）。
+  updateCanonical(mode === "candidate" ? SITE_ORIGIN + agentUrlPath(a) : SITE_ORIGIN + "/");
+  updateJsonLdForAgent(a);
 }
 
 // カテゴリー定義（色・アイコン）は categories.json から動的に読み込む。
@@ -1469,6 +1528,12 @@ async function loadAgents(){
       render();
       renderRecommend();
       startRecommendAutoScroll();
+      // カテゴリー別ランディングページ（category/{slug}/）の「もっと見る」から
+      // /?category={カテゴリー名} で遷移してきた場合、該当カテゴリーの絞り込み一覧を初期表示する。
+      const categoryParam = new URLSearchParams(location.search).get("category");
+      if(categoryParam && CHIP_LABELS.includes(categoryParam)){
+        showCategoryList(categoryParam);
+      }
       handleRoute();
     }
   }catch(err){

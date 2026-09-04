@@ -78,6 +78,10 @@ jobs:
           PRERENDER_LIMIT: ${{ github.event.inputs.prerender_limit }}
         run: node prerender.js
 
+      - name: Generate category landing pages (SEO/AEO)
+        working-directory: scraper
+        run: node generate-category-pages.js
+
       - name: Regenerate sitemap.xml
         working-directory: scraper
         run: node generate-sitemap.js
@@ -94,6 +98,7 @@ jobs:
           [ -f data/mhlw-cursor.json ] && git add data/mhlw-cursor.json
           [ -f data/ssg-manifest.json ] && git add data/ssg-manifest.json
           [ -d agent ] && git add agent
+          [ -d category ] && git add category
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0

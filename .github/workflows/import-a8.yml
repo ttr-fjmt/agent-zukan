@@ -61,6 +61,10 @@ jobs:
         working-directory: scraper
         run: node prerender.js
 
+      - name: Generate category landing pages (SEO/AEO)
+        working-directory: scraper
+        run: node generate-category-pages.js
+
       - name: Regenerate sitemap.xml
         working-directory: scraper
         run: node generate-sitemap.js
@@ -69,11 +73,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add agents.json sitemap.xml "${{ inputs.file }}"
+          git add agents.json categories.json sitemap.xml "${{ inputs.file }}"
           # 50,000URL超過時にsitemapが分割された場合のみ生成される
           git add sitemap-*.xml 2>/dev/null || true
           [ -f data/ssg-manifest.json ] && git add data/ssg-manifest.json
           [ -d agent ] && git add agent
+          [ -d category ] && git add category
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
