@@ -232,12 +232,12 @@ function buildPageHtml({ categoryName, slug, styleBlock, totalCount, pageAgents,
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBGSOQRR5M"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBGS0QRR5M"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-WBGSOQRR5M');
+  gtag('config', 'G-WBGS0QRR5M');
 </script>
 ${styleBlock}
 </head>
