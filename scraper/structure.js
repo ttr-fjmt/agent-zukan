@@ -24,6 +24,15 @@ const RAW_PATH = path.join(__dirname, '..', 'data', 'raw-agents.json');
 const MHLW_RAW_PATH = path.join(__dirname, '..', 'data', 'mhlw-agents.json');
 const OUT_PATH = path.join(__dirname, '..', 'agents.json');
 
+/**
+ * jesra/mhlw のスクレイプ対象外（_sourceUrl を持たない手動インポート系）の
+ * エントリを、source フィールドで識別するための許可リスト。
+ * 該当する既存エントリは、その日の raw batches に登場しなくても results から
+ * 落とさず引き継ぐ（= 日次スクレイプによる誤削除を防ぐ）。今後インポート元が
+ * 増えたらここに追記する。
+ */
+const UNSCRAPED_SOURCES = ['a8'];
+
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
 
 function stableStringify(obj) {
@@ -665,10 +674,32 @@ async function main() {
     }
   }
 
+  /**
+   * jesra/mhlw のスクレイプ対象外（_sourceUrl が無い、または source が
+   * UNSCRAPED_SOURCES に含まれる）既存エントリを補完する。
+   * これらはその日の raw batches に一切登場しないため、上のループでは
+   * results に一度も追加されない。放置すると日次スクレイプのたびに
+   * 消えてしまうため、まだ results に同一 id が無いものだけ末尾に引き継ぐ。
+   *
+   * 一方、_sourceUrl を持つ既存エントリ（jesra/mhlw 由来）が今回の raw batches に
+   * 登場しなかった場合は、廃業等の可能性があるため従来通り削除されたままにする
+   * （ここでは一切補完しない）。
+   */
+  const resultIds = new Set(results.map(a => a.id));
+  let carriedOver = 0;
+  for (const entry of existing) {
+    const isUnscraped = !entry._sourceUrl || UNSCRAPED_SOURCES.includes(entry.source);
+    if (isUnscraped && !resultIds.has(entry.id)) {
+      results.push(entry);
+      resultIds.add(entry.id);
+      carriedOver += 1;
+    }
+  }
+
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2) + '\n', 'utf8');
   console.log(
     `Wrote ${results.length} agents to ${OUT_PATH} ` +
-      `(reused=${reused}, ai=${aiCalls}, offline=${offlineBuilds}, skipped-unreachable=${skippedUnreachable})`
+      `(reused=${reused}, ai=${aiCalls}, offline=${offlineBuilds}, skipped-unreachable=${skippedUnreachable}, carried-over=${carriedOver})`
   );
 }
 
