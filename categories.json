@@ -173,5 +173,54 @@
     "to": "#3A265C",
     "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
     "slug": "category-16"
+  },
+  {
+    "name": "職業紹介・人材紹介",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-17"
+  },
+  {
+    "name": "医療・介護・保育",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-18"
+  },
+  {
+    "name": "特定技能外国人紹介",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-19"
+  },
+  {
+    "name": "外国人材紹介",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-20"
+  },
+  {
+    "name": "職業紹介事業者（全職種対応）",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-21"
+  },
+  {
+    "name": "介護・福祉",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-22"
+  },
+  {
+    "name": "職業紹介（特定技能）",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-23"
   }
 ]
