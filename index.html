@@ -880,12 +880,23 @@ function buildHomeSection(title, agents, onMoreClick, iconHTML){
   return section;
 }
 
+/** 一覧のin-feed広告（1111111111〜5555555555）と重複しない、ホーム用の広告スロットID採番。
+ * 単純な「同じ数字の10桁繰り返し」は1桁の数字でしか作れない（6〜9で最大4個分）ため、
+ * カテゴリー数が多い場合でも確実に足りるよう10桁の連番（6000000001〜）を使う。 */
+function homeAdSlotId(seq){
+  return String(6000000000 + seq);
+}
+
 /**
  * セクション別ホーム表示。
  * 1. 注目のエージェント（featured===true からランダム最大6件）
  * 2. 高評価エージェント（featured!==true かつ completenessScoreが上位（6件確保できるよう動的に決めたしきい値以上）、情報量順で最大6件）
  * 3. categories.json 登場順の各カテゴリー（「その他」除く、情報量順で最大6件）
- * 該当0件のセクションは丸ごと表示しない。
+ * 該当0件のセクションは丸ごと表示しない（表示されたセクションの数だけを基準に、以下の広告挿入間隔を数える）。
+ *
+ * セクションを2つ描画するごとに、間に一覧と同じ in-feed 広告枠を1つ挿入する
+ * （1番目と2番目の間には入れず、2番目と3番目の間、4番目と5番目の間…という間隔。
+ * 最後のセクションの後ろには入れない）。
  */
 function renderHome(){
   document.getElementById("resultCount").textContent = "";
@@ -894,9 +905,11 @@ function renderHome(){
   ledger.classList.add("home-view");
   ledger.innerHTML = "";
 
+  const sections = [];
+
   const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 6);
   if(featuredAgents.length > 0){
-    ledger.appendChild(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
+    sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
   }
 
   highScoreThreshold = computeHighScoreThreshold(mode, 6);
@@ -905,7 +918,7 @@ function renderHome(){
     .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
     .slice(0, 6);
   if(highScoreAgents.length > 0){
-    ledger.appendChild(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
+    sections.push(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
   }
 
   CHIP_LABELS
@@ -916,11 +929,24 @@ function renderHome(){
         .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
         .slice(0, 6);
       if(categoryAgents.length > 0){
-        ledger.appendChild(buildHomeSection(
+        sections.push(buildHomeSection(
           `${categoryName}のエージェント`, categoryAgents, ()=>showCategoryList(categoryName), categoryIconHTML(categoryName)
         ));
       }
     });
+
+  let adSeq = 0;
+  sections.forEach((section, idx) => {
+    ledger.appendChild(section);
+    const isPairBoundary = (idx + 1) % 2 === 0;
+    const hasMoreSections = idx < sections.length - 1;
+    if(isPairBoundary && hasMoreSections){
+      adSeq += 1;
+      const adWrap = document.createElement("div");
+      adWrap.innerHTML = adSlotHTML("in-feed", homeAdSlotId(adSeq));
+      ledger.appendChild(adWrap.firstElementChild);
+    }
+  });
 }
 
 /** ホームの各セクションの「他も見る」・上部の「すべてのエージェントを見る」・絞り込み解除、共通の遷移処理。 */
