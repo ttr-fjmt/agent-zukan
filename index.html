@@ -408,13 +408,9 @@
 
 <div class="wrap">
   <div class="ad-slot banner">
-    <span class="ad-label">広告</span>
-    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
-    <!--
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
-         data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+         data-ad-slot="1771024424" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
   </div>
 
   <div id="listView">
@@ -454,13 +450,9 @@
 
 <div class="wrap">
   <div class="ad-slot footer-ad">
-    <span class="ad-label">広告</span>
-    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
-    <!--
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
-         data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
+         data-ad-slot="1620805016" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
   </div>
 </div>
 
@@ -1001,13 +993,9 @@ function showToast(msg){
 
 function adSlotHTML(variant, slotId){
   return `<div class="ad-slot ${variant}">
-      <span class="ad-label">広告</span>
-      <span class="ad-placeholder">広告スペース（Google AdSense）</span>
-      <!--
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
            data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
-      -->
     </div>`;
 }
 
@@ -1091,7 +1079,7 @@ function render(){
 
     if((idx+1) % 4 === 0 && idx < list.length-1){
       const adWrap = document.createElement("div");
-      adWrap.innerHTML = adSlotHTML("in-feed", "2222222222");
+      adWrap.innerHTML = adSlotHTML("in-feed", "5518697744");
       ledger.appendChild(adWrap.firstElementChild);
     }
   });
@@ -1150,11 +1138,11 @@ function buildHomeSection(title, agents, onMoreClick, iconHTML){
   return section;
 }
 
-/** 一覧のin-feed広告（1111111111〜5555555555）と重複しない、ホーム用の広告スロットID採番。
- * 単純な「同じ数字の10桁繰り返し」は1桁の数字でしか作れない（6〜9で最大4個分）ため、
- * カテゴリー数が多い場合でも確実に足りるよう10桁の連番（6000000001〜）を使う。 */
+/** ホームのセクション区切り広告は、一覧内in-feed広告と役割が同じため、
+ * 同じ実際のAdSense広告ユニットID（5518697744）を使い回す
+ * （新規の広告ユニット作成は不要なため）。 */
 function homeAdSlotId(seq){
-  return String(6000000000 + seq);
+  return "5518697744";
 }
 
 /**
@@ -1388,7 +1376,7 @@ function openDetail(a){
         <p class="body-text">${a.commitmentExplanation}</p>
       </div>
 
-      ${adSlotHTML("in-feed", "4444444444")}
+      ${adSlotHTML("in-feed", "7953289398")}
 
       <div class="d-section">
         <h4>実績・許可情報</h4>
