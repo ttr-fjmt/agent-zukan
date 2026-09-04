@@ -12,7 +12,10 @@ permissions:
   contents: write
 
 concurrency:
-  group: import-a8
+  # agents.json / agent/*/index.html / sitemap.xml / data/ssg-manifest.json をコミット・pushする
+  # 全ワークフロー（scrape-agents.yml / import-a8.yml / 今後追加されるもの）で共通のグループ名にし、
+  # ワークフローファイルが違っても互いに排他制御されるようにする（同時実行によるコンフリクト防止）。
+  group: repo-content-write
   cancel-in-progress: false
 
 jobs:
