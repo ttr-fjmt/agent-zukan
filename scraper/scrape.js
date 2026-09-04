@@ -82,6 +82,39 @@ async function discoverDetailUrls() {
   return [...urls];
 }
 
+/**
+ * dd内の<a>群から「実際に使えるURL」を選ぶ。
+ *
+ * jesra.or.jpのテンプレートは、サービス名欄の先頭に必ず href="　"（全角スペース1〜2文字）
+ * のダミーリンクを挿入しており、その後に実際の「求職者用」「求人者用」の本物のURLが続く
+ * （例:「アスノヴァス エージェント<br><a href="　">　</a><br>求人者用<br><a href="...">...</a>
+ * <br>求職者用<br><a href="...">...</a>」）。単純に最初の<a>を取ると必ずこのダミーリンクを
+ * 拾ってしまうため、hrefが空/全角スペースのみでない候補だけに絞り込む。
+ *
+ * 1社で複数サービス（求職者用・求人者用のペアが複数組）を持つ場合は、直前のテキストに
+ * 「求職者用」を含むリンクを優先する（サイトの主対象が求職者のため）。見つからなければ
+ * 文書順で最初の有効な候補にフォールバックする。
+ */
+function pickServiceLink($, dd) {
+  const candidates = [];
+  dd.find('a').each((_, a) => {
+    const href = ($(a).attr('href') || '').trim();
+    if (!href) return;
+
+    let precedingText = '';
+    let node = a.prev;
+    while (node) {
+      if (node.type === 'tag' && node.name === 'a') break;
+      if (node.type === 'text') precedingText = node.data + precedingText;
+      node = node.prev;
+    }
+    candidates.push({ href, precedingText: precedingText.trim() });
+  });
+  if (candidates.length === 0) return null;
+  const preferred = candidates.find(c => c.precedingText.includes('求職者用'));
+  return (preferred || candidates[0]).href;
+}
+
 function extractDetailFields($) {
   const fields = {};
   $('.dtlCnt_wrap dl.box').each((_, dl) => {
@@ -92,7 +125,7 @@ function extractDetailFields($) {
     fields[key] = {
       text: fullText($, dd),
       directText: directText($, dd),
-      link: dd.find('a').first().attr('href') || null,
+      link: pickServiceLink($, dd),
     };
   });
   return fields;

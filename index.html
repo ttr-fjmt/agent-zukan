@@ -180,12 +180,28 @@
   }
   .home-section-icon svg{width:13px;height:13px;}
   .home-more-link{
-    font-size:12.5px;color:var(--accent);font-weight:600;text-decoration:none;
-    white-space:nowrap;flex-shrink:0;cursor:pointer;
+    display:block;text-align:center;margin-top:14px;
+    font-size:13px;color:var(--accent);font-weight:600;text-decoration:none;cursor:pointer;
   }
   .home-more-link:hover{text-decoration:underline;}
   .home-section-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:12px;}
-  .home-section-grid .row-item{margin-bottom:0;}
+
+  /* ホーム専用のシンプルなカード（通常一覧の.row-itemとは別。stats-gridは持たない） */
+  .home-card{
+    position:relative;
+    cursor:pointer;background:var(--surface);
+    border:1px solid var(--line);border-radius:12px;padding:14px;
+    display:flex;flex-direction:column;gap:10px;transition:border-color .12s, box-shadow .12s;
+  }
+  .home-card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .home-card .category-pill{font-size:10.5px;padding:3px 8px;align-self:flex-start;}
+  .home-card h4{
+    font-size:14px;font-weight:700;margin:0;line-height:1.4;color:var(--ink);
+  }
+  .home-card .home-card-excerpt{
+    font-size:12px;color:var(--ink-soft);line-height:1.65;margin:0;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
 
   /* list */
   .ledger{margin-top:8px;}
@@ -1029,7 +1045,23 @@ function categoryIconHTML(categoryName){
   return `<span class="home-section-icon" style="background:linear-gradient(135deg, ${style.from}, ${style.to});"><svg viewBox="0 0 64 64" fill="none">${style.icon}</svg></span>`;
 }
 
-/** 見出し＋最大6件のカードグリッド＋「他も見る」リンクからなる、ホームの1セクションを組み立てる。 */
+/** ホーム専用のシンプルなカード（アイコン・カテゴリー・社名・特徴の抜粋のみ）。
+ * 通常のフラット一覧で使う buildRowItem（stats-grid付き）とは別物で、ホームのセクション
+ * （renderHome→buildHomeSection）でのみ使う。特徴の抜粋はCSSのline-clampで3行程度に
+ * 省略し、カードの高さが不揃いにならないようにする。 */
+function buildHomeCardHTML(a, currentMode){
+  const excerpt = currentMode==="company" ? (a.companyAppeal || a.commitmentExplanation) : a.appeal;
+  return `
+      ${eyecatchHTML(a, "thumb")}
+      <span class="category-pill">${a.category}</span>
+      <h4>${a.name}</h4>
+      <p class="home-card-excerpt">${excerpt || ""}</p>
+      ${a.featured ? `<span class="pr-label">PR</span>` : ""}
+    `;
+}
+
+/** 見出し＋最大6件（呼び出し元次第）のシンプルなカードグリッド＋グリッド下の「全部見る」リンク
+ * からなる、ホームの1セクションを組み立てる。 */
 function buildHomeSection(title, agents, onMoreClick, iconHTML){
   const section = document.createElement("div");
   section.className = "home-section";
@@ -1037,17 +1069,24 @@ function buildHomeSection(title, agents, onMoreClick, iconHTML){
   const head = document.createElement("div");
   head.className = "home-section-head";
   head.innerHTML = `<h3>${iconHTML || ""}<span>${title}</span></h3>`;
-  const moreLink = document.createElement("a");
-  moreLink.className = "home-more-link";
-  moreLink.textContent = "他も見る →";
-  moreLink.onclick = onMoreClick;
-  head.appendChild(moreLink);
   section.appendChild(head);
 
   const grid = document.createElement("div");
   grid.className = "home-section-grid";
-  agents.forEach(a => grid.appendChild(buildRowItem(a)));
+  agents.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "home-card";
+    card.onclick = ()=>navigateToDetail(a);
+    card.innerHTML = buildHomeCardHTML(a, mode);
+    grid.appendChild(card);
+  });
   section.appendChild(grid);
+
+  const moreLink = document.createElement("a");
+  moreLink.className = "home-more-link";
+  moreLink.textContent = "全部見る →";
+  moreLink.onclick = onMoreClick;
+  section.appendChild(moreLink);
 
   return section;
 }
@@ -1061,7 +1100,7 @@ function homeAdSlotId(seq){
 
 /**
  * セクション別ホーム表示。
- * 1. 注目のエージェント（featured===true からランダム最大6件）
+ * 1. 注目のエージェント（featured===true からランダム最大4件）
  * 2. 高評価エージェント（featured!==true かつ completenessScoreが上位（6件確保できるよう動的に決めたしきい値以上）、情報量順で最大6件）
  * 3. categories.json 登場順の各カテゴリー（「その他」除く、情報量順で最大6件）
  * 該当0件のセクションは丸ごと表示しない（表示されたセクションの数だけを基準に、以下の広告挿入間隔を数える）。
@@ -1079,7 +1118,7 @@ function renderHome(){
 
   const sections = [];
 
-  const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 6);
+  const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 4);
   if(featuredAgents.length > 0){
     sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
   }
@@ -1223,8 +1262,6 @@ function openDetail(a){
         <p class="body-text">${a.appeal}</p>
         <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
       </div>
-
-      ${adSlotHTML("in-feed", "3333333333")}
 
       ${reviewSectionHTML}
 
