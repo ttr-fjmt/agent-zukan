@@ -126,7 +126,10 @@ async function main() {
         const url = `http://localhost:${PORT}/index.html?ssg=1#/agent/${encodeURIComponent(id)}`;
         await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
         await page.waitForSelector('#detailView.show', { timeout: 10000 });
-        const html = await page.content();
+        const html = (await page.content()).replace(
+          /<meta http-equiv="origin-trial" content="[^"]*">/g,
+          ''
+        );
 
         const sizeBytes = Buffer.byteLength(html, 'utf8');
         if (sizeBytes > SIZE_ERROR_THRESHOLD_BYTES) {
