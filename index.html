@@ -319,6 +319,7 @@
   .back-btn svg{width:16px;height:16px;flex-shrink:0;}
   .detail-head-row{display:flex;align-items:flex-start;gap:20px;}
   .detail-head{margin-bottom:8px;flex:1;min-width:0;}
+  .detail-head-rating{margin-bottom:8px;}
   .detail-head .category-pill{margin-bottom:12px;}
   .detail-head h2{font-size:clamp(24px,3.4vw,30px);margin:0 0 10px;font-weight:700;letter-spacing:.01em;}
   .one-liner{font-size:15.5px;color:var(--accent);font-weight:500;line-height:1.7;margin:0 0 32px;}
@@ -1098,8 +1099,13 @@ function categoryIconHTML(categoryName){
  * 省略し、カードの高さが不揃いにならないようにする。 */
 function buildHomeCardHTML(a, currentMode){
   const excerpt = currentMode==="company" ? (a.companyAppeal || a.commitmentExplanation) : a.appeal;
+  const review = currentMode==="company" ? (a.companyReviews[0]||null) : (a.reviews[0]||null);
+  const ratingHTML = a.featured
+    ? `<div class="home-card-rating">${ratingBadge(review, a.real, a, currentMode)}</div>`
+    : "";
   return `
       ${eyecatchHTML(a, "thumb")}
+      ${ratingHTML}
       <span class="category-pill">${a.category}</span>
       <h4>${a.name}</h4>
       <p class="home-card-excerpt">${excerpt || ""}</p>
@@ -1298,6 +1304,7 @@ function openDetail(a){
       <div class="detail-head-row">
         ${eyecatchHTML(a, "hero")}
         <div class="detail-head">
+          ${a.featured ? `<div class="detail-head-rating">${ratingBadge(a.reviews[0]||null, a.real, a, "candidate")}</div>` : ""}
           <span class="category-pill">${a.category}</span>
           <h2>${a.name}</h2>
           <p class="one-liner">${a.oneLiner}</p>
@@ -1353,6 +1360,7 @@ function openDetail(a){
       <div class="detail-head-row">
         ${eyecatchHTML(a, "hero")}
         <div class="detail-head">
+          ${a.featured ? `<div class="detail-head-rating">${ratingBadge(a.companyReviews[0]||null, a.real, a, "company")}</div>` : ""}
           <span class="category-pill">${a.category}</span>
           <h2>${a.name}</h2>
           <p class="one-liner">${a.companyOneLiner}</p>

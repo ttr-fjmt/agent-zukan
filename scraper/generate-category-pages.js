@@ -124,11 +124,42 @@ function eyecatchHTML(agent, categoryStyle) {
     </div>`;
 }
 
-/** index.html の buildHomeCardHTML(agent, "candidate") 相当（求職者モード固定）。 */
+/** index.html の zukanScore(agent, "candidate") 相当。featuredは無条件5。 */
+function zukanScore(agent) {
+  if (agent.featured) return 5;
+  const raw = completenessScore(agent);
+  const ratio = raw / 6;
+  return Math.max(1, Math.min(4, Math.round(1 + ratio * 4)));
+}
+
+/** index.html の zukanScoreBadge(agent, "candidate") 相当。 */
+function zukanScoreBadge(agent) {
+  const score = zukanScore(agent);
+  const filled = '★'.repeat(score);
+  const empty = '☆'.repeat(5 - score);
+  return `<span class="rating-badge"><span class="star">${filled}</span><span class="star-empty">${empty}</span><span class="count">（図鑑スコア）</span></span>`;
+}
+
+/** index.html の ratingBadge(review, estimated, agent, "candidate") 相当。
+ * 実際の口コミ（agent.reviews[0]）があればそちらを優先し、無ければ図鑑スコアにフォールバックする。 */
+function ratingBadge(agent) {
+  const review = agent.reviews && agent.reviews[0];
+  if (!review) return zukanScoreBadge(agent);
+  const tag = agent.real
+    ? '<span class="count">（推定）</span>'
+    : `<span class="count">（${review.count}件）</span>`;
+  return `<span class="rating-badge"><span class="star">★</span>${review.rating.toFixed(1)}${tag}</span>`;
+}
+
+/** index.html の buildHomeCardHTML(agent, "candidate") 相当（求職者モード固定）。
+ * featured===true の場合のみ、イチオシバッジと社名の間に★評価バッジ（ratingBadge/zukanScoreBadge）
+ * を表示する（buildHomeCardHTMLと同じ見た目・位置）。 */
 function homeCardHTML(agent, categoryStyle) {
   const excerpt = agent.appeal || '';
+  const ratingHTML = agent.featured ? `<div class="home-card-rating">${ratingBadge(agent)}</div>` : '';
   return `<a class="home-card" href="/agent/${encodeURIComponent(agent.id)}/">
       ${eyecatchHTML(agent, categoryStyle)}
+      ${ratingHTML}
       <span class="category-pill">${escapeHtml(agent.category)}</span>
       <h4>${escapeHtml(agent.name)}</h4>
       <p class="home-card-excerpt">${escapeHtml(excerpt)}</p>
