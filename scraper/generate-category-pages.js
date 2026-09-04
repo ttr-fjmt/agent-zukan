@@ -99,6 +99,11 @@ function completenessScore(agent) {
   return score;
 }
 
+/** index.html の displaySortValue(agent, mode) と同じロジック（求職者モード固定）。featuredを最優先、同順位内はcompletenessScore降順。 */
+function displaySortValue(agent) {
+  return (agent.featured ? 1 : 0) * 1000 + completenessScore(agent);
+}
+
 function escapeHtml(str) {
   return String(str == null ? '' : str)
     .replace(/&/g, '&amp;')
@@ -292,7 +297,7 @@ function main() {
   for (const c of categories) {
     const matched = agents
       .filter(a => a.category === c.name)
-      .sort((a, b) => completenessScore(b) - completenessScore(a));
+      .sort((a, b) => displaySortValue(b) - displaySortValue(a));
 
     if (matched.length === 0) {
       skipped += 1;
@@ -323,4 +328,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { ensureSlugs, completenessScore, buildPageHtml, ORIGINAL_SLUG_MAP };
+module.exports = { ensureSlugs, completenessScore, displaySortValue, buildPageHtml, ORIGINAL_SLUG_MAP };

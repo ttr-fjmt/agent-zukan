@@ -36,6 +36,7 @@ const path = require('path');
 
 const { politeDelay } = require('./lib/http');
 const { verifyLink } = require('./lib/link-check');
+const { buildFaviconUrl } = require('./structure');
 
 const ROOT = path.join(__dirname, '..');
 const AGENTS_PATH = path.join(ROOT, 'agents.json');
@@ -170,6 +171,10 @@ async function main() {
         if (normalized && normalized !== agent.website) {
           updatedWebsites.push({ id: agent.id, name: label, from: agent.website, to: normalized });
           agent.website = normalized;
+          const newFavicon = buildFaviconUrl(result.finalUrl);
+          if (newFavicon && newFavicon !== agent.faviconUrl) {
+            agent.faviconUrl = newFavicon;
+          }
         }
       }
       console.log(`${prefix} OK   status=${result.status ?? '-'}${result.redirected ? ' (redirected)' : ''} ${label} <${agent.website}>`);

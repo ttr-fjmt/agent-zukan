@@ -953,6 +953,11 @@ function completenessScore(agent, currentMode){
   return score;
 }
 
+/** 一覧・ホーム画面での並び順用。featuredを最優先（true→false）、同順位内はcompletenessScore降順。 */
+function displaySortValue(agent, currentMode){
+  return (agent.featured ? 1 : 0) * 1000 + completenessScore(agent, currentMode);
+}
+
 function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5-Math.round(rating)); }
 
 /**
@@ -1068,7 +1073,7 @@ function render(){
 
   const query = document.getElementById("searchInput").value;
   const list = AGENTS.filter(a=>matches(a, query));
-  list.sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode));
+  list.sort((a,b)=>displaySortValue(b, mode) - displaySortValue(a, mode));
   document.getElementById("resultCount").textContent = list.length + "件表示中（全" + AGENTS.length + "件）";
 
   const ledger = document.getElementById("ledger");
@@ -1188,7 +1193,7 @@ function renderHome(){
     .forEach(categoryName => {
       const categoryAgents = AGENTS
         .filter(a => a.category===categoryName)
-        .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
+        .sort((a,b)=>displaySortValue(b, mode) - displaySortValue(a, mode))
         .slice(0, 6);
       if(categoryAgents.length > 0){
         sections.push(buildHomeSection(
