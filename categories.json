@@ -222,5 +222,47 @@
     "to": "#3A265C",
     "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
     "slug": "category-23"
+  },
+  {
+    "name": "人材紹介サービス",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-24"
+  },
+  {
+    "name": "職業紹介事業一般",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-25"
+  },
+  {
+    "name": "特定技能",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-26"
+  },
+  {
+    "name": "医療・医師",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-27"
+  },
+  {
+    "name": "人材派遣・紹介業",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-28"
+  },
+  {
+    "name": "国際人材・特定技能",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-29"
   }
 ]
