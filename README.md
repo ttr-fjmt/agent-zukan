@@ -19,12 +19,15 @@ scraper/
   scrape.js                 jesra.or.jp のクロール（一覧のページネーション追跡→詳細ページ抽出）
   scrape-mhlw.js             MHLW「人材サービス総合サイト」の段階的取り込み（都道府県を順に巡回）
   structure.js               生データ（jesra・MHLW両方）を agents.json のスキーマに構造化（Claude Haiku 4.5 使用）
+  import-a8.js                A8.netアフィリエイト提携エージェントのExcelを featured エージェントとして取り込む
   lib/robots.js              robots.txt の取得・判定
   lib/http.js                 UA・リクエスト間隔（ポライトネス）
   lib/mhlw.js                 MHLW用のCookieセッションクライアント・検索/ページング/詳細抽出
   lib/schema.js               カテゴリ一覧・共通定数
+data/a8-import/               A8アフィリエイト提携情報のExcel（手動配置、ファイル名に取り込み日を含める）
 .github/workflows/
   scrape-agents.yml           毎日深夜(JST)に自動実行するワークフロー
+  import-a8.yml                A8アフィリエイトExcelの取り込み（workflow_dispatch専用）
 ```
 
 ## データパイプライン
@@ -85,6 +88,27 @@ scraper/
    コミット・pushします。`workflow_dispatch` にも対応しているので、GitHub の Actions タブから
    手動実行もできます。
 
+6. **`scraper/import-a8.js`** — A8.netのアフィリエイト提携エージェント一覧（Excel、ヘッダー行:
+   広告主名／リンク／このエージェントの特徴／対応エリア／対象年代／なにに特化しているか）を
+   `agents.json` に `featured: true` のエージェントとして取り込みます。日次スクレイプには含まれず、
+   `.github/workflows/import-a8.yml`（`workflow_dispatch` 専用、入力でExcelファイルのパスを指定）
+   から手動実行します。
+   - `リンク`列のHTML文字列から `<a href="...">` のURLのみを抽出（1x1トラッキング画像タグは無視）し
+     `affiliateUrl` に設定します
+   - 完全一致ではなく**広告主名（会社名）のみ**をキーに重複除去します（1社1行に強制的に絞り込み、
+     2件目以降はスキップしてログ出力）
+   - 既存 `agents.json` と会社名で突き合わせ:
+     - マッチした場合 → 既存エントリを**マージ更新**します。`category`/`region`/`targetAge`/
+       紹介文まわり（`oneLiner`/`appeal`等）・`featured`・`affiliateUrl` のみExcel側（AI構造化結果）
+       で上書きし、`website`/`feeRate`/`companyDetail`等、Excelに元々情報が無い項目は**既存の値を
+       温存**します（`id`・`source`は変更しません）
+     - マッチしない場合 → 新規エントリとして追加します（`id`: `a8-001`のような連番、`source: "a8"`、
+       `website`: `null`、`companyDetail`等の未取得項目は`非公開（お問い合わせで確認）`固定）
+   - カテゴリ分類・紹介文の生成には `structure.js` の `buildWithAI`（`source: "a8"` 分岐）を再利用し、
+     `ANTHROPIC_API_KEY` 未設定時はオフラインフォールバックで動作します
+   - 取り込み後、`prerender.js` / `generate-sitemap.js` も実行し、新規・更新分の静的詳細ページと
+     サイトマップを反映します
+
 ## セットアップ
 
 1. リポジトリの Settings → Secrets and variables → Actions で `ANTHROPIC_API_KEY` を登録する
@@ -106,4 +130,12 @@ ANTHROPIC_API_KEY=sk-ant-... node structure.js     # agents.json を生成（キ
 
 ```bash
 MHLW_DAILY_DETAIL_LIMIT=5 node scrape-mhlw.js
+```
+
+A8アフィリエイト提携エージェントのExcelを取り込む場合（`data/a8-import/` にファイルを配置してから）:
+
+```bash
+cd scraper
+ANTHROPIC_API_KEY=sk-ant-... node import-a8.js ../data/a8-import/a8-agents-YYYYMMDD.xlsx
+node import-a8.js ../data/a8-import/a8-agents-YYYYMMDD.xlsx --dry-run   # 書き込まず確認のみ
 ```

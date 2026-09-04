@@ -400,6 +400,14 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
           `年度別 就職者数・離職者数の推移: ${summarizeYearlyStats(raw.yearlyStats)}`,
           '手数料公表サイトの情報: 今回は取得していません（別途アップデートで対応予定）。',
         ].join('\n')
+      : source === 'a8'
+      ? [
+          `企業名（サービス提供者）: ${raw.companyName || '(不明)'}`,
+          `エージェントの特徴（原文、提携先の自己申告）: ${raw.feature || '(不明)'}`,
+          `特化領域: ${raw.specialty || '(不明)'}`,
+          `対応エリア: ${raw.region || '(不明)'}`,
+          `対象年代: ${raw.targetAge || '(不明)'}`,
+        ].join('\n')
       : [
           `企業名: ${raw.companyName || '(不明)'}`,
           `サービス名: ${raw.serviceName || '(不明)'}`,
@@ -417,6 +425,8 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
   const introLine =
     source === 'mhlw'
       ? '以下は、厚生労働省「人材サービス総合サイト」に掲載された、ある職業紹介事業者の公開情報（事実）です。'
+      : source === 'a8'
+      ? '以下は、アフィリエイトサービス（A8.net）経由で提携している、ある転職エージェント／人材紹介サービスの提携先申告情報（事実）です。'
       : '以下は、厚生労働省委託「職業紹介優良事業者認定制度」に掲載された、ある人材紹介事業者の公開情報（事実）です。';
 
   const sourceSpecificRules =
@@ -425,6 +435,12 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
         NOT_DISCLOSED +
         '」としてください（絶対に推測しないこと）。\n' +
         '- companyDetail.trackRecord には、「年度別 就職者数・離職者数の推移」の事実を簡潔に要約してよい（数値の創作は禁止、与えられた数値のみ使用）。\n'
+      : source === 'a8'
+      ? '- この提携情報には手数料・求人数・候補者レンジ・実績等の数値データが一切含まれていません。' +
+        'feeRate、jobCount、talentRange、companyDetailの全項目は必ず「' + NOT_DISCLOSED + '」としてください（絶対に推測・創作しないこと。' +
+        '呼び出し側でこれらの項目は別途固定値に置き換えるため、ここで無理に内容を埋めようとしないこと）。\n' +
+        '- 「エージェントの特徴（原文）」「特化領域」の内容をそのまま丸写しせず、oneLiner/appeal は求職者視点、companyOneLiner/companyAppeal は採用企業視点で、' +
+        'それぞれ異なる言い回しに要約・言い換えること。\n'
       : '- 「手数料公表サイトのテキスト抜粋」を読む際は、それが「職業安定法の届出制手数料表における上限額」なのか' +
         '「実際に請求している標準的な料率（相場）」なのかを文脈から慎重に判断すること。' +
         '「手数料の額（上限）」「届出上限」「就職後1年間の賃金の◯％」のような表現は、多くの場合、法定の届出上限であり実際の請求額とは異なる。' +
