@@ -615,8 +615,8 @@ async function loadCategories(){
   }
 }
 
-function eyecatchHTML(agent, variant){
-  if(agent.featured){
+function eyecatchHTML(agent, variant, suppressFeaturedBadge){
+  if(agent.featured && !suppressFeaturedBadge){
     // heroバリアント（詳細ページ）のみ、ヒーロー画像自体の右下にPRラベルを付ける。
     // thumbバリアント（一覧行・おすすめカード）はカード全体の右下に別途配置するため、ここでは付けない。
     const prLabel = variant === "hero" ? `<span class="pr-label">PR</span>` : "";
@@ -690,7 +690,7 @@ function computeRecommendedAgents(){
 function recommendCardHTML(a){
   const oneLiner = mode==="company" ? (a.companyOneLiner || "") : (a.oneLiner || "");
   return `
-      ${eyecatchHTML(a, "thumb")}
+      ${eyecatchHTML(a, "thumb", true)}
       <span class="category-pill">${a.category}</span>
       <h4>${a.name}</h4>
       <p class="recommend-oneliner">${oneLiner}</p>
