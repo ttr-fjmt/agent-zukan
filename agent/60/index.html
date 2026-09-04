@@ -340,7 +340,7 @@
 <header>
   <div class="inner">
     <h1 class="home-link" onclick="goHome()">転職エージェント<span class="mark">図鑑</span></h1>
-    <span class="agent-count-badge" id="agentCountBadge">全国のエージェント1062社掲載中！</span>
+    <span class="agent-count-badge" id="agentCountBadge">全国のエージェント1073社掲載中！</span>
     <p class="tagline">迷わず選べる、エージェントの図鑑。</p>
     <p class="lead" id="leadText">日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。</p>
   </div>
@@ -433,6 +433,7 @@
 
       <div class="cta-block">
         <button class="cta-btn" onclick="visitSite('rdgl.co.jp')">このエージェントの詳細を見る</button>
+        
         <div class="cta-sub" style="margin-top:8px;">厚生労働省委託「職業紹介優良事業者認定制度」掲載情報（https://www.jesra.or.jp/yuryoshokai/certification/60/）および手数料公表サイトをもとに作成。取得日: 2026年9月3日。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。</div>
       </div>
     </div>
@@ -923,12 +924,23 @@ function buildHomeSection(title, agents, onMoreClick, iconHTML){
   return section;
 }
 
+/** 一覧のin-feed広告（1111111111〜5555555555）と重複しない、ホーム用の広告スロットID採番。
+ * 単純な「同じ数字の10桁繰り返し」は1桁の数字でしか作れない（6〜9で最大4個分）ため、
+ * カテゴリー数が多い場合でも確実に足りるよう10桁の連番（6000000001〜）を使う。 */
+function homeAdSlotId(seq){
+  return String(6000000000 + seq);
+}
+
 /**
  * セクション別ホーム表示。
  * 1. 注目のエージェント（featured===true からランダム最大6件）
  * 2. 高評価エージェント（featured!==true かつ completenessScoreが上位（6件確保できるよう動的に決めたしきい値以上）、情報量順で最大6件）
  * 3. categories.json 登場順の各カテゴリー（「その他」除く、情報量順で最大6件）
- * 該当0件のセクションは丸ごと表示しない。
+ * 該当0件のセクションは丸ごと表示しない（表示されたセクションの数だけを基準に、以下の広告挿入間隔を数える）。
+ *
+ * セクションを2つ描画するごとに、間に一覧と同じ in-feed 広告枠を1つ挿入する
+ * （1番目と2番目の間には入れず、2番目と3番目の間、4番目と5番目の間…という間隔。
+ * 最後のセクションの後ろには入れない）。
  */
 function renderHome(){
   document.getElementById("resultCount").textContent = "";
@@ -937,9 +949,11 @@ function renderHome(){
   ledger.classList.add("home-view");
   ledger.innerHTML = "";
 
+  const sections = [];
+
   const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 6);
   if(featuredAgents.length > 0){
-    ledger.appendChild(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
+    sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
   }
 
   highScoreThreshold = computeHighScoreThreshold(mode, 6);
@@ -948,7 +962,7 @@ function renderHome(){
     .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
     .slice(0, 6);
   if(highScoreAgents.length > 0){
-    ledger.appendChild(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
+    sections.push(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
   }
 
   CHIP_LABELS
@@ -959,11 +973,24 @@ function renderHome(){
         .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
         .slice(0, 6);
       if(categoryAgents.length > 0){
-        ledger.appendChild(buildHomeSection(
+        sections.push(buildHomeSection(
           `${categoryName}のエージェント`, categoryAgents, ()=>showCategoryList(categoryName), categoryIconHTML(categoryName)
         ));
       }
     });
+
+  let adSeq = 0;
+  sections.forEach((section, idx) => {
+    ledger.appendChild(section);
+    const isPairBoundary = (idx + 1) % 2 === 0;
+    const hasMoreSections = idx < sections.length - 1;
+    if(isPairBoundary && hasMoreSections){
+      adSeq += 1;
+      const adWrap = document.createElement("div");
+      adWrap.innerHTML = adSlotHTML("in-feed", homeAdSlotId(adSeq));
+      ledger.appendChild(adWrap.firstElementChild);
+    }
+  });
 }
 
 /** ホームの各セクションの「他も見る」・上部の「すべてのエージェントを見る」・絞り込み解除、共通の遷移処理。 */
@@ -1045,6 +1072,13 @@ function openDetail(a){
       </div>`
       : "";
 
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "このエージェントの詳細を見る";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
+      : "";
+
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
       <div class="detail-head-row">
@@ -1076,7 +1110,8 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('${a.affiliateUrl || a.website}')">このエージェントの詳細を見る</button>
+        <button class="cta-btn" onclick="visitSite('${ctaTarget}')">${ctaLabel}</button>
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1092,6 +1127,13 @@ function openDetail(a){
             <p class="comment">「${r.comment}」</p>
           </div>`).join("")}
       </div>`
+      : "";
+
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "企業に問い合わせを行う";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
       : "";
 
     dv.innerHTML = `
@@ -1144,8 +1186,9 @@ function openDetail(a){
       ${companyReviewSectionHTML}
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitInquiry('${a.affiliateUrl || a.website}')">企業に問い合わせを行う</button>
-        <div class="cta-sub">${a.name}の公式サイトへ移動します</div>
+        <button class="cta-btn" onclick="visitInquiry('${ctaTarget}')">${ctaLabel}</button>
+        ${useSearchCta ? "" : `<div class="cta-sub">${a.name}の公式サイトへ移動します</div>`}
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1214,6 +1257,20 @@ function handleRoute(){
 
 window.addEventListener("popstate", handleRoute);
 
+/** mhlw「人材サービス総合サイト」の詳細ページのホスト名。website がこのホストを含む場合、
+ * 自社サイトを持たず、生死チェック（scraper/verify-links.js）でも no_company_website として
+ * verifyLink() の対象外にしている（=このURL自体は事業者の公式サイトではない）。 */
+const MHLW_PORTAL_HOST = "jinzai.hellowork.mhlw.go.jp";
+
+function isNoCompanyWebsite(a){
+  return typeof a.website === "string" && a.website.includes(MHLW_PORTAL_HOST);
+}
+
+/** 自社サイトを持たないエージェント向けの代替導線として、社名＋所在地（都道府県）でのGoogle検索結果へ誘導する。 */
+function googleSearchUrl(a){
+  return `https://www.google.com/search?q=${encodeURIComponent(a.name)}+${encodeURIComponent(a.region || "")}`;
+}
+
 function openWebsite(website){
   if(!website) return;
   const url = /^https?:\/\//i.test(website) ? website : "https://" + website;
@@ -1257,4 +1314,4 @@ loadAgents();
 </script>
 
 
-<ins class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true" data-adsbygoogle-status="done" style="display: none !important;"><div id="aswift_0_host" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-5761092657360295&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;abgtt=6&amp;lmt=1788468189&amp;plat=1%3A8%2C2%3A8%2C3%3A2162688%2C4%3A2162688%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32%2C44%3A32&amp;format=0x0&amp;url=http%3A%2F%2Flocalhost%3A8935%2Findex.html%3Fssg%3D1%23%2Fagent%2F60&amp;pra=5&amp;asro=0&amp;aimartd=4&amp;aieuf=1&amp;aicrs=1&amp;uach=WyJMaW51eCIsIiIsIng4NiIsIiIsIjE1Mi4wLjc5NzcuNTQiLG51bGwsMCxudWxsLCI2NCIsW1siTm90P0FfQnJhbmQiLCIyNC4wLjAuMCJdLFsiQ2hyb21pdW0iLCIxNTIuMC43OTc3LjU0Il1dLDBd&amp;dt=1788468189264&amp;bpp=2&amp;bdt=146&amp;idt=86&amp;shv=r20260901&amp;mjsv=m202608310101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie_enabled=1&amp;eoidce=1&amp;nras=1&amp;correlator=5209122311472&amp;frm=20&amp;pv=2&amp;u_tz=0&amp;u_his=2&amp;u_h=600&amp;u_w=800&amp;u_ah=600&amp;u_aw=800&amp;u_cd=24&amp;u_sd=1&amp;dmc=16&amp;adx=-12245933&amp;ady=-12245933&amp;biw=800&amp;bih=600&amp;scr_x=0&amp;scr_y=0&amp;eid=95399630%2C95400774%2C122880783&amp;oid=2&amp;pvsid=1907846432128471&amp;tmod=775333418&amp;uas=0&amp;nvt=1&amp;fsapi=1&amp;fc=1920&amp;brdim=10%2C10%2C10%2C10%2C800%2C0%2C780%2C580%2C800%2C600&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;bz=0.98&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=111" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20260901/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>
+<ins class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true" data-adsbygoogle-status="done" style="display: none !important;"><div id="aswift_0_host" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-5761092657360295&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;abgtt=6&amp;lmt=1788484889&amp;plat=1%3A8%2C2%3A8%2C3%3A2162688%2C4%3A2162688%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32%2C44%3A32&amp;format=0x0&amp;url=http%3A%2F%2Flocalhost%3A8935%2Findex.html%3Fssg%3D1%23%2Fagent%2F60&amp;pra=5&amp;aiof=11&amp;asro=0&amp;aimartd=4&amp;aieuf=1&amp;aicrs=1&amp;uach=WyJMaW51eCIsIiIsIng4NiIsIiIsIjE1Mi4wLjc5NzcuNTQiLG51bGwsMCxudWxsLCI2NCIsW1siTm90P0FfQnJhbmQiLCIyNC4wLjAuMCJdLFsiQ2hyb21pdW0iLCIxNTIuMC43OTc3LjU0Il1dLDBd&amp;dt=1788484888925&amp;bpp=4&amp;bdt=152&amp;idt=79&amp;shv=r20260902&amp;mjsv=m202608310101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie_enabled=1&amp;eoidce=1&amp;nras=1&amp;correlator=4352180971803&amp;frm=20&amp;pv=2&amp;u_tz=0&amp;u_his=2&amp;u_h=600&amp;u_w=800&amp;u_ah=600&amp;u_aw=800&amp;u_cd=24&amp;u_sd=1&amp;dmc=16&amp;adx=-12245933&amp;ady=-12245933&amp;biw=800&amp;bih=600&amp;scr_x=0&amp;scr_y=0&amp;eid=95399630%2C95400775%2C122880783&amp;oid=2&amp;pvsid=8488715312707829&amp;tmod=2028805021&amp;uas=0&amp;nvt=1&amp;fsapi=1&amp;fc=1920&amp;brdim=10%2C10%2C10%2C10%2C800%2C0%2C780%2C580%2C800%2C600&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;bz=0.98&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=106" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20260902/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>
