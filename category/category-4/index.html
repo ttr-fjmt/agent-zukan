@@ -55,39 +55,40 @@
 
   /* header */
   header{
-    padding:64px 16px 32px;
+    padding:64px 16px 44px;
     background:
       radial-gradient(600px 260px at 15% -20%, rgba(31,111,99,.10), transparent 60%),
       radial-gradient(500px 220px at 100% 0%, rgba(184,134,59,.10), transparent 55%),
       var(--paper);
   }
-  header .inner{max-width:860px;margin:0 auto;}
+  header .inner{max-width:860px;margin:0 auto;text-align:center;}
   h1{
     font-family:'Shippori Mincho', serif;
     font-weight:600;
     font-size:clamp(30px,5vw,42px);
     line-height:1.4;
-    margin:0 0 10px;
+    margin:0 0 16px;
     letter-spacing:.01em;
+    white-space:nowrap;
   }
   h1 .mark{ color:var(--accent-deep); border-bottom:3px solid var(--gold); padding-bottom:2px; }
-  h1.home-link{cursor:pointer;width:fit-content;}
+  h1.home-link{cursor:pointer;width:fit-content;margin-left:auto;margin-right:auto;}
+  .badge-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 24px;}
   .agent-count-badge{
-    display:inline-block;background:var(--accent);color:#fff;border-radius:999px;
-    padding:6px 14px;font-weight:700;font-size:13px;margin:0 0 16px;
+    display:inline-flex;align-items:center;background:var(--accent);color:#fff;
+    border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;
   }
+  .update-badge{
+    display:inline-flex;align-items:center;gap:6px;background:transparent;
+    color:#8A6A1D;border:1.5px solid var(--gold);border-radius:999px;
+    padding:5px 14px 5px 10px;font-weight:700;font-size:13px;white-space:nowrap;
+  }
+  .update-badge svg{flex-shrink:0;}
   header p.tagline{
     font-size:13.5px;
     color:var(--accent);
     font-weight:600;
     letter-spacing:.04em;
-    margin:0 0 18px;
-  }
-  header p.lead{
-    max-width:50ch;
-    font-size:14.5px;
-    line-height:1.8;
-    color:var(--ink-soft);
     margin:0;
   }
 
@@ -357,7 +358,12 @@
   .cta-btn:hover{opacity:.92;}
   .cta-sub{font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center;}
 
+  @media (max-width:340px){
+    h1{font-size:28px;}
+  }
+
   @media (max-width:600px){
+    .agent-count-badge, .update-badge{font-size:12.5px;padding-left:12px;padding-right:12px;}
     .select-row{flex-direction:column;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stats-grid.company{grid-template-columns:repeat(1,1fr);}
