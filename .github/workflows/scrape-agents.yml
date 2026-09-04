@@ -63,6 +63,12 @@ jobs:
         working-directory: scraper
         run: node promote-categories.js
 
+      - name: Infer official websites/favicons for MHLW-sourced agents (AI-assisted, HTTP-verified)
+        working-directory: scraper
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node enrich-mhlw-websites.js
+
       - name: Install Chrome runtime dependencies
         run: |
           sudo apt-get update
@@ -96,6 +102,8 @@ jobs:
           # 生成物・中間ファイルは初回実行前は存在しない可能性があるため存在確認してから追加する
           [ -f data/mhlw-agents.json ] && git add data/mhlw-agents.json
           [ -f data/mhlw-cursor.json ] && git add data/mhlw-cursor.json
+          [ -f data/mhlw-website-skip.json ] && git add data/mhlw-website-skip.json
+          [ -f data/mhlw-website-enrich-cursor.json ] && git add data/mhlw-website-enrich-cursor.json
           [ -f data/ssg-manifest.json ] && git add data/ssg-manifest.json
           [ -d agent ] && git add agent
           [ -d category ] && git add category
