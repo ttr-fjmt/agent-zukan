@@ -1100,9 +1100,7 @@ function categoryIconHTML(categoryName){
 function buildHomeCardHTML(a, currentMode){
   const excerpt = currentMode==="company" ? (a.companyAppeal || a.commitmentExplanation) : a.appeal;
   const review = currentMode==="company" ? (a.companyReviews[0]||null) : (a.reviews[0]||null);
-  const ratingHTML = a.featured
-    ? `<div class="home-card-rating">${ratingBadge(review, a.real, a, currentMode)}</div>`
-    : "";
+  const ratingHTML = `<div class="home-card-rating">${ratingBadge(review, a.real, a, currentMode)}</div>`;
   return `
       ${eyecatchHTML(a, "thumb")}
       ${ratingHTML}

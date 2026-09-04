@@ -152,11 +152,11 @@ function ratingBadge(agent) {
 }
 
 /** index.html の buildHomeCardHTML(agent, "candidate") 相当（求職者モード固定）。
- * featured===true の場合のみ、イチオシバッジと社名の間に★評価バッジ（ratingBadge/zukanScoreBadge）
- * を表示する（buildHomeCardHTMLと同じ見た目・位置）。 */
+ * featured/非featuredを問わず、イチオシバッジ/アイコンと社名の間に★評価バッジ
+ * （ratingBadge/zukanScoreBadge）を表示する（buildHomeCardHTMLと同じ見た目・位置）。 */
 function homeCardHTML(agent, categoryStyle) {
   const excerpt = agent.appeal || '';
-  const ratingHTML = agent.featured ? `<div class="home-card-rating">${ratingBadge(agent)}</div>` : '';
+  const ratingHTML = `<div class="home-card-rating">${ratingBadge(agent)}</div>`;
   return `<a class="home-card" href="/agent/${encodeURIComponent(agent.id)}/">
       ${eyecatchHTML(agent, categoryStyle)}
       ${ratingHTML}
