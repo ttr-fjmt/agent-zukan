@@ -111,9 +111,6 @@
     font-size:14px;font-weight:700;color:var(--accent-deep);margin-bottom:12px;
     display:flex;align-items:center;gap:8px;
   }
-  .recommend-label::before{
-    content:"";width:5px;height:14px;background:var(--accent-deep);border-radius:2px;flex-shrink:0;
-  }
   .recommend-scroll{
     display:flex;gap:12px;overflow-x:auto;
     padding:2px 2px 8px;margin:0 -2px;-webkit-overflow-scrolling:touch;
@@ -174,7 +171,6 @@
   .home-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
   .home-section-head h3{
     font-size:16px;font-weight:700;color:var(--ink);margin:0;
-    padding-left:12px;border-left:3px solid var(--gold);
     display:flex;align-items:center;gap:8px;
   }
   .home-section-icon{
@@ -427,7 +423,7 @@
 
   <div id="listView">
     <div class="recommend-section">
-      <div class="recommend-label">おすすめエージェント</div>
+      <div class="recommend-label"><span class="home-section-icon" style="background:linear-gradient(135deg, #C2410C, #7C2D12);"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="19" stroke="#fff" stroke-width="2.3"/><path d="M40 24 L34 34 L24 40 L30 30 Z" fill="#fff"/></svg></span>おすすめエージェント</div>
       <div class="recommend-scroll" id="recommendScroll"></div>
     </div>
 
@@ -1110,6 +1106,17 @@ function categoryIconHTML(categoryName){
   return `<span class="home-section-icon" style="background:linear-gradient(135deg, ${style.from}, ${style.to});"><svg viewBox="0 0 64 64" fill="none">${style.icon}</svg></span>`;
 }
 
+/** 「注目のエージェント」セクション用の星アイコン(金グラデーション)。 */
+function featuredSectionIconHTML(){
+  return `<span class="home-section-icon" style="background:linear-gradient(135deg, #B8863B, #8A6A1D);"><svg viewBox="0 0 64 64" fill="none"><path d="M32 14 L38 27 L52 29 L42 39 L44 53 L32 46 L20 53 L22 39 L12 29 L26 27 Z" stroke="#fff" stroke-width="2.3" stroke-linejoin="round" fill="none"/></svg></span>`;
+}
+
+/** 「高評価エージェント」セクション用のリボン・メダルアイコン(緑グラデーション、
+ * サイトのメインアクセントカラーと統一)。 */
+function highScoreSectionIconHTML(){
+  return `<span class="home-section-icon" style="background:linear-gradient(135deg, var(--accent), var(--accent-deep));"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="24" r="12" stroke="#fff" stroke-width="2.3"/><path d="M25 34 L20 52 L32 46 L44 52 L39 34" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg></span>`;
+}
+
 /** ホーム専用のシンプルなカード（アイコン・カテゴリー・社名・特徴の抜粋のみ）。
  * 通常のフラット一覧で使う buildRowItem（stats-grid付き）とは別物で、ホームのセクション
  * （renderHome→buildHomeSection）でのみ使う。特徴の抜粋はCSSのline-clampで3行程度に
@@ -1188,7 +1195,7 @@ function renderHome(){
 
   const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 4);
   if(featuredAgents.length > 0){
-    sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
+    sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly, featuredSectionIconHTML()));
   }
 
   highScoreThreshold = computeHighScoreThreshold(mode, 6);
@@ -1197,7 +1204,7 @@ function renderHome(){
     .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
     .slice(0, 6);
   if(highScoreAgents.length > 0){
-    sections.push(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
+    sections.push(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly, highScoreSectionIconHTML()));
   }
 
   CHIP_LABELS
