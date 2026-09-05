@@ -264,5 +264,61 @@
     "to": "#3A265C",
     "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
     "slug": "category-29"
+  },
+  {
+    "name": "人材派遣",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-30"
+  },
+  {
+    "name": "職業紹介（総合）",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-31"
+  },
+  {
+    "name": "農業・農協",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-32"
+  },
+  {
+    "name": "福祉・ひとり親支援",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-33"
+  },
+  {
+    "name": "人材紹介・派遣業",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-34"
+  },
+  {
+    "name": "人材派遣・人材紹介",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-35"
+  },
+  {
+    "name": "職業紹介（一般）",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-36"
+  },
+  {
+    "name": "職業紹介（特定技能外国人）",
+    "from": "#5C3D8C",
+    "to": "#3A265C",
+    "icon": "<path d=\"M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linejoin=\"round\"/><circle cx=\"34\" cy=\"26\" r=\"3\" fill=\"#fff\"/>",
+    "slug": "category-37"
   }
 ]

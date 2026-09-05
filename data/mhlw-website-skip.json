@@ -1,0 +1,522 @@
+{
+  "01-chi-000002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:07.082Z",
+    "aiDomain": null
+  },
+  "01-chi-000003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:07.874Z",
+    "aiDomain": null
+  },
+  "01-chi-000004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:08.588Z",
+    "aiDomain": null
+  },
+  "01-chi-000005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:09.409Z",
+    "aiDomain": null
+  },
+  "01-chi-000006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:10.176Z",
+    "aiDomain": null
+  },
+  "01-chi-000008": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:10.879Z",
+    "aiDomain": "hakodate.lg.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000009": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:15.456Z",
+    "aiDomain": null
+  },
+  "01-chi-000010": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:16.243Z",
+    "aiDomain": null
+  },
+  "01-chi-000011": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:17.324Z",
+    "aiDomain": "rumoiishi.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000012": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:21.595Z",
+    "aiDomain": "asahikawa.lg.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000013": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:26.366Z",
+    "aiDomain": null
+  },
+  "01-chi-000014": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:27.086Z",
+    "aiDomain": null
+  },
+  "01-chi-000015": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:27.820Z",
+    "aiDomain": "muroran.lg.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000016": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:33.330Z",
+    "aiDomain": "imakane.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000017": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:37.756Z",
+    "aiDomain": null
+  },
+  "01-chi-000018": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:38.522Z",
+    "aiDomain": "honbetsu.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000019": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:43.387Z",
+    "aiDomain": "shikaoicho.hokkaido.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000020": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-09-05T21:26:47.982Z",
+    "aiDomain": "rishiri.jp"
+  },
+  "01-chi-000021": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:52.889Z",
+    "aiDomain": "asshoro.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000022": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:57.313Z",
+    "aiDomain": null
+  },
+  "01-chi-000023": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:26:58.422Z",
+    "aiDomain": null
+  },
+  "01-chi-000024": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:26:59.198Z",
+    "aiDomain": "otaru.lg.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000025": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:03.882Z",
+    "aiDomain": null
+  },
+  "01-chi-000026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:04.723Z",
+    "aiDomain": null
+  },
+  "01-chi-000027": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:05.434Z",
+    "aiDomain": null
+  },
+  "01-chi-000028": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:06.169Z",
+    "aiDomain": null
+  },
+  "01-chi-000029": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:06.973Z",
+    "aiDomain": null
+  },
+  "01-chi-000030": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:07.732Z",
+    "aiDomain": "urakawa.jp",
+    "error": "HTTP 403 for http://urakawa.jp/"
+  },
+  "01-chi-000031": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:24.176Z",
+    "aiDomain": null
+  },
+  "01-chi-000033": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:25.249Z",
+    "aiDomain": null
+  },
+  "01-chi-000034": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:26.022Z",
+    "aiDomain": null
+  },
+  "01-chi-000035": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:26.769Z",
+    "aiDomain": null
+  },
+  "01-chi-000036": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:27.571Z",
+    "aiDomain": null
+  },
+  "01-chi-000037": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:28.337Z",
+    "aiDomain": null
+  },
+  "01-chi-000038": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:29.306Z",
+    "aiDomain": "akabira.lg.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000039": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:33.644Z",
+    "aiDomain": null
+  },
+  "01-chi-000040": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:34.666Z",
+    "aiDomain": "kamikawa.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000041": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:39.481Z",
+    "aiDomain": "makubetsu.hokkaido.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000042": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:45.416Z",
+    "aiDomain": null
+  },
+  "01-chi-000043": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:46.360Z",
+    "aiDomain": null
+  },
+  "01-chi-000044": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:47.140Z",
+    "aiDomain": "memu.town.hokkaido.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000045": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:51.778Z",
+    "aiDomain": null
+  },
+  "01-chi-000046": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:52.481Z",
+    "aiDomain": null
+  },
+  "01-chi-000047": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:53.278Z",
+    "aiDomain": null
+  },
+  "01-chi-000048": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:27:54.156Z",
+    "aiDomain": "obihiro.jp",
+    "error": "fetch failed"
+  },
+  "01-chi-000049": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:58.557Z",
+    "aiDomain": null
+  },
+  "01-chi-000051": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:27:59.446Z",
+    "aiDomain": null
+  },
+  "01-chi-000052": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:00.197Z",
+    "aiDomain": null
+  },
+  "01-chi-000053": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:00.794Z",
+    "aiDomain": null
+  },
+  "01-chi-000054": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:01.442Z",
+    "aiDomain": null
+  },
+  "01-chi-000055": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:02.295Z",
+    "aiDomain": null
+  },
+  "01-mu-010002": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:03.112Z",
+    "aiDomain": "sapporoishi.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-010005": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:07.581Z",
+    "aiDomain": "hokkaido-iryo.jp",
+    "error": "HTTP 403 for http://hokkaido-iryo.jp/"
+  },
+  "01-mu-010008": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:12.861Z",
+    "aiDomain": "hokkaido-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-010012": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:17.454Z",
+    "aiDomain": null
+  },
+  "01-mu-010013": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:18.207Z",
+    "aiDomain": null
+  },
+  "01-mu-020002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:18.959Z",
+    "aiDomain": null
+  },
+  "01-mu-030001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:19.977Z",
+    "aiDomain": null
+  },
+  "01-mu-040001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:20.749Z",
+    "aiDomain": null
+  },
+  "01-mu-050002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:21.519Z",
+    "aiDomain": null
+  },
+  "01-mu-080001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:22.377Z",
+    "aiDomain": null
+  },
+  "01-mu-090002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:23.196Z",
+    "aiDomain": null
+  },
+  "01-mu-190002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:30.983Z",
+    "aiDomain": null
+  },
+  "01-mu-230001": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:31.783Z",
+    "aiDomain": "nurse.hokkaido.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:36.222Z",
+    "aiDomain": null
+  },
+  "01-mu-300002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:36.979Z",
+    "aiDomain": null
+  },
+  "01-mu-300004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:37.925Z",
+    "aiDomain": null
+  },
+  "01-mu-300005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:38.816Z",
+    "aiDomain": null
+  },
+  "01-mu-300008": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:39.524Z",
+    "aiDomain": null
+  },
+  "01-mu-300009": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:40.350Z",
+    "aiDomain": null
+  },
+  "01-mu-300011": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:41.211Z",
+    "aiDomain": null
+  },
+  "01-mu-300013": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:42.034Z",
+    "aiDomain": "hokkaido-agri.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300020": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:48.275Z",
+    "aiDomain": null
+  },
+  "01-mu-300021": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:49.401Z",
+    "aiDomain": null
+  },
+  "01-mu-300026": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:50.133Z",
+    "aiDomain": "hokkaido-eiyoshi.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300029": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:28:56.021Z",
+    "aiDomain": null
+  },
+  "01-mu-300030": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:28:56.836Z",
+    "aiDomain": "hokkaido-pharmacist.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300032": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:01.251Z",
+    "aiDomain": null
+  },
+  "01-mu-300033": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:29:02.049Z",
+    "aiDomain": "careerbank.co.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300034": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:29:07.937Z",
+    "aiDomain": "hokkaido.med.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300035": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:14.435Z",
+    "aiDomain": null
+  },
+  "01-mu-300036": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:15.209Z",
+    "aiDomain": null
+  },
+  "01-mu-300038": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:15.912Z",
+    "aiDomain": null
+  },
+  "01-mu-300039": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:16.779Z",
+    "aiDomain": null
+  },
+  "01-mu-300040": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-05T21:29:17.566Z",
+    "aiDomain": "ebetsu-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "01-mu-300041": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:23.327Z",
+    "aiDomain": null
+  },
+  "01-mu-300042": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:24.126Z",
+    "aiDomain": null
+  },
+  "01-mu-300043": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:24.915Z",
+    "aiDomain": null
+  },
+  "01-mu-300044": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:25.684Z",
+    "aiDomain": null
+  },
+  "01-mu-300045": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:26.516Z",
+    "aiDomain": null
+  },
+  "01-mu-300046": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:27.297Z",
+    "aiDomain": null
+  },
+  "01-mu-300048": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:28.039Z",
+    "aiDomain": null
+  },
+  "01-mu-300049": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-09-05T21:29:28.843Z",
+    "aiDomain": "hokkaido-np.co.jp"
+  },
+  "01-mu-300051": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:34.805Z",
+    "aiDomain": null
+  },
+  "01-mu-300052": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:35.677Z",
+    "aiDomain": null
+  },
+  "01-mu-300053": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:36.483Z",
+    "aiDomain": null
+  },
+  "01-mu-300054": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:37.230Z",
+    "aiDomain": null
+  },
+  "01-mu-300055": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:38.024Z",
+    "aiDomain": null
+  },
+  "01-mu-300056": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-05T21:29:38.770Z",
+    "aiDomain": null
+  }
+}
