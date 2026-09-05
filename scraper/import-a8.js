@@ -91,7 +91,7 @@ function readRows(filePath) {
     .map(r => ({
       name: cell(r['広告主名']),
       affiliateUrl: extractAffiliateUrl(r['リンク']),
-      feature: cell(r['このエージェントの特徴']),
+      feature: cell(r['特徴']),
       region: cell(r['対応エリア']),
       targetAge: cell(r['対象年代']),
       specialty: cell(r['なにに特化しているか']),
