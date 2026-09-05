@@ -10391,6 +10391,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/agent/a8-014/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/category/it-web/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

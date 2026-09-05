@@ -108,9 +108,6 @@
     font-size:14px;font-weight:700;color:var(--accent-deep);margin-bottom:12px;
     display:flex;align-items:center;gap:8px;
   }
-  .recommend-label::before{
-    content:"";width:5px;height:14px;background:var(--accent-deep);border-radius:2px;flex-shrink:0;
-  }
   .recommend-scroll{
     display:flex;gap:12px;overflow-x:auto;
     padding:2px 2px 8px;margin:0 -2px;-webkit-overflow-scrolling:touch;
@@ -171,7 +168,6 @@
   .home-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
   .home-section-head h3{
     font-size:16px;font-weight:700;color:var(--ink);margin:0;
-    padding-left:12px;border-left:3px solid var(--gold);
     display:flex;align-items:center;gap:8px;
   }
   .home-section-icon{
@@ -228,6 +224,7 @@
 
   .head-main{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
 
+  .eyecatch-row{display:flex;align-items:center;gap:6px;flex-shrink:0;}
   .eyecatch-square{
     border-radius:12px;display:flex;align-items:center;justify-content:center;
     position:relative;overflow:hidden;flex-shrink:0;
@@ -242,17 +239,14 @@
     box-shadow:0 2px 6px rgba(0,0,0,.2);object-fit:contain;
   }
   .eyecatch-square.hero .favicon{width:44px;height:44px;border-radius:12px;padding:6px;}
-  .eyecatch-square.featured{background:transparent;}
-  .featured-star{
-    position:absolute;inset:0;background:#D32F2F;
-    display:flex;align-items:center;justify-content:center;
-    clip-path:polygon(50.00% 0.00%, 59.84% 13.29%, 75.00% 6.70%, 76.87% 23.13%, 93.30% 25.00%, 86.71% 40.16%, 100.00% 50.00%, 86.71% 59.84%, 93.30% 75.00%, 76.87% 76.87%, 75.00% 93.30%, 59.84% 86.71%, 50.00% 100.00%, 40.16% 86.71%, 25.00% 93.30%, 23.13% 76.87%, 6.70% 75.00%, 13.29% 59.84%, 0.00% 50.00%, 13.29% 40.16%, 6.70% 25.00%, 23.13% 23.13%, 25.00% 6.70%, 40.16% 13.29%);
+  .notable-badge{
+    background:#D32F2F;color:#fff;font-size:10px;font-weight:700;
+    padding:3px 7px;border-radius:999px;white-space:nowrap;flex-shrink:0;
+    box-shadow:0 1px 4px rgba(0,0,0,.25);
   }
-  .featured-text{
-    color:#fff;font-weight:700;white-space:nowrap;letter-spacing:.02em;
+  .eyecatch-row.hero .notable-badge{
+    font-size:12px;padding:4px 9px;
   }
-  .eyecatch-square.thumb.featured .featured-text{font-size:11px;}
-  .eyecatch-square.hero.featured .featured-text{font-size:14px;}
 
   .pr-label{
     position:absolute;bottom:6px;right:6px;
