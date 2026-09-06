@@ -2,11 +2,8 @@ name: Import A8 affiliate agents
 
 on:
   workflow_dispatch:
-    inputs:
-      file:
-        description: "取り込むExcelファイルのパス（リポジトリルートからの相対パス。例: data/a8-import/a8-agents-20260904.xlsx）"
-        required: true
-        type: string
+    # data/a8-import/アフィリエイト案件_転職エージェント図鑑.xlsx を固定で読み込む
+    # 運用のため、ファイルパスの入力は不要（都度この同じファイル名で上書き更新する）。
 
 permissions:
   contents: write
@@ -46,7 +43,7 @@ jobs:
         working-directory: scraper
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node import-a8.js "../${{ inputs.file }}"
+        run: node import-a8.js
 
       - name: Install Chrome runtime dependencies
         run: |
@@ -73,7 +70,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add agents.json categories.json sitemap.xml "${{ inputs.file }}"
+          git add agents.json categories.json sitemap.xml data/a8-import/
           # 50,000URL超過時にsitemapが分割された場合のみ生成される
           git add sitemap-*.xml 2>/dev/null || true
           [ -f data/ssg-manifest.json ] && git add data/ssg-manifest.json
@@ -83,7 +80,7 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "feat: import A8 affiliate agents from $(basename "${{ inputs.file }}")"
+          git commit -m "feat: import A8 affiliate agents from アフィリエイト案件_転職エージェント図鑑.xlsx"
 
           max_retries=2
           attempt=0

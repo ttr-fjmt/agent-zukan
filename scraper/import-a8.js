@@ -1,9 +1,13 @@
 'use strict';
 
 /**
- * A8.net アフィリエイト提携エージェントのExcel（data/a8-import/ 配下）を読み込み、
- * agents.json に featured エージェントとして取り込む。
+ * A8.net アフィリエイト提携エージェントのExcel（data/a8-import/ 配下、固定ファイル名）を
+ * 読み込み、agents.json に featured エージェントとして取り込む。
  *
+ * - 対象ファイルは data/a8-import/{A8_FILE_NAME} 固定（都度この同じファイル名で上書き
+ *   更新される運用）。B列「サイト」による絞り込みは行わない（このファイル自体が
+ *   転職エージェント図鑑専用の運用に切り替わったため）。対象行は C・D・E列
+ *   （広告主名・リンク・特徴）が全て埋まっている行のみ。
  * - 既存agents.jsonと会社名で突き合わせる:
  *   - マッチした場合 → 既存エントリを「マージ更新」する。category/region/targetAge/
  *     oneLiner/appeal等の紹介文まわりはExcel側（AI構造化結果）で上書きするが、
@@ -11,24 +15,38 @@
  *     壊さないよう温存する（既存エントリが持つ厚みのある実データを失わないため）。
  *     id・source は変更しない。
  *   - マッチしない場合 → 新規エントリとして追加する（source: "a8"、id: "a8-NNN"）。
+ * - F/G列（対応エリア・対象年代）が空欄の場合は、AI構造化結果（structure.jsの
+ *   buildWithAIが返す region/targetAge）で補完する。値がある場合は従来通りExcel側を
+ *   優先する。H列（特化領域）はAIプロンプトへの入力としてのみ使う（専用の出力項目は無い）。
  * - AI構造化には structure.js の buildWithAI（source: "a8" 分岐）をそのまま再利用する。
  * - ANTHROPIC_API_KEY が無い環境では、buildOfflineA8() による簡易フォールバックで動作する
- *   （データマッピング・重複除去・突き合わせの検証はAPIキー無しでも行える）。
+ *   （データマッピング・重複除去・突き合わせの検証はAPIキー無しでも行える。ただし
+ *   region/targetAgeのAI補完は行われない）。
+ * - 処理（追加/更新）に成功した行は、元Excelファイルの A列「反映」をTRUEに更新して
+ *   上書き保存する（次回実行時に同じ行を無駄に再処理しないための記録。実際には
+ *   既に反映済みの行が混在しても、再処理自体は無害なマージ更新になるだけなので、
+ *   古いTRUE行を除外するための必須条件ではない）。処理に失敗した行はA列を更新せず
+ *   警告を出力する。書き込みには、既存の書式・列幅等をxlsxパッケージより確実に
+ *   保持できるexceljsを使う。
  *
  * 使い方:
- *   node import-a8.js <path-to-xlsx> [--dry-run]
- *   例: node import-a8.js ../data/a8-import/a8-agents-20260904.xlsx --dry-run
+ *   node import-a8.js [--dry-run]
  */
 
 const fs = require('fs');
 const path = require('path');
 
 const XLSX = require('xlsx');
+const ExcelJS = require('exceljs');
 
 const { NOT_DISCLOSED } = require('./lib/schema');
 const { buildWithAI, topCategoryHints } = require('./structure');
 
 const AGENTS_PATH = path.join(__dirname, '..', 'agents.json');
+const A8_IMPORT_DIR = path.join(__dirname, '..', 'data', 'a8-import');
+const A8_FILE_NAME = 'アフィリエイト案件_転職エージェント図鑑.xlsx';
+const A8_FILE_PATH = path.join(A8_IMPORT_DIR, A8_FILE_NAME);
+const REFLECTED_COLUMN = '反映';
 
 const TALENT_RANGE_NOT_DISCLOSED = '非公開（具体的なレンジの記載なし）';
 
@@ -50,11 +68,9 @@ const A8_COMPANY_DETAIL_DEFAULTS = {
 };
 
 function parseArgs(argv) {
-  const args = { file: null, dryRun: false };
+  const args = { dryRun: false };
   for (const raw of argv) {
     if (raw === '--dry-run') args.dryRun = true;
-    else if (raw.startsWith('--file=')) args.file = raw.slice('--file='.length);
-    else if (!args.file) args.file = raw;
   }
   return args;
 }
@@ -83,12 +99,19 @@ function cell(value) {
   return s || null;
 }
 
+/**
+ * ExcelをC・D・E列（広告主名・リンク・特徴）が全て埋まっている行のみに絞り込んで読む。
+ * B列「サイト」による絞り込みは行わない（ファイル自体が転職エージェント図鑑専用のため）。
+ * 各行に _rowIndex（sheet_to_jsonのヘッダー除く0始まりインデックス）を持たせ、
+ * 後で反映列を更新する際にExcelの実際の行番号（_rowIndex + 2）へ変換できるようにする。
+ */
 function readRows(filePath) {
   const wb = XLSX.readFile(filePath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json(sheet, { defval: null });
   return raw
-    .map(r => ({
+    .map((r, index) => ({
+      _rowIndex: index,
       name: cell(r['広告主名']),
       affiliateUrl: extractAffiliateUrl(r['リンク']),
       feature: cell(r['特徴']),
@@ -96,7 +119,36 @@ function readRows(filePath) {
       targetAge: cell(r['対象年代']),
       specialty: cell(r['なにに特化しているか']),
     }))
-    .filter(r => r.name);
+    .filter(r => r.name && r.affiliateUrl && r.feature);
+}
+
+/**
+ * 処理に成功した行（rowIndexes、sheet_to_jsonの0始まりインデックス）について、
+ * 元Excelファイルの反映列（A列）をTRUEに更新して上書き保存する。
+ * xlsxパッケージ（読み込み専用として使用）ではなくexceljsを使うことで、
+ * 既存の書式・列幅・他のシート内容をできる限り保持したまま特定セルのみ更新する。
+ */
+async function markRowsReflected(filePath, rowIndexes) {
+  if (rowIndexes.length === 0) return;
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(filePath);
+  const worksheet = workbook.worksheets[0];
+
+  const headerRow = worksheet.getRow(1);
+  let reflectedColNum = null;
+  headerRow.eachCell({ includeEmpty: false }, (c, colNumber) => {
+    if (String(c.value).trim() === REFLECTED_COLUMN) reflectedColNum = colNumber;
+  });
+  if (!reflectedColNum) {
+    throw new Error(`"${REFLECTED_COLUMN}" 列がExcelのヘッダー行に見つかりませんでした。反映列の更新をスキップします。`);
+  }
+
+  for (const rowIndex of rowIndexes) {
+    const excelRowNumber = rowIndex + 2; // +1: 0始まり→1始まり, +1: ヘッダー行分
+    worksheet.getRow(excelRowNumber).getCell(reflectedColNum).value = true;
+  }
+
+  await workbook.xlsx.writeFile(filePath);
 }
 
 /** 広告主名（会社名）だけをキーにした重複除去。1件目（先頭行）を採用し、以降はスキップする。 */
@@ -155,6 +207,7 @@ function buildOfflineA8(row) {
 
 /**
  * 新規エントリを組み立てる（Excelに情報が無い項目は固定値、website/faviconUrlはnull）。
+ * targetAge/regionはExcel（F/G列）の値を優先し、空欄の場合はAI構造化結果で補完する。
  */
 function buildNewEntry({ id, row, ai, sourceNote }) {
   return {
@@ -163,8 +216,8 @@ function buildNewEntry({ id, row, ai, sourceNote }) {
     name: row.name,
     category: ai.category,
     categoryHint: ai.category === 'その他' ? (ai.categoryHint || null) : null,
-    targetAge: row.targetAge || NOT_DISCLOSED,
-    region: row.region || NOT_DISCLOSED,
+    targetAge: row.targetAge || ai.targetAge || NOT_DISCLOSED,
+    region: row.region || ai.region || NOT_DISCLOSED,
     jobCount: NOT_DISCLOSED,
     feeRate: NOT_DISCLOSED,
     talentRange: TALENT_RANGE_NOT_DISCLOSED,
@@ -201,8 +254,8 @@ function mergeIntoExisting(existing, { row, ai }) {
     ...existing,
     category: ai.category,
     categoryHint: ai.category === 'その他' ? (ai.categoryHint || null) : null,
-    targetAge: row.targetAge || existing.targetAge,
-    region: row.region || existing.region,
+    targetAge: row.targetAge || ai.targetAge || existing.targetAge,
+    region: row.region || ai.region || existing.region,
     oneLiner: ai.oneLiner,
     companyOneLiner: ai.companyOneLiner,
     appeal: ai.appeal,
@@ -214,21 +267,19 @@ function mergeIntoExisting(existing, { row, ai }) {
 }
 
 async function main() {
-  const { file, dryRun } = parseArgs(process.argv.slice(2));
-  if (!file) {
-    console.error('Usage: node import-a8.js <path-to-xlsx> [--dry-run]');
-    process.exit(1);
-  }
-  const filePath = path.isAbsolute(file) ? file : path.join(process.cwd(), file);
-  if (!fs.existsSync(filePath)) {
-    console.error(`File not found: ${filePath}`);
+  const { dryRun } = parseArgs(process.argv.slice(2));
+  if (!fs.existsSync(A8_FILE_PATH)) {
+    console.error(
+      `固定のA8インポート用Excelファイルが見つかりません: ${A8_FILE_PATH}\n` +
+        `data/a8-import/ 配下に「${A8_FILE_NAME}」という名前でファイルを配置してください。`
+    );
     process.exit(1);
   }
 
-  const rows = readRows(filePath);
+  const rows = readRows(A8_FILE_PATH);
   const { unique, skipped } = dedupeByName(rows);
 
-  console.log(`Read ${rows.length} row(s) from ${path.basename(filePath)}.`);
+  console.log(`Read ${rows.length} row(s) from ${A8_FILE_NAME}.`);
   if (skipped.length > 0) {
     console.log(`Skipped ${skipped.length} duplicate row(s) (same 広告主名 — first occurrence wins):`);
     skipped.forEach(r => console.log(`  - ${r.name}`));
@@ -245,60 +296,71 @@ async function main() {
     const Anthropic = require('@anthropic-ai/sdk');
     anthropic = new Anthropic({ apiKey });
   } else {
-    console.warn('ANTHROPIC_API_KEY is not set — running in offline fallback mode (no AI structuring).');
+    console.warn('ANTHROPIC_API_KEY is not set — running in offline fallback mode (no AI structuring, no region/targetAge inference).');
   }
   const existingHints = topCategoryHints(agents);
-  const sourceNote = buildA8SourceNote(path.basename(filePath));
+  const sourceNote = buildA8SourceNote(A8_FILE_NAME);
 
   const finalEntriesById = new Map(agents.map(a => [a.id, a]));
   let updated = 0;
   let added = 0;
   let aiCalls = 0;
   let offlineBuilds = 0;
+  const processedRowIndexes = [];
+  const failedRows = [];
 
   for (const row of unique) {
-    const existing = byName.get(row.name);
-    const rawForAI = {
-      companyName: row.name,
-      feature: row.feature,
-      specialty: row.specialty,
-      region: row.region,
-      targetAge: row.targetAge,
-    };
+    try {
+      const existing = byName.get(row.name);
+      const rawForAI = {
+        companyName: row.name,
+        feature: row.feature,
+        specialty: row.specialty,
+        region: row.region,
+        targetAge: row.targetAge,
+      };
 
-    let ai;
-    if (anthropic) {
-      try {
-        ai = await buildWithAI(rawForAI, anthropic, 'a8', existingHints);
-        aiCalls += 1;
-      } catch (err) {
-        console.warn(`AI structuring failed for ${row.name}: ${err.message}. Falling back to offline builder.`);
+      let ai;
+      if (anthropic) {
+        try {
+          ai = await buildWithAI(rawForAI, anthropic, 'a8', existingHints);
+          aiCalls += 1;
+        } catch (err) {
+          console.warn(`AI structuring failed for ${row.name}: ${err.message}. Falling back to offline builder.`);
+          ai = buildOfflineA8(row);
+          offlineBuilds += 1;
+        }
+      } else {
         ai = buildOfflineA8(row);
         offlineBuilds += 1;
       }
-    } else {
-      ai = buildOfflineA8(row);
-      offlineBuilds += 1;
-    }
 
-    if (existing) {
-      const merged = mergeIntoExisting(existing, { row, ai });
-      finalEntriesById.set(existing.id, merged);
-      updated += 1;
-      console.log(`[update] ${row.name} (id=${existing.id})`);
-    } else {
-      const id = `a8-${String(nextIdNum++).padStart(3, '0')}`;
-      const entry = buildNewEntry({ id, row, ai, sourceNote });
-      finalEntriesById.set(id, entry);
-      added += 1;
-      console.log(`[add]    ${row.name} (id=${id})`);
+      if (existing) {
+        const merged = mergeIntoExisting(existing, { row, ai });
+        finalEntriesById.set(existing.id, merged);
+        updated += 1;
+        console.log(`[update] ${row.name} (id=${existing.id})`);
+      } else {
+        const id = `a8-${String(nextIdNum++).padStart(3, '0')}`;
+        const entry = buildNewEntry({ id, row, ai, sourceNote });
+        finalEntriesById.set(id, entry);
+        added += 1;
+        console.log(`[add]    ${row.name} (id=${id})`);
+      }
+      processedRowIndexes.push(row._rowIndex);
+    } catch (err) {
+      failedRows.push(row.name);
+      console.warn(`[skip]   ${row.name}: processing failed (${err.message}). 反映列は更新しません。`);
     }
   }
 
-  console.log(`\nDone. updated=${updated} added=${added} ai=${aiCalls} offline=${offlineBuilds}`);
+  console.log(
+    `\nDone. updated=${updated} added=${added} ai=${aiCalls} offline=${offlineBuilds}` +
+      (failedRows.length > 0 ? ` failed=${failedRows.length}` : '')
+  );
 
   if (dryRun) {
-    console.log('[dry-run] agents.json was not modified.');
+    console.log('[dry-run] agents.json および元Excelファイルは変更されていません。');
     return;
   }
 
@@ -311,6 +373,15 @@ async function main() {
 
   fs.writeFileSync(AGENTS_PATH, JSON.stringify(finalAgents, null, 2) + '\n', 'utf8');
   console.log(`Wrote ${finalAgents.length} agents to ${AGENTS_PATH}.`);
+
+  if (processedRowIndexes.length > 0) {
+    try {
+      await markRowsReflected(A8_FILE_PATH, processedRowIndexes);
+      console.log(`Marked ${processedRowIndexes.length} row(s) as 反映=TRUE in ${A8_FILE_NAME}.`);
+    } catch (err) {
+      console.warn(`反映列の更新に失敗しました: ${err.message}`);
+    }
+  }
 }
 
 if (require.main === module) {
@@ -329,4 +400,7 @@ module.exports = {
   buildNewEntry,
   mergeIntoExisting,
   buildA8SourceNote,
+  markRowsReflected,
+  A8_FILE_NAME,
+  A8_FILE_PATH,
 };

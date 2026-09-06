@@ -332,6 +332,14 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
             '既に使われている表記があれば、新しい言い回しを作らず、可能な限りそのまま再利用すること' +
             '（例:「医療」「医療系」「医療・福祉」のような表記揺れを生まないこと）。',
         },
+        region: {
+          type: 'string',
+          description:
+            '対応エリア（対応地域）。事実情報に地域の記載があればそれを要約して使う。' +
+            '明記が無くても、サービス内容や特徴の記述から地域を合理的に推測できる場合' +
+            '（例:「全国」「在宅・リモート」「関東」等の言及がある）はそれを使う。' +
+            '手がかりが全く無ければ「' + NOT_DISCLOSED + '」とする。',
+        },
         targetAge: { type: 'string', description: '対象年代。根拠となる事実が無ければ「' + NOT_DISCLOSED + '」' },
         jobCount: { type: 'string', description: '求人数の目安。根拠が無ければ「' + NOT_DISCLOSED + '」' },
         feeRate: {
@@ -387,7 +395,7 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
         },
       },
       required: [
-        'category', 'targetAge', 'jobCount', 'feeRate', 'talentRange', 'oneLiner',
+        'category', 'region', 'targetAge', 'jobCount', 'feeRate', 'talentRange', 'oneLiner',
         'companyOneLiner', 'appeal', 'companyAppeal', 'features', 'feeExplanation', 'commitmentExplanation',
         'companyDetail',
       ],
