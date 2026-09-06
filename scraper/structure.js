@@ -465,7 +465,7 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
   const msg = await anthropic.messages.create({
     model: MODEL,
     max_tokens: 1500,
-    tools: [tool],
+    tools: [{ ...tool, cache_control: { type: 'ephemeral' } }],
     tool_choice: { type: 'tool', name: 'structure_agent' },
     messages: [
       {
@@ -489,6 +489,14 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
       },
     ],
   });
+
+  const usage = msg.usage || {};
+  console.log(
+    `[ai:cache] input=${usage.input_tokens || 0} ` +
+      `cache_write=${usage.cache_creation_input_tokens || 0} ` +
+      `cache_read=${usage.cache_read_input_tokens || 0} ` +
+      `output=${usage.output_tokens || 0}`
+  );
 
   const toolUse = msg.content.find(b => b.type === 'tool_use');
   if (!toolUse) throw new Error('AI response did not include a tool_use block');
