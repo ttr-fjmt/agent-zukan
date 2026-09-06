@@ -46,7 +46,14 @@
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:var(--paper);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(184,134,59,0.22) 0%, transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(31,111,99,0.20) 0%, transparent 40%),
+      radial-gradient(circle at 20% 85%, rgba(18,63,56,0.16) 0%, transparent 45%),
+      radial-gradient(circle at 88% 88%, rgba(184,134,59,0.18) 0%, transparent 42%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.5) 0%, transparent 55%),
+      var(--paper);
+    background-attachment:fixed;
     color:var(--ink);
     font-family:'Zen Kaku Gothic New', sans-serif;
     -webkit-font-smoothing:antialiased;
@@ -55,11 +62,26 @@
 
   /* header */
   header{
+    position:relative;
     padding:64px 16px 44px;
     background:
       radial-gradient(600px 260px at 15% -20%, rgba(31,111,99,.10), transparent 60%),
       radial-gradient(500px 220px at 100% 0%, rgba(184,134,59,.10), transparent 55%),
       var(--paper);
+  }
+  .sister-site-link{
+    position:absolute;top:16px;right:16px;
+    display:inline-flex;align-items:center;gap:4px;
+    background:#1D5FA8;color:#fff;
+    font-size:12.5px;font-weight:700;
+    padding:8px 14px;border-radius:999px;
+    text-decoration:none;white-space:nowrap;
+    box-shadow:0 1px 4px rgba(0,0,0,.12);
+    transition:background-color .12s, box-shadow .12s;
+  }
+  .sister-site-link:hover{background:#123A6B;box-shadow:0 2px 6px rgba(0,0,0,.16);}
+  @media (max-width:600px){
+    .sister-site-link{top:10px;right:10px;font-size:11px;padding:7px 11px;}
   }
   header .inner{max-width:860px;margin:0 auto;text-align:center;}
   h1{
@@ -408,7 +430,7 @@
       <div class="home-card-rating"><span class="rating-badge"><span class="star">★★★★★</span><span class="star-empty"></span><span class="count">（図鑑スコア）</span></span></div>
       <span class="category-pill">施工管理・建設</span>
       <h4>株式会社ＲＳＧ</h4>
-      <p class="home-card-excerpt">職人から施工管理職への転職を実現するための、業界に特化した面接対策・同行など手厚いサポートが特徴</p>
+      <p class="home-card-excerpt">建設・不動産業界の転職に特化したキャリアアップ支援により、職人から施工管理職への道を実現できます</p>
       <span class="pr-label">PR</span>
     </a>
       <a class="home-card" href="/agent/20/">
