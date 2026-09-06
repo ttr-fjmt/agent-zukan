@@ -202,6 +202,7 @@ function buildOfflineA8(row) {
     appeal: row.feature || NOT_DISCLOSED,
     companyAppeal: row.feature || NOT_DISCLOSED,
     features,
+    companyFeatures: features,
   };
 }
 
@@ -226,6 +227,7 @@ function buildNewEntry({ id, row, ai, sourceNote }) {
     appeal: ai.appeal,
     companyAppeal: ai.companyAppeal || ai.appeal,
     features: ai.features,
+    companyFeatures: ai.companyFeatures || ai.features,
     reviews: [],
     reviewNote: null,
     companyReviews: [],
@@ -261,6 +263,7 @@ function mergeIntoExisting(existing, { row, ai }) {
     appeal: ai.appeal,
     companyAppeal: ai.companyAppeal || ai.appeal,
     features: ai.features,
+    companyFeatures: ai.companyFeatures || ai.features,
     affiliateUrl: row.affiliateUrl,
     featured: true,
   };

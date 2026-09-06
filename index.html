@@ -1417,7 +1417,7 @@ function openDetail(a){
       <div class="d-section">
         <h4>このエージェントの特徴</h4>
         <p class="body-text">${a.companyAppeal || a.commitmentExplanation}</p>
-        <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
+        <ul class="feature-list">${(a.companyFeatures && a.companyFeatures.length > 0 ? a.companyFeatures : a.features).map(f=>`<li>${f}</li>`).join("")}</ul>
       </div>
 
       <div class="d-section">

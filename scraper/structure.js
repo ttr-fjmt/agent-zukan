@@ -361,7 +361,16 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
             '（対応業界・職種の専門性、対応エリア、実績など）という視点で書く。' +
             '事実情報のみに基づき、事業者コメントの丸写しは禁止（要約・言い換えのみ可）。根拠となる事実が無ければappealの内容を採用企業視点に言い換えてよい。',
         },
-        features: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3, description: '箇条書き特徴3点' },
+        features: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3, description: '箇条書き特徴3点（求職者視点）' },
+        companyFeatures: {
+          type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3,
+          description:
+            '箇条書き特徴3点（採用企業視点）。featuresとは視点を変え、採用企業が' +
+            'このエージェントを使うメリット（対応業界・職種の専門性、母集団形成力、' +
+            '対応の柔軟性など）という切り口で書く。事実情報のみに基づき、事業者' +
+            'コメントの丸写しは禁止（要約・言い換えのみ可）。根拠となる事実が' +
+            '無ければfeaturesの内容を採用企業視点に言い換えてよい。',
+        },
         feeExplanation: { type: 'string', description: '成功報酬に関する説明文。数値の根拠が無ければその旨を明記' },
         commitmentExplanation: { type: 'string', description: 'どこまで対応してくれるかの説明文' },
         companyDetail: {
@@ -396,8 +405,8 @@ async function buildWithAI(raw, anthropic, source, existingHints = []) {
       },
       required: [
         'category', 'region', 'targetAge', 'jobCount', 'feeRate', 'talentRange', 'oneLiner',
-        'companyOneLiner', 'appeal', 'companyAppeal', 'features', 'feeExplanation', 'commitmentExplanation',
-        'companyDetail',
+        'companyOneLiner', 'appeal', 'companyAppeal', 'features', 'companyFeatures', 'feeExplanation',
+        'commitmentExplanation', 'companyDetail',
       ],
       additionalProperties: false,
     },
@@ -548,6 +557,7 @@ function assembleEntry(raw, ai, rawHash, source, existing) {
     appeal: ai.appeal,
     companyAppeal: ai.companyAppeal || null,
     features: ai.features,
+    companyFeatures: ai.companyFeatures || null,
     reviews: [],
     reviewNote: REVIEW_NOTE,
     companyReviews: [],
