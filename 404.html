@@ -1042,12 +1042,46 @@ function computeHighScoreThreshold(currentMode, targetCount){
   return threshold;
 }
 
+// フリーテキスト検索の類義語辞書。キーワードが1つでも含まれていれば、その配列の語すべてで
+// OR検索する（辞書に無い語はそのまま単独の語として扱う＝従来通りの部分一致検索にフォールバック）。
+const SEARCH_SYNONYMS = {
+  "若手": ["若手", "20代", "第二新卒", "既卒", "フリーター", "ポテンシャル", "未経験"],
+  "第二新卒": ["第二新卒", "既卒", "20代", "若手"],
+  "新卒": ["新卒", "大学卒業予定", "卒業予定"],
+  "ミドル": ["ミドル", "30代", "40代"],
+  "ハイクラス": ["ハイクラス", "エグゼクティブ", "管理職", "経営層", "年収1000万", "幹部"],
+  "エグゼクティブ": ["エグゼクティブ", "ハイクラス", "経営層", "管理職"],
+  "シニア": ["シニア", "高年齢", "60代", "60歳以上", "シルバー"],
+  "高齢": ["高齢", "高年齢", "60代", "60歳以上", "シルバー"],
+  "外資": ["外資", "外資系", "グローバル", "英語"],
+  "グローバル": ["グローバル", "外資", "外資系", "英語"],
+  "地方": ["地方", "UIターン", "Uターン", "Iターン", "地方転職"],
+  "リモート": ["リモート", "在宅", "テレワーク"],
+  "未経験": ["未経験", "ポテンシャル", "第二新卒", "若手"],
+  "ハイキャリア": ["ハイキャリア", "ハイクラス", "エグゼクティブ", "管理職"],
+};
+
+/** 検索語を類義語展開する。辞書に無い語はそのまま1件の配列として返す。 */
+function expandSearchQuery(q){
+  const key = Object.keys(SEARCH_SYNONYMS).find(k => q.includes(k));
+  return key ? SEARCH_SYNONYMS[key] : [q];
+}
+
 function matches(agent, query){
   const passCategory = activeChip==="all" || agent.category===activeChip;
   const passPrefecture = matchesPrefecture(agent, activePrefecture);
   const passFee = mode==="company" ? matchesFee(agent, activeFee) : true;
   const q = query.trim().toLowerCase();
-  const passQuery = !q || agent.name.toLowerCase().includes(q) || agent.category.toLowerCase().includes(q);
+  let passQuery = !q;
+  if(q){
+    const terms = expandSearchQuery(q).map(t => t.toLowerCase());
+    const haystack = [
+      agent.name, agent.category, agent.targetAge, agent.region,
+      agent.oneLiner, agent.companyOneLiner, agent.appeal, agent.companyAppeal,
+      ...(agent.features || []), ...(agent.companyFeatures || []),
+    ].filter(Boolean).join(" ").toLowerCase();
+    passQuery = terms.some(t => haystack.includes(t));
+  }
   const passFeatured = !featuredOnly || agent.featured===true;
   const passHighScore = !highScoreOnly || (agent.featured!==true && completenessScore(agent, mode) >= highScoreThreshold);
   return passCategory && passPrefecture && passFee && passQuery && passFeatured && passHighScore;
