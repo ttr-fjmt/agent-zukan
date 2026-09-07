@@ -15416,6 +15416,26 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/agent/a8-019/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agent-zukan.net/agent/a8-020/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agent-zukan.net/agent/a8-021/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agent-zukan.net/agent/a8-022/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/category/it-web/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
