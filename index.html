@@ -409,6 +409,66 @@
     /* 詳細ページは読みやすさ優先で幅を抑え、中央寄せにする（一覧の拡幅の影響を受けないように） */
     #detailView{max-width:860px;margin-left:auto;margin-right:auto;}
   }
+
+  /* あなたに合うエージェント診断アシスタント */
+  #assistantWidget{position:fixed;bottom:20px;right:20px;z-index:500;}
+  .assistant-fab{
+    width:60px;height:60px;border-radius:50%;background:var(--accent);
+    border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(18,63,56,.32);transition:transform .15s;
+  }
+  .assistant-fab:hover{transform:scale(1.05);}
+  .assistant-fab svg{width:28px;height:28px;}
+  .assistant-bubble{
+    position:absolute;bottom:76px;right:0;max-width:150px;
+    background:#fff;color:var(--ink);font-size:11.5px;font-weight:700;line-height:1.5;
+    padding:9px 12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.14);
+    text-align:right;
+  }
+  .assistant-panel{
+    position:absolute;bottom:76px;right:0;width:320px;max-width:calc(100vw - 40px);
+    max-height:70vh;overflow-y:auto;background:#fff;border-radius:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.18);
+  }
+  .assistant-panel-head{
+    background:var(--accent);color:#fff;padding:14px 18px;font-weight:700;font-size:14px;
+    position:sticky;top:0;
+  }
+  .assistant-panel-body{padding:18px;}
+  .assistant-progress-label{font-size:11px;color:var(--ink-faint);margin-bottom:6px;}
+  .assistant-progress-bar{height:4px;background:#EFEAE0;border-radius:2px;margin-bottom:16px;overflow:hidden;}
+  .assistant-progress-bar-fill{height:100%;background:var(--gold);transition:width .2s;}
+  .assistant-question{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:14px;}
+  .assistant-options{display:flex;flex-direction:column;gap:8px;}
+  .assistant-option{
+    border:1.5px solid var(--line);padding:10px 14px;border-radius:10px;font-size:13px;
+    color:var(--ink);cursor:pointer;text-align:left;background:#fff;
+  }
+  .assistant-option:hover{border-color:var(--accent);}
+  .assistant-option.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep);font-weight:700;}
+  .assistant-result-card{
+    display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;
+    padding:10px;position:relative;margin-bottom:10px;cursor:pointer;
+  }
+  .assistant-result-card:hover{border-color:var(--accent);}
+  .assistant-result-info{flex:1;min-width:0;}
+  .assistant-result-info h5{margin:0 0 2px;font-size:13px;font-weight:700;color:var(--ink);}
+  .assistant-result-info p{margin:0;font-size:11px;color:var(--ink-soft);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .assistant-more-link{
+    text-align:center;font-size:12px;color:var(--accent);font-weight:700;padding:10px;
+    border:1.5px solid var(--accent);border-radius:999px;cursor:pointer;margin-top:4px;
+  }
+  .assistant-back-link{font-size:12px;color:var(--ink-faint);cursor:pointer;margin-bottom:12px;display:inline-block;}
+  .assistant-select{
+    width:100%;padding:10px 12px;border:1.5px solid var(--line);background:var(--surface);
+    font-family:inherit;font-size:13px;color:var(--ink);border-radius:10px;cursor:pointer;margin-top:2px;
+  }
+  .assistant-select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  @media (max-width:600px){
+    #assistantWidget{bottom:16px;right:16px;}
+    .assistant-panel{width:calc(100vw - 32px);}
+  }
 </style>
 </head>
 <body class="mode-candidate">
@@ -491,6 +551,27 @@
 </footer>
 
 <div class="toast" id="toast"></div>
+
+<div id="assistantWidget">
+  <div id="assistantBubble" class="assistant-bubble" style="display:none;">
+    あなたにマッチする<br>エージェント探します
+  </div>
+  <button id="assistantFab" class="assistant-fab" onclick="toggleAssistant()" aria-label="あなたに合うエージェント診断">
+    <svg viewBox="0 0 24 24" fill="none">
+      <line x1="12" y1="2.5" x2="12" y2="5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="2" r="1.1" fill="#fff"/>
+      <rect x="5" y="5" width="14" height="12" rx="4" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="9" cy="10.5" r="1.3" fill="#fff"/>
+      <circle cx="15" cy="10.5" r="1.3" fill="#fff"/>
+      <path d="M9 14 Q12 15.5 15 14" stroke="#fff" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <line x1="2.5" y1="10" x2="5" y2="10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="19" y1="10" x2="21.5" y2="10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="8" y1="17" x2="8" y2="19.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="16" y1="17" x2="16" y2="19.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div id="assistantPanel" class="assistant-panel" style="display:none;"></div>
+</div>
 
 <script>
 let AGENTS = [];
@@ -825,6 +906,28 @@ const FEE_OPTIONS = ["all","〜25%","25〜30%","30〜35%","35%〜","非公開"];
 
 let activePrefecture = "all";
 let activeFee = "all";
+
+// あなたに合うエージェント診断アシスタント。47都道府県を全部選択肢に並べると多すぎるため、
+// 主要10都道府県+「全国」をボタンで即選択でき、それ以外はセレクトボックスから選ぶ2段構成にする。
+const ASSISTANT_MAJOR_PREFECTURES = ["東京都","大阪府","愛知県","福岡県","北海道","神奈川県","埼玉県","千葉県","兵庫県","宮城県"];
+
+let assistantStep = 0; // 0=未開始, 1〜3=質問, 4=結果
+let assistantAnswers = { prefecture: null, category: null, priority: null };
+
+const ASSISTANT_PRIORITY_OPTIONS = {
+  candidate: [
+    { value: "openings", label: "非公開求人の多さ" },
+    { value: "expertise", label: "専門性の高さ" },
+    { value: "support", label: "丁寧なサポート" },
+    { value: "speed", label: "とにかく早く決めたい" },
+  ],
+  company: [
+    { value: "fee", label: "採用コスト(フィー)の適正さ" },
+    { value: "expertise", label: "専門性・母集団形成力" },
+    { value: "flexibility", label: "対応の柔軟さ" },
+    { value: "speed", label: "とにかく早く採用したい" },
+  ],
+};
 
 const LEAD_TEXT = {
   candidate: `日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。`,
@@ -1556,6 +1659,183 @@ function updateAgentCountBadge(){
   if(el) el.textContent = `全国のエージェント${AGENTS.length}社掲載中！`;
 }
 
+/** 初回訪問時のみ、少し遅れて吹き出しを表示し、数秒後に自動で消す。
+ * セッション内で一度表示したら以降は出さない(sessionStorage使用)。 */
+function initAssistantBubble(){
+  if(sessionStorage.getItem("assistantBubbleShown")) return;
+  setTimeout(()=>{
+    const bubble = document.getElementById("assistantBubble");
+    if(!bubble || assistantStep !== 0) return;
+    bubble.style.display = "block";
+    sessionStorage.setItem("assistantBubbleShown", "1");
+    setTimeout(()=>{ bubble.style.display = "none"; }, 6000);
+  }, 1500);
+}
+
+function toggleAssistant(){
+  const panel = document.getElementById("assistantPanel");
+  const bubble = document.getElementById("assistantBubble");
+  if(bubble) bubble.style.display = "none";
+  if(assistantStep === 0){
+    assistantStep = 1;
+    assistantAnswers = { prefecture: null, category: null, priority: null };
+    panel.style.display = "block";
+    renderAssistantStep();
+  } else {
+    assistantStep = 0;
+    panel.style.display = "none";
+  }
+}
+
+function renderAssistantStep(){
+  const panel = document.getElementById("assistantPanel");
+  if(assistantStep === 4){
+    panel.innerHTML = buildAssistantResultsHTML();
+    return;
+  }
+  const stepIndex = assistantStep; // 1,2,3
+  const titles = ["対応してほしいエリアは？", "どんな職種・業界での転職をお考えですか？", "一番重視したいことは？"];
+  const titlesCompany = ["対応してほしいエリアは？", "採用したい職種・業界は？", "一番重視したいことは？"];
+  const title = mode === "company" ? titlesCompany[stepIndex-1] : titles[stepIndex-1];
+
+  let optionsHTML = "";
+  if(stepIndex === 1){
+    const nationwideHTML = `<div class="assistant-option${assistantAnswers.prefecture==="全国" ? ' selected':''}" onclick="selectAssistantAnswer('prefecture','全国')">全国</div>`;
+    const majorHTML = ASSISTANT_MAJOR_PREFECTURES.map(p =>
+      `<div class="assistant-option${assistantAnswers.prefecture===p ? ' selected':''}" onclick="selectAssistantAnswer('prefecture','${p}')">${p}</div>`
+    ).join("");
+    const isOtherSelected = assistantAnswers.prefecture && assistantAnswers.prefecture !== "全国" && !ASSISTANT_MAJOR_PREFECTURES.includes(assistantAnswers.prefecture);
+    const otherSelectHTML = `
+      <select class="assistant-select" onchange="if(this.value) selectAssistantAnswer('prefecture', this.value)">
+        <option value=""${isOtherSelected ? '' : ' selected'}>その他の都道府県から選ぶ</option>
+        ${PREFECTURES.map(p=>`<option value="${p}"${assistantAnswers.prefecture===p ? ' selected':''}>${p}</option>`).join("")}
+      </select>`;
+    optionsHTML = nationwideHTML + majorHTML + otherSelectHTML;
+  } else if(stepIndex === 2){
+    const cats = CHIP_LABELS.filter(c => c !== "all");
+    optionsHTML = cats.map(c =>
+      `<div class="assistant-option${assistantAnswers.category===c ? ' selected':''}" onclick="selectAssistantAnswer('category','${c}')">${c}</div>`
+    ).join("") + `<div class="assistant-option${assistantAnswers.category==='__any__' ? ' selected':''}" onclick="selectAssistantAnswer('category','__any__')">特にこだわらない</div>`;
+  } else if(stepIndex === 3){
+    const opts = ASSISTANT_PRIORITY_OPTIONS[mode === "company" ? "company" : "candidate"];
+    optionsHTML = opts.map(o =>
+      `<div class="assistant-option${assistantAnswers.priority===o.value ? ' selected':''}" onclick="selectAssistantAnswer('priority','${o.value}')">${o.label}</div>`
+    ).join("");
+  }
+
+  panel.innerHTML = `
+    <div class="assistant-panel-head">あなたに合うエージェント診断</div>
+    <div class="assistant-panel-body">
+      ${stepIndex > 1 ? `<span class="assistant-back-link" onclick="assistantStep=${stepIndex-1};renderAssistantStep();">← 戻る</span>` : ""}
+      <div class="assistant-progress-label">質問 ${stepIndex} / 3</div>
+      <div class="assistant-progress-bar"><div class="assistant-progress-bar-fill" style="width:${stepIndex/3*100}%;"></div></div>
+      <div class="assistant-question">${title}</div>
+      <div class="assistant-options">${optionsHTML}</div>
+    </div>
+  `;
+}
+
+function selectAssistantAnswer(key, value){
+  assistantAnswers[key] = value;
+  if(assistantStep < 3){
+    setTimeout(()=>{ assistantStep += 1; renderAssistantStep(); }, 150);
+  } else {
+    setTimeout(()=>{ assistantStep = 4; renderAssistantStep(); }, 150);
+  }
+}
+
+/**
+ * 診断結果として3件を選ぶ。featured(アフィリエイトあり)を優先し、
+ * 残り枠をdisplaySortValue順で埋める。地域・カテゴリーが厳しすぎて
+ * 3件に満たない場合は、条件を段階的に緩めるフォールバックを行う
+ * (カテゴリー無視→地域無視の順)。
+ *
+ * 「重視したいこと」の回答は、現状のデータ充実度(数値項目の公開率が
+ * 低い)を踏まえ、結果の並び順を大きく変える精緻なロジックにはせず、
+ * 結果見出しの一言コメントに反映する程度の控えめな使い方にとどめる。
+ * 過剰にAIっぽい精度を演出しないこと。
+ */
+function computeAssistantRecommendations(){
+  const pref = assistantAnswers.prefecture;
+  const cat = assistantAnswers.category;
+
+  function pool(usePref, useCat){
+    return AGENTS.filter(a => {
+      const okPref = !usePref || matchesPrefecture(a, pref);
+      const okCat = !useCat || cat === "__any__" || a.category === cat;
+      return okPref && okCat;
+    });
+  }
+
+  let candidates = pool(true, true);
+  if(candidates.length < 3) candidates = pool(true, false);
+  if(candidates.length < 3) candidates = pool(false, true);
+  if(candidates.length < 3) candidates = AGENTS.slice();
+
+  const sorted = candidates.slice().sort((a,b) => displaySortValue(b, mode) - displaySortValue(a, mode));
+  return sorted.slice(0, 3);
+}
+
+function buildAssistantResultsHTML(){
+  const results = computeAssistantRecommendations();
+  const cardsHTML = results.map(a => {
+    const excerpt = mode === "company" ? (a.companyAppeal || a.appeal || "") : (a.appeal || "");
+    return `
+      <div class="assistant-result-card" onclick="closeAssistantAndNavigate('${a.id}')">
+        ${eyecatchHTMLCompact(a)}
+        <div class="assistant-result-info">
+          <h5>${a.name}</h5>
+          <p>${excerpt}</p>
+        </div>
+        ${a.featured ? '<span class="pr-label" style="position:absolute;bottom:8px;right:8px;">PR</span>' : ''}
+      </div>
+    `;
+  }).join("");
+
+  return `
+    <div class="assistant-panel-head">あなたにおすすめの3社</div>
+    <div class="assistant-panel-body">
+      <span class="assistant-back-link" onclick="assistantStep=3;renderAssistantStep();">← 質問をやり直す</span>
+      ${cardsHTML}
+      <div class="assistant-more-link" onclick="applyAssistantFiltersAndGoToList()">条件を保ったまま一覧で見る →</div>
+    </div>
+  `;
+}
+
+/** 結果カード用の小型eyecatch。既存eyecatchHTMLのthumbバリアントに
+ * 第3引数trueを渡し、featuredなら「注目！」バッジも表示させる。
+ * サイズだけ結果カード用に少し小さく上書きする。 */
+function eyecatchHTMLCompact(agent){
+  return `<div style="width:44px;flex-shrink:0;">${eyecatchHTML(agent, "thumb", true)}</div>`;
+}
+
+function closeAssistantAndNavigate(agentId){
+  assistantStep = 0;
+  document.getElementById("assistantPanel").style.display = "none";
+  const agent = AGENTS.find(a => a.id === agentId);
+  if(agent) navigateToDetail(agent);
+}
+
+/** 診断結果の地域・カテゴリー条件を、既存のフィルターにそのまま反映して
+ * 一覧表示に遷移する。既存のonCategoryChange/onPrefectureChangeと
+ * 同じ変数(activeChip/activePrefecture)を更新し、render()を呼ぶ。 */
+function applyAssistantFiltersAndGoToList(){
+  assistantStep = 0;
+  document.getElementById("assistantPanel").style.display = "none";
+  featuredOnly = false;
+  highScoreOnly = false;
+  homeMode = false;
+  if(assistantAnswers.category && assistantAnswers.category !== "__any__"){
+    activeChip = assistantAnswers.category;
+  }
+  if(assistantAnswers.prefecture){
+    activePrefecture = assistantAnswers.prefecture;
+  }
+  buildFilterSelects();
+  render();
+  window.scrollTo({ top: document.getElementById("filterBanner")?.offsetTop || 0, behavior: "smooth" });
+}
+
 async function loadAgents(){
   await loadCategories();
   if(!SSG_MODE) buildFilterSelects();
@@ -1571,6 +1851,7 @@ async function loadAgents(){
       render();
       renderRecommend();
       startRecommendAutoScroll();
+      initAssistantBubble();
       // カテゴリー別ランディングページ（category/{slug}/）の「もっと見る」から
       // /?category={カテゴリー名} で遷移してきた場合、該当カテゴリーの絞り込み一覧を初期表示する。
       const categoryParam = new URLSearchParams(location.search).get("category");
