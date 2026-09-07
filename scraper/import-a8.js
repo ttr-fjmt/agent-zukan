@@ -100,7 +100,10 @@ function cell(value) {
 }
 
 /**
- * ExcelをC・D・E列（広告主名・リンク・特徴）が全て埋まっている行のみに絞り込んで読む。
+ * Excelを、A列（反映）がFALSE（または空欄）かつB・C・D列（広告主名・リンク・特徴）が
+ * 全て埋まっている行のみに絞り込んで読む。既に反映=TRUEの行はB・C・D列が埋まっていても
+ * 処理対象から除外する（日次/都度の実行のたびに既存の全社を毎回AIに再送信するのを防ぎ、
+ * 無駄なAPIコストが発生し続けないようにするため）。
  * B列「サイト」による絞り込みは行わない（ファイル自体が転職エージェント図鑑専用のため）。
  * 各行に _rowIndex（sheet_to_jsonのヘッダー除く0始まりインデックス）を持たせ、
  * 後で反映列を更新する際にExcelの実際の行番号（_rowIndex + 2）へ変換できるようにする。
@@ -112,6 +115,7 @@ function readRows(filePath) {
   return raw
     .map((r, index) => ({
       _rowIndex: index,
+      reflected: !!r[REFLECTED_COLUMN],
       name: cell(r['広告主名']),
       affiliateUrl: extractAffiliateUrl(r['リンク']),
       feature: cell(r['特徴']),
@@ -119,7 +123,7 @@ function readRows(filePath) {
       targetAge: cell(r['対象年代']),
       specialty: cell(r['なにに特化しているか']),
     }))
-    .filter(r => r.name && r.affiliateUrl && r.feature);
+    .filter(r => !r.reflected && r.name && r.affiliateUrl && r.feature);
 }
 
 /**
