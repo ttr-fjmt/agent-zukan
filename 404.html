@@ -419,12 +419,6 @@
   }
   .assistant-fab:hover{transform:scale(1.05);}
   .assistant-fab svg{width:28px;height:28px;}
-  .assistant-bubble{
-    position:absolute;bottom:76px;right:0;max-width:150px;
-    background:#fff;color:var(--ink);font-size:11.5px;font-weight:700;line-height:1.5;
-    padding:9px 12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.14);
-    text-align:right;
-  }
   .assistant-panel{
     position:absolute;bottom:76px;right:0;width:320px;max-width:calc(100vw - 40px);
     max-height:70vh;overflow-y:auto;background:#fff;border-radius:16px;
@@ -553,9 +547,6 @@
 <div class="toast" id="toast"></div>
 
 <div id="assistantWidget">
-  <div id="assistantBubble" class="assistant-bubble" style="display:none;">
-    あなたにマッチする<br>エージェント探します
-  </div>
   <button id="assistantFab" class="assistant-fab" onclick="toggleAssistant()" aria-label="あなたに合うエージェント診断">
     <svg viewBox="0 0 24 24" fill="none">
       <line x1="12" y1="2.5" x2="12" y2="5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
@@ -1659,23 +1650,8 @@ function updateAgentCountBadge(){
   if(el) el.textContent = `全国のエージェント${AGENTS.length}社掲載中！`;
 }
 
-/** 初回訪問時のみ、少し遅れて吹き出しを表示し、数秒後に自動で消す。
- * セッション内で一度表示したら以降は出さない(sessionStorage使用)。 */
-function initAssistantBubble(){
-  if(sessionStorage.getItem("assistantBubbleShown")) return;
-  setTimeout(()=>{
-    const bubble = document.getElementById("assistantBubble");
-    if(!bubble || assistantStep !== 0) return;
-    bubble.style.display = "block";
-    sessionStorage.setItem("assistantBubbleShown", "1");
-    setTimeout(()=>{ bubble.style.display = "none"; }, 6000);
-  }, 1500);
-}
-
 function toggleAssistant(){
   const panel = document.getElementById("assistantPanel");
-  const bubble = document.getElementById("assistantBubble");
-  if(bubble) bubble.style.display = "none";
   if(assistantStep === 0){
     assistantStep = 1;
     assistantAnswers = { prefecture: null, category: null, priority: null };
@@ -1758,6 +1734,8 @@ function selectAssistantAnswer(key, value){
 function computeAssistantRecommendations(){
   const pref = assistantAnswers.prefecture;
   const cat = assistantAnswers.category;
+  // デスクトップ幅(768px以上)では5件、モバイル幅では3件表示する。
+  const resultCount = window.innerWidth >= 768 ? 5 : 3;
 
   function pool(usePref, useCat){
     return AGENTS.filter(a => {
@@ -1768,12 +1746,12 @@ function computeAssistantRecommendations(){
   }
 
   let candidates = pool(true, true);
-  if(candidates.length < 3) candidates = pool(true, false);
-  if(candidates.length < 3) candidates = pool(false, true);
-  if(candidates.length < 3) candidates = AGENTS.slice();
+  if(candidates.length < resultCount) candidates = pool(true, false);
+  if(candidates.length < resultCount) candidates = pool(false, true);
+  if(candidates.length < resultCount) candidates = AGENTS.slice();
 
   const sorted = candidates.slice().sort((a,b) => displaySortValue(b, mode) - displaySortValue(a, mode));
-  return sorted.slice(0, 3);
+  return sorted.slice(0, resultCount);
 }
 
 function buildAssistantResultsHTML(){
@@ -1793,7 +1771,7 @@ function buildAssistantResultsHTML(){
   }).join("");
 
   return `
-    <div class="assistant-panel-head">あなたにおすすめの3社</div>
+    <div class="assistant-panel-head">あなたにおすすめの${results.length}社</div>
     <div class="assistant-panel-body">
       <span class="assistant-back-link" onclick="assistantStep=3;renderAssistantStep();">← 質問をやり直す</span>
       ${cardsHTML}
@@ -1804,9 +1782,11 @@ function buildAssistantResultsHTML(){
 
 /** 結果カード用の小型eyecatch。既存eyecatchHTMLのthumbバリアントに
  * 第3引数trueを渡し、featuredなら「注目！」バッジも表示させる。
- * サイズだけ結果カード用に少し小さく上書きする。 */
+ * eyecatchHTML内部の.eyecatch-rowがロゴ+バッジを横並びにするflexコンテナ
+ * のため、幅を固定してしまうとバッジがロゴに重なってしまう。ここでは
+ * flex-shrink:0のみ指定し、幅は自然なコンテンツ幅に任せる。 */
 function eyecatchHTMLCompact(agent){
-  return `<div style="width:44px;flex-shrink:0;">${eyecatchHTML(agent, "thumb", true)}</div>`;
+  return `<div style="flex-shrink:0;">${eyecatchHTML(agent, "thumb", true)}</div>`;
 }
 
 function closeAssistantAndNavigate(agentId){
@@ -1851,7 +1831,6 @@ async function loadAgents(){
       render();
       renderRecommend();
       startRecommendAutoScroll();
-      initAssistantBubble();
       // カテゴリー別ランディングページ（category/{slug}/）の「もっと見る」から
       // /?category={カテゴリー名} で遷移してきた場合、該当カテゴリーの絞り込み一覧を初期表示する。
       const categoryParam = new URLSearchParams(location.search).get("category");
