@@ -34,8 +34,9 @@ function readJson(filePath, fallback) {
 }
 
 function writeJson(filePath, data) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  // 記録ファイルの書き込みも、Windowsで一時的に失敗することがある
+  // （3400件目で落ちた）。ページ本体と同じ再試行を通す。
+  writeFileWithRetry(path.dirname(filePath), filePath, JSON.stringify(data, null, 2) + '\n');
 }
 
 /** エージェントの構造化データ全体をハッシュ化する（表示内容が変わればハッシュも変わる）。 */
