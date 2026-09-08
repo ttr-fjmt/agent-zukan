@@ -7,6 +7,8 @@
 <meta property="og:description" id="og-description" content="北海道全域の全職種に対応する職業紹介事業者。 株式会社ジェイサポート（職業紹介）の対応エリア・特徴・手数料の目安を転職エージェント図鑑で確認できます。">
 <meta property="og:type" content="website">
 <meta property="og:url" id="og-url" content="http://localhost:8935/index.html?ssg=1#/agent/01-yu-300308">
+<link rel="canonical" href="https://agent-zukan.net/agent/01-yu-300308/" id="canonical-link">
+<script type="application/ld+json" id="ld-json">{"@context":"https://schema.org","@type":"EmploymentAgency","name":"株式会社ジェイサポート","description":"北海道内での全職種対応による広い求人層への対応が可能です。","areaServed":"北海道","url":"https://jinzai.hellowork.mhlw.go.jp/JinzaiWeb/GICB102030.do?screenId=GICB102030&action=detail&detkey_Detail=01-%E3%83%A6-300308%2C1+++++"}</script>
 <meta property="og:image" content="/ogp-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -14,10 +16,8 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <!-- Google AdSense: 実際に配信する際は client=ca-pub-5761092657360295 をご自身のパブリッシャーIDに置き換えてください -->
-<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202608310101/show_ads_impl.js?bust=122880783" fetchpriority="high"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5761092657360295" crossorigin="anonymous" data-checked-head="true"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5761092657360295" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WBGS0QRR5M"></script>
 <script>
@@ -29,117 +29,177 @@
 </script>
 <style>
   :root{
-    --ink:#17211D;
-    --paper:#F8F5EE;
-    --surface:#FFFFFF;
-    --line:#E4DFD1;
-    --accent:#1F6F63;
-    --accent-deep:#123F38;
-    --accent-soft:#DCEAE7;
-    --gold:#B8863B;
-    --gold-soft:#F1E4CC;
-    --ink-soft:#5B6660;
-    --ink-faint:#8B9490;
-    --star:#E0A400;
+    /* ブランド色は3サイトで意図的に分けている（このサイトは深緑）。
+       名前と考え方はスキルアップ図鑑に合わせ、UIの作りを揃えられるようにした。 */
+    --brand:#1F6F63; --brand-dark:#123F38; --brand-light:#E4F0ED; --brand-border:#BCD8D2;
+    --ink:#17211D; --ink-sub:#5B6660; --ink-faint:#8B9490;
+    --bg:#F7FAF9; --card:#FFFFFF; --line:#E3E7E5;
+    --ok:#2E7D5B; --ok-bg:#E8F5EE;
+    --gold:#B8863B; --gold-soft:#F1E4CC; --star:#E0A400;
+    --radius:12px;
+    --shadow:0 1px 3px rgba(23,33,29,.07),0 4px 16px rgba(23,33,29,.04);
+
+    /* 旧い変数名。既存のCSSが多く参照しているので、別名として残す。 */
+    --paper:var(--bg); --surface:var(--card);
+    --accent:var(--brand); --accent-deep:var(--brand-dark); --accent-soft:var(--brand-light);
+    --ink-soft:var(--ink-sub);
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:var(--paper);
+    background:var(--bg);
     color:var(--ink);
-    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
+    line-height:1.7;
     -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
   }
-  .wrap{max-width:860px;margin:0 auto;padding:0 16px 100px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px 100px;}
 
-  /* header */
+  /* ヘッダー：上に貼り付く細いバー */
   header{
-    padding:64px 16px 32px;
-    background:
-      radial-gradient(600px 260px at 15% -20%, rgba(31,111,99,.10), transparent 60%),
-      radial-gradient(500px 220px at 100% 0%, rgba(184,134,59,.10), transparent 55%),
-      var(--paper);
+    background:var(--card);border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:20;
   }
-  header .inner{max-width:860px;margin:0 auto;}
-  h1{
-    font-family:'Shippori Mincho', serif;
-    font-weight:600;
-    font-size:clamp(30px,5vw,42px);
-    line-height:1.4;
-    margin:0 0 10px;
-    letter-spacing:.01em;
+  .header-inner{
+    max-width:900px;margin:0 auto;padding:12px 16px;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   }
-  h1 .mark{ color:var(--accent-deep); border-bottom:3px solid var(--gold); padding-bottom:2px; }
-  h1.home-link{cursor:pointer;width:fit-content;}
+  h1{margin:0;font-size:19px;font-weight:800;letter-spacing:.01em;line-height:1.4;white-space:nowrap;}
+  h1 .mark{color:var(--brand);border:0;padding:0;}
+  h1.home-link{cursor:pointer;}
+  .header-spacer{flex:1;}
   .agent-count-badge{
-    display:inline-block;background:var(--accent);color:#fff;border-radius:999px;
-    padding:6px 14px;font-weight:700;font-size:13px;margin:0 0 16px;
-  }
-  header p.tagline{
-    font-size:13.5px;
-    color:var(--accent);
-    font-weight:600;
-    letter-spacing:.04em;
-    margin:0 0 18px;
-  }
-  header p.lead{
-    max-width:50ch;
-    font-size:14.5px;
-    line-height:1.8;
-    color:var(--ink-soft);
-    margin:0;
+    display:inline-flex;align-items:center;background:var(--brand-light);color:var(--brand-dark);
+    border:1px solid var(--brand-border);border-radius:999px;padding:2px 10px;
+    font-weight:700;font-size:12px;white-space:nowrap;
   }
 
-  /* segmented mode toggle */
-  .segment{max-width:860px;margin:28px auto 0;padding:0 16px;}
-  .segment .track{display:flex;background:var(--surface);border-radius:10px;padding:4px;gap:4px;}
+  /* 姉妹サイトへのリンク。色は行き先のサイトのブランド色に合わせる。 */
+  .sister-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .sister-links a{
+    display:inline-flex;align-items:center;color:#fff;font-size:12px;font-weight:700;
+    padding:7px 13px;border-radius:999px;text-decoration:none;white-space:nowrap;
+    box-shadow:0 1px 4px rgba(23,33,29,.14);transition:filter .12s;
+  }
+  .sister-links a:hover{filter:brightness(.88);}
+  .sister-links .to-freelance{background:#1D5FA8;}
+  .sister-links .to-skillup{background:#E67E22;}
+
+  /* 見出し帯と、職種から探す近道 */
+  body.view-detail .site-hero,
+  body.view-detail .segment{display:none;}
+  .site-hero{
+    background:linear-gradient(180deg,var(--brand-light),var(--bg));
+    border-bottom:1px solid var(--line);padding:26px 0 24px;
+  }
+  .site-hero-inner{max-width:900px;margin:0 auto;padding:0 16px;}
+  .site-hero h2{margin:0 0 8px;font-size:22px;line-height:1.5;}
+  .site-hero p{margin:0;color:var(--ink-sub);font-size:14px;}
+  .cat-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px;}
+  .cat-nav a{
+    display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
+    padding:12px 6px 10px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    text-decoration:none;color:var(--ink);font-size:12px;font-weight:700;line-height:1.35;
+    transition:border-color .15s,box-shadow .15s,transform .15s;
+  }
+  .cat-nav a:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-1px);}
+  .cat-nav .ic{
+    width:34px;height:34px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cat-nav .ic svg{width:20px;height:20px;}
+  .cat-nav .n{color:var(--ink-faint);font-size:11px;font-weight:600;}
+  @media (min-width:820px){ .cat-nav{grid-template-columns:repeat(8,1fr);} }
+  @media (max-width:600px){
+    .site-hero h2{font-size:19px;}
+    .sister-links{gap:6px;width:100%;}
+    .sister-links a{font-size:11px;padding:6px 10px;flex:1;justify-content:center;}
+  }
+
+  /* 受注／発注の切り替え。見出し帯のすぐ下に、白いカードとして置く。 */
+  .segment{max-width:900px;margin:20px auto 0;padding:0 16px;}
+  .segment .track{
+    display:flex;background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:4px;gap:4px;box-shadow:var(--shadow);
+  }
   .mode-btn{
     flex:1;padding:11px 16px;background:none;border:none;border-radius:7px;
-    font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink-soft);
+    font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink-sub);
     cursor:pointer;transition:background .15s, color .15s;
   }
-  .mode-btn.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .mode-btn.active{background:var(--brand);color:#fff;}
+
+  /* おすすめ（横スクロール） */
+  .recommend-section{margin-top:26px;}
+  .recommend-label{
+    font-size:15px;font-weight:800;color:var(--ink);margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .recommend-scroll{
+    display:flex;gap:12px;overflow-x:auto;
+    padding:2px 2px 10px;margin:0 -2px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;
+  }
+  .recommend-card{
+    position:relative;
+    flex:0 0 auto;width:186px;cursor:pointer;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;padding:14px;
+    display:flex;flex-direction:column;gap:10px;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .recommend-card:hover{border-color:var(--brand);box-shadow:var(--shadow);}
+  .recommend-card .category-pill{font-size:10.5px;padding:3px 8px;align-self:flex-start;}
+  .recommend-card h4{
+    font-size:13.5px;font-weight:800;margin:0;line-height:1.4;color:var(--ink);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .recommend-card .recommend-oneliner{
+    font-size:11.5px;color:var(--ink-sub);line-height:1.6;margin:0;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
 
   .filter-banner{
     display:none;
-    background:var(--accent-soft);color:var(--accent-deep);font-size:13px;font-weight:600;
-    padding:10px 14px;border-radius:8px;margin-top:32px;
+    background:var(--brand-light);color:var(--brand-dark);font-size:13px;font-weight:600;
+    padding:10px 14px;border-radius:8px;margin-top:26px;
   }
   .filter-banner.show{display:block;}
-  .filter-banner a{color:var(--accent-deep);text-decoration:underline;font-weight:700;margin-left:8px;cursor:pointer;}
+  .filter-banner a{color:var(--brand-dark);text-decoration:underline;font-weight:700;margin-left:8px;cursor:pointer;}
 
-  /* filter bar */
-  .filter-bar{margin-top:32px;}
+  /* 絞り込み。スキルアップ図鑑と同じく、白いカードにまとめる。 */
+  .filter-bar{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px;margin-top:22px;box-shadow:var(--shadow);
+  }
   .filter-banner.show + .filter-bar{margin-top:14px;}
   .filter-bar input[type="text"]{
-    width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--surface);
-    font-family:inherit;font-size:14px;color:var(--ink);border-radius:8px;margin-bottom:14px;
+    width:100%;padding:10px 12px;border:1px solid var(--line);background:var(--bg);
+    font-family:inherit;font-size:15px;color:var(--ink);border-radius:8px;margin-bottom:12px;
   }
-  .filter-bar input[type="text"]:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .filter-bar input[type="text"]:focus{outline:2px solid var(--brand);outline-offset:-1px;background:#fff;}
   .home-top-link{
-    display:none;font-size:12.5px;color:var(--accent);font-weight:600;
-    text-decoration:none;margin:-6px 0 14px;cursor:pointer;
+    display:none;font-size:12.5px;color:var(--brand-dark);font-weight:700;
+    text-decoration:none;margin:-4px 0 12px;cursor:pointer;
   }
   .home-top-link.show{display:block;}
   .home-top-link:hover{text-decoration:underline;}
-  .select-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .select-field{flex:1;min-width:140px;display:flex;flex-direction:column;gap:4px;}
-  .select-label{font-size:12px;color:var(--ink-soft);font-weight:700;}
+  .select-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .select-field{display:flex;flex-direction:column;gap:4px;}
+  .select-label{font-size:11px;color:var(--ink-sub);font-weight:700;}
   .select-row select{
-    width:100%;padding:10px 12px;border:1px solid var(--line);background:var(--surface);
-    font-family:inherit;font-size:13px;color:var(--ink);border-radius:8px;cursor:pointer;
+    width:100%;padding:8px 10px;border:1px solid var(--line);background:#fff;
+    font-family:inherit;font-size:14px;color:var(--ink);border-radius:8px;cursor:pointer;
   }
-  .select-row select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .select-row select:focus{outline:2px solid var(--brand);outline-offset:-1px;}
   .select-field.fee-select{display:none;}
   body.mode-company .select-field.fee-select{display:flex;}
-  .result-count{font-size:12px;color:var(--ink-faint);margin-top:14px;}
+  .result-count{font-size:13px;color:var(--ink-sub);margin-top:12px;}
 
   /* home（セクション別トップ表示） */
   .home-section{margin-bottom:36px;}
   .home-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
   .home-section-head h3{
     font-size:16px;font-weight:700;color:var(--ink);margin:0;
-    padding-left:12px;border-left:3px solid var(--gold);
     display:flex;align-items:center;gap:8px;
   }
   .home-section-icon{
@@ -148,12 +208,41 @@
   }
   .home-section-icon svg{width:13px;height:13px;}
   .home-more-link{
-    font-size:12.5px;color:var(--accent);font-weight:600;text-decoration:none;
-    white-space:nowrap;flex-shrink:0;cursor:pointer;
+    display:block;text-align:center;margin-top:14px;
+    font-size:13px;color:var(--accent);font-weight:600;text-decoration:none;cursor:pointer;
   }
   .home-more-link:hover{text-decoration:underline;}
   .home-section-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:12px;}
-  .home-section-grid .row-item{margin-bottom:0;}
+
+  /* ホーム専用のシンプルなカード（通常一覧の.row-itemとは別。stats-gridは持たない） */
+  .home-card{
+    position:relative;
+    cursor:pointer;background:var(--surface);
+    border:1px solid var(--line);border-radius:12px;padding:14px;
+    display:flex;flex-direction:column;gap:10px;transition:border-color .12s, box-shadow .12s;
+    text-decoration:none;color:inherit;
+  }
+  .home-card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .home-card .category-pill{font-size:10.5px;padding:3px 8px;align-self:flex-start;}
+  .home-card h4{
+    font-size:14px;font-weight:700;margin:0;line-height:1.4;color:var(--ink);
+  }
+  .home-card .home-card-excerpt{
+    font-size:12px;color:var(--ink-soft);line-height:1.65;margin:0;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+
+
+  /* カードの左端に、その職種の色の帯を出す（スキルアップ図鑑と同じ見せ方）。
+     色は JS が --cat に入れる。取れなかった場合はブランド色にする。 */
+  .row-item, .home-card, .recommend-card{overflow:hidden;}
+  .row-item::before, .home-card::before, .recommend-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:var(--cat, var(--brand));
+  }
+  .row-item{padding-left:21px;}
+  .home-card{padding-left:17px;}
+  .recommend-card{padding-left:17px;}
 
   /* list */
   .ledger{margin-top:8px;}
@@ -179,6 +268,7 @@
 
   .head-main{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
 
+  .eyecatch-row{display:flex;align-items:center;gap:6px;flex-shrink:0;}
   .eyecatch-square{
     border-radius:12px;display:flex;align-items:center;justify-content:center;
     position:relative;overflow:hidden;flex-shrink:0;
@@ -193,17 +283,14 @@
     box-shadow:0 2px 6px rgba(0,0,0,.2);object-fit:contain;
   }
   .eyecatch-square.hero .favicon{width:44px;height:44px;border-radius:12px;padding:6px;}
-  .eyecatch-square.featured{background:transparent;}
-  .featured-star{
-    position:absolute;inset:0;background:#D32F2F;
-    display:flex;align-items:center;justify-content:center;
-    clip-path:polygon(50.00% 0.00%, 59.84% 13.29%, 75.00% 6.70%, 76.87% 23.13%, 93.30% 25.00%, 86.71% 40.16%, 100.00% 50.00%, 86.71% 59.84%, 93.30% 75.00%, 76.87% 76.87%, 75.00% 93.30%, 59.84% 86.71%, 50.00% 100.00%, 40.16% 86.71%, 25.00% 93.30%, 23.13% 76.87%, 6.70% 75.00%, 13.29% 59.84%, 0.00% 50.00%, 13.29% 40.16%, 6.70% 25.00%, 23.13% 23.13%, 25.00% 6.70%, 40.16% 13.29%);
+  .notable-badge{
+    background:#D32F2F;color:#fff;font-size:10px;font-weight:700;
+    padding:3px 7px;border-radius:999px;white-space:nowrap;flex-shrink:0;
+    box-shadow:0 1px 4px rgba(0,0,0,.25);
   }
-  .featured-text{
-    color:#fff;font-weight:700;white-space:nowrap;letter-spacing:.02em;
+  .eyecatch-row.hero .notable-badge{
+    font-size:12px;padding:4px 9px;
   }
-  .eyecatch-square.thumb.featured .featured-text{font-size:11px;}
-  .eyecatch-square.hero.featured .featured-text{font-size:14px;}
 
   .pr-label{
     position:absolute;bottom:6px;right:6px;
@@ -224,26 +311,20 @@
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(-8px);}
 
-  .ad-slot{
-    position:relative;
-    border:1px dashed var(--line);
-    border-radius:8px;
-    background:var(--surface);
-    min-height:100px;
-    display:flex;align-items:center;justify-content:center;
-    margin:24px 0;
-    overflow:hidden;
-  }
+  /* 広告枠。配信されなかったときに、点線の空箱と「広告」の見出しだけが
+     残らないようにする（スキルアップ図鑑と同じ扱い）。 */
+  .ad-slot{position:relative;margin:24px 0;}
+  .ad-slot:empty{display:none;margin:0;}
+  .ad-slot ins{display:block;width:100%;}
   .ad-slot .ad-label{
-    position:absolute;top:8px;left:10px;
-    font-size:10px;color:var(--ink-faint);letter-spacing:.04em;
+    position:absolute;top:-15px;left:2px;
+    font-size:10px;color:var(--ink-faint);letter-spacing:.04em;display:none;
   }
-  .ad-slot .ad-placeholder{
-    font-size:12px;color:var(--ink-faint);
-  }
-  .ad-slot.banner{min-height:90px;}
-  .ad-slot.in-feed{min-height:110px;}
-  .ad-slot.footer-ad{min-height:90px;margin:32px 0 8px;}
+  .ad-slot:has(ins[data-ad-status="filled"]) .ad-label{display:block;}
+  .ad-slot:has(ins[data-ad-status="unfilled"]){display:none;margin:0;}
+  ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;}
+  .ad-slot .ad-placeholder{font-size:12px;color:var(--ink-faint);}
+  .ad-slot.footer-ad{margin:32px 0 8px;}
 
   footer{max-width:860px;margin:48px auto 0;padding:20px 16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
   .footer-links{margin-top:10px;}
@@ -268,6 +349,7 @@
   .back-btn svg{width:16px;height:16px;flex-shrink:0;}
   .detail-head-row{display:flex;align-items:flex-start;gap:20px;}
   .detail-head{margin-bottom:8px;flex:1;min-width:0;}
+  .detail-head-rating{margin-bottom:8px;}
   .detail-head .category-pill{margin-bottom:12px;}
   .detail-head h2{font-size:clamp(24px,3.4vw,30px);margin:0 0 10px;font-weight:700;letter-spacing:.01em;}
   .one-liner{font-size:15.5px;color:var(--accent);font-weight:500;line-height:1.7;margin:0 0 32px;}
@@ -323,6 +405,7 @@
     .eyecatch-square.hero svg{width:26px;height:26px;}
     .eyecatch-square.hero .favicon{width:32px;height:32px;}
     .home-section-grid{grid-template-columns:1fr;}
+    .recommend-card{width:148px;padding:12px;}
   }
 
   @media (min-width:1024px){
@@ -330,21 +413,135 @@
     .ledger:not(.home-view){display:grid;grid-template-columns:repeat(2, 1fr);gap:16px;}
     .ledger:not(.home-view) .row-item{margin-bottom:0;}
     .ledger .ad-slot.in-feed{grid-column:1 / -1;}
+    .recommend-card{width:200px;}
     /* 詳細ページは読みやすさ優先で幅を抑え、中央寄せにする（一覧の拡幅の影響を受けないように） */
     #detailView{max-width:860px;margin-left:auto;margin-right:auto;}
   }
+
+  /* あなたに合うエージェント診断アシスタント */
+  #assistantWidget{position:fixed;bottom:20px;right:20px;z-index:500;}
+  .assistant-fab{
+    width:60px;height:60px;border-radius:50%;background:var(--accent);
+    border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(18,63,56,.32);transition:transform .15s;
+  }
+  .assistant-fab:hover{transform:scale(1.05);}
+  .assistant-fab svg{width:28px;height:28px;}
+  .assistant-panel{
+    position:absolute;bottom:76px;right:0;width:320px;max-width:calc(100vw - 40px);
+    max-height:70vh;overflow-y:auto;background:#fff;border-radius:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.18);
+  }
+  .assistant-panel-head{
+    background:var(--accent);color:#fff;padding:14px 18px;font-weight:700;font-size:14px;
+    position:sticky;top:0;
+  }
+  .assistant-panel-body{padding:18px;}
+  .assistant-progress-label{font-size:11px;color:var(--ink-faint);margin-bottom:6px;}
+  .assistant-progress-bar{height:4px;background:#EFEAE0;border-radius:2px;margin-bottom:16px;overflow:hidden;}
+  .assistant-progress-bar-fill{height:100%;background:var(--gold);transition:width .2s;}
+  .assistant-question{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:14px;}
+  .assistant-options{display:flex;flex-direction:column;gap:8px;}
+  .assistant-option{
+    border:1.5px solid var(--line);padding:10px 14px;border-radius:10px;font-size:13px;
+    color:var(--ink);cursor:pointer;text-align:left;background:#fff;
+  }
+  .assistant-option:hover{border-color:var(--accent);}
+  .assistant-option.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep);font-weight:700;}
+  .assistant-result-card{
+    display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;
+    padding:10px;position:relative;margin-bottom:10px;cursor:pointer;
+  }
+  .assistant-result-card:hover{border-color:var(--accent);}
+  .assistant-result-info{flex:1;min-width:0;}
+  .assistant-result-info h5{margin:0 0 2px;font-size:13px;font-weight:700;color:var(--ink);}
+  .assistant-result-info p{margin:0;font-size:11px;color:var(--ink-soft);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .assistant-more-link{
+    text-align:center;font-size:12px;color:var(--accent);font-weight:700;padding:10px;
+    border:1.5px solid var(--accent);border-radius:999px;cursor:pointer;margin-top:4px;
+  }
+  .assistant-back-link{font-size:12px;color:var(--ink-faint);cursor:pointer;margin-bottom:12px;display:inline-block;}
+  .assistant-select{
+    width:100%;padding:10px 12px;border:1.5px solid var(--line);background:var(--surface);
+    font-family:inherit;font-size:13px;color:var(--ink);border-radius:10px;cursor:pointer;margin-top:2px;
+  }
+  .assistant-select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  @media (max-width:600px){
+    #assistantWidget{bottom:16px;right:16px;}
+    .assistant-panel{width:calc(100vw - 32px);}
+  }
 </style>
 </head>
-<body class="mode-candidate">
+<body class="mode-candidate view-detail">
 
 <header>
-  <div class="inner">
+  <div class="header-inner">
     <h1 class="home-link" onclick="goHome()">転職エージェント<span class="mark">図鑑</span></h1>
-    <span class="agent-count-badge" id="agentCountBadge">全国のエージェント1062社掲載中！</span>
-    <p class="tagline">迷わず選べる、エージェントの図鑑。</p>
-    <p class="lead" id="leadText">日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。</p>
+    <span class="agent-count-badge" id="agentCountBadge">全国のエージェント3584社掲載中！</span>
+    <span class="header-spacer"></span>
+    <nav class="sister-links" aria-label="図鑑シリーズの姉妹サイト">
+      <a class="to-freelance" href="https://freelance-anken-zukan.net/" target="_blank" rel="noopener noreferrer">フリーランス案件探すなら →</a>
+      <a class="to-skillup" href="https://skillup-zukan.net/" target="_blank" rel="noopener noreferrer">スキルアップするなら →</a>
+    </nav>
   </div>
 </header>
+
+<section class="site-hero">
+  <div class="site-hero-inner">
+    <h2>迷わず選べる、エージェントの図鑑。</h2>
+    <p id="leadText">日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。</p>
+    <nav class="cat-nav" id="catNav" aria-label="職種から探す"><a href="/category/it-web/" data-cat="IT・Web">
+        <span class="ic" style="background:linear-gradient(135deg, #1F6F63, #123F38);">
+          <svg viewBox="0 0 64 64" fill="none"><rect x="14" y="14" width="36" height="24" rx="2" stroke="#fff" stroke-width="2.5"></rect><line x1="24" y1="46" x2="40" y2="46" stroke="#fff" stroke-width="2.5"></line><line x1="32" y1="38" x2="32" y2="46" stroke="#fff" stroke-width="2.5"></line><path d="M22 22 L18 26 L22 30" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M42 22 L46 26 L42 30" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+        <span>IT・Web</span>
+        <span class="n">23件</span>
+      </a><a href="/category/management-consulting/" data-cat="管理部門・コンサル">
+        <span class="ic" style="background:linear-gradient(135deg, #2B3A55, #171E2C);">
+          <svg viewBox="0 0 64 64" fill="none"><rect x="14" y="24" width="36" height="24" rx="3" stroke="#fff" stroke-width="2.5"></rect><path d="M24 24 V18 a3 3 0 0 1 3-3 h10 a3 3 0 0 1 3 3 v6" stroke="#fff" stroke-width="2.5" fill="none"></path><line x1="14" y1="34" x2="50" y2="34" stroke="#fff" stroke-width="2"></line></svg>
+        </span>
+        <span>管理部門・コンサル</span>
+        <span class="n">7件</span>
+      </a><a href="/category/construction/" data-cat="施工管理・建設">
+        <span class="ic" style="background:linear-gradient(135deg, #B5651D, #7A4310);">
+          <svg viewBox="0 0 64 64" fill="none"><line x1="18" y1="50" x2="18" y2="14" stroke="#fff" stroke-width="2.5"></line><line x1="18" y1="14" x2="46" y2="14" stroke="#fff" stroke-width="2.5"></line><line x1="38" y1="14" x2="38" y2="24" stroke="#fff" stroke-width="2.5"></line><line x1="18" y1="22" x2="30" y2="14" stroke="#fff" stroke-width="2"></line><rect x="12" y="50" width="16" height="4" fill="#fff"></rect></svg>
+        </span>
+        <span>施工管理・建設</span>
+        <span class="n">22件</span>
+      </a><a href="/category/sales-marketing/" data-cat="営業・マーケティング">
+        <span class="ic" style="background:linear-gradient(135deg, #B23A4E, #742534);">
+          <svg viewBox="0 0 64 64" fill="none"><line x1="16" y1="48" x2="48" y2="48" stroke="#fff" stroke-width="2"></line><rect x="20" y="36" width="6" height="12" fill="#fff" opacity=".9"></rect><rect x="30" y="28" width="6" height="20" fill="#fff" opacity=".9"></rect><rect x="40" y="20" width="6" height="28" fill="#fff" opacity=".9"></rect><path d="M18 26 L28 18 L34 22 L46 12" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"></path></svg>
+        </span>
+        <span>営業・マーケティング</span>
+        <span class="n">8件</span>
+      </a><a href="/category/global/" data-cat="外資・グローバル">
+        <span class="ic" style="background:linear-gradient(135deg, #2E5FA3, #1B3A66);">
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="18" stroke="#fff" stroke-width="2.5" fill="none"></circle><ellipse cx="32" cy="32" rx="8" ry="18" stroke="#fff" stroke-width="2" fill="none"></ellipse><line x1="14" y1="32" x2="50" y2="32" stroke="#fff" stroke-width="2"></line><line x1="17" y1="22" x2="47" y2="22" stroke="#fff" stroke-width="1.5"></line><line x1="17" y1="42" x2="47" y2="42" stroke="#fff" stroke-width="1.5"></line></svg>
+        </span>
+        <span>外資・グローバル</span>
+        <span class="n">45件</span>
+      </a><a href="/category/startup/" data-cat="スタートアップ・ベンチャー">
+        <span class="ic" style="background:linear-gradient(135deg, #6E4AA3, #452C6D);">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M32 14 C40 22 40 34 34 42 L30 42 C24 34 24 22 32 14 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"></path><circle cx="32" cy="26" r="3" stroke="#fff" stroke-width="2" fill="none"></circle><path d="M26 40 L20 48" stroke="#fff" stroke-width="2.2" stroke-linecap="round"></path><path d="M38 40 L44 48" stroke="#fff" stroke-width="2.2" stroke-linecap="round"></path></svg>
+        </span>
+        <span>スタートアップ・ベンチャー</span>
+        <span class="n">1件</span>
+      </a><a href="/category/regional/" data-cat="地方転職・UIターン">
+        <span class="ic" style="background:linear-gradient(135deg, #4C7A3D, #2E4E24);">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M14 44 L26 26 L34 36 L40 28 L50 44 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"></path><circle cx="40" cy="18" r="4" stroke="#fff" stroke-width="2" fill="none"></circle></svg>
+        </span>
+        <span>地方転職・UIターン</span>
+        <span class="n">12件</span>
+      </a><a href="/category/second-newgrad/" data-cat="第二新卒・ポテンシャル層">
+        <span class="ic" style="background:linear-gradient(135deg, #C99A2E, #8A6A1D);">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M32 48 V28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"></path><path d="M32 30 C24 30 20 24 20 18 C28 18 32 22 32 30 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"></path><path d="M32 26 C40 26 44 20 44 16 C36 16 32 20 32 26 Z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"></path></svg>
+        </span>
+        <span>第二新卒・ポテンシャル層</span>
+        <span class="n">6件</span>
+      </a></nav>
+  </div>
+</section>
 
 <div class="segment">
   <div class="track">
@@ -355,16 +552,16 @@
 
 <div class="wrap">
   <div class="ad-slot banner">
-    <span class="ad-label">広告</span>
-    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
-    <!--
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
-         data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295" data-ad-slot="1771024424" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
   </div>
 
   <div id="listView" class="hide">
+    <div class="recommend-section">
+      <div class="recommend-label"><span class="home-section-icon" style="background:linear-gradient(135deg, #C2410C, #7C2D12);"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="19" stroke="#fff" stroke-width="2.3"></circle><path d="M40 24 L34 34 L24 40 L30 30 Z" fill="#fff"></path></svg></span>おすすめエージェント</div>
+      <div class="recommend-scroll" id="recommendScroll"></div>
+    </div>
+
     <div class="filter-banner" id="filterBanner"></div>
 
     <div class="filter-bar">
@@ -393,11 +590,16 @@
   <div id="detailView" class="show">
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>一覧に戻る</button>
       <div class="detail-head-row">
-        <div class="eyecatch-square hero" style="background:linear-gradient(135deg, #8C3D5C, #5C264E);">
-      <svg viewBox="0 0 64 64" fill="none"><path d="M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"></path><circle cx="34" cy="26" r="3" fill="#fff"></circle></svg>
+        <div class="eyecatch-row hero">
+      <div class="eyecatch-square hero" style="background:linear-gradient(135deg, #8C3D5C, #5C264E);">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M28 14 h14 l14 14 v14 l-14 14 h-14 l-14-14 v-14 Z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"></path><circle cx="34" cy="26" r="3" fill="#fff"></circle></svg>
+        
+        
+      </div>
       
     </div>
         <div class="detail-head">
+          
           <span class="category-pill">職業紹介</span>
           <h2>株式会社ジェイサポート</h2>
           <p class="one-liner">北海道全域の全職種に対応する職業紹介事業者。</p>
@@ -409,16 +611,6 @@
         <p class="body-text">北海道内での全職種対応による広い求人層への対応が可能です。</p>
         <ul class="feature-list"><li>北海道全職種対応</li><li>職業紹介許可取得済み</li><li>地域密着型の人材サービス</li></ul>
       </div>
-
-      <div class="ad-slot in-feed">
-      <span class="ad-label">広告</span>
-      <span class="ad-placeholder">広告スペース（Google AdSense）</span>
-      <!--
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
-           data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      -->
-    </div>
 
       
 
@@ -432,7 +624,8 @@
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('jinzai.hellowork.mhlw.go.jp/JinzaiWeb/GICB102030.do?screenId=GICB102030&amp;action=detail&amp;detkey_Detail=01-%E3%83%A6-300308%2C1+++++')">このエージェントの詳細を見る</button>
+        <button class="cta-btn" onclick="visitSite('https://www.google.com/search?q=%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%82%B8%E3%82%A7%E3%82%A4%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88+%E5%8C%97%E6%B5%B7%E9%81%93')">この会社について調べる</button>
+        <div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>
         <div class="cta-sub" style="margin-top:8px;">厚生労働省『人材サービス総合サイト』掲載情報（https://jinzai.hellowork.mhlw.go.jp/JinzaiWeb/GICB102030.do?screenId=GICB102030&amp;action=detail&amp;detkey_Detail=01-%E3%83%A6-300308%2C1+++++）をもとに作成。取得日: 2026年9月4日。手数料情報は今後のアップデートで追加予定です。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。</div>
       </div>
     </div>
@@ -441,22 +634,35 @@
 
 <div class="wrap">
   <div class="ad-slot footer-ad">
-    <span class="ad-label">広告</span>
-    <span class="ad-placeholder">広告スペース（Google AdSense・レスポンシブバナー）</span>
-    <!--
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
-         data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295" data-ad-slot="1620805016" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
   </div>
 </div>
 
 <footer>
   掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）および厚生労働省「人材サービス総合サイト」の公開データをもとに、自動クロールにより毎日更新しています。取得できなかった項目は「非公開（お問い合わせで確認）」と表示しています。口コミは、一部の主要エージェントについて複数の口コミメディアの傾向から要約した推定値を参考情報として掲載しており、実際の集計値・投稿内容そのものではありません。それ以外のエージェントについては口コミデータを収集していないため「口コミなし」と表示しています。個別エージェントのCTAボタンからは各社の公式サイトへ遷移します。
-  <div class="footer-links"><a href="privacy.html">プライバシーポリシー</a></div>
+  <div class="footer-links"><a href="faq.html">よくある質問</a> / <a href="privacy.html">プライバシーポリシー</a></div>
 </footer>
 
 <div class="toast" id="toast"></div>
+
+<div id="assistantWidget">
+  <button id="assistantFab" class="assistant-fab" onclick="toggleAssistant()" aria-label="あなたに合うエージェント診断">
+    <svg viewBox="0 0 24 24" fill="none">
+      <line x1="12" y1="2.5" x2="12" y2="5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"></line>
+      <circle cx="12" cy="2" r="1.1" fill="#fff"></circle>
+      <rect x="5" y="5" width="14" height="12" rx="4" stroke="#fff" stroke-width="1.8"></rect>
+      <circle cx="9" cy="10.5" r="1.3" fill="#fff"></circle>
+      <circle cx="15" cy="10.5" r="1.3" fill="#fff"></circle>
+      <path d="M9 14 Q12 15.5 15 14" stroke="#fff" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+      <line x1="2.5" y1="10" x2="5" y2="10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></line>
+      <line x1="19" y1="10" x2="21.5" y2="10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></line>
+      <line x1="8" y1="17" x2="8" y2="19.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></line>
+      <line x1="16" y1="17" x2="16" y2="19.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></line>
+    </svg>
+  </button>
+  <div id="assistantPanel" class="assistant-panel" style="display:none;"></div>
+</div>
 
 <script>
 let AGENTS = [];
@@ -479,12 +685,64 @@ function setMetaContent(id, content){
   if(el) el.setAttribute("content", content);
 }
 
+const SITE_ORIGIN = "https://agent-zukan.net";
+
+function updateCanonical(href){
+  const el = document.getElementById("canonical-link");
+  if(el) el.setAttribute("href", href);
+}
+
+/** JSON-LD（<script type="application/ld+json" id="ld-json">）の中身を丸ごと差し替える。 */
+function setJsonLd(data){
+  const el = document.getElementById("ld-json");
+  if(el) el.textContent = JSON.stringify(data);
+}
+
+/** website/affiliateUrlの保存形式（プロトコル省略あり）から、JSON-LD用の完全なURLを組み立てる。
+ * 値が無ければ undefined を返す（呼び出し側で "url" キー自体を省略するため）。 */
+function buildAgentSchemaUrl(a){
+  const raw = a.affiliateUrl || a.website;
+  if(!raw) return undefined;
+  const stripped = raw.replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+  return stripped ? "https://" + stripped : undefined;
+}
+
+/** 一覧表示時のJSON-LD。サイト全体を表すWebSite型に戻す
+ * （口コミ・評価は独自算出値であり実際の口コミではないため、AggregateRating等の評価系
+ * プロパティは絶対に含めない）。 */
+function updateJsonLdForList(){
+  setJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "転職エージェント図鑑",
+    "url": SITE_ORIGIN + "/",
+  });
+}
+
+/** エージェント詳細表示時のJSON-LD（EmploymentAgency型）。
+ * 図鑑スコア等は実際の口コミ評価ではなく独自算出値のため、AggregateRating等の評価系
+ * プロパティは絶対に含めない（Googleのスキーママークアップポリシー違反のリスクがあるため）。 */
+function updateJsonLdForAgent(a){
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "EmploymentAgency",
+    "name": a.name,
+    "description": a.appeal,
+    "areaServed": a.region,
+  };
+  const url = buildAgentSchemaUrl(a);
+  if(url) data.url = url;
+  setJsonLd(data);
+}
+
 function updateMetaForList(){
   document.title = DEFAULT_TITLE;
   setMetaContent("meta-description", DEFAULT_DESCRIPTION);
   setMetaContent("og-title", DEFAULT_TITLE);
   setMetaContent("og-description", DEFAULT_DESCRIPTION);
   setMetaContent("og-url", location.href.split("#")[0]);
+  updateCanonical(SITE_ORIGIN + "/");
+  updateJsonLdForList();
 }
 
 function updateMetaForAgent(a){
@@ -498,6 +756,10 @@ function updateMetaForAgent(a){
   setMetaContent("og-title", title);
   setMetaContent("og-description", description);
   setMetaContent("og-url", location.href);
+  // 企業モードはハッシュ遷移のURLのため、canonicalはトップページのままにする
+  // （求職者モードの実パス /agent/{id}/ のみ、そのURLをcanonicalにする）。
+  updateCanonical(mode === "candidate" ? SITE_ORIGIN + agentUrlPath(a) : SITE_ORIGIN + "/");
+  updateJsonLdForAgent(a);
 }
 
 // カテゴリー定義（色・アイコン）は categories.json から動的に読み込む。
@@ -527,10 +789,55 @@ let CATEGORY_STYLE = {};
 let CHIP_LABELS = ["all"];
 
 /** categories.json（またはフォールバック）の配列から CATEGORY_STYLE / CHIP_LABELS を構築する。 */
+/** 見出し帯の「職種から探す」で使うため、slug と並び順も保持する。 */
+let CATEGORY_LIST = [];
+
 function applyCategoryData(list){
   CATEGORY_STYLE = {};
-  list.forEach(c=>{ CATEGORY_STYLE[c.name] = { from:c.from, to:c.to, icon:c.icon }; });
+  list.forEach(c=>{ CATEGORY_STYLE[c.name] = { from:c.from, to:c.to, icon:c.icon, slug:c.slug }; });
   CHIP_LABELS = ["all", ...list.map(c=>c.name)];
+  CATEGORY_LIST = list;
+}
+
+/**
+ * 見出し帯に出す職種。categories.json には、掲載が増えたときに自動で足される
+ * 「category-1」形式のものが数十件あるため、そちらは近道に出さない
+ * （代表的な職種だけを並べたいので、slug が category-N でないものに絞る）。
+ */
+function navCategories(){
+  return CATEGORY_LIST
+    .filter(c => c.slug && !/^category-\d+$/.test(c.slug) && c.slug !== "other")
+    .slice(0, 8);
+}
+
+/**
+ * 見出し帯の「職種から探す」を作る。スキルアップ図鑑の同じ仕組みを移植したもの。
+ * リンク先は静的なカテゴリーページにしておき（検索エンジンからたどれるように）、
+ * クリック時はページ遷移せずその場で絞り込む。
+ * カテゴリー名は属性で渡す（onclick に埋め込むと、名前に引用符が入ったときに壊れるため）。
+ */
+function buildCatNav(){
+  const nav = document.getElementById("catNav");
+  const list = navCategories();
+  if(!nav || !list.length) return;
+  nav.innerHTML = list.map(c=>{
+    const n = AGENTS.filter(a => a.category === c.name).length;
+    const name = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+    return `<a href="/category/${c.slug}/" data-cat="${name}">
+        <span class="ic" style="background:linear-gradient(135deg, ${c.from}, ${c.to});">
+          <svg viewBox="0 0 64 64" fill="none">${c.icon}</svg>
+        </span>
+        <span>${name}</span>
+        <span class="n">${n}件</span>
+      </a>`;
+  }).join("");
+  nav.querySelectorAll("a[data-cat]").forEach(a=>{
+    a.addEventListener("click", e=>{
+      e.preventDefault();
+      showCategoryList(a.dataset.cat);
+      window.scrollTo(0, 0);
+    });
+  });
 }
 
 async function loadCategories(){
@@ -546,23 +853,34 @@ async function loadCategories(){
   }
 }
 
-function eyecatchHTML(agent, variant){
-  if(agent.featured){
-    // heroバリアント（詳細ページ）のみ、ヒーロー画像自体の右下にPRラベルを付ける。
-    // thumbバリアント（一覧行・おすすめカード）はカード全体の右下に別途配置するため、ここでは付けない。
-    const prLabel = variant === "hero" ? `<span class="pr-label">PR</span>` : "";
-    return `<div class="eyecatch-square ${variant} featured">
-        <div class="featured-star"><span class="featured-text">イチオシ!</span></div>
-        ${prLabel}
-      </div>`;
-  }
+/** カード左端の帯の色を、その職種の色に合わせる。
+    職種が categories.json に無い場合もあるので、eyecatchHTML と同じ引き方にそろえる。 */
+function applyCategoryAccent(el, agent){
+  const style = (agent && CATEGORY_STYLE[agent.category]) || CATEGORY_STYLE["IT・Web"];
+  if(el && style && style.from) el.style.setProperty("--cat", style.from);
+}
+
+function eyecatchHTML(agent, variant, showNotableBadge){
   const style = CATEGORY_STYLE[agent.category] || CATEGORY_STYLE["IT・Web"];
   const favicon = agent.faviconUrl
     ? `<img class="favicon" src="${agent.faviconUrl}" alt="" onerror="this.remove()">`
     : "";
-  return `<div class="eyecatch-square ${variant}" style="background:linear-gradient(135deg, ${style.from}, ${style.to});">
-      <svg viewBox="0 0 64 64" fill="none">${style.icon}</svg>
-      ${favicon}
+  // heroバリアント（詳細ページ）のみ、画像自体の右下にPRラベルを付ける。
+  // thumbバリアント（一覧行・おすすめカード・ホームカード）はカード全体の右下に
+  // 別途配置するため、ここでは付けない。
+  const prLabel = (agent.featured && variant === "hero") ? `<span class="pr-label">PR</span>` : "";
+  // 「注目！」バッジは、呼び出し元がshowNotableBadge=trueを渡した場合のみ表示する
+  // （おすすめカード・ホーム「注目のエージェント」・詳細ページの3箇所限定）。
+  // ロゴ自体（.eyecatch-square）はoverflow:hiddenのため、内側に絶対配置すると角からはみ出す
+  // 部分が欠けてしまう。ロゴと同じ行に並ぶ独立した要素として、外側に表示する。
+  const notableBadge = (agent.featured && showNotableBadge) ? `<span class="notable-badge">注目！</span>` : "";
+  return `<div class="eyecatch-row ${variant}">
+      <div class="eyecatch-square ${variant}" style="background:linear-gradient(135deg, ${style.from}, ${style.to});">
+        <svg viewBox="0 0 64 64" fill="none">${style.icon}</svg>
+        ${favicon}
+        ${prLabel}
+      </div>
+      ${notableBadge}
     </div>`;
 }
 
@@ -586,6 +904,141 @@ function shuffle(arr){
   return a;
 }
 
+let recommendedAgentsCache = { mode: null, list: null }; // フォールバック（completenessScore上位）用。モード別にキャッシュ
+let recommendedFeaturedCache = null; // featured===trueのランダム抽選結果。モードに依らずセッション内は固定
+
+/**
+ * おすすめ枠（画面上部の横スクロールカルーセル）のエージェント選定。
+ * featured===true のエージェントが1件以上あれば、その中からランダムに最大10件を選ぶ
+ * （並び順はページ読み込み時に1回だけ決め、モード切替では変えない）。
+ * featuredが0件の場合は、completenessScore(a, mode) の降順で上位8件にフォールバックする
+ * （こちらはモードごとに再計算する）。
+ */
+function computeRecommendedAgents(){
+  const featured = AGENTS.filter(a => a.featured);
+  if(featured.length > 0){
+    if(!recommendedFeaturedCache){
+      recommendedFeaturedCache = shuffle(featured).slice(0, 10);
+    }
+    return recommendedFeaturedCache;
+  }
+
+  if(recommendedAgentsCache.mode===mode && recommendedAgentsCache.list){
+    return recommendedAgentsCache.list;
+  }
+  const TARGET = 8;
+  const list = AGENTS
+    .slice()
+    .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
+    .slice(0, TARGET);
+
+  recommendedAgentsCache = { mode, list };
+  return list;
+}
+
+function recommendCardHTML(a){
+  const oneLiner = mode==="company" ? (a.companyOneLiner || "") : (a.oneLiner || "");
+  return `
+      ${eyecatchHTML(a, "thumb", true)}
+      <span class="category-pill">${a.category}</span>
+      <h4>${a.name}</h4>
+      <p class="recommend-oneliner">${oneLiner}</p>
+      ${a.featured ? `<span class="pr-label">PR</span>` : ""}
+    `;
+}
+
+/** 継ぎ目のないループスクロール用に、カード列を2セット連続で描画する。
+ * 2セット目はスクリーンリーダー・キーボード操作からは隠す（内容が重複するため）。 */
+function renderRecommend(){
+  const scroll = document.getElementById("recommendScroll");
+  if(!scroll) return;
+  const list = computeRecommendedAgents();
+  scroll.innerHTML = "";
+  const sets = list.length > 0 ? [list, list] : [list];
+  sets.forEach((set, setIndex)=>{
+    set.forEach(a=>{
+      const card = document.createElement("div");
+      card.className = "recommend-card";
+      applyCategoryAccent(card, a);
+      card.onclick = ()=>navigateToDetail(a);
+      if(setIndex > 0){
+        card.setAttribute("aria-hidden", "true");
+        card.tabIndex = -1;
+      }
+      card.innerHTML = recommendCardHTML(a);
+      scroll.appendChild(card);
+    });
+  });
+  // カード内容（＝スクロール幅）が変わったので、自動スクロールの内部位置も0に合わせ直す
+  recommendAutoScroll.position = 0;
+  scroll.scrollLeft = 0;
+}
+
+const recommendAutoScroll = { rafId: null, position: 0, paused: false, resumeTimer: null };
+
+/**
+ * おすすめ枠をゆっくり自動で循環（ループ）スクロールさせる。ユーザーが触っている間は一時停止する。
+ *
+ * 実際のスクロール位置とは別に recommendAutoScroll.position を浮動小数点のまま自前で積算し、
+ * DOMへの反映（scrollLeftは多くのブラウザで整数pxに丸められる）とは切り離している
+ * （丸めの影響で位置が進まなくなるのを防ぐため）。
+ */
+function startRecommendAutoScroll(){
+  const scroll = document.getElementById("recommendScroll");
+  if(!scroll || recommendAutoScroll.rafId) return;
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const SPEED_PX_PER_SEC = 33;
+  let lastTime = null;
+
+  function step(timestamp){
+    if(lastTime === null) lastTime = timestamp;
+    const dt = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+
+    if(!recommendAutoScroll.paused){
+      // 2セット描画しているため、1セット分の幅がちょうどループの周期になる
+      const oneSetWidth = scroll.scrollWidth / 2;
+      if(oneSetWidth > scroll.clientWidth){
+        let next = recommendAutoScroll.position + SPEED_PX_PER_SEC * dt;
+        if(next >= oneSetWidth) next -= oneSetWidth; // 継ぎ目なく先頭へ（2セット目→1セット目相当の位置へ）
+        recommendAutoScroll.position = next;
+        scroll.scrollLeft = next;
+      }
+    }
+    recommendAutoScroll.rafId = requestAnimationFrame(step);
+  }
+  recommendAutoScroll.rafId = requestAnimationFrame(step);
+
+  function pause(){
+    if(recommendAutoScroll.resumeTimer) clearTimeout(recommendAutoScroll.resumeTimer);
+    recommendAutoScroll.paused = true;
+  }
+  function scheduleResume(){
+    if(recommendAutoScroll.resumeTimer) clearTimeout(recommendAutoScroll.resumeTimer);
+    recommendAutoScroll.resumeTimer = setTimeout(()=>{
+      // 一時停止中にユーザーが手動でスクロールしていた場合に備え、実際の位置に同期してから再開する
+      recommendAutoScroll.position = scroll.scrollLeft;
+      recommendAutoScroll.paused = false;
+    }, 1800);
+  }
+
+  scroll.addEventListener("mouseenter", pause);
+  scroll.addEventListener("mouseleave", scheduleResume);
+  scroll.addEventListener("touchstart", pause, {passive:true});
+  scroll.addEventListener("touchend", scheduleResume, {passive:true});
+
+  // タブの表示/非表示はユーザー操作の一時停止とは切り離し、即座に同期する
+  // （タブ切替のタイミング次第でイベントが1回しか来ない場合でも復帰できるように）。
+  recommendAutoScroll.paused = document.hidden;
+  if(!recommendAutoScroll.paused) recommendAutoScroll.position = scroll.scrollLeft;
+  document.addEventListener("visibilitychange", ()=>{
+    if(recommendAutoScroll.resumeTimer) clearTimeout(recommendAutoScroll.resumeTimer);
+    recommendAutoScroll.paused = document.hidden;
+    if(!recommendAutoScroll.paused) recommendAutoScroll.position = scroll.scrollLeft;
+  });
+}
+
 const PREFECTURES = [
   "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県",
   "東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県",
@@ -598,13 +1051,36 @@ const FEE_OPTIONS = ["all","〜25%","25〜30%","30〜35%","35%〜","非公開"];
 let activePrefecture = "all";
 let activeFee = "all";
 
+// あなたに合うエージェント診断アシスタント。47都道府県を全部選択肢に並べると多すぎるため、
+// 主要10都道府県+「全国」をボタンで即選択でき、それ以外はセレクトボックスから選ぶ2段構成にする。
+const ASSISTANT_MAJOR_PREFECTURES = ["東京都","大阪府","愛知県","福岡県","北海道","神奈川県","埼玉県","千葉県","兵庫県","宮城県"];
+
+let assistantStep = 0; // 0=未開始, 1〜3=質問, 4=結果
+let assistantAnswers = { prefecture: null, category: null, priority: null };
+
+const ASSISTANT_PRIORITY_OPTIONS = {
+  candidate: [
+    { value: "openings", label: "非公開求人の多さ" },
+    { value: "expertise", label: "専門性の高さ" },
+    { value: "support", label: "丁寧なサポート" },
+    { value: "speed", label: "とにかく早く決めたい" },
+  ],
+  company: [
+    { value: "fee", label: "採用コスト(フィー)の適正さ" },
+    { value: "expertise", label: "専門性・母集団形成力" },
+    { value: "flexibility", label: "対応の柔軟さ" },
+    { value: "speed", label: "とにかく早く採用したい" },
+  ],
+};
+
 const LEAD_TEXT = {
   candidate: `日本全国には、本当にたくさんの転職エージェントがあります。その中から、あなたに一番合った1社を見つけられます。`,
   company: `エージェントを使った採用で、採用単価を最も下げるために必要な比較サイトです。`
 };
 
 function updateLead(){
-  document.getElementById("leadText").textContent = LEAD_TEXT[mode];
+  const el = document.getElementById("leadText");
+  if(el) el.textContent = LEAD_TEXT[mode];
 }
 
 /** モードの内部状態・UI表示のみを更新する（URL・一覧再描画は行わない）。ルーティングから使う。 */
@@ -620,6 +1096,7 @@ function setMode(m){
   applyMode(m);
   navigateToList();
   render();
+  renderRecommend();
 }
 
 function optionsHTML(values, current){
@@ -718,12 +1195,46 @@ function computeHighScoreThreshold(currentMode, targetCount){
   return threshold;
 }
 
+// フリーテキスト検索の類義語辞書。キーワードが1つでも含まれていれば、その配列の語すべてで
+// OR検索する（辞書に無い語はそのまま単独の語として扱う＝従来通りの部分一致検索にフォールバック）。
+const SEARCH_SYNONYMS = {
+  "若手": ["若手", "20代", "第二新卒", "既卒", "フリーター", "ポテンシャル", "未経験"],
+  "第二新卒": ["第二新卒", "既卒", "20代", "若手"],
+  "新卒": ["新卒", "大学卒業予定", "卒業予定"],
+  "ミドル": ["ミドル", "30代", "40代"],
+  "ハイクラス": ["ハイクラス", "エグゼクティブ", "管理職", "経営層", "年収1000万", "幹部"],
+  "エグゼクティブ": ["エグゼクティブ", "ハイクラス", "経営層", "管理職"],
+  "シニア": ["シニア", "高年齢", "60代", "60歳以上", "シルバー"],
+  "高齢": ["高齢", "高年齢", "60代", "60歳以上", "シルバー"],
+  "外資": ["外資", "外資系", "グローバル", "英語"],
+  "グローバル": ["グローバル", "外資", "外資系", "英語"],
+  "地方": ["地方", "UIターン", "Uターン", "Iターン", "地方転職"],
+  "リモート": ["リモート", "在宅", "テレワーク"],
+  "未経験": ["未経験", "ポテンシャル", "第二新卒", "若手"],
+  "ハイキャリア": ["ハイキャリア", "ハイクラス", "エグゼクティブ", "管理職"],
+};
+
+/** 検索語を類義語展開する。辞書に無い語はそのまま1件の配列として返す。 */
+function expandSearchQuery(q){
+  const key = Object.keys(SEARCH_SYNONYMS).find(k => q.includes(k));
+  return key ? SEARCH_SYNONYMS[key] : [q];
+}
+
 function matches(agent, query){
   const passCategory = activeChip==="all" || agent.category===activeChip;
   const passPrefecture = matchesPrefecture(agent, activePrefecture);
   const passFee = mode==="company" ? matchesFee(agent, activeFee) : true;
   const q = query.trim().toLowerCase();
-  const passQuery = !q || agent.name.toLowerCase().includes(q) || agent.category.toLowerCase().includes(q);
+  let passQuery = !q;
+  if(q){
+    const terms = expandSearchQuery(q).map(t => t.toLowerCase());
+    const haystack = [
+      agent.name, agent.category, agent.targetAge, agent.region,
+      agent.oneLiner, agent.companyOneLiner, agent.appeal, agent.companyAppeal,
+      ...(agent.features || []), ...(agent.companyFeatures || []),
+    ].filter(Boolean).join(" ").toLowerCase();
+    passQuery = terms.some(t => haystack.includes(t));
+  }
   const passFeatured = !featuredOnly || agent.featured===true;
   const passHighScore = !highScoreOnly || (agent.featured!==true && completenessScore(agent, mode) >= highScoreThreshold);
   return passCategory && passPrefecture && passFee && passQuery && passFeatured && passHighScore;
@@ -754,6 +1265,11 @@ function completenessScore(agent, currentMode){
     if(agent.commitmentExplanation && agent.commitmentExplanation.length > 0) score++;
   }
   return score;
+}
+
+/** 一覧・ホーム画面での並び順用。featuredを最優先（true→false）、同順位内はcompletenessScore降順。 */
+function displaySortValue(agent, currentMode){
+  return (agent.featured ? 1 : 0) * 1000 + completenessScore(agent, currentMode);
 }
 
 function stars(rating){ return "★".repeat(Math.round(rating)) + "☆".repeat(5-Math.round(rating)); }
@@ -797,13 +1313,9 @@ function showToast(msg){
 
 function adSlotHTML(variant, slotId){
   return `<div class="ad-slot ${variant}">
-      <span class="ad-label">広告</span>
-      <span class="ad-placeholder">広告スペース（Google AdSense）</span>
-      <!--
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5761092657360295"
            data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
-      -->
     </div>`;
 }
 
@@ -823,6 +1335,7 @@ function buildRowItem(a){
 
   const row = document.createElement("div");
   row.className = "row-item";
+  applyCategoryAccent(row, a);
   row.onclick = ()=>navigateToDetail(a);
   row.innerHTML = `
     <div class="head">
@@ -875,7 +1388,7 @@ function render(){
 
   const query = document.getElementById("searchInput").value;
   const list = AGENTS.filter(a=>matches(a, query));
-  list.sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode));
+  list.sort((a,b)=>displaySortValue(b, mode) - displaySortValue(a, mode));
   document.getElementById("resultCount").textContent = list.length + "件表示中（全" + AGENTS.length + "件）";
 
   const ledger = document.getElementById("ledger");
@@ -887,7 +1400,7 @@ function render(){
 
     if((idx+1) % 4 === 0 && idx < list.length-1){
       const adWrap = document.createElement("div");
-      adWrap.innerHTML = adSlotHTML("in-feed", "2222222222");
+      adWrap.innerHTML = adSlotHTML("in-feed", "5518697744");
       ledger.appendChild(adWrap.firstElementChild);
     }
   });
@@ -900,35 +1413,84 @@ function categoryIconHTML(categoryName){
   return `<span class="home-section-icon" style="background:linear-gradient(135deg, ${style.from}, ${style.to});"><svg viewBox="0 0 64 64" fill="none">${style.icon}</svg></span>`;
 }
 
-/** 見出し＋最大6件のカードグリッド＋「他も見る」リンクからなる、ホームの1セクションを組み立てる。 */
-function buildHomeSection(title, agents, onMoreClick, iconHTML){
+/** 「注目のエージェント」セクション用の星アイコン(金グラデーション)。 */
+function featuredSectionIconHTML(){
+  return `<span class="home-section-icon" style="background:linear-gradient(135deg, #B8863B, #8A6A1D);"><svg viewBox="0 0 64 64" fill="none"><path d="M32 14 L38 27 L52 29 L42 39 L44 53 L32 46 L20 53 L22 39 L12 29 L26 27 Z" stroke="#fff" stroke-width="2.3" stroke-linejoin="round" fill="none"/></svg></span>`;
+}
+
+/** 「高評価エージェント」セクション用のリボン・メダルアイコン(緑グラデーション、
+ * サイトのメインアクセントカラーと統一)。 */
+function highScoreSectionIconHTML(){
+  return `<span class="home-section-icon" style="background:linear-gradient(135deg, var(--accent), var(--accent-deep));"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="24" r="12" stroke="#fff" stroke-width="2.3"/><path d="M25 34 L20 52 L32 46 L44 52 L39 34" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg></span>`;
+}
+
+/** ホーム専用のシンプルなカード（アイコン・カテゴリー・社名・特徴の抜粋のみ）。
+ * 通常のフラット一覧で使う buildRowItem（stats-grid付き）とは別物で、ホームのセクション
+ * （renderHome→buildHomeSection）でのみ使う。特徴の抜粋はCSSのline-clampで3行程度に
+ * 省略し、カードの高さが不揃いにならないようにする。 */
+function buildHomeCardHTML(a, currentMode, showNotableBadge){
+  const excerpt = currentMode==="company" ? (a.companyAppeal || a.commitmentExplanation) : a.appeal;
+  const review = currentMode==="company" ? (a.companyReviews[0]||null) : (a.reviews[0]||null);
+  const ratingHTML = `<div class="home-card-rating">${ratingBadge(review, a.real, a, currentMode)}</div>`;
+  return `
+      ${eyecatchHTML(a, "thumb", showNotableBadge)}
+      ${ratingHTML}
+      <span class="category-pill">${a.category}</span>
+      <h4>${a.name}</h4>
+      <p class="home-card-excerpt">${excerpt || ""}</p>
+      ${a.featured ? `<span class="pr-label">PR</span>` : ""}
+    `;
+}
+
+/** 見出し＋最大6件（呼び出し元次第）のシンプルなカードグリッド＋グリッド下の「全部見る」リンク
+ * からなる、ホームの1セクションを組み立てる。 */
+function buildHomeSection(title, agents, onMoreClick, iconHTML, showNotableBadge){
   const section = document.createElement("div");
   section.className = "home-section";
 
   const head = document.createElement("div");
   head.className = "home-section-head";
   head.innerHTML = `<h3>${iconHTML || ""}<span>${title}</span></h3>`;
-  const moreLink = document.createElement("a");
-  moreLink.className = "home-more-link";
-  moreLink.textContent = "他も見る →";
-  moreLink.onclick = onMoreClick;
-  head.appendChild(moreLink);
   section.appendChild(head);
 
   const grid = document.createElement("div");
   grid.className = "home-section-grid";
-  agents.forEach(a => grid.appendChild(buildRowItem(a)));
+  agents.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "home-card";
+    applyCategoryAccent(card, a);
+    card.onclick = ()=>navigateToDetail(a);
+    card.innerHTML = buildHomeCardHTML(a, mode, showNotableBadge);
+    grid.appendChild(card);
+  });
   section.appendChild(grid);
+
+  const moreLink = document.createElement("a");
+  moreLink.className = "home-more-link";
+  moreLink.textContent = "全部見る →";
+  moreLink.onclick = onMoreClick;
+  section.appendChild(moreLink);
 
   return section;
 }
 
+/** ホームのセクション区切り広告は、一覧内in-feed広告と役割が同じため、
+ * 同じ実際のAdSense広告ユニットID（5518697744）を使い回す
+ * （新規の広告ユニット作成は不要なため）。 */
+function homeAdSlotId(seq){
+  return "5518697744";
+}
+
 /**
  * セクション別ホーム表示。
- * 1. 注目のエージェント（featured===true からランダム最大6件）
+ * 1. 注目のエージェント（featured===true からランダム最大4件）
  * 2. 高評価エージェント（featured!==true かつ completenessScoreが上位（6件確保できるよう動的に決めたしきい値以上）、情報量順で最大6件）
  * 3. categories.json 登場順の各カテゴリー（「その他」除く、情報量順で最大6件）
- * 該当0件のセクションは丸ごと表示しない。
+ * 該当0件のセクションは丸ごと表示しない（表示されたセクションの数だけを基準に、以下の広告挿入間隔を数える）。
+ *
+ * セクションを2つ描画するごとに、間に一覧と同じ in-feed 広告枠を1つ挿入する
+ * （1番目と2番目の間には入れず、2番目と3番目の間、4番目と5番目の間…という間隔。
+ * 最後のセクションの後ろには入れない）。
  */
 function renderHome(){
   document.getElementById("resultCount").textContent = "";
@@ -937,9 +1499,11 @@ function renderHome(){
   ledger.classList.add("home-view");
   ledger.innerHTML = "";
 
-  const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 6);
+  const sections = [];
+
+  const featuredAgents = shuffle(AGENTS.filter(a => a.featured===true)).slice(0, 4);
   if(featuredAgents.length > 0){
-    ledger.appendChild(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly));
+    sections.push(buildHomeSection("注目のエージェント", featuredAgents, showFeaturedOnly, featuredSectionIconHTML(), true));
   }
 
   highScoreThreshold = computeHighScoreThreshold(mode, 6);
@@ -948,7 +1512,7 @@ function renderHome(){
     .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
     .slice(0, 6);
   if(highScoreAgents.length > 0){
-    ledger.appendChild(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly));
+    sections.push(buildHomeSection("高評価エージェント", highScoreAgents, showHighScoreOnly, highScoreSectionIconHTML()));
   }
 
   CHIP_LABELS
@@ -956,14 +1520,27 @@ function renderHome(){
     .forEach(categoryName => {
       const categoryAgents = AGENTS
         .filter(a => a.category===categoryName)
-        .sort((a,b)=>completenessScore(b, mode) - completenessScore(a, mode))
+        .sort((a,b)=>displaySortValue(b, mode) - displaySortValue(a, mode))
         .slice(0, 6);
       if(categoryAgents.length > 0){
-        ledger.appendChild(buildHomeSection(
+        sections.push(buildHomeSection(
           `${categoryName}のエージェント`, categoryAgents, ()=>showCategoryList(categoryName), categoryIconHTML(categoryName)
         ));
       }
     });
+
+  let adSeq = 0;
+  sections.forEach((section, idx) => {
+    ledger.appendChild(section);
+    const isPairBoundary = (idx + 1) % 2 === 0;
+    const hasMoreSections = idx < sections.length - 1;
+    if(isPairBoundary && hasMoreSections){
+      adSeq += 1;
+      const adWrap = document.createElement("div");
+      adWrap.innerHTML = adSlotHTML("in-feed", homeAdSlotId(adSeq));
+      ledger.appendChild(adWrap.firstElementChild);
+    }
+  });
 }
 
 /** ホームの各セクションの「他も見る」・上部の「すべてのエージェントを見る」・絞り込み解除、共通の遷移処理。 */
@@ -1018,6 +1595,7 @@ function goHome(){
 
 function showList(){
   currentView = "list";
+  document.body.classList.remove("view-detail");
   document.getElementById("listView").classList.remove("hide");
   document.getElementById("detailView").classList.remove("show");
   window.scrollTo({top:0, behavior:"smooth"});
@@ -1026,6 +1604,9 @@ function showList(){
 
 function openDetail(a){
   currentView = "detail";
+  // 詳細を見ているあいだは、見出し帯とモード切替を隠す
+  // （本文が下に押し下げられて読みにくくなるため）。
+  document.body.classList.add("view-detail");
   document.getElementById("listView").classList.add("hide");
   const dv = document.getElementById("detailView");
   dv.classList.add("show");
@@ -1045,11 +1626,19 @@ function openDetail(a){
       </div>`
       : "";
 
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "このエージェントの詳細を見る";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
+      : "";
+
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
       <div class="detail-head-row">
-        ${eyecatchHTML(a, "hero")}
+        ${eyecatchHTML(a, "hero", true)}
         <div class="detail-head">
+          ${a.featured ? `<div class="detail-head-rating">${ratingBadge(a.reviews[0]||null, a.real, a, "candidate")}</div>` : ""}
           <span class="category-pill">${a.category}</span>
           <h2>${a.name}</h2>
           <p class="one-liner">${a.oneLiner}</p>
@@ -1061,8 +1650,6 @@ function openDetail(a){
         <p class="body-text">${a.appeal}</p>
         <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
       </div>
-
-      ${adSlotHTML("in-feed", "3333333333")}
 
       ${reviewSectionHTML}
 
@@ -1076,7 +1663,8 @@ function openDetail(a){
       </div>
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitSite('${a.affiliateUrl || a.website}')">このエージェントの詳細を見る</button>
+        <button class="cta-btn" onclick="visitSite('${ctaTarget}')">${ctaLabel}</button>
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1094,11 +1682,19 @@ function openDetail(a){
       </div>`
       : "";
 
+    const useSearchCta = !a.affiliateUrl && isNoCompanyWebsite(a);
+    const ctaTarget = a.affiliateUrl || (isNoCompanyWebsite(a) ? googleSearchUrl(a) : a.website);
+    const ctaLabel = useSearchCta ? "この会社について調べる" : "企業に問い合わせを行う";
+    const ctaSearchNoteHTML = useSearchCta
+      ? `<div class="cta-sub">公式サイトの情報が確認できなかったため、検索結果を表示します</div>`
+      : "";
+
     dv.innerHTML = `
       <button class="back-btn" onclick="navigateToList()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>一覧に戻る</button>
       <div class="detail-head-row">
-        ${eyecatchHTML(a, "hero")}
+        ${eyecatchHTML(a, "hero", true)}
         <div class="detail-head">
+          ${a.featured ? `<div class="detail-head-rating">${ratingBadge(a.companyReviews[0]||null, a.real, a, "company")}</div>` : ""}
           <span class="category-pill">${a.category}</span>
           <h2>${a.name}</h2>
           <p class="one-liner">${a.companyOneLiner}</p>
@@ -1108,7 +1704,7 @@ function openDetail(a){
       <div class="d-section">
         <h4>このエージェントの特徴</h4>
         <p class="body-text">${a.companyAppeal || a.commitmentExplanation}</p>
-        <ul class="feature-list">${a.features.map(f=>`<li>${f}</li>`).join("")}</ul>
+        <ul class="feature-list">${(a.companyFeatures && a.companyFeatures.length > 0 ? a.companyFeatures : a.features).map(f=>`<li>${f}</li>`).join("")}</ul>
       </div>
 
       <div class="d-section">
@@ -1122,7 +1718,7 @@ function openDetail(a){
         <p class="body-text">${a.commitmentExplanation}</p>
       </div>
 
-      ${adSlotHTML("in-feed", "4444444444")}
+      ${adSlotHTML("in-feed", "7953289398")}
 
       <div class="d-section">
         <h4>実績・許可情報</h4>
@@ -1144,8 +1740,9 @@ function openDetail(a){
       ${companyReviewSectionHTML}
 
       <div class="cta-block">
-        <button class="cta-btn" onclick="visitInquiry('${a.affiliateUrl || a.website}')">企業に問い合わせを行う</button>
-        <div class="cta-sub">${a.name}の公式サイトへ移動します</div>
+        <button class="cta-btn" onclick="visitInquiry('${ctaTarget}')">${ctaLabel}</button>
+        ${useSearchCta ? "" : `<div class="cta-sub">${a.name}の公式サイトへ移動します</div>`}
+        ${ctaSearchNoteHTML}
         <div class="cta-sub" style="margin-top:8px;">${a.sourceNote || "架空のデータによるサンプルです。"}</div>
       </div>
     `;
@@ -1203,6 +1800,7 @@ function handleRoute(){
         applyMode(urlMode);
         if(!SSG_MODE){
           render();
+          renderRecommend();
         }
       }
       openDetail(agent);
@@ -1213,6 +1811,20 @@ function handleRoute(){
 }
 
 window.addEventListener("popstate", handleRoute);
+
+/** mhlw「人材サービス総合サイト」の詳細ページのホスト名。website がこのホストを含む場合、
+ * 自社サイトを持たず、生死チェック（scraper/verify-links.js）でも no_company_website として
+ * verifyLink() の対象外にしている（=このURL自体は事業者の公式サイトではない）。 */
+const MHLW_PORTAL_HOST = "jinzai.hellowork.mhlw.go.jp";
+
+function isNoCompanyWebsite(a){
+  return typeof a.website === "string" && a.website.includes(MHLW_PORTAL_HOST);
+}
+
+/** 自社サイトを持たないエージェント向けの代替導線として、社名＋所在地（都道府県）でのGoogle検索結果へ誘導する。 */
+function googleSearchUrl(a){
+  return `https://www.google.com/search?q=${encodeURIComponent(a.name)}+${encodeURIComponent(a.region || "")}`;
+}
 
 function openWebsite(website){
   if(!website) return;
@@ -1231,6 +1843,172 @@ function updateAgentCountBadge(){
   if(el) el.textContent = `全国のエージェント${AGENTS.length}社掲載中！`;
 }
 
+function toggleAssistant(){
+  const panel = document.getElementById("assistantPanel");
+  if(assistantStep === 0){
+    assistantStep = 1;
+    assistantAnswers = { prefecture: null, category: null, priority: null };
+    panel.style.display = "block";
+    renderAssistantStep();
+  } else {
+    assistantStep = 0;
+    panel.style.display = "none";
+  }
+}
+
+function renderAssistantStep(){
+  const panel = document.getElementById("assistantPanel");
+  if(assistantStep === 4){
+    panel.innerHTML = buildAssistantResultsHTML();
+    return;
+  }
+  const stepIndex = assistantStep; // 1,2,3
+  const titles = ["対応してほしいエリアは？", "どんな職種・業界での転職をお考えですか？", "一番重視したいことは？"];
+  const titlesCompany = ["対応してほしいエリアは？", "採用したい職種・業界は？", "一番重視したいことは？"];
+  const title = mode === "company" ? titlesCompany[stepIndex-1] : titles[stepIndex-1];
+
+  let optionsHTML = "";
+  if(stepIndex === 1){
+    const nationwideHTML = `<div class="assistant-option${assistantAnswers.prefecture==="全国" ? ' selected':''}" onclick="selectAssistantAnswer('prefecture','全国')">全国</div>`;
+    const majorHTML = ASSISTANT_MAJOR_PREFECTURES.map(p =>
+      `<div class="assistant-option${assistantAnswers.prefecture===p ? ' selected':''}" onclick="selectAssistantAnswer('prefecture','${p}')">${p}</div>`
+    ).join("");
+    const isOtherSelected = assistantAnswers.prefecture && assistantAnswers.prefecture !== "全国" && !ASSISTANT_MAJOR_PREFECTURES.includes(assistantAnswers.prefecture);
+    const otherSelectHTML = `
+      <select class="assistant-select" onchange="if(this.value) selectAssistantAnswer('prefecture', this.value)">
+        <option value=""${isOtherSelected ? '' : ' selected'}>その他の都道府県から選ぶ</option>
+        ${PREFECTURES.map(p=>`<option value="${p}"${assistantAnswers.prefecture===p ? ' selected':''}>${p}</option>`).join("")}
+      </select>`;
+    optionsHTML = nationwideHTML + majorHTML + otherSelectHTML;
+  } else if(stepIndex === 2){
+    const cats = CHIP_LABELS.filter(c => c !== "all");
+    optionsHTML = cats.map(c =>
+      `<div class="assistant-option${assistantAnswers.category===c ? ' selected':''}" onclick="selectAssistantAnswer('category','${c}')">${c}</div>`
+    ).join("") + `<div class="assistant-option${assistantAnswers.category==='__any__' ? ' selected':''}" onclick="selectAssistantAnswer('category','__any__')">特にこだわらない</div>`;
+  } else if(stepIndex === 3){
+    const opts = ASSISTANT_PRIORITY_OPTIONS[mode === "company" ? "company" : "candidate"];
+    optionsHTML = opts.map(o =>
+      `<div class="assistant-option${assistantAnswers.priority===o.value ? ' selected':''}" onclick="selectAssistantAnswer('priority','${o.value}')">${o.label}</div>`
+    ).join("");
+  }
+
+  panel.innerHTML = `
+    <div class="assistant-panel-head">あなたに合うエージェント診断</div>
+    <div class="assistant-panel-body">
+      ${stepIndex > 1 ? `<span class="assistant-back-link" onclick="assistantStep=${stepIndex-1};renderAssistantStep();">← 戻る</span>` : ""}
+      <div class="assistant-progress-label">質問 ${stepIndex} / 3</div>
+      <div class="assistant-progress-bar"><div class="assistant-progress-bar-fill" style="width:${stepIndex/3*100}%;"></div></div>
+      <div class="assistant-question">${title}</div>
+      <div class="assistant-options">${optionsHTML}</div>
+    </div>
+  `;
+}
+
+function selectAssistantAnswer(key, value){
+  assistantAnswers[key] = value;
+  if(assistantStep < 3){
+    setTimeout(()=>{ assistantStep += 1; renderAssistantStep(); }, 150);
+  } else {
+    setTimeout(()=>{ assistantStep = 4; renderAssistantStep(); }, 150);
+  }
+}
+
+/**
+ * 診断結果として3件を選ぶ。featured(アフィリエイトあり)を優先し、
+ * 残り枠をdisplaySortValue順で埋める。地域・カテゴリーが厳しすぎて
+ * 3件に満たない場合は、条件を段階的に緩めるフォールバックを行う
+ * (カテゴリー無視→地域無視の順)。
+ *
+ * 「重視したいこと」の回答は、現状のデータ充実度(数値項目の公開率が
+ * 低い)を踏まえ、結果の並び順を大きく変える精緻なロジックにはせず、
+ * 結果見出しの一言コメントに反映する程度の控えめな使い方にとどめる。
+ * 過剰にAIっぽい精度を演出しないこと。
+ */
+function computeAssistantRecommendations(){
+  const pref = assistantAnswers.prefecture;
+  const cat = assistantAnswers.category;
+  // デスクトップ幅(768px以上)では5件、モバイル幅では3件表示する。
+  const resultCount = window.innerWidth >= 768 ? 5 : 3;
+
+  function pool(usePref, useCat){
+    return AGENTS.filter(a => {
+      const okPref = !usePref || matchesPrefecture(a, pref);
+      const okCat = !useCat || cat === "__any__" || a.category === cat;
+      return okPref && okCat;
+    });
+  }
+
+  let candidates = pool(true, true);
+  if(candidates.length < resultCount) candidates = pool(true, false);
+  if(candidates.length < resultCount) candidates = pool(false, true);
+  if(candidates.length < resultCount) candidates = AGENTS.slice();
+
+  const sorted = candidates.slice().sort((a,b) => displaySortValue(b, mode) - displaySortValue(a, mode));
+  return sorted.slice(0, resultCount);
+}
+
+function buildAssistantResultsHTML(){
+  const results = computeAssistantRecommendations();
+  const cardsHTML = results.map(a => {
+    const excerpt = mode === "company" ? (a.companyAppeal || a.appeal || "") : (a.appeal || "");
+    return `
+      <div class="assistant-result-card" onclick="closeAssistantAndNavigate('${a.id}')">
+        ${eyecatchHTMLCompact(a)}
+        <div class="assistant-result-info">
+          <h5>${a.name}</h5>
+          <p>${excerpt}</p>
+        </div>
+        ${a.featured ? '<span class="pr-label" style="position:absolute;bottom:8px;right:8px;">PR</span>' : ''}
+      </div>
+    `;
+  }).join("");
+
+  return `
+    <div class="assistant-panel-head">あなたにおすすめの${results.length}社</div>
+    <div class="assistant-panel-body">
+      <span class="assistant-back-link" onclick="assistantStep=3;renderAssistantStep();">← 質問をやり直す</span>
+      ${cardsHTML}
+      <div class="assistant-more-link" onclick="applyAssistantFiltersAndGoToList()">条件を保ったまま一覧で見る →</div>
+    </div>
+  `;
+}
+
+/** 結果カード用の小型eyecatch。既存eyecatchHTMLのthumbバリアントに
+ * 第3引数trueを渡し、featuredなら「注目！」バッジも表示させる。
+ * eyecatchHTML内部の.eyecatch-rowがロゴ+バッジを横並びにするflexコンテナ
+ * のため、幅を固定してしまうとバッジがロゴに重なってしまう。ここでは
+ * flex-shrink:0のみ指定し、幅は自然なコンテンツ幅に任せる。 */
+function eyecatchHTMLCompact(agent){
+  return `<div style="flex-shrink:0;">${eyecatchHTML(agent, "thumb", true)}</div>`;
+}
+
+function closeAssistantAndNavigate(agentId){
+  assistantStep = 0;
+  document.getElementById("assistantPanel").style.display = "none";
+  const agent = AGENTS.find(a => a.id === agentId);
+  if(agent) navigateToDetail(agent);
+}
+
+/** 診断結果の地域・カテゴリー条件を、既存のフィルターにそのまま反映して
+ * 一覧表示に遷移する。既存のonCategoryChange/onPrefectureChangeと
+ * 同じ変数(activeChip/activePrefecture)を更新し、render()を呼ぶ。 */
+function applyAssistantFiltersAndGoToList(){
+  assistantStep = 0;
+  document.getElementById("assistantPanel").style.display = "none";
+  featuredOnly = false;
+  highScoreOnly = false;
+  homeMode = false;
+  if(assistantAnswers.category && assistantAnswers.category !== "__any__"){
+    activeChip = assistantAnswers.category;
+  }
+  if(assistantAnswers.prefecture){
+    activePrefecture = assistantAnswers.prefecture;
+  }
+  buildFilterSelects();
+  render();
+  window.scrollTo({ top: document.getElementById("filterBanner")?.offsetTop || 0, behavior: "smooth" });
+}
+
 async function loadAgents(){
   await loadCategories();
   if(!SSG_MODE) buildFilterSelects();
@@ -1240,10 +2018,19 @@ async function loadAgents(){
     if(!res.ok) throw new Error("HTTP " + res.status);
     AGENTS = await res.json();
     updateAgentCountBadge();
+    buildCatNav();
     if(SSG_MODE){
       handleRoute();
     } else {
       render();
+      renderRecommend();
+      startRecommendAutoScroll();
+      // カテゴリー別ランディングページ（category/{slug}/）の「もっと見る」から
+      // /?category={カテゴリー名} で遷移してきた場合、該当カテゴリーの絞り込み一覧を初期表示する。
+      const categoryParam = new URLSearchParams(location.search).get("category");
+      if(categoryParam && CHIP_LABELS.includes(categoryParam)){
+        showCategoryList(categoryParam);
+      }
       handleRoute();
     }
   }catch(err){
@@ -1254,7 +2041,7 @@ async function loadAgents(){
 }
 
 loadAgents();
-</script><ins class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true" data-adsbygoogle-status="done" style="display: none !important;"><div id="aswift_0_host" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-5761092657360295&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;abgtt=6&amp;lmt=1788468841&amp;plat=1%3A8%2C2%3A8%2C3%3A2162688%2C4%3A2162688%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32%2C44%3A32&amp;format=0x0&amp;url=http%3A%2F%2Flocalhost%3A8935%2Findex.html%3Fssg%3D1%23%2Fagent%2F01-yu-300308&amp;pra=5&amp;aiof=11&amp;asro=0&amp;aimartd=4&amp;aieuf=1&amp;aicrs=1&amp;uach=WyJMaW51eCIsIiIsIng4NiIsIiIsIjE1Mi4wLjc5NzcuNTQiLG51bGwsMCxudWxsLCI2NCIsW1siTm90P0FfQnJhbmQiLCIyNC4wLjAuMCJdLFsiQ2hyb21pdW0iLCIxNTIuMC43OTc3LjU0Il1dLDBd&amp;dt=1788468841681&amp;bpp=4&amp;bdt=28&amp;idt=122&amp;shv=r20260901&amp;mjsv=m202608310101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie_enabled=1&amp;eoidce=1&amp;nras=1&amp;correlator=252236205670&amp;frm=20&amp;pv=2&amp;u_tz=0&amp;u_his=2&amp;u_h=600&amp;u_w=800&amp;u_ah=600&amp;u_aw=800&amp;u_cd=24&amp;u_sd=1&amp;dmc=16&amp;adx=-12245933&amp;ady=-12245933&amp;biw=800&amp;bih=600&amp;scr_x=0&amp;scr_y=0&amp;eid=95399630%2C95400775%2C95401044%2C122880783&amp;oid=2&amp;pvsid=5846126913535513&amp;tmod=775333418&amp;uas=0&amp;nvt=1&amp;fsapi=1&amp;fc=1920&amp;brdim=10%2C10%2C10%2C10%2C800%2C0%2C780%2C580%2C800%2C600&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;bz=0.98&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=141" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins>
+</script>
 
 
-<iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20260901/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>
+</body></html>
