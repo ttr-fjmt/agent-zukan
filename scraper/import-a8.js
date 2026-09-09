@@ -41,6 +41,8 @@ const ExcelJS = require('exceljs');
 
 const { NOT_DISCLOSED } = require('./lib/schema');
 const { buildWithAI, topCategoryHints } = require('./structure');
+// API消費量の記録（lib/usage-log.js）。プロセス終了時に data/usage-log/ へ自動で書き出す。
+const { instrumentClient, getDefaultRecorder, installExitFlush } = require('./lib/usage-log');
 
 const AGENTS_PATH = path.join(__dirname, '..', 'agents.json');
 const A8_IMPORT_DIR = path.join(__dirname, '..', 'data', 'a8-import');
@@ -301,7 +303,8 @@ async function main() {
   let anthropic = null;
   if (apiKey) {
     const Anthropic = require('@anthropic-ai/sdk');
-    anthropic = new Anthropic({ apiKey });
+    installExitFlush();
+    anthropic = instrumentClient(new Anthropic({ apiKey }), getDefaultRecorder());
   } else {
     console.warn('ANTHROPIC_API_KEY is not set — running in offline fallback mode (no AI structuring, no region/targetAge inference).');
   }

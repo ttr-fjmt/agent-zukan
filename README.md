@@ -109,6 +109,23 @@ data/a8-import/               A8アフィリエイト提携情報のExcel（手�
    - 取り込み後、`prerender.js` / `generate-sitemap.js` も実行し、新規・更新分の静的詳細ページと
      サイトマップを反映します
 
+## API費用の記録
+
+**消費量の記録（`scraper/lib/usage-log.js`）** — Anthropic クライアントを作っている箇所
+（`enrich-mhlw-websites.js` / `import-a8.js` / `structure.js`）で `instrumentClient()` を
+通しているので、以降の呼び出しは自動で測定される。プロセス終了時に
+`data/usage-log/YYYY-MM.json` へ (日付 × スクリプト × モデル) で追記され、実行ログの最後に
+概算費用が1行出る。
+
+`estimated_usd` は公開価格からの概算であって請求額ではない。価格表（`MODEL_PRICING`）に
+無いモデルを使うと `estimated_usd: null` と `unpriced: true` になるので、モデルを差し替えたら
+価格表も更新すること。
+
+なお skillup-zukan / freelance-anken-zukan にある「収穫逓減スロットル」（新規が出なくなった
+ジャンル・カテゴリーの検索頻度を自動で落とす仕組み）は、このリポジトリには入れていない。
+このサイトの日次処理は厚労省データの取り込みと Haiku での推定・構造化が中心で、
+web_search を使うカテゴリー別の発見ループが無いため、間引く対象がそもそも存在しない。
+
 ## セットアップ
 
 1. リポジトリの Settings → Secrets and variables → Actions で `ANTHROPIC_API_KEY` を登録する
