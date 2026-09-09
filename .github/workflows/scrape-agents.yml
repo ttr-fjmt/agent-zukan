@@ -59,9 +59,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node structure.js
 
-      - name: Promote frequent "その他" category hints into official categories
+      - name: Merge category names into the site's categories
         working-directory: scraper
-        run: node promote-categories.js
+        run: node merge-categories.js
 
       - name: Infer official websites/favicons for MHLW-sourced agents (AI-assisted, HTTP-verified)
         working-directory: scraper

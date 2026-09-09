@@ -321,7 +321,23 @@ function main() {
     console.log(`[category] ${c.name} (${c.slug}): ${matched.length} agent(s), ${pageAgents.length} shown on page.`);
   }
 
-  console.log(`Generated ${generated} category page(s), skipped ${skipped} empty categor${skipped === 1 ? 'y' : 'ies'}.`);
+  // categories.json から消えたカテゴリーのページを掃除する。
+  // 自動昇格をやめてカテゴリーを46種類まとめ直したとき、古い /category/category-1/ …が
+  // 46件そのまま残った。中身の無いページが検索結果に出続けるのを防ぐ。
+  const keep = new Set(categories.map(c => c.slug));
+  let removed = 0;
+  if (fs.existsSync(CATEGORY_DIR)) {
+    for (const name of fs.readdirSync(CATEGORY_DIR)) {
+      if (keep.has(name)) continue;
+      const target = path.join(CATEGORY_DIR, name);
+      if (!fs.existsSync(path.join(target, 'index.html'))) continue;
+      fs.rmSync(target, { recursive: true, force: true });
+      console.log(`[category] removed stale page: category/${name}/`);
+      removed += 1;
+    }
+  }
+
+  console.log(`Generated ${generated} category page(s), skipped ${skipped} empty categor${skipped === 1 ? 'y' : 'ies'}, removed ${removed} stale page(s).`);
 }
 
 if (require.main === module) {
