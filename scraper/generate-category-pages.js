@@ -18,6 +18,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { isIndexableCategory, ROBOTS_NOINDEX } = require('./lib/indexing');
 
 const ROOT = path.join(__dirname, '..');
 const AGENTS_PATH = path.join(ROOT, 'agents.json');
@@ -194,7 +195,7 @@ function buildCollectionPageJsonLd({ categoryName, pageUrl, description, pageAge
   };
 }
 
-function buildPageHtml({ categoryName, slug, styleBlock, totalCount, pageAgents, categoryStyle }) {
+function buildPageHtml({ categoryName, slug, styleBlock, totalCount, pageAgents, categoryStyle, indexable = true }) {
   const pageUrl = `${BASE_URL}/category/${slug}/`;
   const title = `${categoryName}に強い転職エージェント一覧｜転職エージェント図鑑`;
   const description = `${categoryName}に強みを持つ転職エージェント・人材紹介会社を${totalCount}社掲載。対応エリアや特徴を比較して、あなたに合った1社を見つけられます。`;
@@ -217,7 +218,7 @@ function buildPageHtml({ categoryName, slug, styleBlock, totalCount, pageAgents,
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeHtml(description)}">
 <link rel="canonical" href="${pageUrl}">
-<meta property="og:title" content="${escapeHtml(title)}">
+${indexable ? '' : ROBOTS_NOINDEX + '\n'}<meta property="og:title" content="${escapeHtml(title)}">
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${pageUrl}">
@@ -263,7 +264,7 @@ ${styleBlock}
 </div>
 <footer>
   掲載情報は、厚生労働省委託「職業紹介優良事業者認定制度」（jesra.or.jp）および厚生労働省「人材サービス総合サイト」の公開データをもとに、自動クロールにより毎日更新しています。
-  <div class="footer-links"><a href="/">トップページ</a> / <a href="/privacy.html">プライバシーポリシー</a> / <a href="/faq.html">よくある質問</a></div>
+  <div class="footer-links"><a href="/">トップページ</a> / <a href="/guide/">転職ガイド</a> / <a href="/faq.html">よくある質問</a> / <a href="/privacy.html">プライバシーポリシー</a></div>
 </footer>
 </body>
 </html>
@@ -312,6 +313,8 @@ function main() {
       totalCount: matched.length,
       pageAgents,
       categoryStyle,
+      // 並んでいるのが厚労省データのエージェントだけなら、一覧ページも検索対象から外す。
+      indexable: isIndexableCategory(agents, c.name),
     });
 
     const outDir = path.join(CATEGORY_DIR, c.slug);

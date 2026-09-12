@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { isIndexableAgent, withRobotsNoindex } = require('./lib/indexing');
 const http = require('http');
 
 const ROOT = path.join(__dirname, '..');
@@ -204,10 +205,13 @@ async function main() {
         const url = `http://localhost:${PORT}/index.html?ssg=1#/agent/${encodeURIComponent(id)}`;
         await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
         await page.waitForSelector('#detailView.show', { timeout: 10000 });
-        const html = (await page.content()).replace(
+        const rendered = (await page.content()).replace(
           /<meta http-equiv="origin-trial" content="[^"]*">/g,
           ''
         );
+        // 厚労省データの転載ページは検索対象から外す（lib/indexing.js）。
+        // サイトには残すので利用者は見られるが、Google には評価対象として送らない。
+        const html = isIndexableAgent(agent) ? rendered : withRobotsNoindex(rendered);
 
         const sizeBytes = Buffer.byteLength(html, 'utf8');
         if (sizeBytes > SIZE_ERROR_THRESHOLD_BYTES) {

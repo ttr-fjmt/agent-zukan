@@ -74,7 +74,7 @@ data/a8-import/               A8アフィリエイト提携情報のExcel（手�
      賃金の150%）」）。返戻金制度（返金保証）の記載があれば `companyDetail.refundPolicy` に反映します
    - MHLW由来: 手数料公表サイトの情報を今回取得していないため、`feeRate` / `companyDetail.refundPolicy` /
      `companyDetail.upfrontFee` は常に `非公開（お問い合わせで確認）` になるようAIに明示指示しています
-   - カテゴリ分類は両ソース共通で、`lib/schema.js` の9種類（8業種＋「その他」）のいずれか一字一句を厳守するよう
+   - カテゴリ分類は両ソース共通で、`lib/schema.js` の14種類（特化12＋「全職種対応」「その他」）のいずれか一字一句を厳守するよう
      プロンプトとツールスキーマの両方で指示。Anthropicのtool useはenum制約をサーバー側で厳密には強制しない
      ため、コード側でも未知のカテゴリ文字列が返った場合は「その他」に丸めるフォールバックを入れています
    - 取得できなかった項目は `非公開（お問い合わせで確認）` として埋められます
@@ -108,6 +108,42 @@ data/a8-import/               A8アフィリエイト提携情報のExcel（手�
      `ANTHROPIC_API_KEY` 未設定時はオフラインフォールバックで動作します
    - 取り込み後、`prerender.js` / `generate-sitemap.js` も実行し、新規・更新分の静的詳細ページと
      サイトマップを反映します
+
+7. **`scraper/merge-categories.js`** — `agents.json` のカテゴリー名を、`lib/schema.js` の14種類に
+   機械的にまとめ直し、`categories.json` を作り直します（まとめ方は `lib/category-merge.js`）。
+   以前は「その他」の補足メモを5件たまるたびに正式カテゴリーへ自動昇格させていましたが、
+   職業紹介の許可区分の言い換えが46種類まで増え、トップの入口に出せる社数が4,084社中144社まで
+   減ったため、2026-09 に自動昇格をやめてこの方式に置き換えました。日次ワークフローでも実行されます。
+
+## 検索エンジンに公開する範囲
+
+AdSense の審査で「有用性の低いコンテンツ」と判定された（2026-09-12）ため、検索対象を絞っています。
+線引きは [scraper/lib/indexing.js](scraper/lib/indexing.js) の1か所で決めています。
+
+- **厚労省データ（`source: "mhlw"`）のエージェントページは検索対象外**。サイトには残すので利用者は見られますが、
+  `<meta name="robots" content="noindex,follow">` を入れ、サイトマップにも載せません
+  - 当時、掲載5,584社のうち5,505社（98.6%）が厚労省『人材サービス総合サイト』の公開データの転載で、
+    手数料・対象年代・口コミはほぼ空、手数料の説明が同一文面のページが2,270枚ありました
+- **カテゴリーページは、独自データのエージェントが1社でも含まれるときだけ検索対象**（厚労省データだけの一覧は外す）
+- **検索対象として送るのは**：トップ、独自データ（jesra・A8）のエージェントページ、上記のカテゴリーページ、
+  よくある質問、プライバシーポリシー、解説記事
+
+同じ線引きを3か所で使っています（`prerender.js` の noindex、`generate-category-pages.js` の noindex、
+`generate-sitemap.js` の除外）。線引きを変えたら、3つとも作り直してください。
+`scraper/test/indexing.test.js` が、3か所の線引きが揃っていることと、サイトマップに厚労省データが混ざらないことを確かめます。
+
+## 解説記事（/guide/）
+
+`scraper/generate-guide-pages.js` が `guide/` 以下の記事ページを書き出します（`cd scraper && node generate-guide-pages.js`）。
+記事の本文・出典はこのファイルの `GUIDES` / `SOURCES` にまとまっています。
+
+- 制度・金額・日付など事実に当たる記述は、**厚生労働省・労働局・認定制度の公式ページで確認できたものだけ**を書き、
+  記事末尾に出典を載せます。公式ページで確認できなかった数字（上限制手数料の料率など）は書きません
+- 掲載データの件数や地域分布は載せません（日次の収集の進み具合で偏りが変わり、実態を表さないため）
+- `scraper/test/guides.test.js` が、出典が公式ドメインであること、割合（％）を書いていないこと、
+  金額・日付が確認済みのものだけであることを確かめます。新しい数字を書くときは、出典を確認してから
+  テストの許可リストに足してください
+- アクセス解析のタグは `faq.html` から読み込んで流用します（測定IDを直したときに記事だけ古くならないように）
 
 ## API費用の記録
 
@@ -156,3 +192,18 @@ cd scraper
 ANTHROPIC_API_KEY=sk-ant-... node import-a8.js ../data/a8-import/a8-agents-YYYYMMDD.xlsx
 node import-a8.js ../data/a8-import/a8-agents-YYYYMMDD.xlsx --dry-run   # 書き込まず確認のみ
 ```
+
+### 静的ページ生成でブラウザが起動しない場合（Windows）
+
+`prerender.js` などが `puppeteer.launch() failed` で止まり、ログに
+「アプリケーション制御ポリシーによってこのファイルがブロックされました」と出る場合は、
+Windows のアプリケーション制御（スマート アプリ コントロール等）が、puppeteer がダウンロードした
+特定のビルドの Chrome をブロックしています（2026-09 に `win64-152.0.7977.54` で発生）。
+セキュリティ設定は変えず、ブロックされていないビルドを指定して実行してください。
+
+```bash
+PUPPETEER_EXECUTABLE_PATH="C:\Users\<ユーザー名>\.cache\puppeteer\chrome\win64-152.0.7977.75\chrome-win64\chrome.exe" node prerender.js
+```
+
+`~/.cache/puppeteer/chrome/` にあるビルドのうち、起動できるものを選んでください。
+GitHub Actions（Linux）では発生しません。
