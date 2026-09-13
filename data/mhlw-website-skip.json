@@ -4522,5 +4522,485 @@
     "checkedAt": "2026-09-12T21:26:20.525Z",
     "aiDomain": "tohokubank.co.jp",
     "error": "fetch failed"
+  },
+  "03-yu-300074": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:52:58.827Z",
+    "aiDomain": "kitanihon.jp",
+    "error": "HTTP 403 for http://kitanihon.jp/"
+  },
+  "03-yu-300075": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:04.703Z",
+    "aiDomain": null
+  },
+  "03-yu-300076": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:05.386Z",
+    "aiDomain": "bamboo-connect.co.jp",
+    "error": "fetch failed"
+  },
+  "03-yu-300077": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:09.603Z",
+    "aiDomain": "enstaff.co.jp",
+    "error": "fetch failed"
+  },
+  "03-yu-300080": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:15.320Z",
+    "aiDomain": null
+  },
+  "03-yu-300081": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:16.099Z",
+    "aiDomain": null
+  },
+  "03-yu-300082": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:16.722Z",
+    "aiDomain": null
+  },
+  "03-yu-300083": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:17.378Z",
+    "aiDomain": null
+  },
+  "03-yu-300084": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:17.924Z",
+    "aiDomain": null
+  },
+  "03-yu-300088": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:18.692Z",
+    "aiDomain": null
+  },
+  "03-yu-300089": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:19.220Z",
+    "aiDomain": null
+  },
+  "03-yu-300090": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:20.397Z",
+    "aiDomain": null
+  },
+  "03-yu-300091": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:20.966Z",
+    "aiDomain": null
+  },
+  "03-yu-300092": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:21.661Z",
+    "aiDomain": null
+  },
+  "03-yu-300093": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:22.364Z",
+    "aiDomain": null
+  },
+  "03-yu-300094": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:23.049Z",
+    "aiDomain": null
+  },
+  "03-yu-300095": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:23.717Z",
+    "aiDomain": "pasona.co.jp",
+    "error": "fetch failed"
+  },
+  "03-yu-300096": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:30.693Z",
+    "aiDomain": null
+  },
+  "03-yu-300097": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:31.367Z",
+    "aiDomain": null
+  },
+  "03-yu-300098": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:32.319Z",
+    "aiDomain": null
+  },
+  "03-yu-300099": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:32.967Z",
+    "aiDomain": null
+  },
+  "03-yu-300100": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:33.597Z",
+    "aiDomain": null
+  },
+  "03-yu-300101": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:34.269Z",
+    "aiDomain": null
+  },
+  "03-yu-300102": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:34.855Z",
+    "aiDomain": null
+  },
+  "03-yu-300103": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:35.517Z",
+    "aiDomain": null
+  },
+  "03-yu-300104": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:36.228Z",
+    "aiDomain": null
+  },
+  "03-yu-900001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:36.891Z",
+    "aiDomain": null
+  },
+  "04-chi-000001": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:37.749Z",
+    "aiDomain": "shikama.miyagi.jp",
+    "error": "fetch failed"
+  },
+  "04-chi-000002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:41.836Z",
+    "aiDomain": null
+  },
+  "04-chi-000005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:42.444Z",
+    "aiDomain": null
+  },
+  "04-chi-000006": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:43.113Z",
+    "aiDomain": "onagawa.lg.jp",
+    "error": "fetch failed"
+  },
+  "04-chi-000007": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:53:47.060Z",
+    "aiDomain": null
+  },
+  "04-chi-000008": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:47.698Z",
+    "aiDomain": "ishinomaki.lg.jp",
+    "error": "fetch failed"
+  },
+  "04-mu-010004": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:53:56.528Z",
+    "aiDomain": "miyagi-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "04-mu-010007": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:01.571Z",
+    "aiDomain": "miyagi-da.or.jp",
+    "error": "fetch failed"
+  },
+  "04-mu-010011": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:07.323Z",
+    "aiDomain": null
+  },
+  "04-mu-010013": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:08.026Z",
+    "aiDomain": null
+  },
+  "04-mu-070001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:08.671Z",
+    "aiDomain": null
+  },
+  "04-mu-300002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:09.340Z",
+    "aiDomain": null
+  },
+  "04-mu-300004": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-09-13T18:54:09.895Z",
+    "aiDomain": "miyagi.med.or.jp"
+  },
+  "04-mu-300006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:16.166Z",
+    "aiDomain": null
+  },
+  "04-mu-300008": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:16.743Z",
+    "aiDomain": "sendai-io.or.jp",
+    "error": "fetch failed"
+  },
+  "04-mu-300010": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:21.962Z",
+    "aiDomain": null
+  },
+  "04-mu-300011": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:22.618Z",
+    "aiDomain": null
+  },
+  "04-mu-300012": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:23.332Z",
+    "aiDomain": null
+  },
+  "04-mu-300014": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:23.978Z",
+    "aiDomain": null
+  },
+  "04-mu-300015": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:24.633Z",
+    "aiDomain": null
+  },
+  "04-mu-300019": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:25.191Z",
+    "aiDomain": null
+  },
+  "04-mu-300020": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:25.792Z",
+    "aiDomain": "miyagi-youchien.or.jp",
+    "error": "fetch failed"
+  },
+  "04-toku-000003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:30.566Z",
+    "aiDomain": null
+  },
+  "04-toku-000006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:31.264Z",
+    "aiDomain": null
+  },
+  "04-toku-000019": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:31.878Z",
+    "aiDomain": null
+  },
+  "04-toku-000025": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:32.478Z",
+    "aiDomain": null
+  },
+  "04-toku-000026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:33.089Z",
+    "aiDomain": null
+  },
+  "04-toku-000027": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:33.745Z",
+    "aiDomain": null
+  },
+  "04-yu-010003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:34.444Z",
+    "aiDomain": null
+  },
+  "04-yu-010005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:35.094Z",
+    "aiDomain": null
+  },
+  "04-yu-010012": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:35.601Z",
+    "aiDomain": null
+  },
+  "04-yu-010013": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:36.408Z",
+    "aiDomain": "sanko-jinzai.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-010021": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:41.225Z",
+    "aiDomain": null
+  },
+  "04-yu-010024": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:41.882Z",
+    "aiDomain": null
+  },
+  "04-yu-010031": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:42.409Z",
+    "aiDomain": null
+  },
+  "04-yu-010039": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:43.022Z",
+    "aiDomain": null
+  },
+  "04-yu-010042": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:43.709Z",
+    "aiDomain": null
+  },
+  "04-yu-010049": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:44.254Z",
+    "aiDomain": null
+  },
+  "04-yu-010055": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:44.780Z",
+    "aiDomain": null
+  },
+  "04-yu-010057": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:45.425Z",
+    "aiDomain": "persol-tempstaff-kamei.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-010088": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:54:50.721Z",
+    "aiDomain": "humanecx.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-040001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:55.272Z",
+    "aiDomain": null
+  },
+  "04-yu-060002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:56.389Z",
+    "aiDomain": null
+  },
+  "04-yu-070001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:57.045Z",
+    "aiDomain": null
+  },
+  "04-yu-080002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:57.807Z",
+    "aiDomain": null
+  },
+  "04-yu-300002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:58.500Z",
+    "aiDomain": null
+  },
+  "04-yu-300015": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:59.162Z",
+    "aiDomain": null
+  },
+  "04-yu-300031": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:54:59.705Z",
+    "aiDomain": null
+  },
+  "04-yu-300034": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:07.949Z",
+    "aiDomain": null
+  },
+  "04-yu-300045": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:08.611Z",
+    "aiDomain": null
+  },
+  "04-yu-300064": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:09.295Z",
+    "aiDomain": null
+  },
+  "04-yu-300091": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:09.863Z",
+    "aiDomain": null
+  },
+  "04-yu-300092": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:10.518Z",
+    "aiDomain": null
+  },
+  "04-yu-300093": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:11.169Z",
+    "aiDomain": null
+  },
+  "04-yu-300094": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:11.649Z",
+    "aiDomain": null
+  },
+  "04-yu-300097": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:12.294Z",
+    "aiDomain": null
+  },
+  "04-yu-300102": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:12.979Z",
+    "aiDomain": null
+  },
+  "04-yu-300105": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:13.647Z",
+    "aiDomain": null
+  },
+  "04-yu-300109": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:14.404Z",
+    "aiDomain": null
+  },
+  "04-yu-300111": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:15.067Z",
+    "aiDomain": null
+  },
+  "04-yu-300116": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:15.802Z",
+    "aiDomain": null
+  },
+  "04-yu-300118": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:16.506Z",
+    "aiDomain": null
+  },
+  "04-yu-300124": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-13T18:55:17.166Z",
+    "aiDomain": "selecty.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300125": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:21.139Z",
+    "aiDomain": null
+  },
+  "04-yu-300127": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:22.883Z",
+    "aiDomain": null
+  },
+  "04-yu-300132": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-13T18:55:23.529Z",
+    "aiDomain": null
   }
 }
