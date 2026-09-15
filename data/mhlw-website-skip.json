@@ -5469,5 +5469,476 @@
     "reason": "ai_null",
     "checkedAt": "2026-09-14T21:29:05.669Z",
     "aiDomain": null
+  },
+  "04-yu-300182": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:28:13.442Z",
+    "aiDomain": "proudcareer.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300327": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:28:41.434Z",
+    "aiDomain": "jobee.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300329": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:46.114Z",
+    "aiDomain": null
+  },
+  "04-yu-300331": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:46.852Z",
+    "aiDomain": null
+  },
+  "04-yu-300332": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:47.405Z",
+    "aiDomain": null
+  },
+  "04-yu-300334": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:48.130Z",
+    "aiDomain": null
+  },
+  "04-yu-300336": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:48.852Z",
+    "aiDomain": null
+  },
+  "04-yu-300337": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:49.549Z",
+    "aiDomain": null
+  },
+  "04-yu-300338": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:50.275Z",
+    "aiDomain": null
+  },
+  "04-yu-300339": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:50.933Z",
+    "aiDomain": null
+  },
+  "04-yu-300341": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:51.633Z",
+    "aiDomain": null
+  },
+  "04-yu-300342": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:52.333Z",
+    "aiDomain": null
+  },
+  "04-yu-300343": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:28:52.972Z",
+    "aiDomain": "ichigeki.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300344": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:58.666Z",
+    "aiDomain": null
+  },
+  "04-yu-300345": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:28:59.428Z",
+    "aiDomain": null
+  },
+  "04-yu-300346": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:29:00.012Z",
+    "aiDomain": "u-media.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300347": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:05.561Z",
+    "aiDomain": null
+  },
+  "04-yu-300348": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:06.249Z",
+    "aiDomain": null
+  },
+  "04-yu-300349": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:29:06.842Z",
+    "aiDomain": "hitbase.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300351": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:14.018Z",
+    "aiDomain": null
+  },
+  "04-yu-300352": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:14.724Z",
+    "aiDomain": null
+  },
+  "04-yu-300353": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:15.779Z",
+    "aiDomain": null
+  },
+  "04-yu-300354": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:16.354Z",
+    "aiDomain": null
+  },
+  "04-yu-300355": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:16.935Z",
+    "aiDomain": null
+  },
+  "04-yu-300357": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:17.701Z",
+    "aiDomain": null
+  },
+  "04-yu-300358": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-09-15T21:29:18.445Z",
+    "aiDomain": "magonote.jp"
+  },
+  "04-yu-300359": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:25.466Z",
+    "aiDomain": null
+  },
+  "04-yu-300360": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:29:26.311Z",
+    "aiDomain": "hokuto-corporation.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300361": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:30.040Z",
+    "aiDomain": null
+  },
+  "04-yu-300362": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:30.608Z",
+    "aiDomain": null
+  },
+  "04-yu-300364": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:31.188Z",
+    "aiDomain": null
+  },
+  "04-yu-300365": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:31.732Z",
+    "aiDomain": null
+  },
+  "04-yu-300366": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:32.438Z",
+    "aiDomain": null
+  },
+  "04-yu-300367": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:33.117Z",
+    "aiDomain": null
+  },
+  "04-yu-300368": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:29:33.842Z",
+    "aiDomain": "theos.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300369": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:58.681Z",
+    "aiDomain": null
+  },
+  "04-yu-300370": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:29:59.414Z",
+    "aiDomain": null
+  },
+  "04-yu-300371": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:00.222Z",
+    "aiDomain": null
+  },
+  "04-yu-300373": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:00.984Z",
+    "aiDomain": null
+  },
+  "04-yu-300374": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:01.715Z",
+    "aiDomain": null
+  },
+  "04-yu-300375": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:02.332Z",
+    "aiDomain": null
+  },
+  "04-yu-300376": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:03.088Z",
+    "aiDomain": null
+  },
+  "04-yu-300377": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:03.861Z",
+    "aiDomain": null
+  },
+  "04-yu-300378": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:04.575Z",
+    "aiDomain": null
+  },
+  "04-yu-300379": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:05.294Z",
+    "aiDomain": null
+  },
+  "04-yu-300380": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:06.884Z",
+    "aiDomain": null
+  },
+  "04-yu-300381": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:07.606Z",
+    "aiDomain": null
+  },
+  "04-yu-300382": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:08.260Z",
+    "aiDomain": null
+  },
+  "04-yu-300383": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:08.949Z",
+    "aiDomain": "tohoku-telemedia.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300384": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:14.890Z",
+    "aiDomain": null
+  },
+  "04-yu-300385": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:15.690Z",
+    "aiDomain": null
+  },
+  "04-yu-300386": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:16.348Z",
+    "aiDomain": null
+  },
+  "04-yu-300387": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:17.098Z",
+    "aiDomain": null
+  },
+  "04-yu-300388": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:17.887Z",
+    "aiDomain": null
+  },
+  "04-yu-300389": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:18.473Z",
+    "aiDomain": null
+  },
+  "04-yu-300390": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:19.185Z",
+    "aiDomain": null
+  },
+  "04-yu-300391": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:19.810Z",
+    "aiDomain": null
+  },
+  "04-yu-300393": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:20.557Z",
+    "aiDomain": null
+  },
+  "04-yu-300394": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:21.223Z",
+    "aiDomain": null
+  },
+  "04-yu-300395": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:22.765Z",
+    "aiDomain": "fivepit.co.jp",
+    "error": "fetch failed"
+  },
+  "04-yu-300396": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:26.821Z",
+    "aiDomain": null
+  },
+  "04-yu-300397": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:27.498Z",
+    "aiDomain": null
+  },
+  "04-yu-300398": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:28.116Z",
+    "aiDomain": null
+  },
+  "04-yu-300399": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:28.679Z",
+    "aiDomain": null
+  },
+  "04-yu-300400": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:29.378Z",
+    "aiDomain": null
+  },
+  "04-yu-300401": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:30.232Z",
+    "aiDomain": null
+  },
+  "04-yu-300402": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:30.881Z",
+    "aiDomain": "jingi.co.jp",
+    "error": "HTTP 403 for http://jingi.co.jp/"
+  },
+  "04-yu-900001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:36.243Z",
+    "aiDomain": null
+  },
+  "05-chi-000001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:37.166Z",
+    "aiDomain": null
+  },
+  "05-chi-000002": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:37.856Z",
+    "aiDomain": "town.ugo.akita.jp",
+    "error": "fetch failed"
+  },
+  "05-chi-000003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:42.779Z",
+    "aiDomain": null
+  },
+  "05-chi-000004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:43.804Z",
+    "aiDomain": null
+  },
+  "05-chi-000005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:44.489Z",
+    "aiDomain": null
+  },
+  "05-chi-000006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:45.143Z",
+    "aiDomain": null
+  },
+  "05-chi-000007": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:45.801Z",
+    "aiDomain": null
+  },
+  "05-chi-000008": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:46.446Z",
+    "aiDomain": null
+  },
+  "05-chi-000009": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:30:46.980Z",
+    "aiDomain": null
+  },
+  "05-mu-010003": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:47.642Z",
+    "aiDomain": "akita-na.jp",
+    "error": "fetch failed"
+  },
+  "05-mu-010004": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:51.864Z",
+    "aiDomain": "akita-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "05-mu-010005": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:30:56.312Z",
+    "aiDomain": "akita-da.jp",
+    "error": "fetch failed"
+  },
+  "05-mu-010007": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:31:00.668Z",
+    "aiDomain": "akita-yakuzaishi.or.jp",
+    "error": "fetch failed"
+  },
+  "05-mu-300001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:05.038Z",
+    "aiDomain": null
+  },
+  "05-mu-300013": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-15T21:31:05.699Z",
+    "aiDomain": "akita.cci.or.jp",
+    "error": "fetch failed"
+  },
+  "05-mu-300020": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:18.561Z",
+    "aiDomain": null
+  },
+  "05-mu-300023": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:24.150Z",
+    "aiDomain": null
+  },
+  "05-mu-300024": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:24.851Z",
+    "aiDomain": null
+  },
+  "05-mu-300025": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:25.760Z",
+    "aiDomain": null
+  },
+  "05-mu-300026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:26.383Z",
+    "aiDomain": null
+  },
+  "05-toku-000011": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:27.087Z",
+    "aiDomain": null
+  },
+  "05-toku-000012": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:27.805Z",
+    "aiDomain": null
+  },
+  "05-toku-000013": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-15T21:31:28.823Z",
+    "aiDomain": null
   }
 }
