@@ -10,6 +10,9 @@
     "structure": "node structure.js",
     "prerender": "node prerender.js",
     "generate-sitemap": "node generate-sitemap.js",
+    "generate-guides": "node generate-guide-pages.js",
+    "fetch-official": "node fetch-official.js",
+    "write-article": "node write-next-article.js",
     "import-a8": "node import-a8.js",
     "merge-categories": "node merge-categories.js",
     "verify-live": "node verify-live.js"

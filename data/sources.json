@@ -1,0 +1,57 @@
+[
+  {
+    "id": "mhlwShoukai",
+    "label": "厚生労働省「職業紹介事業」",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/shoukainitsuite.html"
+  },
+  {
+    "id": "ishikawa",
+    "label": "石川労働局「職業紹介事業とは」",
+    "url": "https://jsite.mhlw.go.jp/ishikawa-roudoukyoku/hourei_seido_tetsuzuki/roudousha_haken/syoukai_gaiyou.html"
+  },
+  {
+    "id": "r0604",
+    "label": "厚生労働省「職業安定法施行規則改正（令和6年4月）｜手数料表等掲示」",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/r0604anteisokukaisei2.html"
+  },
+  {
+    "id": "jinzai",
+    "label": "厚生労働省「人材サービス総合サイト」",
+    "url": "https://jinzai.hellowork.mhlw.go.jp/JinzaiWeb/"
+  },
+  {
+    "id": "jesra",
+    "label": "職業紹介優良事業者認定制度（厚生労働省委託事業）",
+    "url": "https://www.jesra.or.jp/yuryoshokai/"
+  },
+  {
+    "id": "tokyo",
+    "label": "東京労働局「有料・無料職業紹介関係」",
+    "url": "https://jsite.mhlw.go.jp/tokyo-roudoukyoku/hourei_seido_tetsuzuki/yuryou_muryou_shokugyou.html"
+  },
+  {
+    "id": "meijiR0604",
+    "label": "厚生労働省「募集・職業紹介等における労働条件明示事項が追加されます（令和6年4月施行）」",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/r0604anteisokukaisei1.html"
+  },
+  {
+    "id": "hakenShoukai",
+    "label": "厚生労働省「労働者派遣事業・職業紹介事業等」",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/index.html"
+  },
+  {
+    "id": "kubun",
+    "label": "厚生労働省「求人情報・求職者情報の提供（募集情報等提供）と職業紹介の許可等が必要な場合の区分について」",
+    "url": "https://www.mhlw.go.jp/stf/shoukaibosyuukubun.html"
+  },
+  {
+    "id": "hourei",
+    "label": "厚生労働省「職業紹介事業に係る法令・指針」",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/shoukaihourei.html"
+  },
+  {
+    "id": "gaiyou",
+    "label": "厚生労働省「労働者派遣事業・職業紹介事業等｜制度の概要」",
+    "url": "https://www.mhlw.go.jp/bunya/koyou/haken-shoukai01.html"
+  }
+]

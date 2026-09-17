@@ -24,38 +24,22 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const GUIDE_DIR = path.join(ROOT, 'guide');
+const ARTICLES_DIR = path.join(ROOT, 'data', 'articles');
 const BASE_URL = 'https://agent-zukan.net';
 const SITE_NAME = '転職エージェント図鑑';
 const PUBLISHED = '2026-09-12';
 const ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5761092657360295" crossorigin="anonymous"></script>';
 
-/** 出典。記事本文で参照する番号と揃える。 */
-const SOURCES = {
-  mhlwShoukai: {
-    label: '厚生労働省「職業紹介事業」',
-    url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/shoukainitsuite.html',
-  },
-  ishikawa: {
-    label: '石川労働局「職業紹介事業とは」',
-    url: 'https://jsite.mhlw.go.jp/ishikawa-roudoukyoku/hourei_seido_tetsuzuki/roudousha_haken/syoukai_gaiyou.html',
-  },
-  r0604: {
-    label: '厚生労働省「職業安定法施行規則改正（令和6年4月）｜手数料表等掲示」',
-    url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/r0604anteisokukaisei2.html',
-  },
-  jinzai: {
-    label: '厚生労働省「人材サービス総合サイト」',
-    url: 'https://jinzai.hellowork.mhlw.go.jp/JinzaiWeb/',
-  },
-  jesra: {
-    label: '職業紹介優良事業者認定制度（厚生労働省委託事業）',
-    url: 'https://www.jesra.or.jp/yuryoshokai/',
-  },
-  tokyo: {
-    label: '東京労働局「有料・無料職業紹介関係」',
-    url: 'https://jsite.mhlw.go.jp/tokyo-roudoukyoku/hourei_seido_tetsuzuki/yuryou_muryou_shokugyou.html',
-  },
-};
+/**
+ * 出典。data/sources.json の1か所で決める（記事を自動で書く write-next-article.js も同じものを見る）。
+ * 公式ページの本文は data/raw/<id>.txt に保存してあり、引用がそこに実在するかを検査する。
+ */
+const SOURCES = Object.fromEntries(
+  JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8')).map(s => [
+    s.id,
+    { label: s.label, url: s.url },
+  ])
+);
 
 /** 記事本体。body は <h2> から始まる本文HTML。 */
 const GUIDES = [
@@ -252,6 +236,7 @@ const STYLE = `<style>
   a{color:var(--accent);}
   blockquote{margin:0 0 16px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);
     border-left:3px solid var(--accent);border-radius:8px;font-size:14.5px;line-height:1.9;color:var(--ink);}
+  blockquote .cite{display:block;margin-top:8px;font-size:12.5px;color:var(--ink-faint);}
   .sources{margin-top:48px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:12px;}
   .sources h2{margin:0 0 10px;font-size:15px;border-left:none;padding-left:0;}
   .sources li{font-size:13px;line-height:1.8;}
@@ -302,6 +287,51 @@ ${STYLE}
 </head>`;
 }
 
+/**
+ * 自動で書いた記事（data/articles/*.json）を、手で書いた記事と同じ形にそろえる。
+ *
+ * 手で書いた記事（上の GUIDES）は body に HTML を直接持っている。自動の記事は
+ * 「見出し・段落・引用」の形で保存されているので、ここで同じ HTML に組み立てる。
+ * これで、ページの書き出し・一覧・出典欄・サイトマップは両方に同じものが効く。
+ */
+function loadAutoGuides(dir = ARTICLES_DIR) {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter(f => f.endsWith('.json'))
+    .map(f => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')))
+    .sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)))
+    .map(article => ({
+      slug: article.id,
+      title: article.title,
+      description: article.description,
+      sources: article.sources,
+      published_at: article.published_at,
+      auto: true,
+      body: articleBody(article),
+    }));
+}
+
+/** 記事データから本文の HTML を組み立てる。 */
+function articleBody(article) {
+  const parts = [`<p class="lead">${escapeHtml(article.description)}</p>`];
+  for (const section of article.sections) {
+    parts.push(`<h2>${escapeHtml(section.heading)}</h2>`);
+    for (const paragraph of section.body) parts.push(`<p>${escapeHtml(paragraph)}</p>`);
+    for (const quote of section.quotes || []) {
+      const source = SOURCES[quote.source_id];
+      const cite = source ? `<br><span class="cite">${escapeHtml(source.label)}</span>` : '';
+      parts.push(`<blockquote>${escapeHtml(quote.text)}${cite}</blockquote>`);
+    }
+  }
+  return parts.join('\n');
+}
+
+/** 手で書いた記事と、自動で書いた記事を合わせたもの。 */
+function allGuides() {
+  return [...GUIDES, ...loadAutoGuides()];
+}
+
 function formatDate(iso) {
   const [y, m, d] = iso.split('-').map(Number);
   return `${y}年${m}月${d}日`;
@@ -325,8 +355,8 @@ function buildArticle(guide, analytics) {
         headline: guide.title,
         description: guide.description,
         inLanguage: 'ja',
-        datePublished: PUBLISHED,
-        dateModified: PUBLISHED,
+        datePublished: guide.published_at || PUBLISHED,
+        dateModified: guide.published_at || PUBLISHED,
         mainEntityOfPage: url,
         author: { '@type': 'Organization', name: SITE_NAME, url: `${BASE_URL}/` },
         publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE_URL}/` },
@@ -340,7 +370,8 @@ function buildArticle(guide, analytics) {
     return `    <li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.label)}</a></li>`;
   }).join('\n');
 
-  const related = GUIDES.filter(g => g.slug !== guide.slug).map(g =>
+  // 記事は毎日増えるので、関連は4本までにする（全記事を並べると読みにくく、リンクも増えすぎる）。
+  const related = allGuides().filter(g => g.slug !== guide.slug).slice(0, 4).map(g =>
     `    <li><a href="/guide/${g.slug}/"><span class="t">${escapeHtml(g.title)}</span><span class="d">${escapeHtml(g.description)}</span></a></li>`
   ).join('\n');
 
@@ -350,7 +381,7 @@ function buildArticle(guide, analytics) {
   <a class="back-btn" href="/guide/">${BACK_ICON}転職ガイド一覧へ</a>
   <p class="crumbs"><a href="/">ホーム</a> ／ <a href="/guide/">転職ガイド</a></p>
   <h1>${escapeHtml(guide.title)}</h1>
-  <p class="meta">公開日：${formatDate(PUBLISHED)}　／　${SITE_NAME}編集部</p>
+  <p class="meta">公開日：${formatDate(guide.published_at || PUBLISHED)}　／　${SITE_NAME}編集部</p>
 ${guide.body.trim()}
 
   <div class="sources">
@@ -394,11 +425,11 @@ function buildIndex(analytics) {
         name: '転職ガイド',
         url,
         inLanguage: 'ja',
-        hasPart: GUIDES.map(g => ({ '@type': 'Article', headline: g.title, url: `${BASE_URL}/guide/${g.slug}/` })),
+        hasPart: allGuides().map(g => ({ '@type': 'Article', headline: g.title, url: `${BASE_URL}/guide/${g.slug}/` })),
       },
     ],
   };
-  const items = GUIDES.map(g =>
+  const items = allGuides().map(g =>
     `    <li><a href="/guide/${g.slug}/"><span class="t">${escapeHtml(g.title)}</span><span class="d">${escapeHtml(g.description)}</span></a></li>`
   ).join('\n');
 
@@ -424,7 +455,8 @@ function main() {
   const analytics = readAnalyticsBlock();
   fs.mkdirSync(GUIDE_DIR, { recursive: true });
 
-  const keep = new Set(GUIDES.map(g => g.slug));
+  const guides = allGuides();
+  const keep = new Set(guides.map(g => g.slug));
   for (const name of fs.readdirSync(GUIDE_DIR)) {
     const target = path.join(GUIDE_DIR, name);
     if (keep.has(name) || !fs.statSync(target).isDirectory()) continue;
@@ -432,7 +464,7 @@ function main() {
     console.log(`[guide] removed stale page: guide/${name}/`);
   }
 
-  for (const guide of GUIDES) {
+  for (const guide of guides) {
     const dir = path.join(GUIDE_DIR, guide.slug);
     fs.mkdirSync(dir, { recursive: true });
     const html = buildArticle(guide, analytics);
@@ -441,9 +473,9 @@ function main() {
     console.log(`[guide] ${guide.slug}: 本文 ${text.length}字`);
   }
   fs.writeFileSync(path.join(GUIDE_DIR, 'index.html'), buildIndex(analytics), 'utf8');
-  console.log(`Generated ${GUIDES.length} guide page(s) + guide/index.html.`);
+  console.log(`Generated ${guides.length} guide page(s) + guide/index.html.`);
 }
 
 if (require.main === module) main();
 
-module.exports = { GUIDES, SOURCES, buildArticle, buildIndex };
+module.exports = { GUIDES, SOURCES, buildArticle, buildIndex, loadAutoGuides, allGuides, articleBody };
