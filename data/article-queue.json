@@ -1,0 +1,110 @@
+[
+  {
+    "n": 1,
+    "id": "shokugyou-shoukai-toha",
+    "title": "転職エージェントがしている「職業紹介」とは",
+    "basis": "職業安定法での職業紹介の定義と、有料職業紹介事業に許可が要ること",
+    "sources": ["ishikawa", "mhlwShoukai", "gaiyou"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 2,
+    "id": "kyoka-no-kakunin",
+    "title": "そのエージェントが国の許可を受けているか確かめる方法",
+    "basis": "許可制であること、人材サービス総合サイトで検索できること",
+    "sources": ["jinzai", "ishikawa", "mhlwShoukai"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 3,
+    "id": "tesuuryou-dare-ga-harau",
+    "title": "転職エージェントの手数料は誰が払うのか",
+    "basis": "求職者から手数料を受け取れる場合が限られていること",
+    "sources": ["ishikawa", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 4,
+    "id": "tesuuryouhyou-kaiji",
+    "title": "手数料表と返戻金制度は、どこで見られるのか",
+    "basis": "令和6年4月から自社サイトでの情報提供が認められたこと",
+    "sources": ["r0604", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 5,
+    "id": "roudou-jouken-meiji",
+    "title": "求人票で必ず示される労働条件と、令和6年4月に増えた項目",
+    "basis": "募集・職業紹介での労働条件明示事項の追加",
+    "sources": ["meijiR0604"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 6,
+    "id": "kyuujin-site-tono-chigai",
+    "title": "求人サイトと転職エージェントは何が違うのか",
+    "basis": "募集情報等提供と職業紹介の区分（許可が必要になる場合）",
+    "sources": ["kubun"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 7,
+    "id": "yuryou-jigyousha-nintei",
+    "title": "職業紹介優良事業者の認定とは、何を確かめた印なのか",
+    "basis": "認定制度の目的と運営者",
+    "sources": ["jesra"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 8,
+    "id": "atsukaenai-shokushu",
+    "title": "転職エージェントが紹介できない仕事がある",
+    "basis": "港湾運送業務・建設業務は有料職業紹介の対象外であること",
+    "sources": ["ishikawa", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 9,
+    "id": "shoukai-sekininsha",
+    "title": "職業紹介責任者とは、どんな役割の人か",
+    "basis": "職業紹介責任者の選任と役割",
+    "sources": ["hourei", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 10,
+    "id": "kojin-jouhou",
+    "title": "登録した個人情報は、どう扱われることになっているか",
+    "basis": "職業紹介事業者の個人情報の取り扱いに関する指針",
+    "sources": ["hourei", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 11,
+    "id": "kyoka-no-kikan",
+    "title": "職業紹介事業の許可には有効期間がある",
+    "basis": "許可の有効期間と更新",
+    "sources": ["gaiyou", "tokyo"],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 12,
+    "id": "houritsu-shishin",
+    "title": "転職エージェントが守ることになっている法律と指針",
+    "basis": "職業安定法と関係する指針の位置づけ",
+    "sources": ["hourei", "mhlwShoukai"],
+    "status": "pending",
+    "note": ""
+  }
+]
