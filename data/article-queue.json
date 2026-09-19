@@ -49,8 +49,10 @@
       "r0604",
       "tokyo"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "blocked",
+    "note": "",
+    "blocked_reason": "本文が短すぎます（954字。1000字以上）",
+    "blocked_at": "2026-09-20"
   },
   {
     "n": 5,
