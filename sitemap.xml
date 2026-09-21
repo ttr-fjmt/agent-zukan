@@ -41,6 +41,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/guide/kyuujin-site-tono-chigai/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/guide/roudou-jouken-meiji/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

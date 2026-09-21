@@ -74,8 +74,9 @@
     "sources": [
       "kubun"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "published",
+    "note": "",
+    "published_at": "2026-09-22"
   },
   {
     "n": 7,
