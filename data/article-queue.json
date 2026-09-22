@@ -44,15 +44,14 @@
     "n": 4,
     "id": "tesuuryouhyou-kaiji",
     "title": "手数料表と返戻金制度は、どこで見られるのか",
-    "basis": "令和6年4月から自社サイトでの情報提供が認められたこと",
+    "basis": "令和6年4月から自社サイトでの情報提供が認められたこと。あわせて、手数料表・返戻金制度が明示すべき事項に含まれること",
     "sources": [
       "r0604",
-      "tokyo"
+      "tokyo",
+      "ishikawa"
     ],
-    "status": "blocked",
-    "note": "",
-    "blocked_reason": "本文が短すぎます（954字。1000字以上）",
-    "blocked_at": "2026-09-20"
+    "status": "pending",
+    "note": ""
   },
   {
     "n": 5,
@@ -144,6 +143,124 @@
     "basis": "職業安定法と関係する指針の位置づけ",
     "sources": [
       "hourei",
+      "mhlwShoukai"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 13,
+    "id": "oiwaikin-kinshi",
+    "title": "「就職お祝い金」が禁止されている理由",
+    "basis": "求職者への金銭提供による勧奨の禁止",
+    "sources": [
+      "mhlwShoukai",
+      "hourei"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 14,
+    "id": "kujou-shori",
+    "title": "エージェントとのやり取りで困ったときの苦情の扱い",
+    "basis": "苦情の処理に関する事項の明示と、その扱い",
+    "sources": [
+      "ishikawa",
+      "tokyo"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 15,
+    "id": "atsukai-shokushu-han-i",
+    "title": "エージェントが扱う職種の範囲は、届け出られている",
+    "basis": "取扱職種の範囲等の届出と明示",
+    "sources": [
+      "ishikawa",
+      "mhlwShoukai"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 16,
+    "id": "muryou-shoukai",
+    "title": "手数料を取らない職業紹介もある",
+    "basis": "無料職業紹介事業の種類と、誰が行えるか",
+    "sources": [
+      "ishikawa",
+      "gaiyou"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 17,
+    "id": "kyuujin-fujuri",
+    "title": "受け付けてもらえない求人がある",
+    "basis": "求人不受理のしくみ",
+    "sources": [
+      "mhlwShoukai"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 18,
+    "id": "henkou-no-han-i",
+    "title": "求人票の「変更の範囲」とは何か",
+    "basis": "就業場所・業務の変更の範囲の明示（令和6年4月〜）",
+    "sources": [
+      "meijiR0604"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 19,
+    "id": "kyoka-kijun",
+    "title": "職業紹介事業の許可を受けるための基準",
+    "basis": "許可基準の考え方",
+    "sources": [
+      "tokyo",
+      "gaiyou"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 20,
+    "id": "jigyou-houkoku",
+    "title": "エージェントは実績を国に報告している",
+    "basis": "事業報告のしくみと、公開されている情報",
+    "sources": [
+      "mhlwShoukai",
+      "jinzai"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 21,
+    "id": "tesuuryou-shurui",
+    "title": "紹介手数料には種類がある",
+    "basis": "上限制手数料と届出制手数料の違い（料率は書かない）",
+    "sources": [
+      "ishikawa",
+      "tokyo"
+    ],
+    "status": "pending",
+    "note": ""
+  },
+  {
+    "n": 22,
+    "id": "kojin-jouhou-riyou",
+    "title": "登録した情報は、どこまで使われてよいのか",
+    "basis": "求職者の個人情報の収集・使用・保管の考え方",
+    "sources": [
+      "ishikawa",
       "mhlwShoukai"
     ],
     "status": "pending",
