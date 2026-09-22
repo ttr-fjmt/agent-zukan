@@ -50,8 +50,10 @@
       "tokyo",
       "ishikawa"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "blocked",
+    "note": "",
+    "blocked_reason": "本文が短すぎます（925字。1000字以上）",
+    "blocked_at": "2026-09-22"
   },
   {
     "n": 5,
