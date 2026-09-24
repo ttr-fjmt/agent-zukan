@@ -113,8 +113,9 @@
       "hourei",
       "tokyo"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "published",
+    "note": "",
+    "published_at": "2026-09-25"
   },
   {
     "n": 10,

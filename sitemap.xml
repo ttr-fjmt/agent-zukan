@@ -61,6 +61,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/guide/shoukai-sekininsha/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/guide/tesuuryou-dare-ga-harau/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
