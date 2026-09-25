@@ -10116,5 +10116,482 @@
     "reason": "ai_null",
     "checkedAt": "2026-09-24T21:21:04.020Z",
     "aiDomain": null
+  },
+  "08-yu-300528": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:25.818Z",
+    "aiDomain": null
+  },
+  "09-toku-000002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:26.409Z",
+    "aiDomain": null
+  },
+  "09-toku-000003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:27.052Z",
+    "aiDomain": null
+  },
+  "09-toku-000005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:27.707Z",
+    "aiDomain": null
+  },
+  "09-toku-000007": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:28.261Z",
+    "aiDomain": null
+  },
+  "09-toku-000010": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:28.846Z",
+    "aiDomain": null
+  },
+  "09-toku-000012": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:29.533Z",
+    "aiDomain": null
+  },
+  "09-toku-000013": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:30.179Z",
+    "aiDomain": null
+  },
+  "09-toku-000014": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:30.844Z",
+    "aiDomain": null
+  },
+  "09-toku-000015": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:31.481Z",
+    "aiDomain": null
+  },
+  "09-toku-000017": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:22:32.042Z",
+    "aiDomain": "kanuma-metal.or.jp",
+    "error": "fetch failed"
+  },
+  "09-toku-000018": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:36.274Z",
+    "aiDomain": null
+  },
+  "09-toku-000022": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:36.942Z",
+    "aiDomain": null
+  },
+  "09-toku-000026": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:22:37.644Z",
+    "aiDomain": "utsunomiya.cci.or.jp",
+    "error": "fetch failed"
+  },
+  "09-toku-000028": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:43.195Z",
+    "aiDomain": null
+  },
+  "09-toku-000032": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:43.768Z",
+    "aiDomain": null
+  },
+  "09-toku-000034": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:44.412Z",
+    "aiDomain": null
+  },
+  "09-toku-000035": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:45.099Z",
+    "aiDomain": null
+  },
+  "09-toku-000036": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:46.041Z",
+    "aiDomain": null
+  },
+  "09-toku-000037": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:46.932Z",
+    "aiDomain": null
+  },
+  "09-toku-000040": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:47.590Z",
+    "aiDomain": null
+  },
+  "09-toku-000041": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:48.250Z",
+    "aiDomain": null
+  },
+  "09-toku-000042": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:22:48.955Z",
+    "aiDomain": "utsunomiya-ja.or.jp",
+    "error": "fetch failed"
+  },
+  "09-toku-000043": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:53.180Z",
+    "aiDomain": null
+  },
+  "09-toku-000044": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:22:53.886Z",
+    "aiDomain": "shimotsuke-ja.or.jp",
+    "error": "fetch failed"
+  },
+  "09-toku-000045": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:58.619Z",
+    "aiDomain": null
+  },
+  "09-toku-000046": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:22:59.323Z",
+    "aiDomain": null
+  },
+  "09-toku-000047": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:22:59.883Z",
+    "aiDomain": "nasuno.or.jp",
+    "error": "fetch failed"
+  },
+  "09-toku-000048": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:04.769Z",
+    "aiDomain": null
+  },
+  "09-toku-000049": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:05.445Z",
+    "aiDomain": null
+  },
+  "09-toku-000050": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:05.966Z",
+    "aiDomain": null
+  },
+  "09-toku-000051": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:06.511Z",
+    "aiDomain": null
+  },
+  "09-toku-000052": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:07.040Z",
+    "aiDomain": null
+  },
+  "09-toku-000053": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:07.720Z",
+    "aiDomain": null
+  },
+  "09-toku-000054": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:08.393Z",
+    "aiDomain": null
+  },
+  "09-yu-010008": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:09.079Z",
+    "aiDomain": null
+  },
+  "09-yu-010016": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:09.775Z",
+    "aiDomain": null
+  },
+  "09-yu-010017": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:10.473Z",
+    "aiDomain": null
+  },
+  "09-yu-010022": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:11.084Z",
+    "aiDomain": null
+  },
+  "09-yu-010024": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:11.849Z",
+    "aiDomain": null
+  },
+  "09-yu-010026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:12.508Z",
+    "aiDomain": null
+  },
+  "09-yu-010039": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:13.074Z",
+    "aiDomain": null
+  },
+  "09-yu-010043": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:13.644Z",
+    "aiDomain": null
+  },
+  "09-yu-010044": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:14.279Z",
+    "aiDomain": null
+  },
+  "09-yu-030002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:14.945Z",
+    "aiDomain": null
+  },
+  "09-yu-030004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:15.579Z",
+    "aiDomain": null
+  },
+  "09-yu-040003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:16.169Z",
+    "aiDomain": null
+  },
+  "09-yu-040005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:16.821Z",
+    "aiDomain": null
+  },
+  "09-yu-060001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:17.467Z",
+    "aiDomain": null
+  },
+  "09-yu-080004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:18.016Z",
+    "aiDomain": null
+  },
+  "09-yu-090006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:18.676Z",
+    "aiDomain": null
+  },
+  "09-yu-120003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:19.335Z",
+    "aiDomain": null
+  },
+  "09-yu-300002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:20.013Z",
+    "aiDomain": null
+  },
+  "09-yu-300004": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:20.663Z",
+    "aiDomain": null
+  },
+  "09-yu-300005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:21.342Z",
+    "aiDomain": null
+  },
+  "09-yu-300008": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:22.017Z",
+    "aiDomain": null
+  },
+  "09-yu-300009": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:22.692Z",
+    "aiDomain": null
+  },
+  "09-yu-300021": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:23.233Z",
+    "aiDomain": null
+  },
+  "09-yu-300026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:23.807Z",
+    "aiDomain": null
+  },
+  "09-yu-300029": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:24.693Z",
+    "aiDomain": null
+  },
+  "09-yu-300031": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:25.335Z",
+    "aiDomain": null
+  },
+  "09-yu-300034": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:25.904Z",
+    "aiDomain": null
+  },
+  "09-yu-300039": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:26.552Z",
+    "aiDomain": null
+  },
+  "09-yu-300040": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:27.228Z",
+    "aiDomain": null
+  },
+  "09-yu-300050": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:27.869Z",
+    "aiDomain": null
+  },
+  "09-yu-300055": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:28.414Z",
+    "aiDomain": null
+  },
+  "09-yu-300057": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:29.069Z",
+    "aiDomain": null
+  },
+  "09-yu-300063": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:29.840Z",
+    "aiDomain": null
+  },
+  "09-yu-300064": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:30.403Z",
+    "aiDomain": null
+  },
+  "09-yu-300066": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:31.306Z",
+    "aiDomain": null
+  },
+  "09-yu-300074": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:31.968Z",
+    "aiDomain": null
+  },
+  "09-yu-300077": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:32.603Z",
+    "aiDomain": null
+  },
+  "09-yu-300078": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:33.249Z",
+    "aiDomain": null
+  },
+  "09-yu-300084": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:33.921Z",
+    "aiDomain": null
+  },
+  "09-yu-300095": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:34.604Z",
+    "aiDomain": null
+  },
+  "09-yu-300099": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:35.282Z",
+    "aiDomain": null
+  },
+  "09-yu-300101": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:35.833Z",
+    "aiDomain": null
+  },
+  "09-yu-300105": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:36.515Z",
+    "aiDomain": null
+  },
+  "09-yu-300107": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:37.163Z",
+    "aiDomain": null
+  },
+  "09-yu-300108": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:37.815Z",
+    "aiDomain": null
+  },
+  "09-yu-300111": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:38.367Z",
+    "aiDomain": null
+  },
+  "09-yu-300118": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:38.999Z",
+    "aiDomain": null
+  },
+  "09-yu-300132": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:39.668Z",
+    "aiDomain": null
+  },
+  "09-yu-300135": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:23:40.208Z",
+    "aiDomain": "jb-contract.co.jp",
+    "error": "fetch failed"
+  },
+  "09-yu-300137": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:45.377Z",
+    "aiDomain": null
+  },
+  "09-yu-300140": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:46.156Z",
+    "aiDomain": null
+  },
+  "09-yu-300143": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:46.702Z",
+    "aiDomain": null
+  },
+  "09-yu-300146": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:47.346Z",
+    "aiDomain": null
+  },
+  "09-yu-300150": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-09-25T21:23:47.922Z",
+    "aiDomain": "fides.co.jp",
+    "error": "fetch failed"
+  },
+  "09-yu-300152": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:54.065Z",
+    "aiDomain": null
+  },
+  "09-yu-300154": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:54.764Z",
+    "aiDomain": null
+  },
+  "09-yu-300158": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:23:55.374Z",
+    "aiDomain": null
+  },
+  "09-yu-300161": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:24:01.455Z",
+    "aiDomain": null
+  },
+  "09-yu-300163": {
+    "reason": "ai_null",
+    "checkedAt": "2026-09-25T21:24:02.193Z",
+    "aiDomain": null
   }
 }
