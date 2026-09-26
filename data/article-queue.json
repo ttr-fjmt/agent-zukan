@@ -139,8 +139,10 @@
       "gaiyou",
       "tokyo"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "blocked",
+    "note": "",
+    "blocked_reason": "有料職業紹介事業の許可の有効期間: 「３年間」を裏づける引用がありません。この節の引用にある表記は「３年」「５年」です。そのまま使ってください",
+    "blocked_at": "2026-09-27"
   },
   {
     "n": 12,
