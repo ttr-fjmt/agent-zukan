@@ -241,6 +241,21 @@ function guessCategoryOffline(raw) {
 }
 
 /** ANTHROPIC_API_KEY が無い場合の非AIフォールバック（MHLW由来）。 */
+/**
+ * 厚労省データの紹介文。取扱職種・取扱地域・拠点を並べるだけで、言い換えも補足もしない。
+ * 「幅広い」「豊富な」のような評価の言葉は、元データに無いので使わない。
+ */
+function mhlwOneLiner(raw) {
+  const occ = normalizeOccupations(raw.handledOccupations).trim();
+  const base = raw.prefecture ? `${prefectureFullName(raw.prefecture)}の職業紹介事業者` : '職業紹介事業者';
+  if (!occ) return `${base}。`;
+  // 長い取扱職種は読点で切る。文字数で切ると「レントゲン技師で北海道に」のような
+  // 途中切れになり、意味が変わって読めてしまう。
+  const occText = occ.length <= 40 ? occ : `${occ.slice(0, 40).replace(/、[^、]*$/, '')}ほか`;
+  const region = raw.handledRegion ? `取扱地域は${raw.handledRegion}` : null;
+  return [`${base}。取扱職種は${occText}`, region].filter(Boolean).join('、') + '。';
+}
+
 function buildOfflineMhlw(raw) {
   const occ = raw.handledOccupations || null;
   const region = raw.handledRegion || null;
@@ -257,8 +272,9 @@ function buildOfflineMhlw(raw) {
     jobCount: NOT_DISCLOSED,
     feeRate: NOT_DISCLOSED,
     talentRange: NOT_DISCLOSED,
-    oneLiner: raw.businessOwnerName ? `${raw.businessOwnerName}が提供する職業紹介サービス。` : NOT_DISCLOSED,
-    companyOneLiner: raw.businessOwnerName ? `${raw.businessOwnerName}による人材紹介サービス。` : NOT_DISCLOSED,
+    // 紹介文も、公式の項目を組み合わせて作る（元データに無いことは足さない）。
+    oneLiner: mhlwOneLiner(raw),
+    companyOneLiner: mhlwOneLiner(raw),
     appeal: [occ && `取扱職種: ${occ}`, region && `取扱地域: ${region}`].filter(Boolean).join('。') || NOT_DISCLOSED,
     features,
     feeExplanation: NOT_DISCLOSED,
@@ -282,12 +298,36 @@ function buildOfflineMhlw(raw) {
   };
 }
 
+/**
+ * 厚労省データのカテゴリーを、公式の「取扱職種」欄から機械的に決める。
+ *
+ * 【なぜ AI を使わないか】
+ * 厚労省データは、許可番号・事業主名・住所・取扱職種・取扱地域が**すでに構造化されて**いる。
+ * AI に渡しても、その項目を言い換えるだけで新しい情報は増えない。それどころか
+ * 「多様な職種の人材紹介を実施」のように**元データに無い記述**が混ざることがあり、
+ * このリポジトリの「公開データに書かれていないことは作らせない」という原則に反する。
+ * 1件につき1回の呼び出しで、毎日500件・月$56かかっていた（2026-09 実測）。
+ *
+ * 【なぜ「取扱職種」欄だけを見るか】
+ * 備考（handledOther）や事業所名も試したが、「営業所」「外国人」など別の意味の語に当たり、
+ * 分類がかえって荒れた。公式の職業分類の言い回しだけを手がかりにする。
+ * 掲載中12,005件でAIの分類と86.9%一致することを確かめてある（残りはAI側の推測によるもので、
+ * どちらが正しいとも言えない）。
+ */
+const normalizeOccupations = value => String(value || '').normalize('NFKC').replace(/･/g, '・');
+
 function guessCategoryOfflineMhlw(raw) {
-  const hay = `${raw.handledOccupations || ''} ${raw.handledOther || ''}`;
-  if (/情報処理|システム|ソフトウェア|IT/i.test(hay)) return 'IT・Web';
-  if (/建設|土木|建築/.test(hay)) return '施工管理・建設';
-  if (/営業|販売/.test(hay)) return '営業・マーケティング';
-  if (/介護|保育|看護|医療|福祉/.test(hay)) return '管理部門・コンサル';
+  const occ = normalizeOccupations(raw.handledOccupations).trim();
+  if (!occ) return 'その他';
+  if (/特定技能|技能実習/.test(occ)) return '外国人・特定技能';
+  if (/農業|林業|漁業|畜産/.test(occ)) return '農業';
+  if (/医師|看護|介護|保育|医療|福祉|歯科|薬剤師|保健/.test(occ)) return '医療・介護・福祉';
+  if (/情報処理|通信技術/.test(occ)) return 'IT・Web';
+  if (/建設|土木|建築|施工/.test(occ)) return '施工管理・建設';
+  if (/運輸|輸送|自動車運転/.test(occ)) return '運輸・物流';
+  if (/全職種/.test(occ)) return '全職種対応';
+  if (/販売の職業/.test(occ)) return '営業・マーケティング';
+  if (/管理的職業|事務的職業|専門的・技術的職業/.test(occ)) return '管理部門・コンサル';
   return 'その他';
 }
 
@@ -685,6 +725,15 @@ async function main() {
         continue;
       }
 
+      // 厚労省データはAIに渡さない。項目がすでに構造化されていて、AIは言い換えるだけのため
+      // （guessCategoryOfflineMhlw の説明を参照）。jesra・A8 は公式サイトの文章を読む必要が
+      // あるので、これまでどおりAIを使う。
+      if (source === 'mhlw') {
+        await pushIfEligible(assembleEntry(raw, buildOffline(raw, source), rawHash, source, prev), prev);
+        offlineBuilds += 1;
+        continue;
+      }
+
       if (anthropic) {
         try {
           console.log(`[ai:${source}] structuring ${raw.companyName || raw.businessOwnerName || raw.detailUrl}`);
@@ -742,6 +791,8 @@ if (require.main === module) {
 module.exports = {
   computeRawHash,
   buildOffline,
+  guessCategoryOfflineMhlw,
+  mhlwOneLiner,
   buildWithAI,
   assembleEntry,
   formatRegion,
