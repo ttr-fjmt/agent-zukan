@@ -26,7 +26,9 @@
 
 1. `scrape.js` — 職業紹介優良事業者認定制度（jesra）の認定事業者を取得
 2. `scrape-mhlw.js` — 厚労省『人材サービス総合サイト』から職業紹介事業者を段階的に取得
-3. `structure.js` — 生データを `agents.json` の形に構造化（`ANTHROPIC_API_KEY` を使用）
+3. `structure.js` — 生データを `agents.json` の形に構造化。**厚労省データ（`source: "mhlw"`）はAIを使わず**、
+   公式の項目（取扱職種・取扱地域・拠点）から機械的に組み立てる（費用と、元データに無い記述の混入を避けるため。
+   DECISIONS.md 2026-09-27）。jesra・A8 は公式サイトの文章を読むため `ANTHROPIC_API_KEY` を使用
 4. `merge-categories.js` — カテゴリーを14分類にまとめ直す
 5. `enrich-mhlw-websites.js` — 厚労省データの事業者の公式サイトを推定・照合（`ANTHROPIC_API_KEY` を使用）
 6. `prerender.js` → `generate-category-pages.js` → `generate-sitemap.js`
