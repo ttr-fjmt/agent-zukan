@@ -442,5 +442,29 @@
     "output_tokens": 3376,
     "web_search_requests": 0,
     "estimated_usd": 0.19063
+  },
+  {
+    "date": "2026-09-28",
+    "script": "structure",
+    "model": "claude-haiku-4-5-20251001",
+    "calls": 3,
+    "input_tokens": 9917,
+    "cache_read_tokens": 15522,
+    "cache_write_tokens": 7761,
+    "output_tokens": 3960,
+    "web_search_requests": 0,
+    "estimated_usd": 0.04097
+  },
+  {
+    "date": "2026-09-28",
+    "script": "enrich-mhlw-websites",
+    "model": "claude-haiku-4-5-20251001",
+    "calls": 100,
+    "input_tokens": 175512,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 3408,
+    "web_search_requests": 0,
+    "estimated_usd": 0.192552
   }
 ]
