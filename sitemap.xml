@@ -556,6 +556,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/category/global-talent/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/category/all-jobs/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
