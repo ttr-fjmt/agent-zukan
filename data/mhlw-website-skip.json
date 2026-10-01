@@ -13030,5 +13030,507 @@
     "reason": "ai_null",
     "checkedAt": "2026-09-30T20:25:55.147Z",
     "aiDomain": null
+  },
+  "10-yu-300534": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:00.247Z",
+    "aiDomain": null
+  },
+  "10-yu-300535": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-10-01T20:24:00.803Z",
+    "aiDomain": "exbrain.co.jp"
+  },
+  "10-yu-300536": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:06.494Z",
+    "aiDomain": null
+  },
+  "10-yu-300537": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:07.098Z",
+    "aiDomain": null
+  },
+  "10-yu-300538": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-10-01T20:24:07.662Z",
+    "aiDomain": "workmates.co.jp"
+  },
+  "10-yu-300539": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:12.677Z",
+    "aiDomain": null
+  },
+  "10-yu-300541": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:13.286Z",
+    "aiDomain": null
+  },
+  "10-yu-300542": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:13.835Z",
+    "aiDomain": null
+  },
+  "10-yu-300543": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:24:14.384Z",
+    "aiDomain": "hreight.co.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-300544": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:19.275Z",
+    "aiDomain": null
+  },
+  "10-yu-300545": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:19.713Z",
+    "aiDomain": null
+  },
+  "10-yu-300546": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:20.153Z",
+    "aiDomain": null
+  },
+  "10-yu-300547": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:20.652Z",
+    "aiDomain": null
+  },
+  "10-yu-300548": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:21.158Z",
+    "aiDomain": null
+  },
+  "10-yu-300551": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:21.666Z",
+    "aiDomain": null
+  },
+  "10-yu-300552": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:22.136Z",
+    "aiDomain": null
+  },
+  "10-yu-300553": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:22.648Z",
+    "aiDomain": null
+  },
+  "10-yu-300554": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:23.278Z",
+    "aiDomain": null
+  },
+  "10-yu-300555": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:23.851Z",
+    "aiDomain": null
+  },
+  "10-yu-300556": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:24.432Z",
+    "aiDomain": null
+  },
+  "10-yu-300557": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:24.957Z",
+    "aiDomain": null
+  },
+  "10-yu-300558": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:25.562Z",
+    "aiDomain": null
+  },
+  "10-yu-300559": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:26.004Z",
+    "aiDomain": null
+  },
+  "10-yu-300560": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:26.628Z",
+    "aiDomain": null
+  },
+  "10-yu-300561": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-10-01T20:24:27.202Z",
+    "aiDomain": "musubi.co.jp"
+  },
+  "10-yu-300562": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:34.025Z",
+    "aiDomain": null
+  },
+  "10-yu-300563": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:34.537Z",
+    "aiDomain": null
+  },
+  "10-yu-300564": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:24:35.035Z",
+    "aiDomain": "everlink.co.jp",
+    "error": "HTTP 403 for http://everlink.co.jp/"
+  },
+  "10-yu-300565": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:41.768Z",
+    "aiDomain": null
+  },
+  "10-yu-300566": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:42.339Z",
+    "aiDomain": null
+  },
+  "10-yu-300567": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:42.887Z",
+    "aiDomain": null
+  },
+  "10-yu-300568": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:43.331Z",
+    "aiDomain": null
+  },
+  "10-yu-300569": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:43.772Z",
+    "aiDomain": null
+  },
+  "10-yu-300570": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:44.383Z",
+    "aiDomain": null
+  },
+  "10-yu-300571": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:44.958Z",
+    "aiDomain": null
+  },
+  "10-yu-300572": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:24:45.450Z",
+    "aiDomain": "takasakishinkin.co.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-300573": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:51.015Z",
+    "aiDomain": null
+  },
+  "10-yu-300574": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:51.472Z",
+    "aiDomain": null
+  },
+  "10-yu-300575": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:24:52.037Z",
+    "aiDomain": "peersplus.co.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-300576": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:24:56.095Z",
+    "aiDomain": null
+  },
+  "10-yu-300577": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:24:56.595Z",
+    "aiDomain": "wecrin.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-300578": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:01.023Z",
+    "aiDomain": null
+  },
+  "10-yu-300579": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:01.638Z",
+    "aiDomain": null
+  },
+  "10-yu-300580": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:02.160Z",
+    "aiDomain": null
+  },
+  "10-yu-300581": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:02.672Z",
+    "aiDomain": null
+  },
+  "10-yu-300583": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:03.288Z",
+    "aiDomain": null
+  },
+  "10-yu-300584": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:03.891Z",
+    "aiDomain": null
+  },
+  "10-yu-300585": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:04.513Z",
+    "aiDomain": null
+  },
+  "10-yu-300586": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:04.993Z",
+    "aiDomain": null
+  },
+  "10-yu-300587": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:05.552Z",
+    "aiDomain": null
+  },
+  "10-yu-300588": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:06.094Z",
+    "aiDomain": "linkcross.co.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-300589": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:10.560Z",
+    "aiDomain": null
+  },
+  "10-yu-300590": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:11.052Z",
+    "aiDomain": null
+  },
+  "10-yu-300591": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:11.615Z",
+    "aiDomain": null
+  },
+  "10-yu-300592": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-10-01T20:25:12.128Z",
+    "aiDomain": "mrs.co.jp"
+  },
+  "10-yu-300593": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:18.800Z",
+    "aiDomain": null
+  },
+  "10-yu-300594": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:19.339Z",
+    "aiDomain": null
+  },
+  "10-yu-300595": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:20.326Z",
+    "aiDomain": null
+  },
+  "10-yu-300598": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:20.801Z",
+    "aiDomain": "linkup.co.jp",
+    "error": "fetch failed"
+  },
+  "10-yu-900001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:27.764Z",
+    "aiDomain": null
+  },
+  "11-chi-000002": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:28.275Z",
+    "aiDomain": null
+  },
+  "11-chi-000003": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:28.942Z",
+    "aiDomain": null
+  },
+  "11-chi-000004": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:29.406Z",
+    "aiDomain": "pref.saitama.lg.jp",
+    "error": "fetch failed"
+  },
+  "11-chi-000005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:33.763Z",
+    "aiDomain": null
+  },
+  "11-chi-000006": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:34.298Z",
+    "aiDomain": null
+  },
+  "11-chi-000007": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:34.850Z",
+    "aiDomain": null
+  },
+  "11-chi-000008": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:35.484Z",
+    "aiDomain": null
+  },
+  "11-chi-000009": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:36.201Z",
+    "aiDomain": null
+  },
+  "11-chi-000010": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:36.709Z",
+    "aiDomain": null
+  },
+  "11-chi-000012": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:37.430Z",
+    "aiDomain": "asaka.lg.jp",
+    "error": "fetch failed"
+  },
+  "11-chi-000013": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:41.366Z",
+    "aiDomain": "hiyoshi.or.jp",
+    "error": "HTTP 403 for http://hiyoshi.or.jp/"
+  },
+  "11-chi-000015": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:46.128Z",
+    "aiDomain": "ogano.lg.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-040001": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:25:51.656Z",
+    "aiDomain": null
+  },
+  "11-mu-050002": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:52.263Z",
+    "aiDomain": "fukushi.saitama.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-050003": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:25:56.537Z",
+    "aiDomain": "saitama-da.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-050016": {
+    "reason": "name_mismatch",
+    "checkedAt": "2026-10-01T20:26:01.583Z",
+    "aiDomain": "saitama-kango.or.jp"
+  },
+  "11-mu-300002": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:07.994Z",
+    "aiDomain": "saitama-af.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300005": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:26:12.316Z",
+    "aiDomain": null
+  },
+  "11-mu-300010": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:12.814Z",
+    "aiDomain": "saitama.med.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300011": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:17.921Z",
+    "aiDomain": "saitama-eiyoushi.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300012": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:23.475Z",
+    "aiDomain": "tsurugashima-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300013": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:28.343Z",
+    "aiDomain": "kumagaya.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300014": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:26:33.204Z",
+    "aiDomain": null
+  },
+  "11-mu-300015": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:33.691Z",
+    "aiDomain": "wako-shakyo.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300016": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:38.539Z",
+    "aiDomain": "warabi-syakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300018": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:43.257Z",
+    "aiDomain": "sayama-shakyo.or.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300019": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:26:47.220Z",
+    "aiDomain": null
+  },
+  "11-mu-300022": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:26:47.871Z",
+    "aiDomain": null
+  },
+  "11-mu-300023": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:26:48.384Z",
+    "aiDomain": null
+  },
+  "11-mu-300025": {
+    "reason": "fetch_failed",
+    "checkedAt": "2026-10-01T20:26:57.123Z",
+    "aiDomain": "sokaishakyo.jp",
+    "error": "fetch failed"
+  },
+  "11-mu-300026": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:00.947Z",
+    "aiDomain": null
+  },
+  "11-mu-300027": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:01.657Z",
+    "aiDomain": null
+  },
+  "11-mu-300028": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:02.243Z",
+    "aiDomain": null
+  },
+  "11-mu-300029": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:02.838Z",
+    "aiDomain": null
+  },
+  "11-mu-300030": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:03.289Z",
+    "aiDomain": null
+  },
+  "11-mu-300031": {
+    "reason": "ai_null",
+    "checkedAt": "2026-10-01T20:27:03.801Z",
+    "aiDomain": null
   }
 }
