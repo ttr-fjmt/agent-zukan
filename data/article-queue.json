@@ -242,8 +242,9 @@
       "tokyo",
       "gaiyou"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "published",
+    "note": "",
+    "published_at": "2026-10-05"
   },
   {
     "n": 20,

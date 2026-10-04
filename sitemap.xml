@@ -66,6 +66,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://agent-zukan.net/guide/kyoka-kijun/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://agent-zukan.net/guide/kyoka-no-kakunin/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
