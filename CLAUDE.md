@@ -30,7 +30,8 @@
    公式の項目（取扱職種・取扱地域・拠点）から機械的に組み立てる（費用と、元データに無い記述の混入を避けるため。
    DECISIONS.md 2026-09-27）。jesra・A8 は公式サイトの文章を読むため `ANTHROPIC_API_KEY` を使用
 4. `merge-categories.js` — カテゴリーを14分類にまとめ直す
-5. `enrich-mhlw-websites.js` — 厚労省データの事業者の公式サイトを推定・照合（`ANTHROPIC_API_KEY` を使用）
+5. `enrich-mhlw-websites.js` — 厚労省データの事業者の公式サイトを推定・照合（`ANTHROPIC_API_KEY` を使用）。
+   **2026-10-06 から止めている**（成果5%・対象は検索対象外のため。DECISIONS.md 参照）
 6. `prerender.js` → `generate-category-pages.js` → `generate-sitemap.js`
 
 `.github/workflows/publish-article.yml` が毎日 JST 6:00 に、解説記事を1本書いて公開する。

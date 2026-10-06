@@ -68,7 +68,11 @@ jobs:
         working-directory: scraper
         run: node merge-categories.js
 
+      # 2026-10-06 から止めている（DECISIONS.md 2026-10-06）。3,200件試して見つかったのは163件（5%）で、
+      # 対象の厚労省データのページは検索対象外（noindex）。毎日 $0.19 かけて得るものが少ないため。
+      # 再開するときは、リポジトリの Variables に ENRICH_MHLW_WEBSITES=true を設定する。
       - name: Infer official websites/favicons for MHLW-sourced agents (AI-assisted, HTTP-verified)
+        if: ${{ vars.ENRICH_MHLW_WEBSITES == 'true' }}
         working-directory: scraper
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
