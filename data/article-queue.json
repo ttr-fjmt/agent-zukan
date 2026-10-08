@@ -268,8 +268,9 @@
       "ishikawa",
       "tokyo"
     ],
-    "status": "pending",
-    "note": ""
+    "status": "published",
+    "note": "",
+    "published_at": "2026-10-08"
   },
   {
     "n": 22,
