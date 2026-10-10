@@ -298,5 +298,17 @@
     "output_tokens": 6080,
     "web_search_requests": 0,
     "estimated_usd": 0.056937
+  },
+  {
+    "date": "2026-10-11",
+    "script": "structure",
+    "model": "claude-haiku-4-5-20251001",
+    "calls": 5,
+    "input_tokens": 21874,
+    "cache_read_tokens": 31044,
+    "cache_write_tokens": 7761,
+    "output_tokens": 6056,
+    "web_search_requests": 0,
+    "estimated_usd": 0.06496
   }
 ]
